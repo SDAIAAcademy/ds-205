@@ -1,0 +1,44 @@
+[
+ {
+  "id": "S1",
+  "text": "The office wants to know whether a rewritten renewal message works. A seeded random number generator picks 5,000 permit holders for the rewritten message; another 5,000, picked the same way, get the standard one. On-time renewal is compared between the two groups.",
+  "design": "randomised",
+  "claim": "cause",
+  "why": "Chance alone decided who got which message, so the two groups differ only in the message, apart from sampling error. The difference is the effect of the message for these holders."
+ },
+ {
+  "id": "S2",
+  "text": "Eight branch managers volunteered to install a queue kiosk in spring. By autumn the average wait in their branches is 6 minutes shorter than in the 16 branches without a kiosk.",
+  "design": "observational",
+  "claim": "association",
+  "why": "Managers who volunteer differ from those who do not, and so do their branches. The gap mixes the kiosk with everything else that goes with volunteering."
+ },
+ {
+  "id": "S3",
+  "text": "Market stalls under 10 square metres pay no inspection fee; larger stalls pay it. An analyst compares on-time renewal among stalls of 9.0 to 9.9 square metres with stalls of 10.0 to 10.9 square metres.",
+  "design": "quasi",
+  "claim": "cause_if",
+  "why": "Nobody randomised the fee, but stalls just under and just over the line are alike. The gap is the effect of the fee for stalls near 10 square metres, if nothing else changes at the line and holders cannot pick their side of it."
+ },
+ {
+  "id": "S4",
+  "text": "Online booking was switched on in the six northern branches in June and nowhere else. An analyst compares the change in missed appointments from May to July in the northern branches with the change over the same months in the 18 other branches.",
+  "design": "quasi",
+  "claim": "cause_if",
+  "why": "A comparison of changes, with a group that did not get the change. It supports a causal claim if the two groups would have moved in parallel without online booking."
+ },
+ {
+  "id": "S5",
+  "text": "A survey of 2,000 permit holders finds that 81% of those who use the office's mobile app renewed on time, against 58% of those who do not use it.",
+  "design": "observational",
+  "claim": "association",
+  "why": "Holders chose whether to use the app. Organised holders may do both things. The survey shows that the two go together, not that the app causes renewal."
+ },
+ {
+  "id": "S6",
+  "text": "The office has 400 fast-track inspection slots and 1,900 applicants. A recorded lottery allocates the slots. Days from application to permit are compared between applicants who won a slot and those who did not.",
+  "design": "randomised",
+  "claim": "cause",
+  "why": "A lottery is randomisation, whoever ran it and for whatever reason. The difference is the effect of the fast track for these applicants."
+ }
+]

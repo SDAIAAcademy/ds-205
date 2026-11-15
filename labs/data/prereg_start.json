@@ -1,0 +1,29 @@
+{
+ "title": "Does a reminder seven days before expiry raise on-time renewal?",
+ "decision": "Sahar Al-Wuhaibi decides whether every renewal notice is followed by a reminder message seven days before expiry. If the reminder raises on-time renewal by at least 2 points and no guardrail is crossed, the office adopts it for all permit types. If the effect is smaller, or a guardrail is crossed, the office keeps the standard notice.",
+ "hypothesis": "Holders who get the reminder renew on time more often than holders who get only the standard notice.",
+ "arms": "Control: the standard renewal notice 30 days before expiry, as today. Reminder: the same notice plus one reminder message seven days before expiry. A seeded coin per holder puts half in each arm.",
+ "withholding": "Nobody loses a service they have today: the control arm gets the current notice. The reminder is untested, so giving it to half of the holders for 28 days is how the office learns whether it helps.",
+ "primary_metric": {
+  "name": "on-time renewal",
+  "definition": "the share of holders who renew on or before the expiry date of the permit named in the notice"
+ },
+ "minimum_effect": 0.02,
+ "minimum_effect_reason": "Below 2 points the late fees avoided do not cover the cost of the messages and of the complaints they bring.",
+ "secondary_metrics": [
+  "counter visits within 30 days of the notice"
+ ],
+ "guardrails": [
+  {
+   "metric": "complaint rate",
+   "threshold": 0.005,
+   "action": "stop the test if the reminder arm exceeds control by more than this, and review the wording"
+  },
+  {
+   "metric": "on-time renewal in each group (channel, holder type)",
+   "threshold": -0.03,
+   "action": "stop the reminder for a group whose rate falls below control by more than this, and tell the data protection officer"
+  }
+ ],
+ "stop_rule": "The test runs 28 days and ends on the planned date. There is one analysis of the primary metric, at the end. One safety look on day 14 reads the guardrails only. There is no early stop for a good result."
+}
