@@ -1,0 +1,846 @@
+{
+  "v": 1,
+  "engine": "1.0.0",
+  "build": {
+    "at": "2026-11-15T13:13:52Z",
+    "version": "2027.1.0",
+    "commit": "f9d5985"
+  },
+  "lang": "en",
+  "dir": "ltr",
+  "langs": [
+    "en"
+  ],
+  "alt": {},
+  "course": {
+    "id": "ds-205",
+    "code": "DS-205",
+    "version": "2027.1.0",
+    "title": "Designing and Reading Experiments",
+    "tagline": "Design a randomised experiment a public office can act on, size it, check it and read its result without fooling yourself",
+    "description": "Participants design randomised experiments for a fictional municipal permits office and read the results without fooling themselves. They turn a decision question into a pre-registration with a hypothesis, primary and guardrail metrics, a stop rule and a unit of randomisation, compute sample size by formula and by simulation, analyse a synthetic experiment log, check that randomisation worked, and measure how peeking, many metrics and a mismatched unit inflate false wins. Variance reduction and sequential tests are left to DS-302.",
+    "track": "data-science",
+    "track_name": "Data Science Track",
+    "level": 200,
+    "badge": {
+      "name": "Data Science",
+      "level": "Assistant"
+    },
+    "audience": "Practitioners. Graduates and early-career analysts who have completed the FN courses or passed the placement test, and analysts moving into data science.",
+    "prerequisites": [
+      "DS-201 Statistical Inference by Simulation",
+      "Computes a proportion, a difference in means and a confidence interval",
+      "Writes a simulation loop in Python or R",
+      "Pre-work: about two hours on proportions, intervals and simulation, in the pre-work notebook of the labs folder (its name starts with P0), before the supervised entry quiz",
+      "Setup: a laptop with uv, or Google Colab. Nothing calls or downloads a model. Run 00_setup_check before Day 1; see labs/README.md."
+    ],
+    "url": "https://sdaiaacademy.github.io/ds-205/",
+    "repo": "SDAIAAcademy/ds-205",
+    "home": "../index.html",
+    "format": "intensive",
+    "format_note": "Intensive: 3 teaching days of four sessions and a capstone day, with guided pre-work and a tracked follow-up task",
+    "shape": "3 teaching days + capstone day",
+    "hours": {
+      "instruction": 5,
+      "lab": 5,
+      "guided_self_study": 5,
+      "assessment": 1,
+      "capstone": 5,
+      "total": 21
+    },
+    "unit": "day",
+    "outcomes": [
+      {
+        "id": "LO1",
+        "text": "Distinguish a randomised experiment, a quasi-experiment and an observational comparison, and explain the causal claim each supports, given six study descriptions from public services",
+        "level": "Awareness",
+        "evidence": "a classification with the supported claim, at least five of six correct"
+      },
+      {
+        "id": "LO2",
+        "text": "Draft a pre-registration stating the decision, hypothesis, unit of randomisation, primary and guardrail metrics, stop rule and analysis plan, given the office's question about renewal reminders",
+        "level": "Applied",
+        "evidence": "a one-page pre-registration that passes a reviewer's checklist"
+      },
+      {
+        "id": "LO3",
+        "text": "Compute the sample size and run time needed to detect a minimum effect of interest and check it by simulation, given baseline renewal rates, daily traffic and the office's minimum effect",
+        "level": "Applied",
+        "evidence": "a notebook with the formula result, a simulated power curve and the chosen duration"
+      },
+      {
+        "id": "LO4",
+        "text": "Analyse a completed two-arm experiment with a difference in proportions, a confidence interval and a sample ratio mismatch test, given a synthetic log of 60,000 renewal notices",
+        "level": "Applied",
+        "evidence": "a result note with estimate, interval, checks and a recommendation"
+      },
+      {
+        "id": "LO5",
+        "text": "Measure by simulation the false-positive rate caused by peeking, many metrics and analysis at the wrong unit, given simulated A/A tests with no true effect",
+        "level": "Applied",
+        "evidence": "a table of false-win rates for each trap, with and without the correct procedure"
+      },
+      {
+        "id": "LO6",
+        "text": "Review a reported experiment and decide whether it supports the decision it claims to support, given write-ups with seeded flaws, one in class and one in the capstone",
+        "level": "Performance",
+        "evidence": "a review memo per write-up naming each flaw, its consequence and the decision the evidence does support, defended live"
+      }
+    ],
+    "case_study": {
+      "name": "Mashraq Municipal Permits Office",
+      "summary": "Mashraq Municipal Permits Office (مكتب المشرق للتصاريح البلدية) is a fictional city office that issues resident parking, market stall, outdoor seating and building works permits. Its director, Sahar Al-Wuhaibi, wants three changes tested before they are adopted: a reminder message for renewals, a redesigned online form and a new way of serving visitors at the counters of 24 branches. All data are synthetic and generated with a fixed seed: 26 weeks of notice traffic with a weekly cycle and a month-end peak, a reminder test on 60,000 notices over 28 days whose platform export has a planted fault, a form test logged page view by page view, and four baseline weeks of counter visits in branches of which three pairs share staff. Participants work as Juri Al-Asmari, a junior analyst; holders, applicants and visitors appear only as pseudonymised keys and every result is reported in aggregate."
+    },
+    "days": [
+      {
+        "id": "day1",
+        "kind": "day",
+        "n": 1,
+        "number": 1,
+        "label": "Day 1",
+        "title": "Design",
+        "subtitle": "A question becomes a design: what to compare, what to measure, whom to randomise, written down before any data exist",
+        "shape": "4 sessions · 4 labs",
+        "deck": "../slides/day1.html",
+        "md": "../slides/day1.md",
+        "url": "https://sdaiaacademy.github.io/ds-205/slides/day1.html",
+        "sessions": [
+          {
+            "n": 1,
+            "label": "Session 1",
+            "title": "Which claims need an experiment",
+            "summary": "What a randomised experiment, a quasi-experiment and an observational comparison can each claim, and why",
+            "outcomes": [
+              "Explain what random assignment removes from a comparison",
+              "Classify a study as a randomised experiment, a quasi-experiment or an observational comparison",
+              "State the causal claim a study supports and the assumption it rests on"
+            ],
+            "lo": [
+              "LO1"
+            ],
+            "minutes": 50,
+            "lab": {
+              "id": "1.1",
+              "title": "Six studies, three designs",
+              "summary": "Classify six studies from public services by design and by the causal claim each supports, mark the sheet, then simulate a comparison of volunteers beside a randomised one.",
+              "minutes": 25,
+              "href": "../labs/D1_1_six_studies.ipynb",
+              "steps": [
+                {
+                  "text": "Read the six studies and name each design",
+                  "minutes": 7
+                },
+                {
+                  "text": "Name the claim each one supports",
+                  "minutes": 6
+                },
+                {
+                  "text": "Mark the sheet against the key",
+                  "minutes": 3
+                },
+                {
+                  "text": "Simulate volunteers beside a coin",
+                  "minutes": 6
+                },
+                {
+                  "text": "Write the claim the app survey supports",
+                  "minutes": 3
+                }
+              ],
+              "stretch": "Make the hidden trait stronger and watch which of the two gaps moves"
+            }
+          },
+          {
+            "n": 2,
+            "label": "Session 2",
+            "title": "Decision, hypothesis and metrics",
+            "summary": "From the director's question to a decision, a hypothesis, one primary metric, guardrails and a stop rule",
+            "outcomes": [
+              "Write the decision an experiment informs, with the action for each result",
+              "Choose one primary metric and set a minimum effect of interest from costs",
+              "Write guardrails with thresholds and a stop rule that protects holders"
+            ],
+            "lo": [
+              "LO2"
+            ],
+            "minutes": 50,
+            "lab": {
+              "id": "1.2",
+              "title": "The first half of the pre-registration",
+              "summary": "Write the decision, hypothesis, primary metric, minimum effect, guardrails and stop rule of the reminder test as a record that a checklist can read.",
+              "minutes": 25,
+              "href": "../labs/D1_2_decision_metrics.ipynb",
+              "steps": [
+                {
+                  "text": "Write the decision and the hypothesis",
+                  "minutes": 6
+                },
+                {
+                  "text": "Choose the primary metric and measure its baseline",
+                  "minutes": 5
+                },
+                {
+                  "text": "Set the minimum effect from the cost table",
+                  "minutes": 5
+                },
+                {
+                  "text": "Write two guardrails with thresholds and actions",
+                  "minutes": 5
+                },
+                {
+                  "text": "Write the stop rule and run the checklist",
+                  "minutes": 4
+                }
+              ],
+              "stretch": "Add a secondary metric and say why it is not a second primary metric"
+            }
+          },
+          {
+            "n": 3,
+            "label": "Session 3",
+            "title": "Choosing the unit of randomisation",
+            "summary": "The unit that is randomised, the unit that is analysed, and what happens when units affect each other",
+            "outcomes": [
+              "Choose a unit of randomisation that keeps each person in one arm",
+              "Distinguish simple, stratified and cluster assignment",
+              "Recognise interference between units and choose a unit that contains it"
+            ],
+            "lo": [
+              "LO2"
+            ],
+            "minutes": 50,
+            "lab": {
+              "id": "1.3",
+              "title": "Three tests, three units",
+              "summary": "Choose the unit for the reminder test, the form test and the counter test from evidence in the data: notices per holder, page views per applicant and branches that share staff.",
+              "minutes": 25,
+              "href": "../labs/D1_3_three_units.ipynb",
+              "steps": [
+                {
+                  "text": "Reminder test: notices per holder and how alike they are",
+                  "minutes": 7
+                },
+                {
+                  "text": "Form test: page views per applicant",
+                  "minutes": 5
+                },
+                {
+                  "text": "Counter test: branches and shared staff",
+                  "minutes": 6
+                },
+                {
+                  "text": "Record the unit of each test with its reason",
+                  "minutes": 4
+                },
+                {
+                  "text": "Count the units each test really has",
+                  "minutes": 3
+                }
+              ],
+              "stretch": "If the coin were tossed per notice, what share of holders with several permits would get both versions?"
+            }
+          },
+          {
+            "n": 4,
+            "label": "Session 4",
+            "title": "Pre-registration",
+            "summary": "What a pre-registration fixes before the data exist, how personal data are handled, and how a reviewer reads it",
+            "outcomes": [
+              "Complete a one-page pre-registration with an analysis plan and planned checks",
+              "State who is in each arm, why withholding is acceptable and how log data are minimised",
+              "Review a pre-registration against a checklist and say what fails and why"
+            ],
+            "lo": [
+              "LO2"
+            ],
+            "minutes": 50,
+            "lab": {
+              "id": "1.4",
+              "title": "Complete and review a pre-registration",
+              "summary": "Complete the one-page pre-registration of the reminder test from a supplied first half, run the checklist on it, then review a neighbour's page against the same checklist.",
+              "minutes": 25,
+              "href": "../labs/D1_4_pre_registration.ipynb",
+              "steps": [
+                {
+                  "text": "Load the first half; add the unit, the size and the duration",
+                  "minutes": 5
+                },
+                {
+                  "text": "Write the analysis plan and the planned checks",
+                  "minutes": 6
+                },
+                {
+                  "text": "Write the data paragraph",
+                  "minutes": 4
+                },
+                {
+                  "text": "Run the checklist on your page",
+                  "minutes": 3
+                },
+                {
+                  "text": "Review the neighbour's page against the checklist",
+                  "minutes": 7
+                }
+              ],
+              "stretch": "Rewrite the neighbour's primary metric and stop rule so that they pass"
+            }
+          }
+        ]
+      },
+      {
+        "id": "day2",
+        "kind": "day",
+        "n": 2,
+        "number": 2,
+        "label": "Day 2",
+        "title": "Size and run",
+        "subtitle": "How many units, for how long: the size a minimum effect demands, checked by simulation, and the calendar a test must cover",
+        "shape": "4 sessions · 4 labs",
+        "deck": "../slides/day2.html",
+        "md": "../slides/day2.md",
+        "url": "https://sdaiaacademy.github.io/ds-205/slides/day2.html",
+        "sessions": [
+          {
+            "n": 1,
+            "label": "Session 1",
+            "title": "Power and the minimum effect",
+            "summary": "Two errors, power, the minimum effect of interest and the sample-size formula for two proportions",
+            "outcomes": [
+              "Explain power and the two errors a test can make",
+              "Compute the sample size per arm for a minimum effect by formula",
+              "Show how the minimum effect drives the size and the days of traffic needed"
+            ],
+            "lo": [
+              "LO3"
+            ],
+            "minutes": 50,
+            "lab": {
+              "id": "2.1",
+              "title": "Sample sizes for three minimum effects",
+              "summary": "Compute the sample size of the reminder test for minimum effects of 1, 2 and 4 points by formula, check it against a library and turn each size into days of traffic.",
+              "minutes": 25,
+              "href": "../labs/D2_1_sample_sizes.ipynb",
+              "steps": [
+                {
+                  "text": "Baseline rate and daily traffic from the history",
+                  "minutes": 4
+                },
+                {
+                  "text": "The formula by hand for 2 points",
+                  "minutes": 7
+                },
+                {
+                  "text": "Three minimum effects: 1, 2 and 4 points",
+                  "minutes": 5
+                },
+                {
+                  "text": "Check against a library",
+                  "minutes": 4
+                },
+                {
+                  "text": "Turn sizes into days of traffic",
+                  "minutes": 5
+                }
+              ],
+              "stretch": "Repeat for 90% power and say what the extra ten points cost"
+            }
+          },
+          {
+            "n": 2,
+            "label": "Session 2",
+            "title": "Power by simulation",
+            "summary": "Simulate the planned analysis many times to check power, draw a power curve and count false positives",
+            "outcomes": [
+              "Simulate a planned two-arm test and its analysis with a seed",
+              "Estimate power by simulation and state its counting error",
+              "Draw a power curve and read the sample size from it"
+            ],
+            "lo": [
+              "LO3"
+            ],
+            "minutes": 50,
+            "lab": {
+              "id": "2.2",
+              "title": "Power by simulation",
+              "summary": "Simulate the reminder test and its analysis 1,000 times at the planned size, compare the simulated power with the formula, draw a power curve and count false positives when nothing differs.",
+              "minutes": 25,
+              "href": "../labs/D2_2_power_simulation.ipynb",
+              "steps": [
+                {
+                  "text": "Simulate one test and analyse it",
+                  "minutes": 5
+                },
+                {
+                  "text": "1,000 tests at the planned size",
+                  "minutes": 6
+                },
+                {
+                  "text": "The counting error of the simulation",
+                  "minutes": 3
+                },
+                {
+                  "text": "A power curve over sample sizes",
+                  "minutes": 7
+                },
+                {
+                  "text": "No effect: the false-positive rate",
+                  "minutes": 4
+                }
+              ],
+              "stretch": "Keep the planned size and let the true baseline be 50% or 70%: what happens to power?"
+            }
+          },
+          {
+            "n": 3,
+            "label": "Session 3",
+            "title": "Cluster randomisation",
+            "summary": "When whole branches are randomised: intraclass correlation, the design effect, analysis at the branch level and pairing",
+            "outcomes": [
+              "Estimate the intraclass correlation and the design effect from baseline data",
+              "Measure by simulation the power lost when branches are randomised in place of visitors",
+              "Analyse a cluster-randomised test at the cluster level and improve it by pairing"
+            ],
+            "lo": [
+              "LO3",
+              "LO5"
+            ],
+            "minutes": 50,
+            "lab": {
+              "id": "2.3",
+              "title": "24 branches, 12 and 12",
+              "summary": "Simulate the counter-service test with visitors randomised and with 24 branches randomised, measure the power lost, see what a visitor-level analysis does and recover power by pairing branches.",
+              "minutes": 25,
+              "href": "../labs/D2_3_branch_clusters.ipynb",
+              "steps": [
+                {
+                  "text": "Intraclass correlation and design effect from baseline visits",
+                  "minutes": 5
+                },
+                {
+                  "text": "Visitors randomised: power",
+                  "minutes": 5
+                },
+                {
+                  "text": "Branches randomised, analysed by branch: power",
+                  "minutes": 7
+                },
+                {
+                  "text": "The visitor-level analysis under no effect",
+                  "minutes": 4
+                },
+                {
+                  "text": "Pair branches by baseline and measure power again",
+                  "minutes": 4
+                }
+              ],
+              "stretch": "Treat each pair of branches that share staff as one unit and measure the power of 21 units"
+            }
+          },
+          {
+            "n": 4,
+            "label": "Session 4",
+            "title": "Run time and seasonality",
+            "summary": "Weekly cycles, the month-end peak, whole cycles and the outcome window decide how long a test runs",
+            "outcomes": [
+              "Describe the weekly cycle and the month-end peak in traffic and in the baseline rate",
+              "Turn a sample size into a duration of whole weeks that covers the month-end",
+              "Explain what a test estimates when it covers only part of a cycle"
+            ],
+            "lo": [
+              "LO3"
+            ],
+            "minutes": 50,
+            "lab": {
+              "id": "2.4",
+              "title": "Choose the run time",
+              "summary": "Read the weekly cycle and the month-end peak in 26 weeks of traffic, turn the planned size into days, and choose a duration of whole weeks that covers the month-end.",
+              "minutes": 25,
+              "href": "../labs/D2_4_run_time.ipynb",
+              "steps": [
+                {
+                  "text": "Traffic and renewal rate by weekday and at month-end",
+                  "minutes": 6
+                },
+                {
+                  "text": "Days needed for the planned size",
+                  "minutes": 4
+                },
+                {
+                  "text": "Whole weeks that cover the month-end",
+                  "minutes": 4
+                },
+                {
+                  "text": "What tests of 9, 14 and 28 days would estimate",
+                  "minutes": 7
+                },
+                {
+                  "text": "Record the duration and its reason",
+                  "minutes": 4
+                }
+              ],
+              "stretch": "Start the 9-day test on the 24th of the month and compare its estimate"
+            }
+          }
+        ]
+      },
+      {
+        "id": "day3",
+        "kind": "day",
+        "n": 3,
+        "number": 3,
+        "label": "Day 3",
+        "title": "Read the result",
+        "subtitle": "The data are in: check the assignment, estimate with an interval, count the ways to fool yourself, review someone else's result",
+        "shape": "4 sessions · 4 labs",
+        "deck": "../slides/day3.html",
+        "md": "../slides/day3.md",
+        "url": "https://sdaiaacademy.github.io/ds-205/slides/day3.html",
+        "sessions": [
+          {
+            "n": 1,
+            "label": "Session 1",
+            "title": "Did randomisation work",
+            "summary": "Before any result is read: the sample ratio check, the balance table and analysis as assigned",
+            "outcomes": [
+              "Test whether the arm counts match the planned split",
+              "Read a balance table and locate the segment in which an assignment or logging fault sits",
+              "Decide which rows to analyse after a failed check and say why"
+            ],
+            "lo": [
+              "LO4"
+            ],
+            "minutes": 50,
+            "lab": {
+              "id": "3.1",
+              "title": "Ratio and balance on the export",
+              "summary": "Run the sample ratio check and a balance table on the platform's export of the reminder test, find where rows went missing and decide what to analyse.",
+              "minutes": 25,
+              "href": "../labs/D3_1_ratio_balance.ipynb",
+              "steps": [
+                {
+                  "text": "The sample ratio check on the export",
+                  "minutes": 5
+                },
+                {
+                  "text": "A balance table of four covariates",
+                  "minutes": 6
+                },
+                {
+                  "text": "Locate the fault by channel and week",
+                  "minutes": 6
+                },
+                {
+                  "text": "Compare with the test as assigned",
+                  "minutes": 4
+                },
+                {
+                  "text": "Measure what the faulty export would have claimed",
+                  "minutes": 4
+                }
+              ],
+              "stretch": "How often does a healthy 50/50 assignment of 60,000 fail the check at 0.001? Simulate it"
+            }
+          },
+          {
+            "n": 2,
+            "label": "Session 2",
+            "title": "Estimate, interval and effect",
+            "summary": "The difference in proportions with its interval, read against the minimum effect, with guardrails and one subgroup",
+            "outcomes": [
+              "Compute a difference in proportions with its standard error and 95% interval",
+              "Read an interval against the minimum effect and separate statistical from practical significance",
+              "Report guardrails and a subgroup without overstating either"
+            ],
+            "lo": [
+              "LO4"
+            ],
+            "minutes": 50,
+            "lab": {
+              "id": "3.2",
+              "title": "Analyse the reminder test",
+              "summary": "Analyse the 60,000 notices of the reminder test as assigned: estimate, interval, test, guardrails and one subgroup, then state the result in two sentences.",
+              "minutes": 25,
+              "href": "../labs/D3_2_reminder_result.ipynb",
+              "steps": [
+                {
+                  "text": "Counts and rates by arm",
+                  "minutes": 4
+                },
+                {
+                  "text": "Difference, standard error and 95% interval",
+                  "minutes": 6
+                },
+                {
+                  "text": "The test and the minimum effect",
+                  "minutes": 4
+                },
+                {
+                  "text": "Guardrails and the secondary metric",
+                  "minutes": 4
+                },
+                {
+                  "text": "One subgroup, read with care",
+                  "minutes": 3
+                },
+                {
+                  "text": "The result in two sentences",
+                  "minutes": 4
+                }
+              ],
+              "stretch": "Bootstrap the difference over holders and compare the two intervals"
+            }
+          },
+          {
+            "n": 3,
+            "label": "Session 3",
+            "title": "False wins by simulation",
+            "summary": "How peeking, many metrics and the wrong unit of analysis manufacture wins when nothing differs, measured by A/A tests",
+            "outcomes": [
+              "Simulate A/A tests and count false wins",
+              "Measure the false-win rate of peeking, of twenty metrics and of analysis at the wrong unit",
+              "Apply the correct procedure to each trap and show that the rate returns to 5%"
+            ],
+            "lo": [
+              "LO5"
+            ],
+            "minutes": 50,
+            "lab": {
+              "id": "3.3",
+              "title": "A thousand A/A tests",
+              "summary": "Run 1,000 A/A tests with no true effect under three traps, daily peeking, twenty metrics and page views analysed in place of applicants, and tabulate the false-win rate with and without the correct procedure.",
+              "minutes": 25,
+              "href": "../labs/D3_3_false_wins.ipynb",
+              "steps": [
+                {
+                  "text": "One look at the end: the 5% you agreed to",
+                  "minutes": 4
+                },
+                {
+                  "text": "Peeking: a look every day for 28 days",
+                  "minutes": 7
+                },
+                {
+                  "text": "Twenty metrics: any win, then a correction",
+                  "minutes": 6
+                },
+                {
+                  "text": "Wrong unit: page views against applicants",
+                  "minutes": 5
+                },
+                {
+                  "text": "The table of false-win rates",
+                  "minutes": 3
+                }
+              ],
+              "stretch": "Peek once a week only, four looks: how much of the damage remains?"
+            }
+          },
+          {
+            "n": 4,
+            "label": "Session 4",
+            "title": "Reviewing a reported result",
+            "summary": "A review order for a reported experiment: from each flaw to its consequence to the decision the evidence supports",
+            "outcomes": [
+              "Review a write-up in a fixed order: design, checks, analysis, claim",
+              "Name each flaw with its consequence for the reported result",
+              "State the decision the evidence does support and defend it"
+            ],
+            "lo": [
+              "LO6"
+            ],
+            "minutes": 50,
+            "lab": {
+              "id": "3.4",
+              "title": "Review a write-up",
+              "summary": "Find the seeded flaws in the write-up of the form test, recompute two of its claims from the log, draft the review memo and choose a capstone case.",
+              "minutes": 25,
+              "href": "../labs/D3_4_review_memo.ipynb",
+              "steps": [
+                {
+                  "text": "Read the write-up and mark the flaws",
+                  "minutes": 7
+                },
+                {
+                  "text": "Recompute two claims from the log",
+                  "minutes": 7
+                },
+                {
+                  "text": "Draft the memo: flaw, consequence, supported decision",
+                  "minutes": 8
+                },
+                {
+                  "text": "Choose your capstone case",
+                  "minutes": 3
+                }
+              ],
+              "stretch": "Compare completion only on devices that were logged in both arms"
+            }
+          }
+        ]
+      },
+      {
+        "id": "capstone",
+        "kind": "capstone",
+        "n": 4,
+        "number": null,
+        "label": "Capstone",
+        "title": "Capstone: the design and analysis pack and its defence",
+        "subtitle": "Each participant defends one design choice of a pack on one of three synthetic cases in eight minutes, then answers four minutes of questions",
+        "shape": "",
+        "deck": "../slides/capstone.html",
+        "md": "../slides/capstone.md",
+        "url": "https://sdaiaacademy.github.io/ds-205/slides/capstone.html",
+        "sessions": []
+      }
+    ],
+    "capstone": {
+      "summary": "A design and analysis pack for one of three synthetic cases (reminder message, form redesign, training programme): pre-registration, sample-size and analysis notebooks, result note and a review memo on a flawed write-up, in a public repository; eight-minute defence",
+      "submission": "A link to a public GitHub repository with a one-page pre-registration, a sample-size notebook with the formula result and a simulated power curve, an analysis notebook that reruns from the raw files with a fixed seed, a result note with estimate, interval, checks and a recommendation, and a review memo on the case's flawed write-up, with the commit history and the seeded simulation log. Then an eight-minute live defence of one design choice and four minutes of questions, in which the assessor changes the minimum effect or the unit and the participant recomputes the sample size.",
+      "talk_minutes": 8,
+      "qa_minutes": 4,
+      "rubric": [
+        {
+          "criterion": "Design and pre-registration",
+          "weight": 25
+        },
+        {
+          "criterion": "Power and sample size",
+          "weight": 25
+        },
+        {
+          "criterion": "Analysis and checks",
+          "weight": 20
+        },
+        {
+          "criterion": "Review memo",
+          "weight": 20
+        },
+        {
+          "criterion": "Writing and reproducibility",
+          "weight": 10
+        }
+      ]
+    },
+    "labs": {
+      "kind": "notebooks",
+      "base": "labs/"
+    },
+    "tools": [
+      {
+        "slot": "Analysis environment and notebooks",
+        "examples": [
+          "Python with uv and JupyterLab or marimo",
+          "R with Quarto"
+        ]
+      },
+      {
+        "slot": "Statistics and power calculation",
+        "examples": [
+          "SciPy and statsmodels",
+          "R with the pwr package"
+        ]
+      },
+      {
+        "slot": "Dataframes and analytical SQL engine",
+        "examples": [
+          "DuckDB",
+          "Polars",
+          "pandas"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "group": "National references",
+        "items": [
+          {
+            "title": "Personal Data Protection Law (SDAIA)",
+            "url": "https://sdaia.gov.sa/en/SDAIA/about/Documents/PersonalDataProtectionLaw.pdf"
+          },
+          {
+            "title": "Implementing Regulation of the Personal Data Protection Law (SDAIA)",
+            "url": "https://sdaia.gov.sa/en/SDAIA/about/Documents/ImplementingRegulationPersonalDataProtectionLaw.pdf"
+          },
+          {
+            "title": "General Rules for Secondary Use of Data (SDAIA)",
+            "url": "https://sdaia.gov.sa/Documents/GeneralRulesForSecondaryUseOfData_EN.pdf"
+          },
+          {
+            "title": "Principles of AI Ethics (SDAIA)",
+            "url": "https://sdaia.gov.sa/en/SDAIA/about/Documents/ai-principles.pdf"
+          }
+        ]
+      },
+      {
+        "group": "Libraries used in the labs",
+        "items": [
+          {
+            "title": "NumPy: random generators and seeds",
+            "url": "https://numpy.org/doc/stable/reference/random/generator.html"
+          },
+          {
+            "title": "SciPy: scipy.stats.chisquare (the sample ratio check)",
+            "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.chisquare.html"
+          },
+          {
+            "title": "SciPy: scipy.stats.ttest_ind",
+            "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html"
+          },
+          {
+            "title": "statsmodels: proportions_ztest",
+            "url": "https://www.statsmodels.org/stable/generated/statsmodels.stats.proportion.proportions_ztest.html"
+          },
+          {
+            "title": "statsmodels: confint_proportions_2indep",
+            "url": "https://www.statsmodels.org/stable/generated/statsmodels.stats.proportion.confint_proportions_2indep.html"
+          },
+          {
+            "title": "statsmodels: NormalIndPower",
+            "url": "https://www.statsmodels.org/stable/generated/statsmodels.stats.power.NormalIndPower.html"
+          },
+          {
+            "title": "statsmodels: proportion_effectsize",
+            "url": "https://www.statsmodels.org/stable/generated/statsmodels.stats.proportion.proportion_effectsize.html"
+          },
+          {
+            "title": "statsmodels: multipletests (Holm)",
+            "url": "https://www.statsmodels.org/stable/generated/statsmodels.stats.multitest.multipletests.html"
+          },
+          {
+            "title": "uv: Python projects and environments",
+            "url": "https://docs.astral.sh/uv/"
+          }
+        ]
+      },
+      {
+        "group": "Reading on experiments",
+        "items": [
+          {
+            "title": "Haynes, Service, Goldacre and Torgerson (2012): Test, Learn, Adapt: Developing Public Policy with Randomised Controlled Trials",
+            "url": "https://www.gov.uk/government/publications/test-learn-adapt-developing-public-policy-with-randomised-controlled-trials"
+          },
+          {
+            "title": "Kohavi, Tang and Xu: Trustworthy Online Controlled Experiments (the book's site)",
+            "url": "https://experimentguide.com/"
+          },
+          {
+            "title": "Fabijan and others (2019): Diagnosing Sample Ratio Mismatch in Online Controlled Experiments",
+            "url": "https://www.microsoft.com/en-us/research/publication/diagnosing-sample-ratio-mismatch-in-online-controlled-experiments-a-taxonomy-and-rules-of-thumb-for-practitioners/"
+          },
+          {
+            "title": "Johari, Pekelis and Walsh: Always Valid Inference: Bringing Sequential Analysis to A/B Testing",
+            "url": "https://arxiv.org/abs/1512.04922"
+          },
+          {
+            "title": "Zhou, Lu and Shallah (2023): All about sample-size calculations for A/B testing",
+            "url": "https://arxiv.org/abs/2305.16459"
+          },
+          {
+            "title": "Center for Open Science: Preregistration",
+            "url": "https://www.cos.io/initiatives/prereg"
+          }
+        ]
+      }
+    ]
+  }
+}

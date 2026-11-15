@@ -1,0 +1,63 @@
+{
+ "agreement": [
+  0.7067260138476755,
+  0.5292432353899392
+ ],
+ "counts": {
+  "counter": [
+   10888,
+   21
+  ],
+  "form": [
+   53514,
+   5068
+  ],
+  "reminder": [
+   20000,
+   15395
+  ]
+ },
+ "per_holder": [
+  15395,
+  0.2003897369275739,
+  0.3845
+ ],
+ "pools": [
+  21,
+  [
+   [
+    "B03",
+    "B04"
+   ],
+   [
+    "B11",
+    "B12"
+   ],
+   [
+    "B19",
+    "B20"
+   ]
+  ]
+ ],
+ "stretch": 0.6026134521880064,
+ "units": {
+  "counter": [
+   "staff pool",
+   "Visitors in a hall share the queue, and branches that share staff carry the change to each other."
+  ],
+  "form": [
+   "applicant",
+   "An applicant must see one form throughout, and page views of one applicant resemble each other."
+  ],
+  "reminder": [
+   "holder",
+   "A holder with several permits would otherwise get both versions, and their notices behave alike."
+  ]
+ },
+ "views": [
+  5068,
+  8.0,
+  70,
+  0.28798071532683034
+ ]
+}

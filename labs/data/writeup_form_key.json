@@ -1,0 +1,106 @@
+{
+ "catalogue": [
+  {
+   "flaw": "metric_switch",
+   "meaning": "The headline metric is not the pre-registered primary metric"
+  },
+  {
+   "flaw": "wrong_unit",
+   "meaning": "The analysis counts a different unit from the one that was randomised"
+  },
+  {
+   "flaw": "peeking",
+   "meaning": "The result was checked repeatedly and the test stopped when it turned significant"
+  },
+  {
+   "flaw": "ratio_mismatch",
+   "meaning": "The arms are not the size the design promised, and units are missing from one arm"
+  },
+  {
+   "flaw": "many_comparisons",
+   "meaning": "Many metrics or subgroups were examined and the best ones reported"
+  },
+  {
+   "flaw": "short_run",
+   "meaning": "The run covers no whole weekly cycle or month-end, and first-week behaviour may fade"
+  },
+  {
+   "flaw": "overclaim",
+   "meaning": "The recommendation reaches beyond the units, the metric or the period that were tested"
+  },
+  {
+   "flaw": "no_control",
+   "meaning": "There is no concurrent control group"
+  },
+  {
+   "flaw": "not_random",
+   "meaning": "Assignment was not random"
+  },
+  {
+   "flaw": "different_measurement",
+   "meaning": "The outcome was measured differently in the two arms"
+  }
+ ],
+ "key": [
+  {
+   "flaw": "metric_switch",
+   "present": true,
+   "where": "Results, first bullet, against 'What we planned'",
+   "consequence": "The pre-registered primary metric, completion, shows no clear effect. The headline was chosen after seeing the data, so its p-value is not the test that was planned."
+  },
+  {
+   "flaw": "wrong_unit",
+   "present": true,
+   "where": "Results, first bullet: a z-test on page views",
+   "consequence": "Applicants were randomised and each produced many page views that resemble each other. Counting page views as independent makes the standard error too small. At the applicant level the difference in errors is not significant."
+  },
+  {
+   "flaw": "peeking",
+   "present": true,
+   "where": "What we did: watched every morning, stopped on the first significant day",
+   "consequence": "Stopping at the first p below 0.05 among 8 daily looks gives a false-win rate far above 5% when nothing differs (lab 3.3 measures it)."
+  },
+  {
+   "flaw": "ratio_mismatch",
+   "present": true,
+   "where": "Results table, first row, and the last bullet",
+   "consequence": "A fair coin does not produce these two counts. No applicant on an old mobile browser is logged in the redesigned arm: the form failed for them. The arms no longer hold comparable applicants, and the missing ones make more errors."
+  },
+  {
+   "flaw": "many_comparisons",
+   "present": true,
+   "where": "Results, third bullet: 14 metrics and the best subgroup",
+   "consequence": "With 14 metrics and several subgroups, some difference will look large by chance. The subgroup was chosen because it was the largest."
+  },
+  {
+   "flaw": "short_run",
+   "present": true,
+   "where": "What we did: 8 days of a planned 28",
+   "consequence": "No second weekend, no month-end, and applicants seeing a new form for the first time: the estimate describes one unusual stretch."
+  },
+  {
+   "flaw": "overclaim",
+   "present": true,
+   "where": "Recommendation",
+   "consequence": "One form was tested. 'Proven', 'all forms' and '9,000 a year' are not supported by any number in the write-up."
+  },
+  {
+   "flaw": "no_control",
+   "present": false,
+   "where": "",
+   "consequence": "There is a concurrent control arm: the current form."
+  },
+  {
+   "flaw": "not_random",
+   "present": false,
+   "where": "",
+   "consequence": "Assignment was a seeded coin per applicant. The arms went wrong after assignment, not in it."
+  },
+  {
+   "flaw": "different_measurement",
+   "present": false,
+   "where": "",
+   "consequence": "Both arms use the same log and the same definitions."
+  }
+ ]
+}

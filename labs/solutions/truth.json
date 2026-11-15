@@ -1,0 +1,162 @@
+{
+ "history": {
+  "days": 182,
+  "notices": 391802,
+  "baseline": 0.6158,
+  "mean_daily": 2152.8
+ },
+ "units_notices": {
+  "notices": 20000,
+  "holders": 15395,
+  "share_notices_multi": 0.3845
+ },
+ "reminder_test": {
+  "notices": 60000,
+  "control": 30054,
+  "reminder": 29946,
+  "true_effect_if_everyone_received": 0.029,
+  "true_effect_as_assigned": 0.0281,
+  "estimate_as_assigned": 0.0217,
+  "log_rows": 58986,
+  "log_control": 30054,
+  "log_reminder": 28932,
+  "missing_rows": 1014,
+  "estimate_from_log": 0.0269,
+  "srm_p_assignment": 0.6592794905406765,
+  "srm_p_log": 3.8420447657544195e-06,
+  "complaints": [
+   0.0086,
+   0.01
+  ],
+  "counter_visits": [
+   0.1457,
+   0.1279
+  ]
+ },
+ "form_test": {
+  "planned_days": 28,
+  "stop_day": 8,
+  "daily_page_level_p": [
+   0.0022,
+   0.0102,
+   0.0419,
+   0.0045,
+   0.0038,
+   0.0218,
+   0.0509,
+   0.0002
+  ],
+  "generator_draw": 68,
+  "applicants": [
+   2738,
+   2330
+  ],
+  "page_views": [
+   28808,
+   24706
+  ],
+  "srm_p": 9.97513455678076e-09,
+  "error_rate_page": [
+   0.1304,
+   0.1198
+  ],
+  "error_p_page_level": 0.0002007144359025367,
+  "error_p_applicant_level": 0.2491959394381247,
+  "completion": [
+   0.5847,
+   0.5931
+  ],
+  "completion_p": 0.5447716612072756,
+  "old_mobile_applicants": [
+   379,
+   0
+  ],
+  "completion_common_devices": [
+   0.6096,
+   0.5931
+  ],
+  "completion_p_common_devices": 0.25009023644124917,
+  "best_subgroup": {
+   "applicant_type": "business",
+   "device": "mobile",
+   "relative_reduction": 0.144
+  }
+ },
+ "branches": {
+  "branches": 24,
+  "visits": 10888,
+  "overall_rate": 0.6218,
+  "true_branch_rates": {
+   "B01": 0.527,
+   "B02": 0.632,
+   "B03": 0.702,
+   "B04": 0.606,
+   "B05": 0.544,
+   "B06": 0.55,
+   "B07": 0.64,
+   "B08": 0.666,
+   "B09": 0.683,
+   "B10": 0.592,
+   "B11": 0.618,
+   "B12": 0.673,
+   "B13": 0.677,
+   "B14": 0.41,
+   "B15": 0.597,
+   "B16": 0.672,
+   "B17": 0.528,
+   "B18": 0.511,
+   "B19": 0.622,
+   "B20": 0.561,
+   "B21": 0.706,
+   "B22": 0.673,
+   "B23": 0.739,
+   "B24": 0.812
+  },
+  "shared_pools": [
+   "B03+B04",
+   "B11+B12",
+   "B19+B20"
+  ]
+ },
+ "capstone_a": {
+  "notices": 13000,
+  "holders": 11900,
+  "true_effect": 0.022,
+  "minimum_effect": 0.03,
+  "estimate": 0.0239,
+  "p_notice_level": 0.005432732256990005,
+  "complaints": [
+   0.0062,
+   0.0108
+  ],
+  "planted": "holders with two stalls appear twice (the unit is the holder); the complaint guardrail is breached; the true effect is below the minimum effect"
+ },
+ "capstone_b": {
+  "applicants": 6000,
+  "page_views": 62078,
+  "true_effect_completion": 0.035,
+  "minimum_effect": 0.03,
+  "completion": [
+   0.471,
+   0.5264
+  ],
+  "completion_p": 1.800636872606779e-05,
+  "planted": "contractors produce twice the page views, so page-level analysis weights them double and overstates precision; the write-up reports seconds per page view at the page level and a metric that was not pre-registered"
+ },
+ "capstone_c": {
+  "centres": 20,
+  "visits": 21377,
+  "true_effect": 0.025,
+  "minimum_effect": 0.04,
+  "after": {
+   "no": 0.6606,
+   "yes": 0.7871
+  },
+  "baseline": {
+   "no": 0.6673,
+   "yes": 0.7586
+  },
+  "planted": "the trained centres were chosen for their results, not by chance, and already led at baseline; visits are analysed as if visitors had been randomised; C05 and C06 share staff"
+ },
+ "minimum_effect": 0.02
+}

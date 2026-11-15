@@ -1,0 +1,39 @@
+{
+ "claims": {
+  "S1": "cause",
+  "S2": "association",
+  "S3": "cause_if",
+  "S4": "cause_if",
+  "S5": "association",
+  "S6": "cause"
+ },
+ "designs": {
+  "S1": "randomised",
+  "S2": "observational",
+  "S3": "quasi",
+  "S4": "quasi",
+  "S5": "observational",
+  "S6": "randomised"
+ },
+ "gaps": [
+  0.16954362502492004,
+  0.02533225633306413
+ ],
+ "rep": [
+  17.952013020401164,
+  16.198438363876967,
+  19.248413282292354,
+  2.948318615341038,
+  1.517803880805657,
+  4.580399230311938
+ ],
+ "rep_means": [
+  0.17952013020401164,
+  0.029483186153410383
+ ],
+ "sentence": "Holders who use the app renewed on time more often than those who do not, 81% against 58%, but holders chose whether to use it, so the survey cannot say how much of the gap is the app.",
+ "stretch": [
+  0.22984968710987413,
+  0.03088053795691654
+ ]
+}

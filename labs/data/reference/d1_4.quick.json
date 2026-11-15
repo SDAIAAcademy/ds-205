@@ -1,0 +1,32 @@
+{
+ "data": "Fields used: a pseudonymised notice key, send date, permit type, holder type, channel, prior lateness, tenure, arm and outcomes. No name, phone number or address leaves the messaging platform. Results are reported in aggregate, never by holder, and the extract is deleted when the report is signed.",
+ "differ": [
+  "C3",
+  "C4"
+ ],
+ "plan": {
+  "analysis_plan": "A two-proportion z-test and a 95% interval for the difference in on-time renewal, with holders as the unit, analysed as assigned whether or not the reminder was delivered. Subgroups by channel and by prior lateness are exploratory and are reported as such.",
+  "checks": "Before the result is read: a sample ratio check against 50/50, failed below p = 0.001, and a balance table of channel, holder type, prior lateness and tenure."
+ },
+ "review": {
+  "C1": "pass",
+  "C10": "pass",
+  "C11": "fail",
+  "C12": "pass",
+  "C2": "pass",
+  "C3": "fail",
+  "C4": "fail",
+  "C5": "fail",
+  "C6": "fail",
+  "C7": "fail",
+  "C8": "fail",
+  "C9": "fail"
+ },
+ "stretch": true,
+ "unit_size": {
+  "duration_days": 28,
+  "sample_size_per_arm": 9200,
+  "unit": "permit holder",
+  "unit_reason": "A holder with several permits would otherwise receive both versions. Each holder is enrolled once, at the first notice in the window."
+ }
+}

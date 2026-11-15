@@ -1,0 +1,2225 @@
+{
+  "format": "classpulse-bank",
+  "version": 1,
+  "course": {
+    "name": "Designing and Reading Experiments",
+    "los": [
+      {
+        "code": "LO1",
+        "description": "Distinguish a randomised experiment, a quasi-experiment and an observational comparison, and explain the causal claim each supports, given six study descriptions from public services"
+      },
+      {
+        "code": "LO2",
+        "description": "Draft a pre-registration stating the decision, hypothesis, unit of randomisation, primary and guardrail metrics, stop rule and analysis plan, given the office's question about renewal reminders"
+      },
+      {
+        "code": "LO3",
+        "description": "Compute the sample size and run time needed to detect a minimum effect of interest and check it by simulation, given baseline renewal rates, daily traffic and the office's minimum effect"
+      },
+      {
+        "code": "LO4",
+        "description": "Analyse a completed two-arm experiment with a difference in proportions, a confidence interval and a sample ratio mismatch test, given a synthetic log of 60,000 renewal notices"
+      },
+      {
+        "code": "LO5",
+        "description": "Measure by simulation the false-positive rate caused by peeking, many metrics and analysis at the wrong unit, given simulated A/A tests with no true effect"
+      },
+      {
+        "code": "LO6",
+        "description": "Review a reported experiment and decide whether it supports the decision it claims to support, given write-ups with seeded flaws, one in class and one in the capstone"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": "check-which-design-q1",
+      "type": "single",
+      "prompt": "Mansour Al-Khelaiwi wants to know whether evening opening shortens waits. Four studies are possible. Which one supports \"evening opening caused shorter waits\" without a further assumption?",
+      "options": [
+        "Compare the branches whose managers asked for evening opening with the rest",
+        "Draw 12 of the 24 branches by a recorded lottery for evening opening and compare with the other 12",
+        "Open all branches in the evening from June and compare waits before and after",
+        "Compare the waits of evening visitors with those of daytime visitors"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO1"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Only the lottery lets chance decide which branches change. The other three compare groups that chose or periods that differ.",
+      "misconceptions": [
+        "Managers who ask for evening opening differ from the others, and so do their branches: the groups chose",
+        "",
+        "Anything else that changed in the same months is mixed into the difference: there is no group without the change",
+        "Visitors who come in the evening differ from daytime visitors: they chose their slot"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 11
+    },
+    {
+      "id": "check-primary-metric-q1",
+      "type": "single",
+      "prompt": "Rehab Al-Tayyar's team redesigned the online application form so that more applicants finish it. Which is the primary metric of the test?",
+      "options": [
+        "Mean time spent on each page of the form",
+        "Validation errors per page view",
+        "Whichever of completion, errors and time improves most",
+        "The share of applicants who complete the application"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The decision is about finished applications. Errors and time explain a result; they do not decide it.",
+      "misconceptions": [
+        "Measures activity on the page, not whether the applicant got what they came for: a confusing page also holds people longer",
+        "An intermediate step: fewer error messages help only if more applications are finished",
+        "Leaves the choice until the data are in, which is a second and third chance of a win",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 20
+    },
+    {
+      "id": "check-unit-q1",
+      "type": "single",
+      "prompt": "The office wants to test a shorter text on the ticket that the queue machine prints. All visitors of a branch wait in one hall and watch one display. What is the unit of randomisation?",
+      "options": [
+        "The branch, or the staff pool where branches share staff",
+        "The visitor: each ticket printed gets a coin",
+        "The day: the short text on alternate days in every branch",
+        "The ticket: it is what the machine logs"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Whatever shares a hall, a queue and a team must land in one arm together. The price is paid in the number of units.",
+      "misconceptions": [
+        "",
+        "Visitors in one hall see each other's tickets and share one queue: a visitor's treatment reaches the next visitor",
+        "A day in one branch follows the day before: staff and repeat visitors carry the change across days, and days are few",
+        "The ticket is the row in the log, not a unit: one visitor may take several tickets"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 29
+    },
+    {
+      "id": "check-after-data-q1",
+      "type": "single",
+      "prompt": "On day 10 of the reminder test the team has three ideas. Which one is compatible with the pre-registration?",
+      "options": [
+        "Make counter visits the primary metric, because they are moving more clearly",
+        "End the test today, because the difference is already significant",
+        "Add days until renewal as an exploratory metric, labelled as added on day 10",
+        "Drop holders whose reminder bounced from the reminder arm"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "You may add, with a date and a label. You may not change what decides, when it stops or who counts.",
+      "misconceptions": [
+        "Chooses the metric after seeing interim data: the new headline is selected because it looks better",
+        "Stops for a good result, which the stop rule forbids and which inflates false wins",
+        "",
+        "Removes holders from one arm only, after assignment: the arms stop being comparable"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 38
+    },
+    {
+      "id": "review-day1-q1",
+      "type": "single",
+      "prompt": "Four pre-registrations for the reminder test differ in one line each. Which line is acceptable?",
+      "options": [
+        "Primary metric: on-time renewal or counter visits, whichever is clearer",
+        "Unit: the renewal notice, since that is what the platform sends",
+        "Stop rule: 28 days, one analysis at the end, a safety look at the guardrails on day 14",
+        "Guardrail: we will keep an eye on complaints"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "A fixed end, one analysis of the primary metric, and an early look that reads only the guardrails.",
+      "misconceptions": [
+        "Leaves the choice of metric until the data are in: two chances of a win",
+        "A holder with several permits can land in both arms",
+        "",
+        "No threshold and no action: nothing can stop the test"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 3
+    },
+    {
+      "id": "check-halving-q1",
+      "type": "single",
+      "prompt": "A test needs 6,000 residents per arm to detect 3 points. The director now says she would act on 1.5 points. About how many residents per arm does the test need?",
+      "options": [
+        "24,000",
+        "12,000",
+        "6,000",
+        "1,500"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The effect is squared in the denominator. Half the effect, four times the size.",
+      "misconceptions": [
+        "",
+        "Scales the size in proportion to the effect and not to its square",
+        "Assumes the size does not depend on the effect once the test is planned",
+        "Divides where the formula multiplies: a smaller effect is harder to see, not easier"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 11
+    },
+    {
+      "id": "check-simulated-power-q1",
+      "type": "single",
+      "prompt": "You simulate a planned test 1,000 times with a true effect of 2 points. 81% of the simulated tests are significant. Which statement is correct?",
+      "options": [
+        "There is an 81% chance that the reminder works",
+        "If the real test is significant, the effect is real with probability 81%",
+        "The reminder will raise on-time renewal by 81% of 2 points",
+        "If the effect is really 2 points, a test of this design finds it about 81 times in 100"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Power is a statement about the design under an assumed effect: how often it finds what is there.",
+      "misconceptions": [
+        "Reads power as the chance that the hypothesis is true, which no test provides",
+        "Turns a property of the design into a statement about one finished test",
+        "Confuses power with the size of the effect",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 20
+    },
+    {
+      "id": "check-clusters-q1",
+      "type": "single",
+      "prompt": "A ministry tests a new enrolment procedure in 16 schools, 8 with it and 8 without. Each school enrols about 600 pupils. The outcome is whether a pupil's file is complete on the first day. What decides the power of the test most?",
+      "options": [
+        "The 9,600 pupils",
+        "The 16 schools and how much schools differ from each other",
+        "The 600 pupils in each school",
+        "The 5% significance level"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Schools were randomised, so the test has 16 units. Differences between schools are the noise it must overcome.",
+      "misconceptions": [
+        "Counts rows: pupils in one school share its staff and its habits, so they are not 9,600 independent observations",
+        "",
+        "Within-school sample size shrinks only the small sampling part of each school's rate",
+        "The level of the test sets the false-win rate, not how much information 16 schools carry"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 29
+    },
+    {
+      "id": "check-stop-date-q1",
+      "type": "single",
+      "prompt": "A test of a new payment page starts on a Sunday. The planned size is reached on day 11. Traffic is low at weekends and salaries arrive on the 27th, after which payments surge. Day 11 is the 16th of the month. What duration do you choose?",
+      "options": [
+        "11 days",
+        "14 days",
+        "28 days",
+        "As long as it takes to reach significance"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Whole weeks, and the salary surge inside the window. From the 6th, 28 days reach past the 27th.",
+      "misconceptions": [
+        "Stops when the size is reached and ignores that the window holds unequal numbers of each weekday",
+        "Covers whole weeks and still misses the days after the 27th, when behaviour differs",
+        "",
+        "Runs until the result is clear, which is peeking by another name"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 38
+    },
+    {
+      "id": "review-day2-q1",
+      "type": "single",
+      "prompt": "A test needs 9,000 residents per arm for its minimum effect. Traffic is 2,000 residents a day, lower at weekends, with a surge at the month-end. Which plan do you accept?",
+      "options": [
+        "Run 9 days, until 18,000 residents are in",
+        "Run 28 days: whole weeks, with the month-end inside",
+        "Run 9 days with 4,500 per arm to finish sooner",
+        "Run until the difference is significant"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The formula gives the minimum size. The calendar gives the duration: whole cycles.",
+      "misconceptions": [
+        "Reaches the size and counts some weekdays twice and others once, with no month-end",
+        "",
+        "Halves the size, which cuts the power for the stated minimum effect far below 80%",
+        "Lets the result decide the duration, which is peeking"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 3
+    },
+    {
+      "id": "check-failed-ratio-q1",
+      "type": "single",
+      "prompt": "A form test planned a 50/50 split. The log shows 10,480 applicants on the old form and 9,720 on the new one (p below 0.0001). The new form shows a higher completion rate. What do you do first?",
+      "options": [
+        "Report the higher completion rate, with a note that the arms were unequal",
+        "Delete 760 applicants at random from the old form's arm",
+        "Reweight the new form's arm so that both arms count the same",
+        "Find which applicants are missing from the new form's arm, and why"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO4"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Unequal counts mean that something other than the coin decided who is in the data. Until you know what, no comparison can be trusted.",
+      "misconceptions": [
+        "Reads the result of a comparison that is known to be broken",
+        "Forces equal counts without knowing which units are missing: the arms stay incomparable",
+        "Assumes the missing applicants are a random handful, which is the thing in doubt",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 12
+    },
+    {
+      "id": "check-interval-reading-q1",
+      "type": "single",
+      "prompt": "A test of a new letter has a minimum effect of 3 points. The result: +1.2 points, 95% interval +0.4 to +2.0, p = 0.003. Which sentence is right?",
+      "options": [
+        "The letter helps, by less than the 3 points that would justify it",
+        "The letter is highly effective: the result is significant at 0.003",
+        "The letter has no effect, since it missed the minimum effect",
+        "The test is inconclusive and should run longer"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO4"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The whole interval is above zero and below 3 points: a real gain, too small to act on.",
+      "misconceptions": [
+        "",
+        "Reads a small p-value as a large or important effect",
+        "Treats 'below the minimum' as 'no effect', although zero is outside the interval",
+        "Asks for more data when the interval already rules out the minimum effect"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 21
+    },
+    {
+      "id": "check-which-trap-q1",
+      "type": "single",
+      "prompt": "A team planned a 4-week test of a new queue screen in 30 branches with one primary metric. They analysed it once, at the end, and report: \"average wait fell, p = 0.01, n = 41,000 visits\". Which trap should you check first?",
+      "options": [
+        "Peeking",
+        "Many metrics",
+        "Wrong unit of analysis",
+        "Novelty"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "Branches were randomised and visits were counted. The test has 30 units, and \"n = 41,000\" is the sign that they were not the ones analysed.",
+      "misconceptions": [
+        "The team looked once, at the planned end",
+        "One primary metric was named in advance and reported",
+        "",
+        "Four weeks is a full cycle; novelty is possible but is not what the reported n points to"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 31
+    },
+    {
+      "id": "check-supported-decision-q1",
+      "type": "single",
+      "prompt": "A write-up reports a randomised test of a new appointment text, analysed as pre-registered: missed appointments fell by 1.9 points (0.4 to 3.4), against a minimum effect of 1.5. It then recommends the text \"for all clinics, and for vaccination reminders too\". The test ran in the city's eight clinics. What do you write?",
+      "options": [
+        "Reject the write-up: the claim goes beyond the evidence",
+        "Adopt the text for appointments in the eight clinics; test vaccination reminders separately",
+        "Accept the recommendation as written: the test was sound",
+        "Ask for a longer test before deciding anything"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO6"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 30,
+      "displayMode": "full",
+      "explanation": "The test supports what it tested: this text, for appointments, in these clinics. The rest is a new hypothesis.",
+      "misconceptions": [
+        "Throws out a sound result because the recommendation overreaches",
+        "",
+        "Accepts an extension to a different message and purpose that nobody tested",
+        "Asks for more data although the estimate meets the minimum and the analysis was as planned"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 40
+    },
+    {
+      "id": "q-design-01",
+      "type": "single",
+      "prompt": "A city library offers a new late-return text alert. Members opt in at the desk. After three months, members with the alert return 12 points more books on time than members without it. What kind of study is this?",
+      "options": [
+        "A randomised experiment, because two groups are compared",
+        "A quasi-experiment, because the alert started on a fixed date",
+        "An observational comparison, because members chose the alert",
+        "A lottery, because not every member received the alert"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO1"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "Members decided for themselves whether to opt in, so the two groups may differ in many ways besides the alert. That is an observational comparison.",
+      "misconceptions": [
+        "Takes any two-group comparison for an experiment: what matters is how the groups were formed",
+        "Sees a date and assumes a rule created the groups: here members chose",
+        "",
+        "Confuses partial coverage with assignment by chance"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 8
+    },
+    {
+      "id": "q-design-02",
+      "type": "single",
+      "prompt": "A transport office finds that drivers who use its mobile app renew their licences on time 20 points more often than drivers who do not. A simulation shows that conscientious drivers both install the app more and renew on time more. What does the 20-point gap mostly measure?",
+      "options": [
+        "The difference between conscientious drivers and the others",
+        "The effect of the app on every driver who chooses to install it this year",
+        "The sampling error of a survey of drivers",
+        "The effect of on-time renewal on app use"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO1"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "A trait that drives both app use and renewal is mixed into the comparison. The gap is mostly that trait, not the app.",
+      "misconceptions": [
+        "",
+        "Reads a gap between groups that chose as the effect of the thing they chose",
+        "Mistakes a stable bias for noise: a larger survey would show the same gap",
+        "Reverses the direction without removing the hidden trait that drives both"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 5
+    },
+    {
+      "id": "q-design-03",
+      "type": "single",
+      "prompt": "Three separate surveys of clinic patients all find that patients who booked online miss fewer appointments, by 9, 10 and 11 points. A manager says the agreement proves that online booking reduces missed appointments. What is the best reply?",
+      "options": [
+        "Three surveys are too few; ten would settle it",
+        "The surveys share one weakness: patients chose how to book",
+        "The surveys disagree by 2 points, so none can be trusted",
+        "The effect is real, since chance cannot produce it three times"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO1"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "Agreement between studies that share the same bias shows that the bias is stable, not that the claim is true. All three compare patients who chose.",
+      "misconceptions": [
+        "Treats bias as noise that more studies average away",
+        "",
+        "Reads ordinary sampling variation as a contradiction",
+        "Rules out chance and forgets that a shared bias repeats just as reliably"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 7
+    },
+    {
+      "id": "q-design-04",
+      "type": "single",
+      "prompt": "A municipality waives a parking fee for cars registered before 2015. An analyst compares permit renewals of cars registered in late 2014 with cars registered in early 2015. On which assumption does a causal reading rest?",
+      "options": [
+        "That the two groups have the same number of cars",
+        "That owners chose their registration year at random",
+        "That renewals were measured in the same month for all cars",
+        "That nothing but the fee changes at the 2015 line"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO1"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "A comparison just either side of a cut-off supports a causal claim if units near the line are alike and nothing else switches at the line.",
+      "misconceptions": [
+        "Looks for equal group sizes, which matter for precision and not for the causal claim",
+        "Asks for randomisation, which a rule at a cut-off does not need or provide",
+        "Names a measurement detail in place of the assumption the design rests on",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 9
+    },
+    {
+      "id": "q-design-05",
+      "type": "single",
+      "prompt": "A housing office has 300 places on a home-repair scheme and 1,400 eligible applicants. Places are allocated by a recorded random draw. One year later, energy bills of the two groups are compared. Which claim does the comparison support?",
+      "options": [
+        "The scheme lowered bills for applicants like these",
+        "The scheme lowers bills for every household in the city",
+        "Households on the scheme have lower bills; the reason is unknown",
+        "The scheme lowers bills only if bills were moving in parallel before"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO1"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "A recorded random draw is random assignment. It supports a causal claim for the applicants who were in the draw.",
+      "misconceptions": [
+        "",
+        "Extends the result beyond the units that were in the draw",
+        "Treats a lottery as an observational comparison because nobody planned a study",
+        "Borrows the assumption of a before-and-after comparison that a random draw does not need"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 8
+    },
+    {
+      "id": "q-design-06",
+      "type": "single",
+      "prompt": "A health centre knows from strong earlier trials that a reminder call reduces missed vaccinations. A manager proposes a new test in which half of the parents get no call, to measure the effect locally. What is the main objection?",
+      "options": [
+        "The test would need too many parents to reach significance",
+        "The local effect cannot differ from the earlier trials",
+        "Half of the parents would be denied a benefit shown to work",
+        "Parents cannot be randomised without written consent in every case"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO1"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "Withholding is acceptable when nobody knows whether the change helps. Here the benefit is established, so a no-call arm denies a known benefit.",
+      "misconceptions": [
+        "Raises a size question when the problem is whether the test should be run at all",
+        "Assumes that results transfer exactly, which is a separate and weaker point",
+        "",
+        "States a blanket rule the scenario does not give"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 10
+    },
+    {
+      "id": "q-prereg-01",
+      "type": "single",
+      "prompt": "Four teams wrote the decision line of a pre-registration for a new queue ticket. Which line gives the director a rule she can apply on the last day?",
+      "options": [
+        "We will learn whether the new ticket improves the experience of visitors in our branches",
+        "If waits fall by at least 2 minutes and complaints do not rise, we adopt it",
+        "If the result is significant we adopt the ticket in all branches",
+        "We adopt the ticket unless the test shows that it is harmful"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "A decision line names the action for each result and contains the number that separates them.",
+      "misconceptions": [
+        "States curiosity, not a decision: no action follows from any result",
+        "",
+        "Ties the decision to significance, which says nothing about whether the gain is large enough",
+        "Decides in advance: the test can only confirm what was going to happen anyway"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 14
+    },
+    {
+      "id": "q-prereg-02",
+      "type": "numeric",
+      "prompt": "A text reminder costs 0.30 riyals per resident. Each missed bulky-waste collection costs the city 15 riyals. By how many points must the reminder reduce missed collections to pay for itself?",
+      "options": [],
+      "key": {
+        "value": 2,
+        "tolerance": 0
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "Break-even is the cost per resident over the cost of one miss: 0.30 / 15 = 0.02, which is 2 points.",
+      "misconceptions": [],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "unit": "points",
+      "slide": 17
+    },
+    {
+      "id": "q-prereg-03",
+      "type": "single",
+      "prompt": "On-time payment is 40%. A report says a new letter raised it 'by 5%'. A colleague reads this as 45%, another as 42%. Which wording removes the doubt?",
+      "options": [
+        "It raised on-time payment by 5 per cent of payers",
+        "It raised on-time payment significantly, by 5%",
+        "It raised on-time payment by roughly a twentieth of all payers",
+        "It raised on-time payment by 5 points, from 40% to 45%"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "'Points' names the difference between two percentages, and giving both rates leaves no room for the relative reading.",
+      "misconceptions": [
+        "Keeps the ambiguous word and adds a second ambiguity",
+        "Adds a statistical word that does not say which 5% is meant",
+        "Chooses the relative reading without saying so",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 17
+    },
+    {
+      "id": "q-prereg-04",
+      "type": "single",
+      "prompt": "A tax office tests a firmer payment letter. Which of these is a complete guardrail?",
+      "options": [
+        "We will monitor complaints closely throughout the test",
+        "Complaints must not rise; if they do, we will discuss it",
+        "If the complaint rate exceeds control by 1 point, pause and review the letter",
+        "Complaints are a secondary metric and will be reported"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "A guardrail has a metric, a threshold and the action taken when the threshold is crossed.",
+      "misconceptions": [
+        "Names a metric without a threshold or an action",
+        "Has no number, so 'rise' will be argued about afterwards",
+        "",
+        "Confuses a metric that explains with one that can stop the test"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 18
+    },
+    {
+      "id": "q-prereg-05",
+      "type": "single",
+      "prompt": "A utility tests two versions of its bill. Its system tosses a coin for every bill printed. One customer in four has several meters and gets several bills. What goes wrong?",
+      "options": [
+        "Customers with several meters would see both versions",
+        "The arms will have unequal numbers of bills",
+        "Bills cannot be analysed because they are not people",
+        "The test will need four times as many bills to reach the same power"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "A person who receives both versions is in both arms. The unit must be the customer, so that every bill of a customer lands in one arm.",
+      "misconceptions": [
+        "",
+        "Expects a coin per bill to unbalance the counts, which it does not",
+        "Rejects the row as a unit for the wrong reason",
+        "Invents a size penalty where the problem is who receives which version"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 24
+    },
+    {
+      "id": "q-prereg-06",
+      "type": "single",
+      "prompt": "A school district wants to test a new homework platform. Pupils in a class work together and share one teacher. Three pairs of small schools share their teaching staff. What should be randomised?",
+      "options": [
+        "Pupils, since there are far more of them",
+        "Classes, since pupils in a class share a teacher",
+        "Schools, treating each pair that shares staff as one unit",
+        "Homework tasks, since the platform logs each task"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "Whatever shares staff must land in one arm together. Schools are the unit, and schools that share teachers count as one.",
+      "misconceptions": [
+        "Picks the unit with the most rows and ignores that classmates affect each other",
+        "Stops one level too low: teachers shared between schools carry the platform across",
+        "",
+        "Takes the row of the log for the unit"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 27
+    },
+    {
+      "id": "q-prereg-07",
+      "type": "numeric",
+      "prompt": "A test of a new counter routine logs 14,400 visits in 30 branches. Four pairs of branches share staff and each pair is treated as one unit. How many units does the test have?",
+      "options": [],
+      "key": {
+        "value": 26,
+        "tolerance": 0
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "Four pairs become four units in place of eight branches: 30 − 4 = 26. The 14,400 visits are rows, not units.",
+      "misconceptions": [],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "unit": "units",
+      "slide": 28
+    },
+    {
+      "id": "q-prereg-08",
+      "type": "single",
+      "prompt": "A pre-registration says holders will be 'analysed as assigned'. During the test, 4% of the reminder arm never receive the reminder because of a system fault. How are these holders treated in the analysis?",
+      "options": [
+        "They are moved to the control arm, since they got no reminder",
+        "They are removed, since they did not receive the treatment",
+        "They are analysed separately as a third arm",
+        "They stay in the reminder arm, where the coin put them"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "Analysis as assigned keeps every unit in the arm that chance chose. It estimates the effect of deciding to send reminders, failures included.",
+      "misconceptions": [
+        "Regroups by what happened, which breaks the comparability the coin created",
+        "Drops units from one arm only, and those units are not a random handful",
+        "Creates a group that chance did not assign",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 34
+    },
+    {
+      "id": "q-prereg-09",
+      "type": "single",
+      "prompt": "A team pre-registered completion as the primary metric of a form test. Halfway through, an analyst proposes to add time on page as a further metric. What is the sound way to do it?",
+      "options": [
+        "Replace completion with time on page if it shows a clearer result",
+        "Add it with a date and report it as exploratory",
+        "Add it and treat both as primary",
+        "Refuse: nothing may be added after the start"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "Additions after the start are allowed when dated and labelled exploratory. What decides, when the test stops and who counts may not change.",
+      "misconceptions": [
+        "Lets the data choose the metric that decides",
+        "",
+        "Doubles the chances of a win after seeing interim data",
+        "Reads the page as a ceiling when it is a floor"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 32
+    },
+    {
+      "id": "q-prereg-10",
+      "type": "ordering",
+      "prompt": "Put these steps of designing a test in the order in which they should be settled.",
+      "options": [
+        "Write the decision the result will change",
+        "Choose one primary metric and its minimum effect",
+        "Choose the unit of randomisation",
+        "Compute the sample size and the duration",
+        "Have someone else review the page",
+        "Assign the first unit"
+      ],
+      "key": {},
+      "lo": [
+        "LO2"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "The decision comes first because everything else serves it; the metric and minimum effect come before the size because the size depends on them; the review comes before the first unit is assigned, never after.",
+      "misconceptions": [],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 33
+    },
+    {
+      "id": "q-size-01",
+      "type": "single",
+      "prompt": "A city tests a new recycling leaflet at a 5% significance level with 80% power for a 3-point effect. In truth the leaflet raises recycling by exactly 3 points. How often will a test of this design fail to show a significant result?",
+      "options": [
+        "About 5 times in 100",
+        "About 20 times in 100",
+        "About 80 times in 100",
+        "Never, because the effect is real"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "Power of 80% means that a real effect of the stated size is found 80 times in 100 and missed 20 times.",
+      "misconceptions": [
+        "Uses the significance level, which describes the case where there is no effect",
+        "",
+        "Takes the power for the chance of missing the effect",
+        "Assumes that a real effect always shows, as if samples did not vary"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 5
+    },
+    {
+      "id": "q-size-02",
+      "type": "numeric",
+      "prompt": "A test needs 5,000 customers per arm to detect an effect of 4 points. The manager decides that 2 points would already justify the change. How many customers per arm does the test need now, to the nearest thousand?",
+      "options": [],
+      "key": {
+        "value": 20000,
+        "tolerance": 500
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "The effect is squared in the denominator of the sample-size formula. Half the effect needs four times the size: 4 × 5,000 = 20,000.",
+      "misconceptions": [],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "unit": "customers per arm",
+      "slide": 9
+    },
+    {
+      "id": "q-size-03",
+      "type": "single",
+      "prompt": "Two offices plan the same test with the same minimum effect of 2 points. Office A has a baseline of 50%, office B a baseline of 90%. Which office needs more people per arm, and why?",
+      "options": [
+        "Office B, because a high baseline leaves less room to improve",
+        "Both need the same, because the minimum effect is the same",
+        "Office B, because 2 points is a smaller share of 90%",
+        "Office A, because a yes-or-no outcome is noisiest near 50%"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "The variance p(1 − p) is 0.25 at 50% and 0.09 at 90%. More noise needs more people for the same difference in points.",
+      "misconceptions": [
+        "Reasons about ceilings and not about the variance of the outcome",
+        "Forgets that the spread of a yes-or-no outcome depends on its rate",
+        "Thinks in relative terms when the test is planned in points",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 7
+    },
+    {
+      "id": "q-size-04",
+      "type": "numeric",
+      "prompt": "A test needs 7,200 applicants per arm, and both arms fill from the same stream. The service receives 900 applicants a day on average. How many days of average traffic fill the test?",
+      "options": [],
+      "key": {
+        "value": 16,
+        "tolerance": 0
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "Both arms together need 14,400 applicants. At 900 a day that is 16 days.",
+      "misconceptions": [],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "unit": "days",
+      "slide": 8
+    },
+    {
+      "id": "q-size-05",
+      "type": "single",
+      "prompt": "An analyst simulates a planned test 400 times and finds a power of 77%. The formula gave 80%. Two standard errors of a share near 0.8 counted over 400 runs are about 4 points. What should she conclude?",
+      "options": [
+        "The formula is wrong and the test needs more people",
+        "The simulation is wrong, since it disagrees with the formula",
+        "The two agree within the simulation's own error",
+        "The power is exactly 77%, since a simulation uses real draws"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "77% and 80% differ by 3 points, less than the counting error of 4. To tighten the comparison she can run more simulated tests.",
+      "misconceptions": [
+        "Reads a difference inside the counting error as a real disagreement",
+        "Treats the formula as the truth and the simulation as its imitation",
+        "",
+        "Forgets that a count over 400 runs is itself an estimate"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 16
+    },
+    {
+      "id": "q-size-06",
+      "type": "single",
+      "prompt": "A team will analyse its test with a t-test on the mean rating per clinic. To check the power by simulation, what must the simulated analysis be?",
+      "options": [
+        "The same t-test on clinic means, run on simulated clinics",
+        "A z-test on all patients, because it has more rows",
+        "Whichever test gives the highest simulated power",
+        "No test: the simulated effect is compared with the true effect"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "A power simulation rehearses the analysis that will really be run, at the unit that will really be analysed.",
+      "misconceptions": [
+        "",
+        "Simulates a different analysis from the one that will be run",
+        "Chooses the analysis by its result, which is what a plan is meant to prevent",
+        "Checks the estimate's accuracy and not how often the planned test detects the effect"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 14
+    },
+    {
+      "id": "q-size-07",
+      "type": "numeric",
+      "prompt": "In a test that randomises health centres, the intraclass correlation of the outcome is 0.02 and each centre contributes 201 patients. What is the design effect?",
+      "options": [],
+      "key": {
+        "value": 5,
+        "tolerance": 0.05
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "Design effect = 1 + (m − 1) × ICC = 1 + 200 × 0.02 = 5. The variance of the estimate is five times that of a patient-randomised test of the same size.",
+      "misconceptions": [],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 24
+    },
+    {
+      "id": "q-size-08",
+      "type": "single",
+      "prompt": "A test randomises 20 post offices, 10 per arm, and its simulated power is 35%. The team can afford one of four changes. Which one raises the power most?",
+      "options": [
+        "Doubling the number of customers surveyed in each office",
+        "Analysing customers one by one in place of office averages",
+        "Raising the significance level's precision to four decimals",
+        "Adding 20 more post offices to the test"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "In a cluster-randomised test the number of clusters is the main lever. More customers per office hardly help once each office's rate is measured well.",
+      "misconceptions": [
+        "Shrinks only the sampling part of each office's rate; the difference between offices stays",
+        "Inflates false wins and does not add information",
+        "Changes how a number is printed, not what the data can show",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 28
+    },
+    {
+      "id": "q-size-09",
+      "type": "single",
+      "prompt": "A test randomised 24 branches and found no difference in branch averages (p = 0.40). A second analyst reanalyses the 11,000 visits as independent observations and reports p = 0.001. Which analysis should the office trust?",
+      "options": [
+        "The visit-level one, because 11,000 observations beat 24",
+        "The branch-level one, because branches were randomised",
+        "Neither, because two analyses of one test must agree",
+        "The visit-level one, because its p-value is smaller"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "The unit of analysis must be the unit of randomisation. The visit-level test treats luck in which branches landed where as an effect; in simulation it declares a win most of the time when nothing differs.",
+      "misconceptions": [
+        "Counts rows as units: visits in one branch are not independent",
+        "",
+        "Expects agreement between a valid and an invalid analysis",
+        "Chooses the analysis by its result"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 26
+    },
+    {
+      "id": "q-size-10",
+      "type": "single",
+      "prompt": "Before randomising 18 libraries, a team sorts them by last year's lending rate, pairs neighbours in the list and tosses a coin inside each pair. Why does this raise the power of the test?",
+      "options": [
+        "It doubles the number of libraries in the analysis",
+        "It guarantees that the treated libraries perform better",
+        "It removes stable differences between libraries from the comparison",
+        "It lets the team choose which library of a pair is treated"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "Libraries in a pair started at the same level, so the comparison inside pairs is free of the stable differences between libraries, which are most of the noise.",
+      "misconceptions": [
+        "Thinks pairing adds units; it adds none",
+        "Mistakes a design that removes noise for one that creates an effect",
+        "",
+        "Forgets the coin: a chosen assignment would bring bias back"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 27
+    },
+    {
+      "id": "q-size-11",
+      "type": "single",
+      "prompt": "A test of a booking page starts on a Sunday. Weekend traffic is half of weekday traffic, and bookings surge in the last four days of each month. The planned sample size is reached on day 10, which is the 12th of the month. Which duration should the team choose?",
+      "options": [
+        "10 days, since the size is reached",
+        "14 days, two whole weeks",
+        "21 days, three whole weeks",
+        "28 days, four whole weeks"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "The run should cover whole weeks and the month-end. From the 3rd, 28 days reach the 30th and include the surge; 21 days end on the 23rd.",
+      "misconceptions": [
+        "Stops at the size and leaves some weekdays counted twice and others once",
+        "Covers whole weeks and misses the month-end surge",
+        "Ends on the 23rd, before the surge starts",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 35
+    },
+    {
+      "id": "q-size-12",
+      "type": "single",
+      "prompt": "Two teams test the same reminder for 8 days each. Team A, in the first half of the month, estimates +1.8 points. Team B, at the month-end, estimates +3.3 points. Both tests are sound. What is the most likely reason for the gap?",
+      "options": [
+        "One team made an error in its analysis",
+        "Each test estimates the effect for the days it covered",
+        "Team B had more people and so a larger effect",
+        "The reminder got better between the two tests"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "If a reminder helps more in the month-end rush, a test that covers only part of the monthly cycle estimates the effect for that part.",
+      "misconceptions": [
+        "Assumes that two correct tests must give the same number",
+        "",
+        "Confuses the precision of an estimate with its size",
+        "Invents a change in the treatment to explain a difference in the window"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 36
+    },
+    {
+      "id": "q-size-13",
+      "type": "single",
+      "prompt": "A test sends notices for 28 days. The primary metric is renewal by the expiry date, which is 30 days after each notice. An analyst wants to report the result on day 29. What is wrong with that?",
+      "options": [
+        "Nothing: all notices have been sent",
+        "The sample ratio cannot be checked before day 58 of the test",
+        "The test should have stopped at day 9 instead",
+        "Late-notified holders have not reached their expiry date"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO3"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "The metric is complete for a holder only at the expiry date. The last holders reach it 30 days after the last notice.",
+      "misconceptions": [
+        "Takes the end of sending for the end of the outcome",
+        "Ties a check on assignment to the outcome window, which it does not need",
+        "Returns to the sample size and ignores the question asked",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 37
+    },
+    {
+      "id": "q-read-01",
+      "type": "single",
+      "prompt": "An analyst opens the export of a finished two-arm test. Which of these should she compute first?",
+      "options": [
+        "The difference in the primary metric between the arms",
+        "The p-value of the primary metric",
+        "The number of units in each arm against the planned split",
+        "The effect in the subgroup that the sponsor cares about most"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO4"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "The checks on the assignment come before any outcome: sample ratio, then balance, then completeness. A result from a broken comparison is not worth reading.",
+      "misconceptions": [
+        "Reads the result before knowing whether the comparison is intact",
+        "Starts from the verdict and leaves the checks for later, when they will look like pedantry",
+        "",
+        "Starts with an exploratory cut, the least reliable number of the test"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 5
+    },
+    {
+      "id": "q-read-02",
+      "type": "single",
+      "prompt": "A test planned a 50/50 split. The data hold 50,400 units in one arm and 49,600 in the other, and a chi-square test against equal counts gives p = 0.011. The team's pre-registered line for this check is 0.001. What follows?",
+      "options": [
+        "The check fails, since 0.011 is below 0.05",
+        "The check passes, and the analysis goes ahead as planned",
+        "The check passes, so the test is proven sound",
+        "The check cannot be run with arms this large"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO4"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "The line was set in advance at 0.001, and 0.011 is above it. The check passes. A pass does not prove that everything else is sound.",
+      "misconceptions": [
+        "Applies the usual 0.05 where the page set a stricter line for a check that runs on every test",
+        "",
+        "Reads a passed check as proof; it rules out one family of faults only",
+        "Believes that large samples invalidate the check, when they make it sharper"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 6
+    },
+    {
+      "id": "q-read-03",
+      "type": "single",
+      "prompt": "In a test of a new reminder, 900 members assigned to the reminder arm are missing from the results file because their messages bounced. The assignment log and the outcome of every member are available. Which analysis estimates the effect of deciding to send the reminder?",
+      "options": [
+        "Compare everyone as assigned, bounced included",
+        "Compare only the members whose messages arrived",
+        "Remove 900 members at random from the control arm too",
+        "Move the bounced members into the control arm"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO4"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "Analysis as assigned keeps the comparison the coin created. It measures the effect of the decision, delivery failures included.",
+      "misconceptions": [
+        "",
+        "Drops units after assignment, so the arms no longer differ by the coin alone",
+        "Equalises the counts and leaves the arms different in who is in them",
+        "Reassigns units by what happened to them, which breaks the randomisation"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 9
+    },
+    {
+      "id": "q-read-04",
+      "type": "numeric",
+      "prompt": "In a test, 4,200 of 10,000 control units and 4,500 of 10,000 treated units succeeded. The standard error of the difference is 0.7 points. What is the lower end of the 95% interval for the difference, in points? Use 1.96, and answer to one decimal place.",
+      "options": [],
+      "key": {
+        "value": 1.6,
+        "tolerance": 0.05
+      },
+      "lo": [
+        "LO4"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "The difference is 45.0 − 42.0 = 3.0 points. The margin is 1.96 × 0.7 = 1.4 points, so the interval runs from 1.6 to 4.4.",
+      "misconceptions": [],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "unit": "points",
+      "slide": 15
+    },
+    {
+      "id": "q-read-05",
+      "type": "single",
+      "prompt": "A test with a minimum effect of 2 points finds +2.4 points, with a 95% interval from 0.9 to 3.9. Which sentence reports it correctly?",
+      "options": [
+        "The effect is 2.4 points and exceeds the minimum, so the case is closed",
+        "The effect is below the minimum, since the interval starts at 0.9",
+        "The test found nothing, since the interval includes values under 2",
+        "There is a gain; whether it reaches 2 points is not settled"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO4"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "Zero is outside the interval, so there is a gain. The minimum effect of 2 is inside the interval, so the data do not settle whether the gain reaches it.",
+      "misconceptions": [
+        "Reads the estimate as if it had no uncertainty",
+        "Reads the lower limit as the estimate",
+        "Takes 'may be below the minimum' for 'no effect'",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 17
+    },
+    {
+      "id": "q-read-06",
+      "type": "single",
+      "prompt": "A guardrail says: stop if complaints rise by more than 0.5 points. The test finds +0.1 points, with a 95% interval from −0.5 to +0.7. What can the result note say?",
+      "options": [
+        "The guardrail held: complaints rose by only 0.1 points",
+        "No rise was found, and a rise above the threshold is not ruled out",
+        "The guardrail was crossed: the interval reaches 0.7",
+        "Complaints did not change, since the result is not significant"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO4"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "The interval contains zero and also values above 0.5. The honest sentence says both: no rise found, and the test was not precise enough to rule out a rise above the threshold.",
+      "misconceptions": [
+        "Reads the estimate and ignores that the interval reaches beyond the threshold",
+        "",
+        "Reads the upper limit as the estimate",
+        "Takes 'not significant' for 'no change'"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 18
+    },
+    {
+      "id": "q-read-07",
+      "type": "single",
+      "prompt": "A test reports an effect of +3.1 points for new customers (interval 0.2 to 6.0) and +1.4 points for returning customers (interval −0.1 to 2.9). The write-up says: \"the change works for new customers and not for returning ones\". What is the fault in that sentence?",
+      "options": [
+        "Nothing: one interval excludes zero and the other does not",
+        "The two effects should have been averaged into one",
+        "It does not test the difference between the two effects",
+        "New customers are too few to be analysed at all"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO4"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "The claim is about a difference between subgroups, and that difference (1.7 points) has its own, wide interval that includes zero. The two intervals overlap almost entirely.",
+      "misconceptions": [
+        "Treats 'significant in one, not in the other' as evidence of a difference",
+        "Removes the subgroup question in place of answering it",
+        "",
+        "Rejects a subgroup for its size when the interval already shows the uncertainty"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 19
+    },
+    {
+      "id": "q-read-08",
+      "type": "single",
+      "prompt": "Which opening of a result note gives a director most to act on?",
+      "options": [
+        "\"The test was statistically significant (p = 0.004).\"",
+        "\"Sign-ups rose by 1.8 points (0.6 to 3.0), against a minimum of 1.\"",
+        "\"We ran a z-test for two proportions on 40,000 users over four weeks.\"",
+        "\"The new page performed better across most of the metrics we examined.\""
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO4"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "Estimate and interval in the units of the decision, then the reading against the minimum effect. Method and checks follow underneath.",
+      "misconceptions": [
+        "Gives a verdict with no size and no reading against the decision",
+        "",
+        "Leads with the method and leaves the reader to find the answer",
+        "Reports a direction over an unnamed set of metrics, with no size"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 20
+    },
+    {
+      "id": "q-traps-01",
+      "type": "single",
+      "prompt": "A team runs 200 A/A tests on its platform, each analysed once at a 5% level with one metric at the right unit. About how many should come out significant if the platform is healthy?",
+      "options": [
+        "None, since the two arms get the same thing",
+        "About 10",
+        "About 50",
+        "About 190"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "With no true effect, a 5% level produces a significant result about 5 times in 100: about 10 of 200. Many more than that points to a fault in the pipeline or the analysis.",
+      "misconceptions": [
+        "Forgets that the 5% level is a rate of false alarms when nothing differs",
+        "",
+        "Uses a quarter, with no link to the 5% level",
+        "Takes the level for the share of correct results"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 24
+    },
+    {
+      "id": "q-traps-02",
+      "type": "single",
+      "prompt": "A manager checks the dashboard of a four-week test every morning and plans to stop on the first day the p-value is below 0.05. Nothing truly differs between the arms. What is the chance that the test is declared a win?",
+      "options": [
+        "5%, as the significance level says",
+        "Below 5%, since looking more often is more careful",
+        "Far above 5%, since each look is a further chance to cross",
+        "Exactly 28 times 5%, one share per look"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "A p-value wanders as data arrive. Stopping at the first crossing turns 28 looks into 28 chances; in the lab's simulation about 28% of A/A tests were declared wins.",
+      "misconceptions": [
+        "Applies the level of one planned analysis to a procedure with many looks",
+        "Thinks extra looks add rigour, when each is a further chance of a false win",
+        "",
+        "Adds the chances as if the looks were unrelated and could exceed 100%"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 25
+    },
+    {
+      "id": "q-traps-03",
+      "type": "numeric",
+      "prompt": "A dashboard shows 10 unrelated metrics for an A/A test, each tested at a 5% level. What is the chance, in per cent, that at least one is significant? Answer to the nearest whole number (0.95 to the power 10 is 0.599).",
+      "options": [],
+      "key": {
+        "value": 40,
+        "tolerance": 0.6
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "The chance that none of ten crosses is 0.95 to the power 10 = 0.599. The chance that at least one does is 1 − 0.599 = 0.401, about 40%.",
+      "misconceptions": [],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "unit": "%",
+      "slide": 27
+    },
+    {
+      "id": "q-traps-04",
+      "type": "single",
+      "prompt": "A team wants to look at 15 metrics after its test and still keep the chance of a false win near 5%. Which plan achieves that?",
+      "options": [
+        "Decide on one primary metric named in advance",
+        "Report whichever of the 15 has the smallest p-value",
+        "Test each of the 15 at 5% and report all that cross",
+        "Raise the sample size until one metric crosses"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "Either one pre-registered primary metric carries the decision, or the 15 are corrected for their number, for example with Holm's method. The other metrics can still be reported as exploratory.",
+      "misconceptions": [
+        "",
+        "Selects the winner after the fact, which is the trap itself",
+        "Keeps 5% per metric and lets the chance of at least one false win grow past half",
+        "Adds peeking to many comparisons"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 27
+    },
+    {
+      "id": "q-traps-05",
+      "type": "single",
+      "prompt": "A site randomises 4,000 visitors to two layouts and records 60,000 clicks. An analyst compares the share of failed clicks with a test that treats every click as independent. Why does this produce too many false wins?",
+      "options": [
+        "Clicks are too many for a z-test to handle",
+        "The share of failed clicks is a ratio, and ratios cannot be tested at all",
+        "Visitors were not assigned at random",
+        "One visitor's clicks are alike, so the standard error is too small"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "The information lies in 4,000 visitors, not in 60,000 clicks. Treating repeated clicks as independent understates the standard error, and ordinary luck in who landed where looks like an effect.",
+      "misconceptions": [
+        "Blames the size of the data and not their dependence",
+        "Rejects the metric when the fault is the unit of the analysis",
+        "Disputes the randomisation, which was sound",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 28
+    },
+    {
+      "id": "q-traps-06",
+      "type": "single",
+      "prompt": "A test stopped on day 6 of a planned 28 because the p-value crossed 0.05, and it reports an effect of +6 points. The minimum effect in the plan was 2. Why should the size of the effect be distrusted as well as the win?",
+      "options": [
+        "Effects always shrink in the second week",
+        "With little data, only large swings cross the line",
+        "Six days cannot contain enough units for any estimate",
+        "The minimum effect limits how large an estimate may be"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO5"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "Early on, the standard error is large, so a difference has to be large to cross 0.05. Tests that stop at a crossing therefore report exaggerated effects.",
+      "misconceptions": [
+        "States a rule about novelty that is not general",
+        "",
+        "Rejects any early estimate, whatever its interval",
+        "Takes a planning threshold for a ceiling on the result"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 26
+    },
+    {
+      "id": "q-review-01",
+      "type": "single",
+      "prompt": "A colleague hands you a write-up of an experiment and asks for a review. What do you read first?",
+      "options": [
+        "The headline result and its p-value",
+        "The recommendation, to see what is being asked",
+        "The subgroup tables, since problems tend to hide in the detail",
+        "What the plan promised: unit, metric, size, stop rule"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO6"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "The review order is design, checks, analysis, claim. Only against the plan can you tell whether the analysis that was run is the one that was promised.",
+      "misconceptions": [
+        "Starts with the claim and spends the rest of the review defending or attacking it",
+        "Starts from the end of the chain of evidence",
+        "Starts with the exploratory material before the design is known",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 34
+    },
+    {
+      "id": "q-review-02",
+      "type": "single",
+      "prompt": "A pre-registration names \"share of applicants who finish the form\" as the primary metric. The write-up's headline is \"time on page fell by 9%, p = 0.01\", and the finishing rate appears in a footnote as \"unchanged\". Which flaw is this?",
+      "options": [
+        "A missing control arm",
+        "A sample ratio mismatch",
+        "A switch of the primary metric",
+        "A run that was too short"
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO6"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "The decision was tied to the finishing rate before the test. Leading with another metric that happened to move is a switch of the primary metric after seeing the data.",
+      "misconceptions": [
+        "Names a design flaw that the write-up does not have",
+        "Names a fault of the assignment where the fault is in what is reported",
+        "",
+        "Names the duration, which the excerpt says nothing about"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 36
+    },
+    {
+      "id": "q-review-03",
+      "type": "single",
+      "prompt": "A write-up states: \"the new arm logged 12% fewer users than the old one; we attribute this to chance\". The log is attached. What should the reviewer do?",
+      "options": [
+        "Accept the statement, since the author knows the system",
+        "Run the ratio check and split the counts by segment",
+        "Reject the whole write-up without further reading",
+        "Ask the author to remove the sentence from the write-up"
+      ],
+      "key": {
+        "indices": [
+          1
+        ]
+      },
+      "lo": [
+        "LO6"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "A claim of chance can be tested in two lines: the ratio check gives its probability, and a split by segment shows where units are missing.",
+      "misconceptions": [
+        "Takes a checkable claim on trust",
+        "",
+        "Stops before finding out what the gap means for the decision",
+        "Hides the symptom and leaves the cause"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 37
+    },
+    {
+      "id": "q-review-04",
+      "type": "single",
+      "prompt": "Which closing paragraph makes a review memo most useful to the person who must decide?",
+      "options": [
+        "\"The analysis has several flaws and its conclusions cannot be trusted.\"",
+        "\"The author should attend a course on experiment design.\"",
+        "\"The evidence supports a rerun as planned, not a roll-out.\"",
+        "\"Every flaw in our catalogue may apply to some degree.\""
+      ],
+      "key": {
+        "indices": [
+          2
+        ]
+      },
+      "lo": [
+        "LO6"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "A memo goes from each flaw to its consequence to the decision the evidence does support, and names the next step.",
+      "misconceptions": [
+        "Ends at the verdict and leaves the decision-maker with nothing to do",
+        "Addresses the person and not the decision",
+        "",
+        "Lists everything and so tells the reader nothing about this write-up"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 38
+    },
+    {
+      "id": "q-review-05",
+      "type": "single",
+      "prompt": "A test of a new payment page shows the same average completion in both arms. The device table shows that no user of one older browser appears in the new arm, while 6% of the old arm uses it. What should the review say about roll-out?",
+      "options": [
+        "Roll out: average completion is unchanged",
+        "Roll out to everyone except the users of that older browser",
+        "Drop the new page, since it has been shown to fail",
+        "Do not roll out: the new page may fail for those users"
+      ],
+      "key": {
+        "indices": [
+          3
+        ]
+      },
+      "lo": [
+        "LO6"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "Missing units in one arm, concentrated in one group, suggest that the new page does not work for that group. The average hides it. Fix the fault and run the test again.",
+      "misconceptions": [
+        "Trusts an average computed without the users the new page lost",
+        "Proposes a split that nobody tested and that leaves those users without a page",
+        "Overreads one fault as a verdict on the whole design",
+        ""
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 39
+    },
+    {
+      "id": "q-review-06",
+      "type": "single",
+      "prompt": "A new, brightly coloured button was tested for 5 days and raised clicks by 4 points. The write-up projects the gain over a full year. Which doubt should the review raise first?",
+      "options": [
+        "The first reaction to something new may fade",
+        "Clicks cannot be measured reliably over five days",
+        "A gain of 4 points is too large to be believed",
+        "Buttons should be tested on branches, not on users"
+      ],
+      "key": {
+        "indices": [
+          0
+        ]
+      },
+      "lo": [
+        "LO6"
+      ],
+      "weight": 1,
+      "scored": true,
+      "timer": 75,
+      "displayMode": "full",
+      "explanation": "A short test of a visible change measures the reaction at its peak. Projecting it over a year assumes that the novelty never wears off; the effect by week over a longer run would show whether it does.",
+      "misconceptions": [
+        "",
+        "Questions the measurement where the issue is what the window represents",
+        "Rejects a result for its size alone",
+        "Changes the unit without a reason from the design"
+      ],
+      "liveContext": false,
+      "basis": "best",
+      "confidence": true,
+      "createdAt": 1794748432000,
+      "updatedAt": 1794748432000,
+      "slide": 30
+    }
+  ]
+}

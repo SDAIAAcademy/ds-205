@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-ax="page" data-track="data-science">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Designing and Reading Experiments · SDAIA Academy</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<meta name="description" content="Design a randomised experiment a public office can act on, size it, check it and read its result without fooling yourself">
+<link rel="icon" href="_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="index.md">
+<link rel="describedby" href="llms.txt">
+<link rel="stylesheet" href="_engine/academy.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo" id="logo"></div><nav><a href="slides/day1.html">Slides</a><a href="practice.html">Practice</a><a href="index.md" type="text/markdown">Markdown</a></nav></div>
+<div class="kicker">Data Science Track · SDAIA Academy · DS-205</div>
+<h1>Designing and Reading Experiments<span class="sub ar" lang="ar" dir="rtl">تصميم التجارب وقراءة نتائجها</span></h1>
+<p>Design a randomised experiment a public office can act on, size it, check it and read its result without fooling yourself</p>
+<div class="meta"><span class="track">Data Science Track</span><span>3 teaching days + capstone day</span><span>21 hours</span><span>Level 200</span><span>Data Science · Assistant badge</span></div>
+</div>
+</header>
+<main class="wrap">
+<h2>About the course</h2>
+<p>Participants design randomised experiments for a fictional municipal permits office and read the results without fooling themselves. They turn a decision question into a pre-registration with a hypothesis, primary and guardrail metrics, a stop rule and a unit of randomisation, compute sample size by formula and by simulation, analyse a synthetic experiment log, check that randomisation worked, and measure how peeking, many metrics and a mismatched unit inflate false wins. Variance reduction and sequential tests are left to DS-302.</p>
+<p><b>Who it is for:</b> Practitioners. Graduates and early-career analysts who have completed the FN courses or passed the placement test, and analysts moving into data science.</p>
+<p><b>Format:</b> Intensive: 3 teaching days of four sessions and a capstone day, with guided pre-work and a tracked follow-up task</p>
+<h2>The case study</h2>
+<div class="note info"><b>Mashraq Municipal Permits Office.</b> Mashraq Municipal Permits Office (مكتب المشرق للتصاريح البلدية) is a fictional city office that issues resident parking, market stall, outdoor seating and building works permits. Its director, Sahar Al-Wuhaibi, wants three changes tested before they are adopted: a reminder message for renewals, a redesigned online form and a new way of serving visitors at the counters of 24 branches. All data are synthetic and generated with a fixed seed: 26 weeks of notice traffic with a weekly cycle and a month-end peak, a reminder test on 60,000 notices over 28 days whose platform export has a planted fault, a form test logged page view by page view, and four baseline weeks of counter visits in branches of which three pairs share staff. Participants work as Juri Al-Asmari, a junior analyst; holders, applicants and visitors appear only as pseudonymised keys and every result is reported in aggregate.</div>
+<h2>The course</h2>
+<div class="day">
+<div class="day-head c-teal"><div><div class="t">Day 1 · 4 sessions · 4 labs</div><h3>Design</h3></div><a class="btn" href="slides/day1.html">Open the slides</a></div>
+<div class="scroll"><table>
+<tr><th>Session</th><th>Topic</th><th>Lab</th></tr>
+<tr><td>1</td><td><b>Which claims need an experiment</b><br>What a randomised experiment, a quasi-experiment and an observational comparison can each claim, and why<ul><li>Explain what random assignment removes from a comparison</li><li>Classify a study as a randomised experiment, a quasi-experiment or an observational comparison</li><li>State the causal claim a study supports and the assumption it rests on</li></ul></td><td><a href="labs/D1_1_six_studies.ipynb">Lab 1.1 · Six studies, three designs</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-205/blob/main/labs/D1_1_six_studies.ipynb">Open in Colab</a></td></tr>
+<tr><td>2</td><td><b>Decision, hypothesis and metrics</b><br>From the director's question to a decision, a hypothesis, one primary metric, guardrails and a stop rule<ul><li>Write the decision an experiment informs, with the action for each result</li><li>Choose one primary metric and set a minimum effect of interest from costs</li><li>Write guardrails with thresholds and a stop rule that protects holders</li></ul></td><td><a href="labs/D1_2_decision_metrics.ipynb">Lab 1.2 · The first half of the pre-registration</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-205/blob/main/labs/D1_2_decision_metrics.ipynb">Open in Colab</a></td></tr>
+<tr><td>3</td><td><b>Choosing the unit of randomisation</b><br>The unit that is randomised, the unit that is analysed, and what happens when units affect each other<ul><li>Choose a unit of randomisation that keeps each person in one arm</li><li>Distinguish simple, stratified and cluster assignment</li><li>Recognise interference between units and choose a unit that contains it</li></ul></td><td><a href="labs/D1_3_three_units.ipynb">Lab 1.3 · Three tests, three units</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-205/blob/main/labs/D1_3_three_units.ipynb">Open in Colab</a></td></tr>
+<tr><td>4</td><td><b>Pre-registration</b><br>What a pre-registration fixes before the data exist, how personal data are handled, and how a reviewer reads it<ul><li>Complete a one-page pre-registration with an analysis plan and planned checks</li><li>State who is in each arm, why withholding is acceptable and how log data are minimised</li><li>Review a pre-registration against a checklist and say what fails and why</li></ul></td><td><a href="labs/D1_4_pre_registration.ipynb">Lab 1.4 · Complete and review a pre-registration</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-205/blob/main/labs/D1_4_pre_registration.ipynb">Open in Colab</a></td></tr>
+</table></div>
+</div>
+<div class="day">
+<div class="day-head c-cyan"><div><div class="t">Day 2 · 4 sessions · 4 labs</div><h3>Size and run</h3></div><a class="btn" href="slides/day2.html">Open the slides</a></div>
+<div class="scroll"><table>
+<tr><th>Session</th><th>Topic</th><th>Lab</th></tr>
+<tr><td>1</td><td><b>Power and the minimum effect</b><br>Two errors, power, the minimum effect of interest and the sample-size formula for two proportions<ul><li>Explain power and the two errors a test can make</li><li>Compute the sample size per arm for a minimum effect by formula</li><li>Show how the minimum effect drives the size and the days of traffic needed</li></ul></td><td><a href="labs/D2_1_sample_sizes.ipynb">Lab 2.1 · Sample sizes for three minimum effects</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-205/blob/main/labs/D2_1_sample_sizes.ipynb">Open in Colab</a></td></tr>
+<tr><td>2</td><td><b>Power by simulation</b><br>Simulate the planned analysis many times to check power, draw a power curve and count false positives<ul><li>Simulate a planned two-arm test and its analysis with a seed</li><li>Estimate power by simulation and state its counting error</li><li>Draw a power curve and read the sample size from it</li></ul></td><td><a href="labs/D2_2_power_simulation.ipynb">Lab 2.2 · Power by simulation</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-205/blob/main/labs/D2_2_power_simulation.ipynb">Open in Colab</a></td></tr>
+<tr><td>3</td><td><b>Cluster randomisation</b><br>When whole branches are randomised: intraclass correlation, the design effect, analysis at the branch level and pairing<ul><li>Estimate the intraclass correlation and the design effect from baseline data</li><li>Measure by simulation the power lost when branches are randomised in place of visitors</li><li>Analyse a cluster-randomised test at the cluster level and improve it by pairing</li></ul></td><td><a href="labs/D2_3_branch_clusters.ipynb">Lab 2.3 · 24 branches, 12 and 12</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-205/blob/main/labs/D2_3_branch_clusters.ipynb">Open in Colab</a></td></tr>
+<tr><td>4</td><td><b>Run time and seasonality</b><br>Weekly cycles, the month-end peak, whole cycles and the outcome window decide how long a test runs<ul><li>Describe the weekly cycle and the month-end peak in traffic and in the baseline rate</li><li>Turn a sample size into a duration of whole weeks that covers the month-end</li><li>Explain what a test estimates when it covers only part of a cycle</li></ul></td><td><a href="labs/D2_4_run_time.ipynb">Lab 2.4 · Choose the run time</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-205/blob/main/labs/D2_4_run_time.ipynb">Open in Colab</a></td></tr>
+</table></div>
+</div>
+<div class="day">
+<div class="day-head c-coral"><div><div class="t">Day 3 · 4 sessions · 4 labs</div><h3>Read the result</h3></div><a class="btn" href="slides/day3.html">Open the slides</a></div>
+<div class="scroll"><table>
+<tr><th>Session</th><th>Topic</th><th>Lab</th></tr>
+<tr><td>1</td><td><b>Did randomisation work</b><br>Before any result is read: the sample ratio check, the balance table and analysis as assigned<ul><li>Test whether the arm counts match the planned split</li><li>Read a balance table and locate the segment in which an assignment or logging fault sits</li><li>Decide which rows to analyse after a failed check and say why</li></ul></td><td><a href="labs/D3_1_ratio_balance.ipynb">Lab 3.1 · Ratio and balance on the export</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-205/blob/main/labs/D3_1_ratio_balance.ipynb">Open in Colab</a></td></tr>
+<tr><td>2</td><td><b>Estimate, interval and effect</b><br>The difference in proportions with its interval, read against the minimum effect, with guardrails and one subgroup<ul><li>Compute a difference in proportions with its standard error and 95% interval</li><li>Read an interval against the minimum effect and separate statistical from practical significance</li><li>Report guardrails and a subgroup without overstating either</li></ul></td><td><a href="labs/D3_2_reminder_result.ipynb">Lab 3.2 · Analyse the reminder test</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-205/blob/main/labs/D3_2_reminder_result.ipynb">Open in Colab</a></td></tr>
+<tr><td>3</td><td><b>False wins by simulation</b><br>How peeking, many metrics and the wrong unit of analysis manufacture wins when nothing differs, measured by A/A tests<ul><li>Simulate A/A tests and count false wins</li><li>Measure the false-win rate of peeking, of twenty metrics and of analysis at the wrong unit</li><li>Apply the correct procedure to each trap and show that the rate returns to 5%</li></ul></td><td><a href="labs/D3_3_false_wins.ipynb">Lab 3.3 · A thousand A/A tests</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-205/blob/main/labs/D3_3_false_wins.ipynb">Open in Colab</a></td></tr>
+<tr><td>4</td><td><b>Reviewing a reported result</b><br>A review order for a reported experiment: from each flaw to its consequence to the decision the evidence supports<ul><li>Review a write-up in a fixed order: design, checks, analysis, claim</li><li>Name each flaw with its consequence for the reported result</li><li>State the decision the evidence does support and defend it</li></ul></td><td><a href="labs/D3_4_review_memo.ipynb">Lab 3.4 · Review a write-up</a> <span class="muted">(25 min)</span><br><a href="https://colab.research.google.com/github/SDAIAAcademy/ds-205/blob/main/labs/D3_4_review_memo.ipynb">Open in Colab</a></td></tr>
+</table></div>
+</div>
+<div class="day">
+<div class="day-head c-amber"><div><div class="t">Capstone</div><h3>Capstone: the design and analysis pack and its defence</h3></div><a class="btn" href="slides/capstone.html">Open the slides</a></div>
+<div class="scroll"><table><tr><td>Each participant defends one design choice of a pack on one of three synthetic cases in eight minutes, then answers four minutes of questions</td></tr></table></div>
+</div>
+<h2>Capstone</h2>
+<div class="two">
+<div><p>A design and analysis pack for one of three synthetic cases (reminder message, form redesign, training programme): pre-registration, sample-size and analysis notebooks, result note and a review memo on a flawed write-up, in a public repository; eight-minute defence</p><p><b>What you submit:</b> A link to a public GitHub repository with a one-page pre-registration, a sample-size notebook with the formula result and a simulated power curve, an analysis notebook that reruns from the raw files with a fixed seed, a result note with estimate, interval, checks and a recommendation, and a review memo on the case's flawed write-up, with the commit history and the seeded simulation log. Then an eight-minute live defence of one design choice and four minutes of questions, in which the assessor changes the minimum effect or the unit and the participant recomputes the sample size.</p><p><b>Format:</b> 8 min talk and demo · 4 min Q&amp;A</p></div>
+<div><h3>Rubric</h3><div class="bar c-teal"><span>Design and pre-registration<i style="--w:100%"></i></span><b>25%</b></div><div class="bar c-cyan"><span>Power and sample size<i style="--w:100%"></i></span><b>25%</b></div><div class="bar c-coral"><span>Analysis and checks<i style="--w:80%"></i></span><b>20%</b></div><div class="bar c-purple"><span>Review memo<i style="--w:80%"></i></span><b>20%</b></div><div class="bar c-amber"><span>Writing and reproducibility<i style="--w:40%"></i></span><b>10%</b></div></div>
+</div>
+<h2>Outcomes</h2>
+<p>By the end of the course, participants can:</p>
+<div class="day"><div class="scroll"><table>
+<tr><th></th><th>Outcomes</th><th>Level</th><th>Evidence</th></tr>
+<tr><td><b>LO1</b></td><td>Distinguish a randomised experiment, a quasi-experiment and an observational comparison, and explain the causal claim each supports, given six study descriptions from public services</td><td>Awareness</td><td>a classification with the supported claim, at least five of six correct</td></tr>
+<tr><td><b>LO2</b></td><td>Draft a pre-registration stating the decision, hypothesis, unit of randomisation, primary and guardrail metrics, stop rule and analysis plan, given the office's question about renewal reminders</td><td>Applied</td><td>a one-page pre-registration that passes a reviewer's checklist</td></tr>
+<tr><td><b>LO3</b></td><td>Compute the sample size and run time needed to detect a minimum effect of interest and check it by simulation, given baseline renewal rates, daily traffic and the office's minimum effect</td><td>Applied</td><td>a notebook with the formula result, a simulated power curve and the chosen duration</td></tr>
+<tr><td><b>LO4</b></td><td>Analyse a completed two-arm experiment with a difference in proportions, a confidence interval and a sample ratio mismatch test, given a synthetic log of 60,000 renewal notices</td><td>Applied</td><td>a result note with estimate, interval, checks and a recommendation</td></tr>
+<tr><td><b>LO5</b></td><td>Measure by simulation the false-positive rate caused by peeking, many metrics and analysis at the wrong unit, given simulated A/A tests with no true effect</td><td>Applied</td><td>a table of false-win rates for each trap, with and without the correct procedure</td></tr>
+<tr><td><b>LO6</b></td><td>Review a reported experiment and decide whether it supports the decision it claims to support, given write-ups with seeded flaws, one in class and one in the capstone</td><td>Performance</td><td>a review memo per write-up naming each flaw, its consequence and the decision the evidence does support, defended live</td></tr>
+</table></div></div>
+<h2>Tools</h2>
+<div class="grid">
+<div class="card c-teal"><h3>Analysis environment and notebooks</h3><p>Python with uv and JupyterLab or marimo · R with Quarto</p></div>
+<div class="card c-cyan"><h3>Statistics and power calculation</h3><p>SciPy and statsmodels · R with the pwr package</p></div>
+<div class="card c-coral"><h3>Dataframes and analytical SQL engine</h3><p>DuckDB · Polars · pandas</p></div>
+</div>
+<h2>Before you start</h2>
+<h3>Prerequisites</h3>
+<ul><li>DS-201 Statistical Inference by Simulation</li><li>Computes a proportion, a difference in means and a confidence interval</li><li>Writes a simulation loop in Python or R</li><li>Pre-work: about two hours on proportions, intervals and simulation, in the pre-work notebook of the labs folder (its name starts with P0), before the supervised entry quiz</li><li>Setup: a laptop with uv, or Google Colab. Nothing calls or downloads a model. Run 00_setup_check before Day 1; see labs/README.md.</li></ul>
+<div class="note tip">The labs are notebooks. Open each one in Google Colab from the table above, or clone the repository and run them locally.</div>
+<h2>Sources</h2>
+<h3>National references</h3>
+<ul><li><a href="https://sdaia.gov.sa/en/SDAIA/about/Documents/PersonalDataProtectionLaw.pdf">Personal Data Protection Law (SDAIA)</a></li><li><a href="https://sdaia.gov.sa/en/SDAIA/about/Documents/ImplementingRegulationPersonalDataProtectionLaw.pdf">Implementing Regulation of the Personal Data Protection Law (SDAIA)</a></li><li><a href="https://sdaia.gov.sa/Documents/GeneralRulesForSecondaryUseOfData_EN.pdf">General Rules for Secondary Use of Data (SDAIA)</a></li><li><a href="https://sdaia.gov.sa/en/SDAIA/about/Documents/ai-principles.pdf">Principles of AI Ethics (SDAIA)</a></li></ul>
+<h3>Libraries used in the labs</h3>
+<ul><li><a href="https://numpy.org/doc/stable/reference/random/generator.html">NumPy: random generators and seeds</a></li><li><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.chisquare.html">SciPy: scipy.stats.chisquare (the sample ratio check)</a></li><li><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html">SciPy: scipy.stats.ttest_ind</a></li><li><a href="https://www.statsmodels.org/stable/generated/statsmodels.stats.proportion.proportions_ztest.html">statsmodels: proportions_ztest</a></li><li><a href="https://www.statsmodels.org/stable/generated/statsmodels.stats.proportion.confint_proportions_2indep.html">statsmodels: confint_proportions_2indep</a></li><li><a href="https://www.statsmodels.org/stable/generated/statsmodels.stats.power.NormalIndPower.html">statsmodels: NormalIndPower</a></li><li><a href="https://www.statsmodels.org/stable/generated/statsmodels.stats.proportion.proportion_effectsize.html">statsmodels: proportion_effectsize</a></li><li><a href="https://www.statsmodels.org/stable/generated/statsmodels.stats.multitest.multipletests.html">statsmodels: multipletests (Holm)</a></li><li><a href="https://docs.astral.sh/uv/">uv: Python projects and environments</a></li></ul>
+<h3>Reading on experiments</h3>
+<ul><li><a href="https://www.gov.uk/government/publications/test-learn-adapt-developing-public-policy-with-randomised-controlled-trials">Haynes, Service, Goldacre and Torgerson (2012): Test, Learn, Adapt: Developing Public Policy with Randomised Controlled Trials</a></li><li><a href="https://experimentguide.com/">Kohavi, Tang and Xu: Trustworthy Online Controlled Experiments (the book's site)</a></li><li><a href="https://www.microsoft.com/en-us/research/publication/diagnosing-sample-ratio-mismatch-in-online-controlled-experiments-a-taxonomy-and-rules-of-thumb-for-practitioners/">Fabijan and others (2019): Diagnosing Sample Ratio Mismatch in Online Controlled Experiments</a></li><li><a href="https://arxiv.org/abs/1512.04922">Johari, Pekelis and Walsh: Always Valid Inference: Bringing Sequential Analysis to A/B Testing</a></li><li><a href="https://arxiv.org/abs/2305.16459">Zhou, Lu and Shallah (2023): All about sample-size calculations for A/B testing</a></li><li><a href="https://www.cos.io/initiatives/prereg">Center for Open Science: Preregistration</a></li></ul>
+<h2>Files and links</h2>
+<div class="files">
+<a href="practice.html"><b>practice.html</b><span>Practice questions with feedback</span></a>
+<a href="index.md"><b>index.md</b><span>This page as Markdown, for an AI assistant</span></a>
+<a href="llms.txt"><b>llms.txt</b><span>The course for AI assistants (llms.txt)</span></a>
+<a href="https://github.com/SDAIAAcademy/ds-205"><b>SDAIAAcademy/ds-205</b><span>The course repository</span></a>
+</div>
+</main>
+<footer><div class="wrap">SDAIA Academy · Data Science Track · Designing and Reading Experiments<br><span class="muted">Course version 2027.1.0 · engine 1.0.0 · built 2026-11-15 · commit f9d5985</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-15T13:13:52Z","version":"2027.1.0","commit":"f9d5985"},"course":{"id":"ds-205","code":"DS-205","title":"Designing and Reading Experiments","track":"data-science","lang":"en","dir":"ltr","url":"https://sdaiaacademy.github.io/ds-205/","repo":"SDAIAAcademy/ds-205","home":"index.html"},"ai":{"context":{"course":"context/course.md","courseJs":"context/course.js","day":null,"llms":"llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="_engine/academy.js"></script>
+</body>
+</html>

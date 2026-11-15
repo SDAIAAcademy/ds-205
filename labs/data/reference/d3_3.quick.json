@@ -1,0 +1,34 @@
+{
+ "metrics": [
+  0.67,
+  0.056666666666666664,
+  0.056666666666666664
+ ],
+ "one_look": 0.05,
+ "peek": [
+  0.28,
+  5.0
+ ],
+ "table": [
+  [
+   "peeking: 28 daily looks, stop at the first p < 0.05",
+   0.28,
+   0.05
+  ],
+  [
+   "many metrics: any of twenty",
+   0.67,
+   0.056666666666666664
+  ],
+  [
+   "wrong unit: page views for applicants",
+   0.37,
+   0.06
+  ]
+ ],
+ "unit": [
+  0.37,
+  0.06
+ ],
+ "weekly": 0.10666666666666667
+}

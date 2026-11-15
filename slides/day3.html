@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-ax="deck" data-track="data-science">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 3 · Read the result · Designing and Reading Experiments</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="day3.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+</head>
+<body>
+<div class="deck" data-course="Designing and Reading Experiments" data-track="data-science" data-day="Day 3">
+<section class="slide title" id="title" data-auto="title" data-label="Welcome" data-n="1">
+  <div class="kicker">SDAIA Academy · Designing and Reading Experiments</div>
+  <h1>Read the result</h1>
+  <p class="lead mt">Day 3: The data are in: check the assignment, estimate with an interval, count the ways to fool yourself, review someone else's result</p>
+  <div class="meta"><span class="track">Data Science Track</span><span>3 teaching days + capstone day</span><span>4 sessions · 4 labs</span><span>DS-205</span></div>
+  <aside class="notes"><p>The reminder test has run its 28 days and the outcome window has closed. Set the scene: a colleague has the platform's export open and is one line of code away from "the effect". Ask the room what they would do first. Most will say "compute the difference". Today starts with why not.</p></aside>
+</section>
+
+<section class="slide" id="agenda" data-auto="agenda" data-label="Agenda" data-n="2">
+  <div class="kicker">Today</div>
+  <h2>Read the result</h2>
+  <div class="agenda"><div class="item"><div><b>Session 1 · Did randomisation work</b><small>Before any result is read: the sample ratio check, the balance table and analysis as assigned</small></div></div><div class="item"><div><b>Session 2 · Estimate, interval and effect</b><small>The difference in proportions with its interval, read against the minimum effect, with guardrails and one subgroup</small></div></div><div class="item"><div><b>Session 3 · False wins by simulation</b><small>How peeking, many metrics and the wrong unit of analysis manufacture wins when nothing differs, measured by A/A tests</small></div></div><div class="item"><div><b>Session 4 · Reviewing a reported result</b><small>A review order for a reported experiment: from each flaw to its consequence to the decision the evidence supports</small></div></div></div>
+  <aside class="notes"><p>Session 1 checks the assignment before any result is read. Session 2 reads the result as an interval against the minimum effect. Session 3 counts how three ordinary habits manufacture wins. Session 4 turns all of it on someone else's write-up, and ends with the choice of a capstone case.</p></aside>
+</section>
+
+<section class="slide" id="review-day2" data-lo="LO3" data-label="Review" data-n="3">
+  <div class="kicker">Review of Day 2</div>
+  <h2>Which plan gives the test a fair chance?</h2>
+  <div class="quiz" data-type="single" data-lo="LO3" data-id="review-day2-q1">
+    <p class="lead">A test needs 9,000 residents per arm for its minimum effect. Traffic is 2,000 residents a day, lower at weekends, with a surge at the month-end. Which plan do you accept?</p>
+    <div class="opts">
+      <div class="opt" data-why="Reaches the size and counts some weekdays twice and others once, with no month-end" data-k="A">Run 9 days, until 18,000 residents are in</div>
+      <div class="opt" data-ok data-k="B">Run 28 days: whole weeks, with the month-end inside</div>
+      <div class="opt" data-why="Halves the size, which cuts the power for the stated minimum effect far below 80%" data-k="C">Run 9 days with 4,500 per arm to finish sooner</div>
+      <div class="opt" data-why="Lets the result decide the duration, which is peeking" data-k="D">Run until the difference is significant</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The formula gives the minimum size. The calendar gives the duration: whole cycles.</div>
+  </div>
+  <aside class="notes"><p>Answer: B. Two minutes. Option D is today's third session in one line. If the room is unsure about C, redo the square: half the size detects an effect about 1.4 times larger, not the one the director asked for.</p></aside>
+</section>
+
+<!-- ======================= SESSION 1 ======================= -->
+<section class="slide section" id="s1" data-auto="section" data-session="1" data-n="4">
+  <div class="kicker">Session 1</div>
+  <h1>Did randomisation work</h1>
+  <ul class="bullets outcomes"><li>Test whether the arm counts match the planned split</li><li>Read a balance table and locate the segment in which an assignment or logging fault sits</li><li>Decide which rows to analyse after a failed check and say why</li></ul>
+  <div class="sess-no">01</div>
+</section>
+
+<section class="slide" id="checks-before-result" data-lo="LO4" data-label="Checks first" data-n="5" data-session="1">
+  <div class="kicker">The order of reading</div>
+  <h2>Check the assignment before you look at the outcome</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>1 · Sample ratio</b>are the arms the size the coin should give?</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>2 · Balance</b>do the arms look alike on traits fixed before the test?</div>
+    <div class="arrow">→</div>
+    <div class="step c-purple"><b>3 · Completeness</b>is every assigned unit there, with its outcome?</div>
+    <div class="arrow">→</div>
+    <div class="step c-coral"><b>4 · The result</b>only now</div>
+  </div>
+  <div class="callout tip mt"><b>Why this order.</b> Once you have seen a pleasing result, every check that threatens it looks like pedantry. The page promised the checks first; keep the promise.</div>
+  <aside class="notes"><p>This is item C10 of the checklist, written on Day 1. Experiment teams that run many tests report that a failed sample ratio is one of the most common signs of a broken test. Source: Fabijan and others (2019).</p></aside>
+</section>
+
+<section class="slide" id="sample-ratio-check" data-lo="LO4" data-label="The ratio check" data-n="6" data-session="1">
+  <div class="kicker">Lab 3.1, step 1 · the platform's export</div>
+  <h2>49.05% in the reminder arm is not what a fair coin gives</h2>
+  <div class="cols cols-3">
+    <div class="stat"><div class="big">30,054</div><div class="lbl">rows in the control arm of the export</div></div>
+    <div class="stat"><div class="big">28,932</div><div class="lbl">rows in the reminder arm</div></div>
+    <div class="stat"><div class="big">0.000004</div><div class="lbl">p-value of a chi-square test against 50/50; the page set the line at 0.001</div></div>
+  </div>
+  <ul class="bullets mt">
+    <li>A gap of one point looks harmless. With 59,000 rows a fair coin produces it about four times in a million.</li>
+    <li>A failed check means: do not read the result until the cause is found.</li>
+  </ul>
+  <aside class="notes"><p>The check is called a sample ratio mismatch test. In code: stats.chisquare of the two counts, which tests against equal counts. The line of 0.001 is stricter than 0.05 on purpose: the check runs on every test, and with a healthy assignment it fails about once in a thousand, as the stretch of lab 3.1 shows (0.08% over 20,000 simulated assignments).</p></aside>
+</section>
+
+<section class="slide" id="balance-names-a-suspect" data-lo="LO4" data-label="Balance" data-n="7" data-session="1">
+  <div class="kicker">Lab 3.1, step 2</div>
+  <h2>The balance table names a suspect</h2>
+  <table class="t">
+    <tr><th>Trait fixed before the test</th><th>Control</th><th>Reminder</th><th>p</th></tr>
+    <tr><td><b>E-mail channel</b></td><td><b>15.04%</b></td><td><b>12.02%</b></td><td><b>below 0.0001</b></td></tr>
+    <tr><td>Business holder</td><td>38.57%</td><td>38.34%</td><td>0.56</td></tr>
+    <tr><td>Late at the previous renewal</td><td>21.95%</td><td>21.96%</td><td>0.97</td></tr>
+    <tr><td>Tenure, years</td><td>4.63</td><td>4.60</td><td>0.17</td></tr>
+  </table>
+  <div class="callout note mt"><b>Reading it.</b> With four traits, one p-value near 0.05 would mean little. One that is far beyond any chance, on one trait, says where to look.</div>
+  <aside class="notes"><p>Solution run of lab 3.1. A balance table compares the arms only on things that were fixed before assignment; an outcome can never be in it. Balance tests are a diagnostic, not a licence: a table without a significant difference does not prove that the assignment was sound.</p></aside>
+</section>
+
+<section class="slide" id="one-empty-cell" data-lo="LO4" data-label="Locating the fault" data-n="8" data-session="1">
+  <div class="kicker">Lab 3.1, step 3</div>
+  <h2>One cell of the export is empty</h2>
+  <table class="t small">
+    <tr><th>Channel</th><th>Week</th><th>Control rows</th><th>Reminder rows</th><th>Share in the reminder arm</th></tr>
+    <tr><td><b>E-mail</b></td><td><b>1</b></td><td><b>1,071</b></td><td><b>0</b></td><td><b>0.0%</b></td></tr>
+    <tr><td>E-mail</td><td>2</td><td>1,017</td><td>1,075</td><td>51.4%</td></tr>
+    <tr><td>E-mail</td><td>3</td><td>1,087</td><td>1,056</td><td>49.3%</td></tr>
+    <tr><td>E-mail</td><td>4</td><td>1,345</td><td>1,347</td><td>50.0%</td></tr>
+    <tr><td>Text message</td><td>1 to 4</td><td>25,534</td><td>25,454</td><td>49.9%</td></tr>
+  </table>
+  <div class="callout warn mt"><b>What happened.</b> In week 1 the reminder job failed for e-mail. The export lists a notice only when its arm's messages completed, so those holders vanished from it.</div>
+  <aside class="notes"><p>The way to find a fault: split the ratio by everything you have, channel, week, permit type, until one cell stands out. In real work the explanation comes from the platform's engineers; the analyst's part is to bring them the cell. These holders received the standard notice and no reminder.</p></aside>
+</section>
+
+<section class="slide" id="coin-was-fair" data-lo="LO4" data-label="The assignment was sound" data-n="9" data-session="1">
+  <div class="kicker">Lab 3.1, step 4</div>
+  <h2>The coin was fair. The export broke afterwards</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>The assignment was recorded before any message went out: 30,054 and 29,946 holders. Ratio check: p = 0.66.</li>
+      <li>1,014 holders are missing from the export. All are reminder-arm e-mail holders of week 1.</li>
+      <li>They are not a typical handful: 49.6% of them renewed on time, against 63.5% of all holders.</li>
+    </ul>
+    <div class="card c-coral"><h4>Attrition</h4><p class="small mb0">Units that drop out of one arm after assignment. When the ones that drop differ from the rest, the arms stop being comparable, and the coin's work is undone.</p></div>
+  </div>
+  <aside class="notes"><p>Two different failures produce a bad ratio: a faulty assignment and a loss after assignment. An assignment log written before the test is what tells them apart, which is why the pre-registration asks for a seeded, recorded coin. E-mail holders renew on time less often in general, so removing them from one arm flatters that arm.</p></aside>
+</section>
+
+<section class="slide" id="what-the-fault-would-claim" data-lo="LO4" data-label="The cost of the fault" data-n="10" data-session="1">
+  <div class="kicker">Lab 3.1, step 5</div>
+  <h2>The faulty export adds half a point to the reminder's credit</h2>
+  <div class="cols cols-3">
+    <div class="stat"><div class="big">+2.69</div><div class="lbl">points: the effect computed from the export</div></div>
+    <div class="stat"><div class="big">+2.17</div><div class="lbl">points: the effect as assigned, on all 60,000 holders</div></div>
+    <div class="stat"><div class="big">+0.53</div><div class="lbl">points of bias from 1,014 missing rows</div></div>
+  </div>
+  <div class="callout tip mt"><b>What to analyse.</b> Everyone the coin was tossed for, in the arm it chose, including the 1,014 the reminder never reached. That is "as assigned" on the page.</div>
+  <aside class="notes"><p>With a minimum effect of 2 points, half a point of bias is the difference between a comfortable result and a borderline one. Analysis as assigned estimates the effect of deciding to send reminders through this platform, failures included. That is the decision Sahar faces. Dropping the unreached holders is what the export did by accident.</p></aside>
+</section>
+
+<section class="slide" id="after-a-failed-check" data-lo="LO4" data-label="After a failed check" data-n="11" data-session="1">
+  <div class="kicker">What to do</div>
+  <h2>A failed ratio check stops the reading, not necessarily the test</h2>
+  <ul class="bullets">
+    <li><b>Stop reading results.</b> Nothing computed from a broken comparison is worth quoting.</li>
+    <li><b>Find the cell.</b> Split by segment and by time until the loss is located.</li>
+    <li><b>Go back to the assignment record.</b> If it is sound and outcomes exist for everyone, analyse as assigned.</li>
+    <li><b>If the assignment itself was faulty,</b> or outcomes are missing for the lost units, the test cannot be repaired. Fix the cause and run it again.</li>
+    <li><b>Write it in the result note,</b> whichever it was.</li>
+  </ul>
+  <aside class="notes"><p>Here the second branch applies: the assignment record is sound and the permit register has an outcome for every holder. Also worth a sentence: a passing ratio check does not prove a sound test. Equal counts can hide a swap of who is in which arm, or outcomes recorded differently by arm. The check catches one family of faults.</p></aside>
+</section>
+
+<section class="slide" id="check-failed-ratio" data-lo="LO4" data-n="12" data-session="1">
+  <div class="kicker">Checkpoint</div>
+  <h2>The ratio check has failed. What now?</h2>
+  <div class="quiz" data-type="single" data-lo="LO4" data-id="check-failed-ratio-q1">
+    <p class="lead">A form test planned a 50/50 split. The log shows 10,480 applicants on the old form and 9,720 on the new one (p below 0.0001). The new form shows a higher completion rate. What do you do first?</p>
+    <div class="opts">
+      <div class="opt" data-why="Reads the result of a comparison that is known to be broken" data-k="A">Report the higher completion rate, with a note that the arms were unequal</div>
+      <div class="opt" data-why="Forces equal counts without knowing which units are missing: the arms stay incomparable" data-k="B">Delete 760 applicants at random from the old form's arm</div>
+      <div class="opt" data-why="Assumes the missing applicants are a random handful, which is the thing in doubt" data-k="C">Reweight the new form's arm so that both arms count the same</div>
+      <div class="opt" data-ok data-k="D">Find which applicants are missing from the new form's arm, and why</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Unequal counts mean that something other than the coin decided who is in the data. Until you know what, no comparison can be trusted.</div>
+  </div>
+  <aside class="notes"><p>Answer: D. The numbers are invented for the question, but the situation returns in session 4: in the write-up of the form test, applicants on old mobile browsers are missing from the redesigned arm, and the author "put it down to chance".</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-3-1" data-auto="lab" data-lab="3.1" data-label="Lab 3.1" data-n="13" data-session="1">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 3.1 · 25 min</div><h2>Ratio and balance on the export</h2><p class="lead small">Run the sample ratio check and a balance table on the platform's export of the reminder test, find where rows went missing and decide what to analyse.</p><a class="nb" href="../labs/D3_1_ratio_balance.ipynb">D3_1_ratio_balance.ipynb</a></div><ul class="checklist"><li>The sample ratio check on the export <span class="min">5 min</span></li><li>A balance table of four covariates <span class="min">6 min</span></li><li>Locate the fault by channel and week <span class="min">6 min</span></li><li>Compare with the test as assigned <span class="min">4 min</span></li><li>Measure what the faulty export would have claimed <span class="min">4 min</span></li><li class="stretch">✱ Stretch: How often does a healthy 50/50 assignment of 60,000 fail the check at 0.001? Simulate it</li></ul></div>
+  <aside class="notes"><p>The tutor instruction may hint on the dataframe code; the decision in step 5 is the participant's. Both files are supplied and nothing from Days 1 and 2 is needed. Let the room find the empty cell by themselves in step 3: split by channel first, then by week. Expected: p = 3.8e-06 on the export, 0.66 as assigned; 1,014 missing rows; +2.69 against +2.17 points.</p></aside>
+</section>
+
+<!-- ======================= SESSION 2 ======================= -->
+<section class="slide section" id="s2" data-auto="section" data-session="2" data-n="14">
+  <div class="kicker">Session 2</div>
+  <h1>Estimate, interval and effect</h1>
+  <ul class="bullets outcomes"><li>Compute a difference in proportions with its standard error and 95% interval</li><li>Read an interval against the minimum effect and separate statistical from practical significance</li><li>Report guardrails and a subgroup without overstating either</li></ul>
+  <div class="sess-no">02</div>
+</section>
+
+<section class="slide" id="estimate-and-interval" data-lo="LO4" data-label="The estimate" data-n="15" data-session="2">
+  <div class="kicker">Lab 3.2, steps 1 and 2 · 60,000 holders as assigned</div>
+  <h2>The reminder raised on-time renewal by 2.17 points, give or take 0.77</h2>
+  <table class="t">
+    <tr><th>Arm</th><th>Holders</th><th>Renewed on time</th><th>Rate</th></tr>
+    <tr><td>Control</td><td>30,054</td><td>18,772</td><td>62.46%</td></tr>
+    <tr><td>Reminder</td><td>29,946</td><td>19,353</td><td>64.63%</td></tr>
+  </table>
+  <div class="cols cols-3 mt">
+    <div class="stat"><div class="big">+2.17</div><div class="lbl">points: the difference</div></div>
+    <div class="stat"><div class="big">0.39</div><div class="lbl">points: its standard error</div></div>
+    <div class="stat"><div class="big">1.40 to 2.94</div><div class="lbl">the 95% interval</div></div>
+  </div>
+  <aside class="notes"><p>Solution run of lab 3.2. The standard error of a difference of two proportions is the square root of the sum of the two squared standard errors, as in the pre-work; the interval is the estimate plus and minus 1.96 of them. A bootstrap over holders gives 1.39 to 2.96, the lab's stretch.</p></aside>
+</section>
+
+<section class="slide" id="two-questions" data-lo="LO4" data-label="Two questions" data-n="16" data-session="2">
+  <div class="kicker">Lab 3.2, step 3</div>
+  <h2>"Is there an effect?" and "Is it large enough?" are different questions</h2>
+  <div class="cols cols-32">
+    <div class="figure">
+<!--FIG:interval-->
+<svg viewBox="0 0 720 400" role="img" aria-label="Two intervals for the effect of the reminder in points: as assigned 2.17 with an interval from 1.40 to 2.94, which contains the minimum effect of 2; from the faulty export 2.69 with an interval from 1.92 to 3.47">
+<rect x="64" y="18" width="636" height="338" fill="none" stroke="var(--line)"/>
+<line x1="134.7" x2="134.7" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="134.7" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">0</text>
+<line x1="276.0" x2="276.0" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="276.0" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">+1</text>
+<line x1="417.3" x2="417.3" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="417.3" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">+2</text>
+<line x1="558.7" x2="558.7" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="558.7" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">+3</text>
+<line x1="700.0" x2="700.0" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="700.0" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">+4</text>
+<line x1="134.7" x2="134.7" y1="18" y2="356" stroke="var(--ink, currentColor)" stroke-width="2" stroke-dasharray="0"/>
+<text x="141.7" y="36" text-anchor="start" font-size="15" fill="var(--ink, currentColor)">no effect</text>
+<line x1="417.3" x2="417.3" y1="18" y2="356" stroke="var(--coral)" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="424.3" y="36" text-anchor="start" font-size="15" fill="var(--ink, currentColor)">minimum effect: 2 points</text>
+<line x1="331.9" x2="549.5" y1="130.7" y2="130.7" stroke="var(--teal)" stroke-width="6" stroke-linecap="round"/>
+<circle cx="440.7" cy="130.7" r="9" fill="var(--teal)"/>
+<text x="331.9" y="112.7" text-anchor="start" font-size="15" fill="var(--ink, currentColor)">as assigned, 60,000 holders: +2.17 (1.40 to 2.94)</text>
+<line x1="405.5" x2="624.7" y1="254.6" y2="254.6" stroke="var(--purple)" stroke-width="6" stroke-linecap="round"/>
+<circle cx="515.1" cy="254.6" r="9" fill="var(--purple)"/>
+<text x="405.5" y="236.6" text-anchor="start" font-size="15" fill="var(--ink, currentColor)">from the faulty export: +2.69 (1.92 to 3.47)</text>
+<text x="382.0" y="396" text-anchor="middle" font-size="14" fill="var(--muted)">effect of the reminder on on-time renewal, points</text>
+</svg>
+<!--/FIG:interval-->
+      <div class="caption">The effect as assigned, and what the faulty export would have shown.</div>
+    </div>
+    <ul class="bullets">
+      <li><b>Is there an effect?</b> Yes. Zero is far outside the interval; p is below one in a million.</li>
+      <li><b>Is it at least 2 points?</b> The estimate says just. The interval says: between 1.4 and 2.9.</li>
+      <li>The interval <b>straddles</b> the minimum effect.</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>DS-201 called these statistical and practical significance. A tiny p-value tells the director nothing about the second question, and the second question is the one on her page. Note what the export's interval would have suggested: a result comfortably around 2.7.</p></aside>
+</section>
+
+<section class="slide" id="reading-against-the-minimum" data-lo="LO4" data-label="Four readings" data-n="17" data-session="2">
+  <div class="kicker">The interval against the minimum effect</div>
+  <h2>An interval can sit in four places, and each has its own sentence</h2>
+  <table class="t small">
+    <tr><th>Where the interval lies</th><th>What to say</th></tr>
+    <tr><td>Wholly above the minimum effect</td><td>The gain is at least the minimum, beyond reasonable doubt.</td></tr>
+    <tr><td><b>Above zero, straddling the minimum</b></td><td><b>There is a gain. Whether it reaches the minimum is not settled.</b></td></tr>
+    <tr><td>Above zero, wholly below the minimum</td><td>There is a gain, and it is too small to act on.</td></tr>
+    <tr><td>Containing zero</td><td>The data are consistent with no effect, and with effects up to the upper limit. Say which.</td></tr>
+  </table>
+  <div class="callout warn mt"><b>What goes wrong.</b> All four are reported as "significant" or "not significant", which merges the first three and misdescribes the fourth.</div>
+  <aside class="notes"><p>The reminder test is in the second row. The fourth row matters as much: "not significant" with an interval from minus 0.5 to plus 3 does not mean "no effect"; it means the test could not tell, and the upper limit says how large an effect is still possible.</p></aside>
+</section>
+
+<section class="slide" id="guardrails-with-intervals" data-lo="LO4" data-label="Guardrails" data-n="18" data-session="2">
+  <div class="kicker">Lab 3.2, step 4</div>
+  <h2>Guardrails are read with their intervals too</h2>
+  <table class="t small">
+    <tr><th>Guardrail or metric</th><th>Effect of the reminder</th><th>95% interval</th><th>Threshold</th></tr>
+    <tr><td>Complaint rate</td><td>+0.14 points</td><td>up to +0.30</td><td>+0.50: held</td></tr>
+    <tr><td>On-time renewal, e-mail holders</td><td>+0.20 points</td><td>−1.86 to +2.26</td><td rowspan="4">−3.00: held in every group</td></tr>
+    <tr><td>On-time renewal, text-message holders</td><td>+2.51 points</td><td>+1.68 to +3.33</td></tr>
+    <tr><td>On-time renewal, business holders</td><td>+1.37 points</td><td>+0.11 to +2.63</td></tr>
+    <tr><td>On-time renewal, resident holders</td><td>+2.65 points</td><td>+1.68 to +3.62</td></tr>
+    <tr><td>Counter visits (secondary)</td><td>−1.79 points</td><td>−2.34 to −1.24</td><td>none</td></tr>
+  </table>
+  <div class="callout note mt"><b>"No harm found" is weaker than "harm above the threshold ruled out".</b> Here the upper limit for complaints is below the threshold, so the stronger sentence holds.</div>
+  <aside class="notes"><p>The e-mail row deserves a minute: almost no effect, with a wide interval. No harm, so the guardrail holds. But a quarter of the e-mail holders in the reminder arm never got the reminder, which dilutes that row. It is a reason to ask the platform team for a clean e-mail run, not a finding that e-mail reminders do not work.</p></aside>
+</section>
+
+<section class="slide" id="subgroups-with-care" data-lo="LO4" data-label="Subgroups" data-n="19" data-session="2">
+  <div class="kicker">Lab 3.2, step 5 · exploratory, as the page said</div>
+  <h2>Compare subgroups by the interval of their difference</h2>
+  <div class="cols cols-2">
+    <table class="t">
+      <tr><th>Holders</th><th>Effect</th><th>95% interval</th></tr>
+      <tr><td>Late before (13,163)</td><td>+2.94</td><td>+1.23 to +4.65</td></tr>
+      <tr><td>Not late before (46,837)</td><td>+1.94</td><td>+1.09 to +2.79</td></tr>
+      <tr><td><b>Difference</b></td><td><b>+1.00</b></td><td><b>−0.91 to +2.91</b></td></tr>
+    </table>
+    <ul class="bullets">
+      <li>The smaller subgroup has the wider interval.</li>
+      <li>The difference between the two could be zero, or nearly 3 points.</li>
+      <li>Report it as a hypothesis for the next test, not as a finding of this one.</li>
+    </ul>
+  </div>
+  <div class="callout warn mt"><b>What goes wrong.</b> "It works for holders who were late before." Six subgroups are six more chances of a striking number.</div>
+  <aside class="notes"><p>The rule from DS-201 day 3 applies: "significant in one group and not in the other" is not evidence that the groups differ. The trainer knows something the participants do not: the generator did give late holders a larger true effect. The test cannot show it with this many holders. That is the honest state of knowledge after one test.</p></aside>
+</section>
+
+<section class="slide" id="result-in-two-sentences" data-lo="LO4" data-label="Two sentences" data-n="20" data-session="2">
+  <div class="kicker">Lab 3.2, step 6</div>
+  <h2>The result note leads with two sentences the director can act on</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>The two sentences</h4><p class="small mb0">"The reminder raised on-time renewal by 2.2 points, and the data are consistent with a gain between 1.4 and 2.9 points. The estimate meets the minimum effect of 2 points, though the gain may be somewhat smaller, and no guardrail was crossed, so the evidence supports adopting the reminder."</p></div>
+    <ul class="bullets">
+      <li>Estimate and interval first, in points.</li>
+      <li>Then the reading against the minimum effect and the guardrails.</li>
+      <li>Then what the pre-registered decision rule gives.</li>
+      <li>The checks, the fault in the export and the subgroup follow underneath.</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>The page's rule was: adopt if the reminder raises on-time renewal by at least 2 points and no guardrail is crossed. The estimate clears it narrowly, and an honest note says so. For the trainer only: the generator's true effect as assigned is 2.8 points, so this test's estimate is a slightly unlucky draw, about 1.6 standard errors low, and its interval contains the truth. Say it after the lab: one test is one draw.</p></aside>
+</section>
+
+<section class="slide" id="check-interval-reading" data-lo="LO4" data-n="21" data-session="2">
+  <div class="kicker">Checkpoint</div>
+  <h2>How do you report this result?</h2>
+  <div class="quiz" data-type="single" data-lo="LO4" data-id="check-interval-reading-q1">
+    <p class="lead">A test of a new letter has a minimum effect of 3 points. The result: +1.2 points, 95% interval +0.4 to +2.0, p = 0.003. Which sentence is right?</p>
+    <div class="opts">
+      <div class="opt" data-ok data-k="A">The letter helps, by less than the 3 points that would justify it</div>
+      <div class="opt" data-why="Reads a small p-value as a large or important effect" data-k="B">The letter is highly effective: the result is significant at 0.003</div>
+      <div class="opt" data-why="Treats 'below the minimum' as 'no effect', although zero is outside the interval" data-k="C">The letter has no effect, since it missed the minimum effect</div>
+      <div class="opt" data-why="Asks for more data when the interval already rules out the minimum effect" data-k="D">The test is inconclusive and should run longer</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The whole interval is above zero and below 3 points: a real gain, too small to act on.</div>
+  </div>
+  <aside class="notes"><p>Answer: A. This is the third row of the four-readings table. Option D is the instructive one: more data would narrow the interval around 1.2, further from 3. The test has answered the question.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-3-2" data-auto="lab" data-lab="3.2" data-label="Lab 3.2" data-n="22" data-session="2">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 3.2 · 25 min</div><h2>Analyse the reminder test</h2><p class="lead small">Analyse the 60,000 notices of the reminder test as assigned: estimate, interval, test, guardrails and one subgroup, then state the result in two sentences.</p><a class="nb" href="../labs/D3_2_reminder_result.ipynb">D3_2_reminder_result.ipynb</a></div><ul class="checklist"><li>Counts and rates by arm <span class="min">4 min</span></li><li>Difference, standard error and 95% interval <span class="min">6 min</span></li><li>The test and the minimum effect <span class="min">4 min</span></li><li>Guardrails and the secondary metric <span class="min">4 min</span></li><li>One subgroup, read with care <span class="min">3 min</span></li><li>The result in two sentences <span class="min">4 min</span></li><li class="stretch">✱ Stretch: Bootstrap the difference over holders and compare the two intervals</li></ul></div>
+  <aside class="notes"><p>Steps 1 to 3 without an assistant: the first pass of an analysis step is the participant's own. The lab reads the test as assigned and needs nothing from lab 3.1. Typical errors: the pooled standard error used for the interval; a difference taken control minus reminder; "per cent" written for points. Expected: +2.17 points, 1.40 to 2.94, "straddles". The two sentences of step 6, with the checks of 3.1, are the evidence of the fourth outcome.</p></aside>
+</section>
+
+<!-- ======================= SESSION 3 ======================= -->
+<section class="slide section" id="s3" data-auto="section" data-session="3" data-n="23">
+  <div class="kicker">Session 3</div>
+  <h1>False wins by simulation</h1>
+  <ul class="bullets outcomes"><li>Simulate A/A tests and count false wins</li><li>Measure the false-win rate of peeking, of twenty metrics and of analysis at the wrong unit</li><li>Apply the correct procedure to each trap and show that the rate returns to 5%</li></ul>
+  <div class="sess-no">03</div>
+</section>
+
+<section class="slide" id="aa-tests" data-lo="LO5" data-label="A/A tests" data-n="24" data-session="3">
+  <div class="kicker">The measuring instrument of this session</div>
+  <h2>In an A/A test nothing differs, so every win is false</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>Both arms get the same thing. The true effect is zero by construction.</li>
+      <li>Run 1,000 of them and count the "significant" ones.</li>
+      <li>With one planned analysis of one metric at the right unit: <b>5.5%</b> of 1,000.</li>
+      <li>That is the 5% you agreed to. Anything above it was added by a habit.</li>
+    </ul>
+    <div class="card c-teal"><h4>Three habits, three counts</h4><p class="small mb0">Looking every day. Looking at twenty metrics. Counting page views in place of applicants. Each feels harmless, and each can be found in reports written by careful people.</p></div>
+  </div>
+  <aside class="notes"><p>Solution run of lab 3.3: 1,000 simulated A/A tests of 28 days with 1,070 holders per arm per day. Teams also run real A/A tests on their platform before trusting it: if the platform itself declares wins at more than 5%, something in the pipeline is wrong. DS-302 returns to that.</p></aside>
+</section>
+
+<section class="slide" id="peeking" data-lo="LO5" data-label="Peeking" data-n="25" data-session="3">
+  <div class="kicker">Lab 3.3, step 2</div>
+  <h2>A p-value wanders, and 28 looks give it 28 chances to cross 0.05</h2>
+  <div class="cols cols-32">
+    <div class="figure">
+<!--FIG:peeking-->
+<svg viewBox="0 0 720 400" role="img" aria-label="The p-value of three A/A tests day by day over 28 days on a logarithmic scale: each path wanders, dips below 0.05 on some days and is above 0.05 again on day 28">
+<rect x="64" y="18" width="636" height="338" fill="none" stroke="var(--line)"/>
+<line x1="64" x2="700" y1="311.8" y2="311.8" stroke="var(--line)" stroke-dasharray="3 4"/>
+<text x="56" y="316.8" text-anchor="end" font-size="14" fill="var(--muted)">0.01</text>
+<line x1="64" x2="700" y1="209.1" y2="209.1" stroke="var(--line)" stroke-dasharray="3 4"/>
+<text x="56" y="214.1" text-anchor="end" font-size="14" fill="var(--muted)">0.05</text>
+<line x1="64" x2="700" y1="120.7" y2="120.7" stroke="var(--line)" stroke-dasharray="3 4"/>
+<text x="56" y="125.7" text-anchor="end" font-size="14" fill="var(--muted)">0.2</text>
+<line x1="64" x2="700" y1="18.0" y2="18.0" stroke="var(--line)" stroke-dasharray="3 4"/>
+<text x="56" y="23.0" text-anchor="end" font-size="14" fill="var(--muted)">1</text>
+<line x1="64.0" x2="64.0" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="64.0" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">day 1</text>
+<line x1="205.3" x2="205.3" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="205.3" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">day 7</text>
+<line x1="370.2" x2="370.2" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="370.2" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">day 14</text>
+<line x1="535.1" x2="535.1" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="535.1" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">day 21</text>
+<line x1="700.0" x2="700.0" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="700.0" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">day 28</text>
+<line x1="64" x2="700" y1="209.1" y2="209.1" stroke="var(--ink, currentColor)" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="692" y="202.1" text-anchor="end" font-size="15" fill="var(--ink, currentColor)">0.05</text>
+<polyline points="64.0,68.8 87.6,162.6 111.1,218.9 134.7,167.5 158.2,178.8 181.8,237.1 205.3,188.1 228.9,198.3 252.4,138.8 276.0,131.6 299.6,85.3 323.1,111.1 346.7,129.2 370.2,115.6 393.8,130.3 417.3,109.4 440.9,76.4 464.4,73.4 488.0,82.4 511.6,127.5 535.1,72.4 558.7,99.2 582.2,83.4 605.8,102.9 629.3,82.4 652.9,65.5 676.4,72.4 700.0,67.6" fill="none" stroke="var(--teal)" stroke-width="2.5"/>
+<polyline points="64.0,88.1 87.6,18.0 111.1,46.0 134.7,56.2 158.2,37.6 181.8,48.1 205.3,97.0 228.9,45.6 252.4,28.6 276.0,58.8 299.6,74.3 323.1,56.5 346.7,67.6 370.2,69.3 393.8,141.1 417.3,149.1 440.9,188.9 464.4,233.0 488.0,219.5 511.6,210.3 535.1,203.3 558.7,170.4 582.2,109.2 605.8,133.9 629.3,141.1 652.9,139.8 676.4,123.6 700.0,131.5" fill="none" stroke="var(--coral)" stroke-width="2.5"/>
+<polyline points="64.0,121.7 87.6,207.3 111.1,324.4 134.7,179.5 158.2,106.6 181.8,80.6 205.3,60.6 228.9,90.1 252.4,70.2 276.0,53.4 299.6,61.8 323.1,53.6 346.7,63.4 370.2,92.0 393.8,85.5 417.3,86.9 440.9,81.2 464.4,76.1 488.0,98.1 511.6,77.6 535.1,44.2 558.7,46.2 582.2,57.2 605.8,45.5 629.3,41.7 652.9,20.3 676.4,22.5 700.0,18.4" fill="none" stroke="var(--purple)" stroke-width="2.5"/>
+<text x="382.0" y="396" text-anchor="middle" font-size="14" fill="var(--muted)">test day (no true effect in any of the three tests)</text>
+</svg>
+<!--/FIG:peeking-->
+      <div class="caption">Three A/A tests that dipped below 0.05 and came back.</div>
+    </div>
+    <ul class="bullets">
+      <li>Rule: stop on the first day the p-value is below 0.05.</li>
+      <li><b>27.8%</b> of 1,000 A/A tests declare a win.</li>
+      <li>Half of those false wins are declared by day 5.</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>Looking is harmless. Acting on the look is the problem: stopping, extending or switching because of what was seen. The early days are the most dangerous: little data, large swings. Source for the mechanism and its remedies: Johari, Pekelis and Walsh, Always Valid Inference.</p></aside>
+</section>
+
+<section class="slide" id="one-planned-look" data-lo="LO5" data-label="The correct procedure" data-n="26" data-session="3">
+  <div class="kicker">The correct procedure, in this course</div>
+  <h2>One analysis at the planned end restores the 5%</h2>
+  <div class="cols cols-3">
+    <div class="stat"><div class="big">27.8%</div><div class="lbl">false wins: 28 daily looks, stop at the first p below 0.05</div></div>
+    <div class="stat"><div class="big">14.5%</div><div class="lbl">false wins: four weekly looks</div></div>
+    <div class="stat"><div class="big">5.5%</div><div class="lbl">false wins: one look, on day 28</div></div>
+  </div>
+  <ul class="bullets mt">
+    <li>A test stopped early on a false win also reports a large "effect": only large swings cross the line with little data.</li>
+    <li>Planned interim looks are possible with methods that spend the 5% across the looks. They are the subject of DS-302.</li>
+  </ul>
+  <aside class="notes"><p>The weekly figure is the stretch of lab 3.3. The safety look of the reminder test on day 14 read the guardrails only and could stop the test for harm, never for success; that asymmetry is why it does not inflate false wins of the primary metric.</p></aside>
+</section>
+
+<section class="slide" id="twenty-metrics" data-lo="LO5" data-label="Many metrics" data-n="27" data-session="3">
+  <div class="kicker">Lab 3.3, step 3</div>
+  <h2>With twenty metrics, most tests of nothing show a "significant" one</h2>
+  <div class="cols cols-3">
+    <div class="stat"><div class="big">64.1%</div><div class="lbl">of A/A tests have at least one of twenty metrics below 0.05</div></div>
+    <div class="stat"><div class="big">5.5%</div><div class="lbl">after Holm's correction for twenty</div></div>
+    <div class="stat"><div class="big">5.5%</div><div class="lbl">with one pre-registered primary metric</div></div>
+  </div>
+  <ul class="bullets mt">
+    <li>The chance that none of twenty unrelated metrics crosses is 0.95 to the power 20: 36%.</li>
+    <li>Two honest ways out: one primary metric named in advance, or a correction for the number examined.</li>
+    <li>Subgroups count the same way.</li>
+  </ul>
+  <aside class="notes"><p>DS-201 lab 3.4 met this with thirty districts and taught Holm and Benjamini-Hochberg. Nothing new is taught here; the correction is applied and the family error measured. The pre-registration's answer is the simpler one: a single primary metric carries the decision.</p></aside>
+</section>
+
+<section class="slide" id="wrong-unit-of-analysis" data-lo="LO5" data-label="Wrong unit" data-n="28" data-session="3">
+  <div class="kicker">Lab 3.3, step 4 · the form log, with applicants dealt a fresh coin</div>
+  <h2>Counting page views for applicants turns luck into significance</h2>
+  <div class="cols cols-2">
+    <div class="stat"><div class="big">34.0%</div><div class="lbl">of A/A tests are significant when 53,514 page views are analysed as independent</div></div>
+    <div class="stat"><div class="big">5.8%</div><div class="lbl">when the 5,068 applicants are analysed, as randomised</div></div>
+  </div>
+  <ul class="bullets mt">
+    <li>The page-level test believes it has ten times the information it has, so its standard error is too small.</li>
+    <li>Ordinary luck in which struggling applicants landed where then looks like an effect.</li>
+  </ul>
+  <aside class="notes"><p>This A/A test uses real rows: the form log, with the true arms forgotten and each applicant dealt a new coin 1,000 times. The applicant-level analysis is a Welch t-test on each applicant's own share of page views with an error. Yesterday's branch test showed the same trap at 68.9%: the larger the cluster, the worse.</p></aside>
+</section>
+
+<section class="slide" id="false-win-table" data-lo="LO5" data-label="The table" data-n="29" data-session="3">
+  <div class="kicker">Lab 3.3, step 5</div>
+  <h2>Each habit multiplies the false-win rate; each correct procedure restores it</h2>
+  <table class="t">
+    <tr><th>Trap</th><th>False wins with the trap</th><th>With the correct procedure</th></tr>
+    <tr><td>Peeking: 28 daily looks, stop at the first p below 0.05</td><td>27.8%</td><td>5.5% (one look at the planned end)</td></tr>
+    <tr><td>Many metrics: any of twenty</td><td>64.1%</td><td>5.5% (Holm, or one primary metric)</td></tr>
+    <tr><td>Wrong unit: page views for applicants</td><td>34.0%</td><td>5.8% (analyse applicants)</td></tr>
+  </table>
+  <div class="callout warn mt"><b>They combine.</b> A report that peeked at many metrics per page view is close to a machine for producing wins. None of the three needs a wrong formula.</div>
+  <aside class="notes"><p>This table is the evidence of the fifth outcome. Each rate is a count over 1,000 A/A tests, with an error of about 1.4 points near 5% and about 3 points near 50%. Ask the room which of the three they have seen at work.</p></aside>
+</section>
+
+<section class="slide" id="novelty-and-attrition" data-lo="LO5 LO6" data-label="Two more traps" data-n="30" data-session="3">
+  <div class="kicker">Two traps that no A/A test shows</div>
+  <h2>Novelty fades and attrition unbalances, even when the analysis is right</h2>
+  <div class="cols cols-2">
+    <div class="card c-purple"><h4>Novelty</h4><p class="small mb0">A first-week reaction to anything new, which can fade. A test of eight days measures the reaction at its peak. Look for the effect by week, and distrust short tests of visible changes.</p></div>
+    <div class="card c-coral"><h4>Attrition</h4><p class="small mb0">Units that drop out of one arm after assignment: a reminder that never arrived, a form that crashed on some devices. The remaining arms differ in who is left. Look at the sample ratio and at who is missing.</p></div>
+  </div>
+  <div class="callout note mt"><b>Both change the true comparison,</b> not the false-win rate. They are found by reading the design and the checks, which is the next session.</div>
+  <aside class="notes"><p>The catalogue of flaws used in lab 3.4 has ten entries; these two are among the seven seeded in the write-up, as "short run" and "ratio mismatch". Measuring novelty decay properly is in DS-302.</p></aside>
+</section>
+
+<section class="slide" id="check-which-trap" data-lo="LO5" data-n="31" data-session="3">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which habit produced this win?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5" data-id="check-which-trap-q1">
+    <p class="lead">A team planned a 4-week test of a new queue screen in 30 branches with one primary metric. They analysed it once, at the end, and report: "average wait fell, p = 0.01, n = 41,000 visits". Which trap should you check first?</p>
+    <div class="opts">
+      <div class="opt" data-why="The team looked once, at the planned end" data-k="A">Peeking</div>
+      <div class="opt" data-why="One primary metric was named in advance and reported" data-k="B">Many metrics</div>
+      <div class="opt" data-ok data-k="C">Wrong unit of analysis</div>
+      <div class="opt" data-why="Four weeks is a full cycle; novelty is possible but is not what the reported n points to" data-k="D">Novelty</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Branches were randomised and visits were counted. The test has 30 units, and "n = 41,000" is the sign that they were not the ones analysed.</div>
+  </div>
+  <aside class="notes"><p>Answer: C. A reported n that is the number of rows, when the design randomised something larger, is the quickest tell in any write-up. Ask what the analysis should have been: one average per branch, 15 against 15.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-3-3" data-auto="lab" data-lab="3.3" data-label="Lab 3.3" data-n="32" data-session="3">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 3.3 · 25 min</div><h2>A thousand A/A tests</h2><p class="lead small">Run 1,000 A/A tests with no true effect under three traps, daily peeking, twenty metrics and page views analysed in place of applicants, and tabulate the false-win rate with and without the correct procedure.</p><a class="nb" href="../labs/D3_3_false_wins.ipynb">D3_3_false_wins.ipynb</a></div><ul class="checklist"><li>One look at the end: the 5% you agreed to <span class="min">4 min</span></li><li>Peeking: a look every day for 28 days <span class="min">7 min</span></li><li>Twenty metrics: any win, then a correction <span class="min">6 min</span></li><li>Wrong unit: page views against applicants <span class="min">5 min</span></li><li>The table of false-win rates <span class="min">3 min</span></li><li class="stretch">✱ Stretch: Peek once a week only, four looks: how much of the damage remains?</li></ul></div>
+  <aside class="notes"><p>The tutor instruction may hint; it never writes the simulation. Steps 1 to 3 simulate their own data and step 4 reads the form log; nothing from another lab is needed. Each step runs 1,000 A/A tests in a few seconds. Expected: 5.5%, 27.8%, 64.1% with 5.5% after Holm, 34.0% against 5.8%. The table of step 5 is the evidence of the fifth outcome.</p></aside>
+</section>
+
+<!-- ======================= SESSION 4 ======================= -->
+<section class="slide section" id="s4" data-auto="section" data-session="4" data-n="33">
+  <div class="kicker">Session 4</div>
+  <h1>Reviewing a reported result</h1>
+  <ul class="bullets outcomes"><li>Review a write-up in a fixed order: design, checks, analysis, claim</li><li>Name each flaw with its consequence for the reported result</li><li>State the decision the evidence does support and defend it</li></ul>
+  <div class="sess-no">04</div>
+</section>
+
+<section class="slide" id="review-order" data-lo="LO6" data-label="The review order" data-n="34" data-session="4">
+  <div class="kicker">Reading someone else's result</div>
+  <h2>Review in a fixed order: design, checks, analysis, claim</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>1 · Design</b>what did the page promise: unit, primary metric, size, stop rule?</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>2 · Checks</b>did the arms survive: ratio, balance, missing units?</div>
+    <div class="arrow">→</div>
+    <div class="step c-purple"><b>3 · Analysis</b>was the promised analysis run, at the unit that was randomised, once?</div>
+    <div class="arrow">→</div>
+    <div class="step c-coral"><b>4 · Claim</b>does the recommendation follow, for the units and the period tested?</div>
+  </div>
+  <div class="callout tip mt"><b>Read the result last.</b> A reviewer who starts with the headline spends the rest of the page defending or attacking it.</div>
+  <aside class="notes"><p>The order is the checklist of Day 1 read backwards; it is printed at the foot of checklist.md. It is also the order of today's sessions. Reviewing is the sixth outcome and a fifth of the capstone mark.</p></aside>
+</section>
+
+<section class="slide" id="the-write-up" data-lo="LO6" data-label="The write-up" data-n="35" data-session="4">
+  <div class="kicker">Lab 3.4 · the form redesign test</div>
+  <h2>"The redesigned form works. Roll it out to every form."</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>What was planned</h4><p class="small mb0">Primary metric: the share of applicants who complete the application. Minimum effect: 3 points. Unit: the applicant. A run of 28 days with one analysis at the end.</p></div>
+    <div class="card c-coral"><h4>What the write-up reports</h4><p class="small mb0">"We watched the dashboard every morning. On day 8 the difference in validation errors was clearly significant, so we stopped." Errors per page view fell from 13.0% to 12.0%, "highly significant" with 53,514 page views. Completion 58.5% against 59.3%, p = 0.54. "We examined 14 metrics." "The redesigned form logged fewer applicants. We put this down to chance."</p></div>
+  </div>
+  <aside class="notes"><p>The author is Hattan Al-Sayed, a colleague, writing in good faith to Rehab Al-Tayyar. Give the room three minutes to read the full text in the lab before discussing. Ask how many flaws they can name from this slide alone; most rooms find four.</p></aside>
+</section>
+
+<section class="slide" id="seven-flaws" data-lo="LO6" data-label="Seven flaws" data-n="36" data-session="4">
+  <div class="kicker">Lab 3.4, step 1</div>
+  <h2>Seven flaws, each with a place in the text</h2>
+  <table class="t small">
+    <tr><th>Flaw</th><th>Where in the write-up</th></tr>
+    <tr><td>Metric switch</td><td>The headline is errors per page view; the page promised completion</td></tr>
+    <tr><td>Wrong unit</td><td>A z-test on page views; applicants were randomised</td></tr>
+    <tr><td>Peeking</td><td>Watched every morning, stopped on a significant day</td></tr>
+    <tr><td>Ratio mismatch and attrition</td><td>2,738 against 2,330 applicants, "put down to chance"</td></tr>
+    <tr><td>Many comparisons</td><td>14 metrics, and the strongest subgroup</td></tr>
+    <tr><td>Short run</td><td>8 days of a planned 28: one weekend, no month-end</td></tr>
+    <tr><td>Overclaim</td><td>"Proven"; all forms; 9,000 more applications a year</td></tr>
+  </table>
+  <div class="callout note mt"><b>And three it does not have:</b> a control arm exists, a seeded coin assigned, both arms were measured alike. A review that cries wolf loses its reader.</div>
+  <aside class="notes"><p>The lab's catalogue lists ten kinds of flaw, seven present and three absent; the mark asks for at least six of seven with at most one false alarm. The absent three matter: a reviewer who lists everything in the catalogue has not read the write-up.</p></aside>
+</section>
+
+<section class="slide" id="recompute-two-claims" data-lo="LO6" data-label="Recompute" data-n="37" data-session="4">
+  <div class="kicker">Lab 3.4, step 2</div>
+  <h2>A review that only reads is an opinion: recompute</h2>
+  <div class="cols cols-2">
+    <div class="card c-cyan"><h4>"We put this down to chance"</h4><p class="small mb0">2,738 against 2,330 applicants: ratio check p = 0.00000001. By device: 379 applicants on old mobile browsers in the current arm, <b>none</b> in the redesigned arm.</p></div>
+    <div class="card c-purple"><h4>"Highly significant with 53,514 page views"</h4><p class="small mb0">Per page view: 13.0% against 12.0%, p = 0.0002. Per applicant, as randomised: 13.0% against 12.3%, <b>p = 0.25</b>.</p></div>
+  </div>
+  <div class="callout tip mt"><b>Two lines of code each.</b> The log was available to the author too.</div>
+  <aside class="notes"><p>Solution run of lab 3.4. The second recomputation is session 3's third trap on a real result. The first is session 1's check. When the data behind a write-up are not available, the memo says which recomputations it asks for.</p></aside>
+</section>
+
+<section class="slide" id="flaw-consequence-decision" data-lo="LO6" data-label="The memo" data-n="38" data-session="4">
+  <div class="kicker">Lab 3.4, step 3</div>
+  <h2>The memo goes from each flaw to its consequence to a decision</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>1 · Flaw and consequence</h4><p class="small mb0">Not "the unit is wrong" but "counted per applicant, the difference in errors is not significant".</p></div>
+    <div class="card c-cyan"><h4>2 · What the evidence supports</h4><p class="small mb0">"The test does not support a roll-out. It shows no reliable difference in completion, and a redesign that fails on old mobile browsers."</p></div>
+    <div class="card c-coral"><h4>3 · The next step</h4><p class="small mb0">"Fix the browser fault. Run the full 28 days as pre-registered, one analysis, completion as primary, applicants as the unit, ratio check first."</p></div>
+  </div>
+  <div class="callout warn mt"><b>What goes wrong.</b> A memo that ends at "the analysis is flawed" leaves the director with a decision and nothing to make it with.</div>
+  <aside class="notes"><p>The evidence of the sixth outcome is a memo per write-up naming each flaw, its consequence and the decision the evidence does support, defended live. This is the class memo; the capstone has a second one on the chosen case's write-up.</p></aside>
+</section>
+
+<section class="slide" id="finding-nobody-wanted" data-lo="LO6" data-label="What the test did find" data-n="39" data-session="4">
+  <div class="kicker">Lab 3.4, steps 2 and stretch</div>
+  <h2>The test did find something, and the write-up put it down to chance</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>The redesigned form does not work on old mobile browsers. 379 of them used the current form in eight days; a roll-out would turn away about twice that.</li>
+      <li>On devices logged in both arms, completion is 61.0% on the current form and 59.3% on the redesign: the "right direction" disappears.</li>
+      <li>That second comparison is a repair made after the fact. It shows how fragile the claim is; it does not prove the reverse.</li>
+    </ul>
+    <div class="card c-purple"><h4>A reviewer's best contribution</h4><p class="small mb0">Not the list of errors. The thing the data were saying that the author did not want to hear.</p></div>
+  </div>
+  <aside class="notes"><p>The 379 is the count in the current arm over eight days; about as many were assigned to the redesign and lost. This is the humanity principle in practice: an average that looks fine while one group of citizens cannot use the service at all. Say who would have been affected: people with older phones.</p></aside>
+</section>
+
+<section class="slide" id="check-supported-decision" data-lo="LO6" data-n="40" data-session="4">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which decision does the evidence support?</h2>
+  <div class="quiz" data-type="single" data-lo="LO6" data-id="check-supported-decision-q1">
+    <p class="lead">A write-up reports a randomised test of a new appointment text, analysed as pre-registered: missed appointments fell by 1.9 points (0.4 to 3.4), against a minimum effect of 1.5. It then recommends the text "for all clinics, and for vaccination reminders too". The test ran in the city's eight clinics. What do you write?</p>
+    <div class="opts">
+      <div class="opt" data-why="Throws out a sound result because the recommendation overreaches" data-k="A">Reject the write-up: the claim goes beyond the evidence</div>
+      <div class="opt" data-ok data-k="B">Adopt the text for appointments in the eight clinics; test vaccination reminders separately</div>
+      <div class="opt" data-why="Accepts an extension to a different message and purpose that nobody tested" data-k="C">Accept the recommendation as written: the test was sound</div>
+      <div class="opt" data-why="Asks for more data although the estimate meets the minimum and the analysis was as planned" data-k="D">Ask for a longer test before deciding anything</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The test supports what it tested: this text, for appointments, in these clinics. The rest is a new hypothesis.</div>
+  </div>
+  <aside class="notes"><p>Answer: B. A review is not a search for reasons to say no. Here the design and analysis are sound and one sentence of the recommendation overreaches; the memo keeps the result and trims the claim. Note that the interval straddles the minimum, as in the reminder test.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-3-4" data-auto="lab" data-lab="3.4" data-label="Lab 3.4" data-n="41" data-session="4">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">Lab 3.4 · 25 min</div><h2>Review a write-up</h2><p class="lead small">Find the seeded flaws in the write-up of the form test, recompute two of its claims from the log, draft the review memo and choose a capstone case.</p><a class="nb" href="../labs/D3_4_review_memo.ipynb">D3_4_review_memo.ipynb</a></div><ul class="checklist"><li>Read the write-up and mark the flaws <span class="min">7 min</span></li><li>Recompute two claims from the log <span class="min">7 min</span></li><li>Draft the memo: flaw, consequence, supported decision <span class="min">8 min</span></li><li>Choose your capstone case <span class="min">3 min</span></li><li class="stretch">✱ Stretch: Compare completion only on devices that were logged in both arms</li></ul></div>
+  <aside class="notes"><p>Step 1 without an assistant: finding the flaws is the skill. Both files are supplied; nothing from earlier labs is needed. In step 3 walk round and read the "supported decision" of each participant: it should be something Rehab can do on Monday. Step 4 fixes the capstone case; steer the room so that all three cases are taken. Case C is the hardest design, case A has a breached guardrail to find, case B has a result that survives its own bad write-up.</p></aside>
+</section>
+
+<section class="slide" id="wrap-up" data-label="Wrap-up" data-n="42" data-session="4">
+  <div class="kicker">Day 3</div>
+  <h2>Three things to keep</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>Checks before results</h4><p class="small mb0">A ratio of 49.05% hid 1,014 missing holders and half a point of bias. Analyse everyone as assigned.</p></div>
+    <div class="card c-cyan"><h4>Intervals over verdicts</h4><p class="small mb0">+2.17 points, 1.40 to 2.94, against a minimum of 2. Say what is settled and what is not.</p></div>
+    <div class="card c-purple"><h4>Wins are cheap</h4><p class="small mb0">Peeking 27.8%, twenty metrics 64.1%, page views 34.0%. One look, one metric, the right unit: about 5%.</p></div>
+  </div>
+  <aside class="notes"><p>The exit check is supervised and done without an assistant; say when it takes place. Then the capstone briefing on the next slide.</p></aside>
+</section>
+
+<section class="slide dark" id="next" data-label="Next" data-n="43" data-session="4">
+  <div class="kicker">Before the capstone day</div>
+  <h1>One case, the whole course</h1>
+  <p class="lead">Your pack: a pre-registration, a sample-size notebook with a power curve, an analysis notebook, a result note and a review memo, in a public repository.</p>
+  <ul class="bullets">
+    <li>Start with the pre-registration, and commit it before you open the experiment log.</li>
+    <li>You may use an assistant for the work. You defend it without one.</li>
+    <li>Rehearse the question you will be asked: "the minimum effect is now half; what is the size?"</li>
+  </ul>
+  <aside class="notes"><p>Point to the capstone folder: its README lists what the repository must contain and the rubric. The commit history is part of the evidence, which is why the pre-registration is committed first. Remind the room of the follow-up task after the course: the checklist applied to one experiment at work.</p></aside>
+</section>
+</div>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-15T13:13:52Z","version":"2027.1.0","commit":"f9d5985"},"course":{"id":"ds-205","code":"DS-205","title":"Designing and Reading Experiments","track":"data-science","lang":"en","dir":"ltr","url":"https://sdaiaacademy.github.io/ds-205/","repo":"SDAIAAcademy/ds-205","home":"../index.html"},"deck":{"id":"day3","kind":"day","day":3,"label":"Day 3","title":"Read the result","prev":"day2.html","next":"capstone.html","md":"day3.md","alt":{}},"sessions":[{"n":1,"label":"Session 1","title":"Did randomisation work","slide":"s1","outcomes":["Test whether the arm counts match the planned split","Read a balance table and locate the segment in which an assignment or logging fault sits","Decide which rows to analyse after a failed check and say why"],"minutes":50,"lab":{"id":"3.1","title":"Ratio and balance on the export","minutes":25,"href":"../labs/D3_1_ratio_balance.ipynb"}},{"n":2,"label":"Session 2","title":"Estimate, interval and effect","slide":"s2","outcomes":["Compute a difference in proportions with its standard error and 95% interval","Read an interval against the minimum effect and separate statistical from practical significance","Report guardrails and a subgroup without overstating either"],"minutes":50,"lab":{"id":"3.2","title":"Analyse the reminder test","minutes":25,"href":"../labs/D3_2_reminder_result.ipynb"}},{"n":3,"label":"Session 3","title":"False wins by simulation","slide":"s3","outcomes":["Simulate A/A tests and count false wins","Measure the false-win rate of peeking, of twenty metrics and of analysis at the wrong unit","Apply the correct procedure to each trap and show that the rate returns to 5%"],"minutes":50,"lab":{"id":"3.3","title":"A thousand A/A tests","minutes":25,"href":"../labs/D3_3_false_wins.ipynb"}},{"n":4,"label":"Session 4","title":"Reviewing a reported result","slide":"s4","outcomes":["Review a write-up in a fixed order: design, checks, analysis, claim","Name each flaw with its consequence for the reported result","State the decision the evidence does support and defend it"],"minutes":50,"lab":{"id":"3.4","title":"Review a write-up","minutes":25,"href":"../labs/D3_4_review_memo.ipynb"}}],"slides":[{"id":"title","n":1,"title":"Read the result","kind":"title","session":0,"hash":"355b52ed","md":"#### [day3#title] Read the result\n\n*SDAIA Academy · Designing and Reading Experiments*\n\nDay 3: The data are in: check the assignment, estimate with an interval, count the ways to fool yourself, review someone else's result\n\nData Science Track · 3 teaching days + capstone day · 4 sessions · 4 labs · DS-205","notes":"The reminder test has run its 28 days and the outcome window has closed. Set the scene: a colleague has the platform's export open and is one line of code away from \"the effect\". Ask the room what they would do first. Most will say \"compute the difference\". Today starts with why not.","minutes":null,"lo":[]},{"id":"agenda","n":2,"title":"Read the result","kind":"content","session":0,"hash":"a2562b8a","md":"#### [day3#agenda] Read the result\n\n*Today*\n\n- **Session 1 · Did randomisation work**: Before any result is read: the sample ratio check, the balance table and analysis as assigned\n- **Session 2 · Estimate, interval and effect**: The difference in proportions with its interval, read against the minimum effect, with guardrails and one subgroup\n- **Session 3 · False wins by simulation**: How peeking, many metrics and the wrong unit of analysis manufacture wins when nothing differs, measured by A/A tests\n- **Session 4 · Reviewing a reported result**: A review order for a reported experiment: from each flaw to its consequence to the decision the evidence supports","notes":"Session 1 checks the assignment before any result is read. Session 2 reads the result as an interval against the minimum effect. Session 3 counts how three ordinary habits manufacture wins. Session 4 turns all of it on someone else's write-up, and ends with the choice of a capstone case.","minutes":null,"lo":[]},{"id":"review-day2","n":3,"title":"Which plan gives the test a fair chance?","kind":"quiz","session":0,"hash":"c81fa382","md":"#### [day3#review-day2] Which plan gives the test a fair chance?\n\n*Review of Day 2*\n\n**Question:** A test needs 9,000 residents per arm for its minimum effect. Traffic is 2,000 residents a day, lower at weekends, with a surge at the month-end. Which plan do you accept?\n\n- A. Run 9 days, until 18,000 residents are in\n- B. Run 28 days: whole weeks, with the month-end inside\n- C. Run 9 days with 4,500 per arm to finish sooner\n- D. Run until the difference is significant","notes":"Answer: B. Two minutes. Option D is today's third session in one line. If the room is unsure about C, redo the square: half the size detects an effect about 1.4 times larger, not the one the director asked for.","minutes":null,"lo":["LO3"]},{"id":"s1","n":4,"title":"Did randomisation work","kind":"section","session":1,"hash":"92a82ab2","md":"#### [day3#s1] Did randomisation work\n\n*Session 1*\n\n- Test whether the arm counts match the planned split\n- Read a balance table and locate the segment in which an assignment or logging fault sits\n- Decide which rows to analyse after a failed check and say why","notes":"","minutes":null,"lo":["LO4"]},{"id":"checks-before-result","n":5,"title":"Check the assignment before you look at the outcome","kind":"content","session":1,"hash":"1b9d613b","md":"#### [day3#checks-before-result] Check the assignment before you look at the outcome\n\n*The order of reading*\n\n1. **1 · Sample ratio** are the arms the size the coin should give?\n2. **2 · Balance** do the arms look alike on traits fixed before the test?\n3. **3 · Completeness** is every assigned unit there, with its outcome?\n4. **4 · The result** only now\n\n> **Why this order.** Once you have seen a pleasing result, every check that threatens it looks like pedantry. The page promised the checks first; keep the promise.","notes":"This is item C10 of the checklist, written on Day 1. Experiment teams that run many tests report that a failed sample ratio is one of the most common signs of a broken test. Source: Fabijan and others (2019).","minutes":null,"lo":["LO4"]},{"id":"sample-ratio-check","n":6,"title":"49.05% in the reminder arm is not what a fair coin gives","kind":"content","session":1,"hash":"ea3c4066","md":"#### [day3#sample-ratio-check] 49.05% in the reminder arm is not what a fair coin gives\n\n*Lab 3.1, step 1 · the platform's export*\n\n- **30,054** rows in the control arm of the export\n- **28,932** rows in the reminder arm\n- **0.000004** p-value of a chi-square test against 50/50; the page set the line at 0.001\n\n- A gap of one point looks harmless. With 59,000 rows a fair coin produces it about four times in a million.\n- A failed check means: do not read the result until the cause is found.","notes":"The check is called a sample ratio mismatch test. In code: stats.chisquare of the two counts, which tests against equal counts. The line of 0.001 is stricter than 0.05 on purpose: the check runs on every test, and with a healthy assignment it fails about once in a thousand, as the stretch of lab 3.1 shows (0.08% over 20,000 simulated assignments).","minutes":null,"lo":["LO4"]},{"id":"balance-names-a-suspect","n":7,"title":"The balance table names a suspect","kind":"content","session":1,"hash":"20b194db","md":"#### [day3#balance-names-a-suspect] The balance table names a suspect\n\n*Lab 3.1, step 2*\n\n| Trait fixed before the test | Control | Reminder | p |\n| --- | --- | --- | --- |\n| **E-mail channel** | **15.04%** | **12.02%** | **below 0.0001** |\n| Business holder | 38.57% | 38.34% | 0.56 |\n| Late at the previous renewal | 21.95% | 21.96% | 0.97 |\n| Tenure, years | 4.63 | 4.60 | 0.17 |\n\n> **Reading it.** With four traits, one p-value near 0.05 would mean little. One that is far beyond any chance, on one trait, says where to look.","notes":"Solution run of lab 3.1. A balance table compares the arms only on things that were fixed before assignment; an outcome can never be in it. Balance tests are a diagnostic, not a licence: a table without a significant difference does not prove that the assignment was sound.","minutes":null,"lo":["LO4"]},{"id":"one-empty-cell","n":8,"title":"One cell of the export is empty","kind":"content","session":1,"hash":"6d38bab6","md":"#### [day3#one-empty-cell] One cell of the export is empty\n\n*Lab 3.1, step 3*\n\n| Channel | Week | Control rows | Reminder rows | Share in the reminder arm |\n| --- | --- | --- | --- | --- |\n| **E-mail** | **1** | **1,071** | **0** | **0.0%** |\n| E-mail | 2 | 1,017 | 1,075 | 51.4% |\n| E-mail | 3 | 1,087 | 1,056 | 49.3% |\n| E-mail | 4 | 1,345 | 1,347 | 50.0% |\n| Text message | 1 to 4 | 25,534 | 25,454 | 49.9% |\n\n> **What happened.** In week 1 the reminder job failed for e-mail. The export lists a notice only when its arm's messages completed, so those holders vanished from it.","notes":"The way to find a fault: split the ratio by everything you have, channel, week, permit type, until one cell stands out. In real work the explanation comes from the platform's engineers; the analyst's part is to bring them the cell. These holders received the standard notice and no reminder.","minutes":null,"lo":["LO4"]},{"id":"coin-was-fair","n":9,"title":"The coin was fair. The export broke afterwards","kind":"content","session":1,"hash":"618b9e8b","md":"#### [day3#coin-was-fair] The coin was fair. The export broke afterwards\n\n*Lab 3.1, step 4*\n\n- The assignment was recorded before any message went out: 30,054 and 29,946 holders. Ratio check: p = 0.66.\n- 1,014 holders are missing from the export. All are reminder-arm e-mail holders of week 1.\n- They are not a typical handful: 49.6% of them renewed on time, against 63.5% of all holders.\n\n- **Attrition.** Units that drop out of one arm after assignment. When the ones that drop differ from the rest, the arms stop being comparable, and the coin's work is undone.","notes":"Two different failures produce a bad ratio: a faulty assignment and a loss after assignment. An assignment log written before the test is what tells them apart, which is why the pre-registration asks for a seeded, recorded coin. E-mail holders renew on time less often in general, so removing them from one arm flatters that arm.","minutes":null,"lo":["LO4"]},{"id":"what-the-fault-would-claim","n":10,"title":"The faulty export adds half a point to the reminder's credit","kind":"content","session":1,"hash":"58c5c306","md":"#### [day3#what-the-fault-would-claim] The faulty export adds half a point to the reminder's credit\n\n*Lab 3.1, step 5*\n\n- **+2.69** points: the effect computed from the export\n- **+2.17** points: the effect as assigned, on all 60,000 holders\n- **+0.53** points of bias from 1,014 missing rows\n\n> **What to analyse.** Everyone the coin was tossed for, in the arm it chose, including the 1,014 the reminder never reached. That is \"as assigned\" on the page.","notes":"With a minimum effect of 2 points, half a point of bias is the difference between a comfortable result and a borderline one. Analysis as assigned estimates the effect of deciding to send reminders through this platform, failures included. That is the decision Sahar faces. Dropping the unreached holders is what the export did by accident.","minutes":null,"lo":["LO4"]},{"id":"after-a-failed-check","n":11,"title":"A failed ratio check stops the reading, not necessarily the test","kind":"content","session":1,"hash":"146cf461","md":"#### [day3#after-a-failed-check] A failed ratio check stops the reading, not necessarily the test\n\n*What to do*\n\n- **Stop reading results.** Nothing computed from a broken comparison is worth quoting.\n- **Find the cell.** Split by segment and by time until the loss is located.\n- **Go back to the assignment record.** If it is sound and outcomes exist for everyone, analyse as assigned.\n- **If the assignment itself was faulty,** or outcomes are missing for the lost units, the test cannot be repaired. Fix the cause and run it again.\n- **Write it in the result note,** whichever it was.","notes":"Here the second branch applies: the assignment record is sound and the permit register has an outcome for every holder. Also worth a sentence: a passing ratio check does not prove a sound test. Equal counts can hide a swap of who is in which arm, or outcomes recorded differently by arm. The check catches one family of faults.","minutes":null,"lo":["LO4"]},{"id":"check-failed-ratio","n":12,"title":"The ratio check has failed. What now?","kind":"quiz","session":1,"hash":"1ab4fc68","md":"#### [day3#check-failed-ratio] The ratio check has failed. What now?\n\n*Checkpoint*\n\n**Question:** A form test planned a 50/50 split. The log shows 10,480 applicants on the old form and 9,720 on the new one (p below 0.0001). The new form shows a higher completion rate. What do you do first?\n\n- A. Report the higher completion rate, with a note that the arms were unequal\n- B. Delete 760 applicants at random from the old form's arm\n- C. Reweight the new form's arm so that both arms count the same\n- D. Find which applicants are missing from the new form's arm, and why","notes":"Answer: D. The numbers are invented for the question, but the situation returns in session 4: in the write-up of the form test, applicants on old mobile browsers are missing from the redesigned arm, and the author \"put it down to chance\".","minutes":null,"lo":["LO4"]},{"id":"lab-3-1","n":13,"title":"Ratio and balance on the export","kind":"lab","session":1,"hash":"873f99ad","md":"#### [day3#lab-3-1] Ratio and balance on the export\n\nLab 3.1 · 25 min\n\nRun the sample ratio check and a balance table on the platform's export of the reminder test, find where rows went missing and decide what to analyse.\n\n[D3_1_ratio_balance.ipynb](https://sdaiaacademy.github.io/ds-205/labs/D3_1_ratio_balance.ipynb)\n\n- [ ] The sample ratio check on the export (5 min)\n- [ ] A balance table of four covariates (6 min)\n- [ ] Locate the fault by channel and week (6 min)\n- [ ] Compare with the test as assigned (4 min)\n- [ ] Measure what the faulty export would have claimed (4 min)\n- [ ] ✱ Stretch: How often does a healthy 50/50 assignment of 60,000 fail the check at 0.001? Simulate it","notes":"The tutor instruction may hint on the dataframe code; the decision in step 5 is the participant's. Both files are supplied and nothing from Days 1 and 2 is needed. Let the room find the empty cell by themselves in step 3: split by channel first, then by week. Expected: p = 3.8e-06 on the export, 0.66 as assigned; 1,014 missing rows; +2.69 against +2.17 points.","minutes":null,"lo":[]},{"id":"s2","n":14,"title":"Estimate, interval and effect","kind":"section","session":2,"hash":"a8c4ea9d","md":"#### [day3#s2] Estimate, interval and effect\n\n*Session 2*\n\n- Compute a difference in proportions with its standard error and 95% interval\n- Read an interval against the minimum effect and separate statistical from practical significance\n- Report guardrails and a subgroup without overstating either","notes":"","minutes":null,"lo":["LO4"]},{"id":"estimate-and-interval","n":15,"title":"The reminder raised on-time renewal by 2.17 points, give or take 0.77","kind":"content","session":2,"hash":"cd06b2c8","md":"#### [day3#estimate-and-interval] The reminder raised on-time renewal by 2.17 points, give or take 0.77\n\n*Lab 3.2, steps 1 and 2 · 60,000 holders as assigned*\n\n| Arm | Holders | Renewed on time | Rate |\n| --- | --- | --- | --- |\n| Control | 30,054 | 18,772 | 62.46% |\n| Reminder | 29,946 | 19,353 | 64.63% |\n\n- **+2.17** points: the difference\n- **0.39** points: its standard error\n- **1.40 to 2.94** the 95% interval","notes":"Solution run of lab 3.2. The standard error of a difference of two proportions is the square root of the sum of the two squared standard errors, as in the pre-work; the interval is the estimate plus and minus 1.96 of them. A bootstrap over holders gives 1.39 to 2.96, the lab's stretch.","minutes":null,"lo":["LO4"]},{"id":"two-questions","n":16,"title":"\"Is there an effect?\" and \"Is it large enough?\" are different questions","kind":"content","session":2,"hash":"4c0a9773","md":"#### [day3#two-questions] \"Is there an effect?\" and \"Is it large enough?\" are different questions\n\n*Lab 3.2, step 3*\n\nFigure: The effect as assigned, and what the faulty export would have shown.\n\n- **Is there an effect?** Yes. Zero is far outside the interval; p is below one in a million.\n- **Is it at least 2 points?** The estimate says just. The interval says: between 1.4 and 2.9.\n- The interval **straddles** the minimum effect.","notes":"DS-201 called these statistical and practical significance. A tiny p-value tells the director nothing about the second question, and the second question is the one on her page. Note what the export's interval would have suggested: a result comfortably around 2.7.","minutes":null,"lo":["LO4"]},{"id":"reading-against-the-minimum","n":17,"title":"An interval can sit in four places, and each has its own sentence","kind":"content","session":2,"hash":"04f1753c","md":"#### [day3#reading-against-the-minimum] An interval can sit in four places, and each has its own sentence\n\n*The interval against the minimum effect*\n\n| Where the interval lies | What to say |\n| --- | --- |\n| Wholly above the minimum effect | The gain is at least the minimum, beyond reasonable doubt. |\n| **Above zero, straddling the minimum** | **There is a gain. Whether it reaches the minimum is not settled.** |\n| Above zero, wholly below the minimum | There is a gain, and it is too small to act on. |\n| Containing zero | The data are consistent with no effect, and with effects up to the upper limit. Say which. |\n\n> **What goes wrong.** All four are reported as \"significant\" or \"not significant\", which merges the first three and misdescribes the fourth.","notes":"The reminder test is in the second row. The fourth row matters as much: \"not significant\" with an interval from minus 0.5 to plus 3 does not mean \"no effect\"; it means the test could not tell, and the upper limit says how large an effect is still possible.","minutes":null,"lo":["LO4"]},{"id":"guardrails-with-intervals","n":18,"title":"Guardrails are read with their intervals too","kind":"content","session":2,"hash":"10548b3e","md":"#### [day3#guardrails-with-intervals] Guardrails are read with their intervals too\n\n*Lab 3.2, step 4*\n\n| Guardrail or metric | Effect of the reminder | 95% interval | Threshold |\n| --- | --- | --- | --- |\n| Complaint rate | +0.14 points | up to +0.30 | +0.50: held |\n| On-time renewal, e-mail holders | +0.20 points | −1.86 to +2.26 | −3.00: held in every group |\n| On-time renewal, text-message holders | +2.51 points | +1.68 to +3.33 |  |\n| On-time renewal, business holders | +1.37 points | +0.11 to +2.63 |  |\n| On-time renewal, resident holders | +2.65 points | +1.68 to +3.62 |  |\n| Counter visits (secondary) | −1.79 points | −2.34 to −1.24 | none |\n\n> **\"No harm found\" is weaker than \"harm above the threshold ruled out\".** Here the upper limit for complaints is below the threshold, so the stronger sentence holds.","notes":"The e-mail row deserves a minute: almost no effect, with a wide interval. No harm, so the guardrail holds. But a quarter of the e-mail holders in the reminder arm never got the reminder, which dilutes that row. It is a reason to ask the platform team for a clean e-mail run, not a finding that e-mail reminders do not work.","minutes":null,"lo":["LO4"]},{"id":"subgroups-with-care","n":19,"title":"Compare subgroups by the interval of their difference","kind":"content","session":2,"hash":"97dbc078","md":"#### [day3#subgroups-with-care] Compare subgroups by the interval of their difference\n\n*Lab 3.2, step 5 · exploratory, as the page said*\n\n| Holders | Effect | 95% interval |\n| --- | --- | --- |\n| Late before (13,163) | +2.94 | +1.23 to +4.65 |\n| Not late before (46,837) | +1.94 | +1.09 to +2.79 |\n| **Difference** | **+1.00** | **−0.91 to +2.91** |\n\n- The smaller subgroup has the wider interval.\n- The difference between the two could be zero, or nearly 3 points.\n- Report it as a hypothesis for the next test, not as a finding of this one.\n\n> **What goes wrong.** \"It works for holders who were late before.\" Six subgroups are six more chances of a striking number.","notes":"The rule from DS-201 day 3 applies: \"significant in one group and not in the other\" is not evidence that the groups differ. The trainer knows something the participants do not: the generator did give late holders a larger true effect. The test cannot show it with this many holders. That is the honest state of knowledge after one test.","minutes":null,"lo":["LO4"]},{"id":"result-in-two-sentences","n":20,"title":"The result note leads with two sentences the director can act on","kind":"content","session":2,"hash":"90aa17e9","md":"#### [day3#result-in-two-sentences] The result note leads with two sentences the director can act on\n\n*Lab 3.2, step 6*\n\n- **The two sentences.** \"The reminder raised on-time renewal by 2.2 points, and the data are consistent with a gain between 1.4 and 2.9 points. The estimate meets the minimum effect of 2 points, though the gain may be somewhat smaller, and no guardrail was crossed, so the evidence supports adopting the reminder.\"\n\n- Estimate and interval first, in points.\n- Then the reading against the minimum effect and the guardrails.\n- Then what the pre-registered decision rule gives.\n- The checks, the fault in the export and the subgroup follow underneath.","notes":"The page's rule was: adopt if the reminder raises on-time renewal by at least 2 points and no guardrail is crossed. The estimate clears it narrowly, and an honest note says so. For the trainer only: the generator's true effect as assigned is 2.8 points, so this test's estimate is a slightly unlucky draw, about 1.6 standard errors low, and its interval contains the truth. Say it after the lab: one test is one draw.","minutes":null,"lo":["LO4"]},{"id":"check-interval-reading","n":21,"title":"How do you report this result?","kind":"quiz","session":2,"hash":"76f0c415","md":"#### [day3#check-interval-reading] How do you report this result?\n\n*Checkpoint*\n\n**Question:** A test of a new letter has a minimum effect of 3 points. The result: +1.2 points, 95% interval +0.4 to +2.0, p = 0.003. Which sentence is right?\n\n- A. The letter helps, by less than the 3 points that would justify it\n- B. The letter is highly effective: the result is significant at 0.003\n- C. The letter has no effect, since it missed the minimum effect\n- D. The test is inconclusive and should run longer","notes":"Answer: A. This is the third row of the four-readings table. Option D is the instructive one: more data would narrow the interval around 1.2, further from 3. The test has answered the question.","minutes":null,"lo":["LO4"]},{"id":"lab-3-2","n":22,"title":"Analyse the reminder test","kind":"lab","session":2,"hash":"0c1572ef","md":"#### [day3#lab-3-2] Analyse the reminder test\n\nLab 3.2 · 25 min\n\nAnalyse the 60,000 notices of the reminder test as assigned: estimate, interval, test, guardrails and one subgroup, then state the result in two sentences.\n\n[D3_2_reminder_result.ipynb](https://sdaiaacademy.github.io/ds-205/labs/D3_2_reminder_result.ipynb)\n\n- [ ] Counts and rates by arm (4 min)\n- [ ] Difference, standard error and 95% interval (6 min)\n- [ ] The test and the minimum effect (4 min)\n- [ ] Guardrails and the secondary metric (4 min)\n- [ ] One subgroup, read with care (3 min)\n- [ ] The result in two sentences (4 min)\n- [ ] ✱ Stretch: Bootstrap the difference over holders and compare the two intervals","notes":"Steps 1 to 3 without an assistant: the first pass of an analysis step is the participant's own. The lab reads the test as assigned and needs nothing from lab 3.1. Typical errors: the pooled standard error used for the interval; a difference taken control minus reminder; \"per cent\" written for points. Expected: +2.17 points, 1.40 to 2.94, \"straddles\". The two sentences of step 6, with the checks of 3.1, are the evidence of the fourth outcome.","minutes":null,"lo":[]},{"id":"s3","n":23,"title":"False wins by simulation","kind":"section","session":3,"hash":"74a00f51","md":"#### [day3#s3] False wins by simulation\n\n*Session 3*\n\n- Simulate A/A tests and count false wins\n- Measure the false-win rate of peeking, of twenty metrics and of analysis at the wrong unit\n- Apply the correct procedure to each trap and show that the rate returns to 5%","notes":"","minutes":null,"lo":["LO5"]},{"id":"aa-tests","n":24,"title":"In an A/A test nothing differs, so every win is false","kind":"content","session":3,"hash":"f7ee8c1c","md":"#### [day3#aa-tests] In an A/A test nothing differs, so every win is false\n\n*The measuring instrument of this session*\n\n- Both arms get the same thing. The true effect is zero by construction.\n- Run 1,000 of them and count the \"significant\" ones.\n- With one planned analysis of one metric at the right unit: **5.5%** of 1,000.\n- That is the 5% you agreed to. Anything above it was added by a habit.\n\n- **Three habits, three counts.** Looking every day. Looking at twenty metrics. Counting page views in place of applicants. Each feels harmless, and each can be found in reports written by careful people.","notes":"Solution run of lab 3.3: 1,000 simulated A/A tests of 28 days with 1,070 holders per arm per day. Teams also run real A/A tests on their platform before trusting it: if the platform itself declares wins at more than 5%, something in the pipeline is wrong. DS-302 returns to that.","minutes":null,"lo":["LO5"]},{"id":"peeking","n":25,"title":"A p-value wanders, and 28 looks give it 28 chances to cross 0.05","kind":"content","session":3,"hash":"91d66eec","md":"#### [day3#peeking] A p-value wanders, and 28 looks give it 28 chances to cross 0.05\n\n*Lab 3.3, step 2*\n\nFigure: Three A/A tests that dipped below 0.05 and came back.\n\n- Rule: stop on the first day the p-value is below 0.05.\n- **27.8%** of 1,000 A/A tests declare a win.\n- Half of those false wins are declared by day 5.","notes":"Looking is harmless. Acting on the look is the problem: stopping, extending or switching because of what was seen. The early days are the most dangerous: little data, large swings. Source for the mechanism and its remedies: Johari, Pekelis and Walsh, Always Valid Inference.","minutes":null,"lo":["LO5"]},{"id":"one-planned-look","n":26,"title":"One analysis at the planned end restores the 5%","kind":"content","session":3,"hash":"e75710ae","md":"#### [day3#one-planned-look] One analysis at the planned end restores the 5%\n\n*The correct procedure, in this course*\n\n- **27.8%** false wins: 28 daily looks, stop at the first p below 0.05\n- **14.5%** false wins: four weekly looks\n- **5.5%** false wins: one look, on day 28\n\n- A test stopped early on a false win also reports a large \"effect\": only large swings cross the line with little data.\n- Planned interim looks are possible with methods that spend the 5% across the looks. They are the subject of DS-302.","notes":"The weekly figure is the stretch of lab 3.3. The safety look of the reminder test on day 14 read the guardrails only and could stop the test for harm, never for success; that asymmetry is why it does not inflate false wins of the primary metric.","minutes":null,"lo":["LO5"]},{"id":"twenty-metrics","n":27,"title":"With twenty metrics, most tests of nothing show a \"significant\" one","kind":"content","session":3,"hash":"c6047c16","md":"#### [day3#twenty-metrics] With twenty metrics, most tests of nothing show a \"significant\" one\n\n*Lab 3.3, step 3*\n\n- **64.1%** of A/A tests have at least one of twenty metrics below 0.05\n- **5.5%** after Holm's correction for twenty\n- **5.5%** with one pre-registered primary metric\n\n- The chance that none of twenty unrelated metrics crosses is 0.95 to the power 20: 36%.\n- Two honest ways out: one primary metric named in advance, or a correction for the number examined.\n- Subgroups count the same way.","notes":"DS-201 lab 3.4 met this with thirty districts and taught Holm and Benjamini-Hochberg. Nothing new is taught here; the correction is applied and the family error measured. The pre-registration's answer is the simpler one: a single primary metric carries the decision.","minutes":null,"lo":["LO5"]},{"id":"wrong-unit-of-analysis","n":28,"title":"Counting page views for applicants turns luck into significance","kind":"content","session":3,"hash":"305c0456","md":"#### [day3#wrong-unit-of-analysis] Counting page views for applicants turns luck into significance\n\n*Lab 3.3, step 4 · the form log, with applicants dealt a fresh coin*\n\n- **34.0%** of A/A tests are significant when 53,514 page views are analysed as independent\n- **5.8%** when the 5,068 applicants are analysed, as randomised\n\n- The page-level test believes it has ten times the information it has, so its standard error is too small.\n- Ordinary luck in which struggling applicants landed where then looks like an effect.","notes":"This A/A test uses real rows: the form log, with the true arms forgotten and each applicant dealt a new coin 1,000 times. The applicant-level analysis is a Welch t-test on each applicant's own share of page views with an error. Yesterday's branch test showed the same trap at 68.9%: the larger the cluster, the worse.","minutes":null,"lo":["LO5"]},{"id":"false-win-table","n":29,"title":"Each habit multiplies the false-win rate; each correct procedure restores it","kind":"content","session":3,"hash":"c68efadb","md":"#### [day3#false-win-table] Each habit multiplies the false-win rate; each correct procedure restores it\n\n*Lab 3.3, step 5*\n\n| Trap | False wins with the trap | With the correct procedure |\n| --- | --- | --- |\n| Peeking: 28 daily looks, stop at the first p below 0.05 | 27.8% | 5.5% (one look at the planned end) |\n| Many metrics: any of twenty | 64.1% | 5.5% (Holm, or one primary metric) |\n| Wrong unit: page views for applicants | 34.0% | 5.8% (analyse applicants) |\n\n> **They combine.** A report that peeked at many metrics per page view is close to a machine for producing wins. None of the three needs a wrong formula.","notes":"This table is the evidence of the fifth outcome. Each rate is a count over 1,000 A/A tests, with an error of about 1.4 points near 5% and about 3 points near 50%. Ask the room which of the three they have seen at work.","minutes":null,"lo":["LO5"]},{"id":"novelty-and-attrition","n":30,"title":"Novelty fades and attrition unbalances, even when the analysis is right","kind":"content","session":3,"hash":"a0fc059f","md":"#### [day3#novelty-and-attrition] Novelty fades and attrition unbalances, even when the analysis is right\n\n*Two traps that no A/A test shows*\n\n- **Novelty.** A first-week reaction to anything new, which can fade. A test of eight days measures the reaction at its peak. Look for the effect by week, and distrust short tests of visible changes.\n- **Attrition.** Units that drop out of one arm after assignment: a reminder that never arrived, a form that crashed on some devices. The remaining arms differ in who is left. Look at the sample ratio and at who is missing.\n\n> **Both change the true comparison,** not the false-win rate. They are found by reading the design and the checks, which is the next session.","notes":"The catalogue of flaws used in lab 3.4 has ten entries; these two are among the seven seeded in the write-up, as \"short run\" and \"ratio mismatch\". Measuring novelty decay properly is in DS-302.","minutes":null,"lo":["LO5","LO6"]},{"id":"check-which-trap","n":31,"title":"Which habit produced this win?","kind":"quiz","session":3,"hash":"82318178","md":"#### [day3#check-which-trap] Which habit produced this win?\n\n*Checkpoint*\n\n**Question:** A team planned a 4-week test of a new queue screen in 30 branches with one primary metric. They analysed it once, at the end, and report: \"average wait fell, p = 0.01, n = 41,000 visits\". Which trap should you check first?\n\n- A. Peeking\n- B. Many metrics\n- C. Wrong unit of analysis\n- D. Novelty","notes":"Answer: C. A reported n that is the number of rows, when the design randomised something larger, is the quickest tell in any write-up. Ask what the analysis should have been: one average per branch, 15 against 15.","minutes":null,"lo":["LO5"]},{"id":"lab-3-3","n":32,"title":"A thousand A/A tests","kind":"lab","session":3,"hash":"357b9130","md":"#### [day3#lab-3-3] A thousand A/A tests\n\nLab 3.3 · 25 min\n\nRun 1,000 A/A tests with no true effect under three traps, daily peeking, twenty metrics and page views analysed in place of applicants, and tabulate the false-win rate with and without the correct procedure.\n\n[D3_3_false_wins.ipynb](https://sdaiaacademy.github.io/ds-205/labs/D3_3_false_wins.ipynb)\n\n- [ ] One look at the end: the 5% you agreed to (4 min)\n- [ ] Peeking: a look every day for 28 days (7 min)\n- [ ] Twenty metrics: any win, then a correction (6 min)\n- [ ] Wrong unit: page views against applicants (5 min)\n- [ ] The table of false-win rates (3 min)\n- [ ] ✱ Stretch: Peek once a week only, four looks: how much of the damage remains?","notes":"The tutor instruction may hint; it never writes the simulation. Steps 1 to 3 simulate their own data and step 4 reads the form log; nothing from another lab is needed. Each step runs 1,000 A/A tests in a few seconds. Expected: 5.5%, 27.8%, 64.1% with 5.5% after Holm, 34.0% against 5.8%. The table of step 5 is the evidence of the fifth outcome.","minutes":null,"lo":[]},{"id":"s4","n":33,"title":"Reviewing a reported result","kind":"section","session":4,"hash":"a289c5c2","md":"#### [day3#s4] Reviewing a reported result\n\n*Session 4*\n\n- Review a write-up in a fixed order: design, checks, analysis, claim\n- Name each flaw with its consequence for the reported result\n- State the decision the evidence does support and defend it","notes":"","minutes":null,"lo":["LO6"]},{"id":"review-order","n":34,"title":"Review in a fixed order: design, checks, analysis, claim","kind":"content","session":4,"hash":"1258be60","md":"#### [day3#review-order] Review in a fixed order: design, checks, analysis, claim\n\n*Reading someone else's result*\n\n1. **1 · Design** what did the page promise: unit, primary metric, size, stop rule?\n2. **2 · Checks** did the arms survive: ratio, balance, missing units?\n3. **3 · Analysis** was the promised analysis run, at the unit that was randomised, once?\n4. **4 · Claim** does the recommendation follow, for the units and the period tested?\n\n> **Read the result last.** A reviewer who starts with the headline spends the rest of the page defending or attacking it.","notes":"The order is the checklist of Day 1 read backwards; it is printed at the foot of checklist.md. It is also the order of today's sessions. Reviewing is the sixth outcome and a fifth of the capstone mark.","minutes":null,"lo":["LO6"]},{"id":"the-write-up","n":35,"title":"\"The redesigned form works. Roll it out to every form.\"","kind":"content","session":4,"hash":"00a1d681","md":"#### [day3#the-write-up] \"The redesigned form works. Roll it out to every form.\"\n\n*Lab 3.4 · the form redesign test*\n\n- **What was planned.** Primary metric: the share of applicants who complete the application. Minimum effect: 3 points. Unit: the applicant. A run of 28 days with one analysis at the end.\n- **What the write-up reports.** \"We watched the dashboard every morning. On day 8 the difference in validation errors was clearly significant, so we stopped.\" Errors per page view fell from 13.0% to 12.0%, \"highly significant\" with 53,514 page views. Completion 58.5% against 59.3%, p = 0.54. \"We examined 14 metrics.\" \"The redesigned form logged fewer applicants. We put this down to chance.\"","notes":"The author is Hattan Al-Sayed, a colleague, writing in good faith to Rehab Al-Tayyar. Give the room three minutes to read the full text in the lab before discussing. Ask how many flaws they can name from this slide alone; most rooms find four.","minutes":null,"lo":["LO6"]},{"id":"seven-flaws","n":36,"title":"Seven flaws, each with a place in the text","kind":"content","session":4,"hash":"1db5d0d1","md":"#### [day3#seven-flaws] Seven flaws, each with a place in the text\n\n*Lab 3.4, step 1*\n\n| Flaw | Where in the write-up |\n| --- | --- |\n| Metric switch | The headline is errors per page view; the page promised completion |\n| Wrong unit | A z-test on page views; applicants were randomised |\n| Peeking | Watched every morning, stopped on a significant day |\n| Ratio mismatch and attrition | 2,738 against 2,330 applicants, \"put down to chance\" |\n| Many comparisons | 14 metrics, and the strongest subgroup |\n| Short run | 8 days of a planned 28: one weekend, no month-end |\n| Overclaim | \"Proven\"; all forms; 9,000 more applications a year |\n\n> **And three it does not have:** a control arm exists, a seeded coin assigned, both arms were measured alike. A review that cries wolf loses its reader.","notes":"The lab's catalogue lists ten kinds of flaw, seven present and three absent; the mark asks for at least six of seven with at most one false alarm. The absent three matter: a reviewer who lists everything in the catalogue has not read the write-up.","minutes":null,"lo":["LO6"]},{"id":"recompute-two-claims","n":37,"title":"A review that only reads is an opinion: recompute","kind":"content","session":4,"hash":"38f479d6","md":"#### [day3#recompute-two-claims] A review that only reads is an opinion: recompute\n\n*Lab 3.4, step 2*\n\n- **\"We put this down to chance\".** 2,738 against 2,330 applicants: ratio check p = 0.00000001. By device: 379 applicants on old mobile browsers in the current arm, **none** in the redesigned arm.\n- **\"Highly significant with 53,514 page views\".** Per page view: 13.0% against 12.0%, p = 0.0002. Per applicant, as randomised: 13.0% against 12.3%, **p = 0.25**.\n\n> **Two lines of code each.** The log was available to the author too.","notes":"Solution run of lab 3.4. The second recomputation is session 3's third trap on a real result. The first is session 1's check. When the data behind a write-up are not available, the memo says which recomputations it asks for.","minutes":null,"lo":["LO6"]},{"id":"flaw-consequence-decision","n":38,"title":"The memo goes from each flaw to its consequence to a decision","kind":"content","session":4,"hash":"5cdb4422","md":"#### [day3#flaw-consequence-decision] The memo goes from each flaw to its consequence to a decision\n\n*Lab 3.4, step 3*\n\n- **1 · Flaw and consequence.** Not \"the unit is wrong\" but \"counted per applicant, the difference in errors is not significant\".\n- **2 · What the evidence supports.** \"The test does not support a roll-out. It shows no reliable difference in completion, and a redesign that fails on old mobile browsers.\"\n- **3 · The next step.** \"Fix the browser fault. Run the full 28 days as pre-registered, one analysis, completion as primary, applicants as the unit, ratio check first.\"\n\n> **What goes wrong.** A memo that ends at \"the analysis is flawed\" leaves the director with a decision and nothing to make it with.","notes":"The evidence of the sixth outcome is a memo per write-up naming each flaw, its consequence and the decision the evidence does support, defended live. This is the class memo; the capstone has a second one on the chosen case's write-up.","minutes":null,"lo":["LO6"]},{"id":"finding-nobody-wanted","n":39,"title":"The test did find something, and the write-up put it down to chance","kind":"content","session":4,"hash":"91ac3405","md":"#### [day3#finding-nobody-wanted] The test did find something, and the write-up put it down to chance\n\n*Lab 3.4, steps 2 and stretch*\n\n- The redesigned form does not work on old mobile browsers. 379 of them used the current form in eight days; a roll-out would turn away about twice that.\n- On devices logged in both arms, completion is 61.0% on the current form and 59.3% on the redesign: the \"right direction\" disappears.\n- That second comparison is a repair made after the fact. It shows how fragile the claim is; it does not prove the reverse.\n\n- **A reviewer's best contribution.** Not the list of errors. The thing the data were saying that the author did not want to hear.","notes":"The 379 is the count in the current arm over eight days; about as many were assigned to the redesign and lost. This is the humanity principle in practice: an average that looks fine while one group of citizens cannot use the service at all. Say who would have been affected: people with older phones.","minutes":null,"lo":["LO6"]},{"id":"check-supported-decision","n":40,"title":"Which decision does the evidence support?","kind":"quiz","session":4,"hash":"96070f13","md":"#### [day3#check-supported-decision] Which decision does the evidence support?\n\n*Checkpoint*\n\n**Question:** A write-up reports a randomised test of a new appointment text, analysed as pre-registered: missed appointments fell by 1.9 points (0.4 to 3.4), against a minimum effect of 1.5. It then recommends the text \"for all clinics, and for vaccination reminders too\". The test ran in the city's eight clinics. What do you write?\n\n- A. Reject the write-up: the claim goes beyond the evidence\n- B. Adopt the text for appointments in the eight clinics; test vaccination reminders separately\n- C. Accept the recommendation as written: the test was sound\n- D. Ask for a longer test before deciding anything","notes":"Answer: B. A review is not a search for reasons to say no. Here the design and analysis are sound and one sentence of the recommendation overreaches; the memo keeps the result and trims the claim. Note that the interval straddles the minimum, as in the reminder test.","minutes":null,"lo":["LO6"]},{"id":"lab-3-4","n":41,"title":"Review a write-up","kind":"lab","session":4,"hash":"9651cdc9","md":"#### [day3#lab-3-4] Review a write-up\n\nLab 3.4 · 25 min\n\nFind the seeded flaws in the write-up of the form test, recompute two of its claims from the log, draft the review memo and choose a capstone case.\n\n[D3_4_review_memo.ipynb](https://sdaiaacademy.github.io/ds-205/labs/D3_4_review_memo.ipynb)\n\n- [ ] Read the write-up and mark the flaws (7 min)\n- [ ] Recompute two claims from the log (7 min)\n- [ ] Draft the memo: flaw, consequence, supported decision (8 min)\n- [ ] Choose your capstone case (3 min)\n- [ ] ✱ Stretch: Compare completion only on devices that were logged in both arms","notes":"Step 1 without an assistant: finding the flaws is the skill. Both files are supplied; nothing from earlier labs is needed. In step 3 walk round and read the \"supported decision\" of each participant: it should be something Rehab can do on Monday. Step 4 fixes the capstone case; steer the room so that all three cases are taken. Case C is the hardest design, case A has a breached guardrail to find, case B has a result that survives its own bad write-up.","minutes":null,"lo":[]},{"id":"wrap-up","n":42,"title":"Three things to keep","kind":"content","session":4,"hash":"acde8215","md":"#### [day3#wrap-up] Three things to keep\n\n*Day 3*\n\n- **Checks before results.** A ratio of 49.05% hid 1,014 missing holders and half a point of bias. Analyse everyone as assigned.\n- **Intervals over verdicts.** +2.17 points, 1.40 to 2.94, against a minimum of 2. Say what is settled and what is not.\n- **Wins are cheap.** Peeking 27.8%, twenty metrics 64.1%, page views 34.0%. One look, one metric, the right unit: about 5%.","notes":"The exit check is supervised and done without an assistant; say when it takes place. Then the capstone briefing on the next slide.","minutes":null,"lo":[]},{"id":"next","n":43,"title":"One case, the whole course","kind":"content","session":4,"hash":"3464d484","md":"#### [day3#next] One case, the whole course\n\n*Before the capstone day*\n\nYour pack: a pre-registration, a sample-size notebook with a power curve, an analysis notebook, a result note and a review memo, in a public repository.\n\n- Start with the pre-registration, and commit it before you open the experiment log.\n- You may use an assistant for the work. You defend it without one.\n- Rehearse the question you will be asked: \"the minimum effect is now half; what is the size?\"","notes":"Point to the capstone folder: its README lists what the repository must contain and the rubric. The commit history is part of the evidence, which is why the pre-registration is committed first. Remind the room of the follow-up task after the course: the checklist applied to one experiment at work.","minutes":null,"lo":[]}],"activities":[{"id":"review-day2-q1","slide":"review-day2","type":"single","prompt":"A test needs 9,000 residents per arm for its minimum effect. Traffic is 2,000 residents a day, lower at weekends, with a surge at the month-end. Which plan do you accept?","options":[{"key":"A","text":"Run 9 days, until 18,000 residents are in"},{"key":"B","text":"Run 28 days: whole weeks, with the month-end inside"},{"key":"C","text":"Run 9 days with 4,500 per arm to finish sooner"},{"key":"D","text":"Run until the difference is significant"}],"correct":[1],"explanation":"The formula gives the minimum size. The calendar gives the duration: whole cycles.","misconceptions":["Reaches the size and counts some weekdays twice and others once, with no month-end","","Halves the size, which cuts the power for the stated minimum effect far below 80%","Lets the result decide the duration, which is peeking"],"lo":["LO3"]},{"id":"check-failed-ratio-q1","slide":"check-failed-ratio","type":"single","prompt":"A form test planned a 50/50 split. The log shows 10,480 applicants on the old form and 9,720 on the new one (p below 0.0001). The new form shows a higher completion rate. What do you do first?","options":[{"key":"A","text":"Report the higher completion rate, with a note that the arms were unequal"},{"key":"B","text":"Delete 760 applicants at random from the old form's arm"},{"key":"C","text":"Reweight the new form's arm so that both arms count the same"},{"key":"D","text":"Find which applicants are missing from the new form's arm, and why"}],"correct":[3],"explanation":"Unequal counts mean that something other than the coin decided who is in the data. Until you know what, no comparison can be trusted.","misconceptions":["Reads the result of a comparison that is known to be broken","Forces equal counts without knowing which units are missing: the arms stay incomparable","Assumes the missing applicants are a random handful, which is the thing in doubt",""],"lo":["LO4"]},{"id":"check-interval-reading-q1","slide":"check-interval-reading","type":"single","prompt":"A test of a new letter has a minimum effect of 3 points. The result: +1.2 points, 95% interval +0.4 to +2.0, p = 0.003. Which sentence is right?","options":[{"key":"A","text":"The letter helps, by less than the 3 points that would justify it"},{"key":"B","text":"The letter is highly effective: the result is significant at 0.003"},{"key":"C","text":"The letter has no effect, since it missed the minimum effect"},{"key":"D","text":"The test is inconclusive and should run longer"}],"correct":[0],"explanation":"The whole interval is above zero and below 3 points: a real gain, too small to act on.","misconceptions":["","Reads a small p-value as a large or important effect","Treats 'below the minimum' as 'no effect', although zero is outside the interval","Asks for more data when the interval already rules out the minimum effect"],"lo":["LO4"]},{"id":"check-which-trap-q1","slide":"check-which-trap","type":"single","prompt":"A team planned a 4-week test of a new queue screen in 30 branches with one primary metric. They analysed it once, at the end, and report: \"average wait fell, p = 0.01, n = 41,000 visits\". Which trap should you check first?","options":[{"key":"A","text":"Peeking"},{"key":"B","text":"Many metrics"},{"key":"C","text":"Wrong unit of analysis"},{"key":"D","text":"Novelty"}],"correct":[2],"explanation":"Branches were randomised and visits were counted. The test has 30 units, and \"n = 41,000\" is the sign that they were not the ones analysed.","misconceptions":["The team looked once, at the planned end","One primary metric was named in advance and reported","","Four weeks is a full cycle; novelty is possible but is not what the reported n points to"],"lo":["LO5"]},{"id":"check-supported-decision-q1","slide":"check-supported-decision","type":"single","prompt":"A write-up reports a randomised test of a new appointment text, analysed as pre-registered: missed appointments fell by 1.9 points (0.4 to 3.4), against a minimum effect of 1.5. It then recommends the text \"for all clinics, and for vaccination reminders too\". The test ran in the city's eight clinics. What do you write?","options":[{"key":"A","text":"Reject the write-up: the claim goes beyond the evidence"},{"key":"B","text":"Adopt the text for appointments in the eight clinics; test vaccination reminders separately"},{"key":"C","text":"Accept the recommendation as written: the test was sound"},{"key":"D","text":"Ask for a longer test before deciding anything"}],"correct":[1],"explanation":"The test supports what it tested: this text, for appointments, in these clinics. The rest is a new hypothesis.","misconceptions":["Throws out a sound result because the recommendation overreaches","","Accepts an extension to a different message and purpose that nobody tested","Asks for more data although the estimate meets the minimum and the analysis was as planned"],"lo":["LO6"]}],"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":"day3.md","llms":"../llms.txt"},"tasks":[],"tools":[]},"bridge":{"allowedOrigins":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

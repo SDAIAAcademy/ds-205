@@ -1,0 +1,31 @@
+{
+ "title": "Reminder test",
+ "decision": "Sahar Al-Wuhaibi decides whether to add the reminder. If on-time renewal improves, the office adopts the reminder; if it does not improve, the office keeps the standard notice.",
+ "hypothesis": "The reminder raises on-time renewal among permit holders.",
+ "arms": "Control gets the standard notice, as today. The other arm gets the standard notice and a reminder seven days before expiry. Half of the notices go to each arm.",
+ "withholding": "The control arm keeps the service it has today, and the reminder has not been shown to help yet, so nobody is denied a proven benefit.",
+ "primary_metric": {
+  "name": "on-time renewal and counter visits",
+  "definition": "we will report whichever of the two shows the clearer improvement"
+ },
+ "minimum_effect": null,
+ "minimum_effect_reason": "Any improvement is worth having.",
+ "secondary_metrics": [
+  "complaints"
+ ],
+ "guardrails": [
+  {
+   "metric": "complaint rate",
+   "threshold": null,
+   "action": "we will keep an eye on it"
+  }
+ ],
+ "stop_rule": "We check the dashboard daily and stop as soon as the difference is significant, so that holders benefit sooner.",
+ "unit": "renewal notice",
+ "unit_reason": "Notices are what the platform sends, so the coin is tossed per notice.",
+ "sample_size_per_arm": 9200,
+ "duration_days": 10,
+ "analysis_plan": "We will explore the data when the test ends and choose the test that fits best.",
+ "checks": "A sample ratio check against 50/50 and a balance table of channel and holder type before the result is read.",
+ "data": "Pseudonymised notice keys only; no names or phone numbers leave the platform. Results are reported in aggregate, never by holder."
+}

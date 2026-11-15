@@ -1,0 +1,64 @@
+{
+ "applicant_test": [
+  0.12987378589407486,
+  0.12349117504094448,
+  0.2491959394381247
+ ],
+ "case": [
+  "C",
+  "The training programme needs a cluster design, which I found hardest in lab 2.3, so I want to do it once more."
+ ],
+ "common_devices": -0.016447283438279392,
+ "found": {
+  "different_measurement": false,
+  "many_comparisons": true,
+  "metric_switch": true,
+  "no_control": false,
+  "not_random": false,
+  "overclaim": true,
+  "peeking": true,
+  "ratio_mismatch": true,
+  "short_run": true,
+  "wrong_unit": true
+ },
+ "memo": {
+  "flaws": [
+   [
+    "ratio_mismatch",
+    "The redesigned form logged no applicant on an old mobile browser, so the arms no longer hold comparable applicants and every comparison leans towards the redesign."
+   ],
+   [
+    "wrong_unit",
+    "Applicants were randomised but page views were analysed; counted per applicant, the difference in validation errors is not significant."
+   ],
+   [
+    "metric_switch",
+    "The pre-registered primary metric, completion, shows no clear effect; the headline metric was chosen after the data were seen."
+   ],
+   [
+    "peeking",
+    "The test was stopped on day 8 of 28 at a significant daily look, a rule that declares a win in a large share of tests with no effect."
+   ],
+   [
+    "many_comparisons",
+    "Fourteen metrics and several subgroups were examined and the best were reported, so some apparent gain is expected by chance alone."
+   ],
+   [
+    "short_run",
+    "Eight days cover one weekend and no month-end, and first reactions to a new form may fade."
+   ],
+   [
+    "overclaim",
+    "One form was tested for eight days; nothing supports replacing all forms or the figure of 9,000 completed applications a year."
+   ]
+  ],
+  "next_step": "Fix the old-browser fault, then run the test again for the full 28 days as pre-registered, with one analysis at the end, completion as the primary metric, applicants as the unit of analysis and a sample ratio check before the result is read.",
+  "supported_decision": "The evidence does not support rolling out the redesign. It supports one finding the write-up dismissed: the redesigned form does not work on old mobile browsers, which must be fixed before any further test. On completion, the pre-registered metric, the test shows no reliable difference."
+ },
+ "p_page": 0.0002007144359025367,
+ "ratio": [
+  2738,
+  2330,
+  9.97513455678076e-09
+ ]
+}

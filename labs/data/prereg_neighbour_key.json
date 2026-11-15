@@ -1,0 +1,50 @@
+{
+ "C1": {
+  "verdict": "pass",
+  "reason": "It names who decides and what happens either way, although the word improves still needs the number that C5 asks for."
+ },
+ "C2": {
+  "verdict": "pass",
+  "reason": "Change, metric and direction are all there."
+ },
+ "C3": {
+  "verdict": "fail",
+  "reason": "The coin is tossed per notice. A holder with three permits can get the reminder for one and not for another, so one person sits in both arms."
+ },
+ "C4": {
+  "verdict": "fail",
+  "reason": "Two primary metrics, with the choice left until the data are in. That is a second chance at a win."
+ },
+ "C5": {
+  "verdict": "fail",
+  "reason": "Any improvement is not a number. Without one there is no sample size and no line between a result worth acting on and noise."
+ },
+ "C6": {
+  "verdict": "fail",
+  "reason": "One guardrail with no threshold and no action. Keeping an eye on it stops nothing."
+ },
+ "C7": {
+  "verdict": "fail",
+  "reason": "Stopping at the first significant day is peeking. The false-win rate is far above 5%."
+ },
+ "C8": {
+  "verdict": "fail",
+  "reason": "Ten days cover one whole week and part of another, and no month-end. The size has no stated source because there is no minimum effect."
+ },
+ "C9": {
+  "verdict": "fail",
+  "reason": "The test is chosen after the data are seen. Nothing says which unit is analysed or that holders are analysed as assigned."
+ },
+ "C10": {
+  "verdict": "pass",
+  "reason": "Both checks are planned before the result is read."
+ },
+ "C11": {
+  "verdict": "fail",
+  "reason": "Arms and the reason for withholding are stated, but no guardrail protects any group of holders from harm."
+ },
+ "C12": {
+  "verdict": "pass",
+  "reason": "Fields, pseudonymised keys and aggregate reporting are stated. A retention date would make it better."
+ }
+}

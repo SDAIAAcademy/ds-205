@@ -1,0 +1,44 @@
+{
+ "by_day": {
+  "mean_notices": {
+   "Fri": 1203.0384615384614,
+   "Mon": 2523.576923076923,
+   "Sat": 1504.8846153846155,
+   "Sun": 2534.076923076923,
+   "Thu": 2360.269230769231,
+   "Tue": 2534.346153846154,
+   "Wed": 2409.1153846153848
+  },
+  "rate": {
+   "Fri": 0.5828830844975862,
+   "Mon": 0.62640025604682,
+   "Sat": 0.5835612237074144,
+   "Sun": 0.6216191603679082,
+   "Thu": 0.6210015154724852,
+   "Tue": 0.6219021747378325,
+   "Wed": 0.6236888739882178
+  }
+ },
+ "by_peak": {
+  "mean_notices": {
+   "0": 1977.6133333333332,
+   "1": 2973.75
+  },
+  "rate": {
+   "0": 0.6287208149891115,
+   "1": 0.5755569567044977
+  }
+ },
+ "duration": 28,
+ "est": {
+  "14": 1.8190863725289352,
+  "28": 2.347711609007373,
+  "9": 1.864527547824181
+ },
+ "need": 9,
+ "record": {
+  "duration_days": 28,
+  "reason": "The size for 2 points is reached on day 9, but the test runs four whole weeks so that every weekday counts equally and the month-end peak, when traffic and behaviour differ, is inside the window."
+ },
+ "stretch": 3.2266143136566696
+}
