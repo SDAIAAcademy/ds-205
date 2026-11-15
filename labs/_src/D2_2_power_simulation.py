@@ -209,8 +209,9 @@ try:
 except NotImplementedError:
     fpr = U.reference("d2_2", "fpr")
 U.keep("d2_2", "fpr", fpr)
-print(f"no true effect: {fpr:.1%} of {REPS} tests were significant (the level promised 5%, give or take {counting_error(0.05, REPS) * 100:.1f} points)")
-U.check(fpr < 0.05 + 1.5 * counting_error(0.05, REPS), "with one planned analysis the false-positive rate is the 5% you agreed to")
+fpr_error = 2 * np.sqrt(0.05 * 0.95 / REPS)        # two standard errors of a share near 5% counted over REPS tests
+print(f"no true effect: {fpr:.1%} of {REPS} tests were significant (the level promised 5%, give or take {fpr_error * 100:.1f} points)")
+U.check(fpr < 0.05 + 1.5 * fpr_error, "with one planned analysis the false-positive rate is the 5% you agreed to")
 
 # %% [markdown]
 # **Look at.** One test in twenty wins when nothing is there. That is the price written into α, and it holds only for one planned analysis of one metric at one moment. Lab 3.3 breaks each of those three conditions and counts the damage.

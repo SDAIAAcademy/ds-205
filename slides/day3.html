@@ -1,158 +1,569 @@
 <section class="slide title" id="title" data-auto="title">
-  <aside class="notes">REPLACE: welcome; introduce yourself; one question to the room that calibrates the pace; the rhythm of the day</aside>
+  <aside class="notes"><p>The reminder test has run its 28 days and the outcome window has closed. Set the scene: a colleague has the platform's export open and is one line of code away from "the effect". Ask the room what they would do first. Most will say "compute the difference". Today starts with why not.</p></aside>
 </section>
 
-<section class="slide" id="agenda" data-auto="agenda"></section>
+<section class="slide" id="agenda" data-auto="agenda">
+  <aside class="notes"><p>Session 1 checks the assignment before any result is read. Session 2 reads the result as an interval against the minimum effect. Session 3 counts how three ordinary habits manufacture wins. Session 4 turns all of it on someone else's write-up, and ends with the choice of a capstone case.</p></aside>
+</section>
 
-<!-- Session 1 -->
+<section class="slide" id="review-day2" data-lo="LO3" data-label="Review">
+  <div class="kicker">Review of Day 2</div>
+  <h2>Which plan gives the test a fair chance?</h2>
+  <div class="quiz" data-type="single" data-lo="LO3">
+    <p class="lead">A test needs 9,000 residents per arm for its minimum effect. Traffic is 2,000 residents a day, lower at weekends, with a surge at the month-end. Which plan do you accept?</p>
+    <div class="opts">
+      <div class="opt" data-why="Reaches the size and counts some weekdays twice and others once, with no month-end">Run 9 days, until 18,000 residents are in</div>
+      <div class="opt" data-ok>Run 28 days: whole weeks, with the month-end inside</div>
+      <div class="opt" data-why="Halves the size, which cuts the power for the stated minimum effect far below 80%">Run 9 days with 4,500 per arm to finish sooner</div>
+      <div class="opt" data-why="Lets the result decide the duration, which is peeking">Run until the difference is significant</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The formula gives the minimum size. The calendar gives the duration: whole cycles.</div>
+  </div>
+  <aside class="notes"><p>Answer: B. Two minutes. Option D is today's third session in one line. If the room is unsure about C, redo the square: half the size detects an effect about 1.4 times larger, not the one the director asked for.</p></aside>
+</section>
 
+<!-- ======================= SESSION 1 ======================= -->
 <section class="slide section" id="s1" data-auto="section" data-session="1"></section>
 
-<section class="slide" id="s1-idea" data-lo="LO4">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+<section class="slide" id="checks-before-result" data-lo="LO4" data-label="Checks first">
+  <div class="kicker">The order of reading</div>
+  <h2>Check the assignment before you look at the outcome</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>1 · Sample ratio</b>are the arms the size the coin should give?</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>2 · Balance</b>do the arms look alike on traits fixed before the test?</div>
+    <div class="arrow">→</div>
+    <div class="step c-purple"><b>3 · Completeness</b>is every assigned unit there, with its outcome?</div>
+    <div class="arrow">→</div>
+    <div class="step c-coral"><b>4 · The result</b>only now</div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <div class="callout tip mt"><b>Why this order.</b> Once you have seen a pleasing result, every check that threatens it looks like pedantry. The page promised the checks first; keep the promise.</div>
+  <aside class="notes"><p>These are items C10 of the checklist, written on Day 1. Experiment teams that run many tests report that a failed sample ratio is one of the most common signs of a broken test. Source: Fabijan and others (2019).</p></aside>
 </section>
 
-<section class="slide" id="s1-steps" data-lo="LO4">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="sample-ratio-check" data-lo="LO4" data-label="The ratio check">
+  <div class="kicker">Lab 3.1, step 1 · the platform's export</div>
+  <h2>49.05% in the reminder arm is not what a fair coin gives</h2>
+  <div class="cols cols-3">
+    <div class="stat"><div class="big">30,054</div><div class="lbl">rows in the control arm of the export</div></div>
+    <div class="stat"><div class="big">28,932</div><div class="lbl">rows in the reminder arm</div></div>
+    <div class="stat"><div class="big">0.000004</div><div class="lbl">p-value of a chi-square test against 50/50; the page set the line at 0.001</div></div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <ul class="bullets mt">
+    <li>A gap of one point looks harmless. With 59,000 rows a fair coin produces it about four times in a million.</li>
+    <li>A failed check means: do not read the result until the cause is found.</li>
+  </ul>
+  <aside class="notes"><p>The check is called a sample ratio mismatch test. In code: stats.chisquare of the two counts, which tests against equal counts. The line of 0.001 is stricter than 0.05 on purpose: the check runs on every test, and with a healthy assignment it fails about once in a thousand, as the stretch of lab 3.1 shows (0.08% over 20,000 simulated assignments).</p></aside>
+</section>
+
+<section class="slide" id="balance-names-a-suspect" data-lo="LO4" data-label="Balance">
+  <div class="kicker">Lab 3.1, step 2</div>
+  <h2>The balance table names a suspect</h2>
+  <table class="t">
+    <tr><th>Trait fixed before the test</th><th>Control</th><th>Reminder</th><th>p</th></tr>
+    <tr><td><b>E-mail channel</b></td><td><b>15.04%</b></td><td><b>12.02%</b></td><td><b>below 0.0001</b></td></tr>
+    <tr><td>Business holder</td><td>38.57%</td><td>38.34%</td><td>0.56</td></tr>
+    <tr><td>Late at the previous renewal</td><td>21.95%</td><td>21.96%</td><td>0.97</td></tr>
+    <tr><td>Tenure, years</td><td>4.63</td><td>4.60</td><td>0.17</td></tr>
+  </table>
+  <div class="callout note mt"><b>Reading it.</b> With four traits, one p-value near 0.05 would mean little. One that is far beyond any chance, on one trait, says where to look.</div>
+  <aside class="notes"><p>Solution run of lab 3.1. A balance table compares the arms only on things that were fixed before assignment; an outcome can never be in it. Balance tests are a diagnostic, not a licence: a table without a significant difference does not prove that the assignment was sound.</p></aside>
+</section>
+
+<section class="slide" id="one-empty-cell" data-lo="LO4" data-label="Locating the fault">
+  <div class="kicker">Lab 3.1, step 3</div>
+  <h2>One cell of the export is empty</h2>
+  <table class="t small">
+    <tr><th>Channel</th><th>Week</th><th>Control rows</th><th>Reminder rows</th><th>Share in the reminder arm</th></tr>
+    <tr><td><b>E-mail</b></td><td><b>1</b></td><td><b>1,071</b></td><td><b>0</b></td><td><b>0.0%</b></td></tr>
+    <tr><td>E-mail</td><td>2</td><td>1,017</td><td>1,075</td><td>51.4%</td></tr>
+    <tr><td>E-mail</td><td>3</td><td>1,087</td><td>1,056</td><td>49.3%</td></tr>
+    <tr><td>E-mail</td><td>4</td><td>1,345</td><td>1,347</td><td>50.0%</td></tr>
+    <tr><td>Text message</td><td>1 to 4</td><td>25,534</td><td>25,454</td><td>49.9%</td></tr>
+  </table>
+  <div class="callout warn mt"><b>What happened.</b> In week 1 the reminder job failed for e-mail. The export lists a notice only when its arm's messages completed, so those holders vanished from it.</div>
+  <aside class="notes"><p>The way to find a fault: split the ratio by everything you have, channel, week, permit type, until one cell stands out. In real work the explanation comes from the platform's engineers; the analyst's part is to bring them the cell. These holders received the standard notice and no reminder.</p></aside>
+</section>
+
+<section class="slide" id="coin-was-fair" data-lo="LO4" data-label="The assignment was sound">
+  <div class="kicker">Lab 3.1, step 4</div>
+  <h2>The coin was fair. The export broke afterwards</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>The assignment was recorded before any message went out: 30,054 and 29,946 holders. Ratio check: p = 0.66.</li>
+      <li>1,014 holders are missing from the export. All are reminder-arm e-mail holders of week 1.</li>
+      <li>They are not a typical handful: 49.6% of them renewed on time, against 63.5% of all holders.</li>
+    </ul>
+    <div class="card c-coral"><h4>Attrition</h4><p class="small mb0">Units that drop out of one arm after assignment. When the ones that drop differ from the rest, the arms stop being comparable, and the coin's work is undone.</p></div>
+  </div>
+  <aside class="notes"><p>Two different failures produce a bad ratio: a faulty assignment and a loss after assignment. An assignment log written before the test is what tells them apart, which is why the pre-registration asks for a seeded, recorded coin. E-mail holders renew on time less often in general, so removing them from one arm flatters that arm.</p></aside>
+</section>
+
+<section class="slide" id="what-the-fault-would-claim" data-lo="LO4" data-label="The cost of the fault">
+  <div class="kicker">Lab 3.1, step 5</div>
+  <h2>The faulty export adds half a point to the reminder's credit</h2>
+  <div class="cols cols-3">
+    <div class="stat"><div class="big">+2.69</div><div class="lbl">points: the effect computed from the export</div></div>
+    <div class="stat"><div class="big">+2.17</div><div class="lbl">points: the effect as assigned, on all 60,000 holders</div></div>
+    <div class="stat"><div class="big">+0.53</div><div class="lbl">points of bias from 1,014 missing rows</div></div>
+  </div>
+  <div class="callout tip mt"><b>What to analyse.</b> Everyone the coin was tossed for, in the arm it chose, including the 1,014 the reminder never reached. That is "as assigned" on the page.</div>
+  <aside class="notes"><p>With a minimum effect of 2 points, half a point of bias is the difference between a comfortable result and a borderline one. Analysis as assigned estimates the effect of deciding to send reminders through this platform, failures included. That is the decision Sahar faces. Dropping the unreached holders is what the export did by accident.</p></aside>
+</section>
+
+<section class="slide" id="after-a-failed-check" data-lo="LO4" data-label="After a failed check">
+  <div class="kicker">What to do</div>
+  <h2>A failed ratio check stops the reading, not necessarily the test</h2>
+  <ul class="bullets">
+    <li><b>Stop reading results.</b> Nothing computed from a broken comparison is worth quoting.</li>
+    <li><b>Find the cell.</b> Split by segment and by time until the loss is located.</li>
+    <li><b>Go back to the assignment record.</b> If it is sound and outcomes exist for everyone, analyse as assigned.</li>
+    <li><b>If the assignment itself was faulty,</b> or outcomes are missing for the lost units, the test cannot be repaired. Fix the cause and run it again.</li>
+    <li><b>Write it in the result note,</b> whichever it was.</li>
+  </ul>
+  <aside class="notes"><p>Here the second branch applies: the assignment record is sound and the permit register has an outcome for every holder. Also worth a sentence: a passing ratio check does not prove a sound test. Equal counts can hide a swap of who is in which arm, or outcomes recorded differently by arm. The check catches one family of faults.</p></aside>
+</section>
+
+<section class="slide" id="check-failed-ratio" data-lo="LO4">
+  <div class="kicker">Checkpoint</div>
+  <h2>The ratio check has failed. What now?</h2>
+  <div class="quiz" data-type="single" data-lo="LO4">
+    <p class="lead">A form test planned a 50/50 split. The log shows 10,480 applicants on the old form and 9,720 on the new one (p below 0.0001). The new form shows a higher completion rate. What do you do first?</p>
+    <div class="opts">
+      <div class="opt" data-why="Reads the result of a comparison that is known to be broken">Report the higher completion rate, with a note that the arms were unequal</div>
+      <div class="opt" data-why="Forces equal counts without knowing which units are missing: the arms stay incomparable">Delete 760 applicants at random from the old form's arm</div>
+      <div class="opt" data-why="Assumes the missing applicants are a random handful, which is the thing in doubt">Reweight the new form's arm so that both arms count the same</div>
+      <div class="opt" data-ok>Find which applicants are missing from the new form's arm, and why</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Unequal counts mean that something other than the coin decided who is in the data. Until you know what, no comparison can be trusted.</div>
+  </div>
+  <aside class="notes"><p>Answer: D. The numbers are invented for the question, but the situation returns in session 4: in the write-up of the form test, applicants on old mobile browsers are missing from the redesigned arm, and the author "put it down to chance".</p></aside>
 </section>
 
 <section class="slide lab" id="lab-3-1" data-auto="lab" data-lab="3.1">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>The tutor instruction may hint on the dataframe code; the decision in step 5 is the participant's. Both files are supplied and nothing from Days 1 and 2 is needed. Let the room find the empty cell by themselves in step 3: split by channel first, then by week. Expected: p = 3.8e-06 on the export, 0.66 as assigned; 1,014 missing rows; +2.69 against +2.17 points.</p></aside>
 </section>
 
-<!-- Session 2 -->
-
+<!-- ======================= SESSION 2 ======================= -->
 <section class="slide section" id="s2" data-auto="section" data-session="2"></section>
 
-<section class="slide" id="s2-idea" data-lo="LO4">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+<section class="slide" id="estimate-and-interval" data-lo="LO4" data-label="The estimate">
+  <div class="kicker">Lab 3.2, steps 1 and 2 · 60,000 holders as assigned</div>
+  <h2>The reminder raised on-time renewal by 2.17 points, give or take 0.77</h2>
+  <table class="t">
+    <tr><th>Arm</th><th>Holders</th><th>Renewed on time</th><th>Rate</th></tr>
+    <tr><td>Control</td><td>30,054</td><td>18,772</td><td>62.46%</td></tr>
+    <tr><td>Reminder</td><td>29,946</td><td>19,353</td><td>64.63%</td></tr>
+  </table>
+  <div class="cols cols-3 mt">
+    <div class="stat"><div class="big">+2.17</div><div class="lbl">points: the difference</div></div>
+    <div class="stat"><div class="big">0.39</div><div class="lbl">points: its standard error</div></div>
+    <div class="stat"><div class="big">1.40 to 2.94</div><div class="lbl">the 95% interval</div></div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <aside class="notes"><p>Solution run of lab 3.2. The standard error of a difference of two proportions is the square root of the sum of the two squared standard errors, as in the pre-work; the interval is the estimate plus and minus 1.96 of them. A bootstrap over holders gives 1.39 to 2.96, the lab's stretch.</p></aside>
 </section>
 
-<section class="slide" id="s2-steps" data-lo="LO4">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="two-questions" data-lo="LO4" data-label="Two questions">
+  <div class="kicker">Lab 3.2, step 3</div>
+  <h2>"Is there an effect?" and "Is it large enough?" are different questions</h2>
+  <div class="cols cols-32">
+    <div class="figure">
+<!--FIG:interval-->
+<svg viewBox="0 0 720 400" role="img" aria-label="Two intervals for the effect of the reminder in points: as assigned 2.17 with an interval from 1.40 to 2.94, which contains the minimum effect of 2; from the faulty export 2.69 with an interval from 1.92 to 3.47">
+<rect x="64" y="18" width="636" height="338" fill="none" stroke="var(--line)"/>
+<line x1="134.7" x2="134.7" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="134.7" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">0</text>
+<line x1="276.0" x2="276.0" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="276.0" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">+1</text>
+<line x1="417.3" x2="417.3" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="417.3" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">+2</text>
+<line x1="558.7" x2="558.7" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="558.7" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">+3</text>
+<line x1="700.0" x2="700.0" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="700.0" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">+4</text>
+<line x1="134.7" x2="134.7" y1="18" y2="356" stroke="var(--ink, currentColor)" stroke-width="2" stroke-dasharray="0"/>
+<text x="141.7" y="36" text-anchor="start" font-size="15" fill="var(--ink, currentColor)">no effect</text>
+<line x1="417.3" x2="417.3" y1="18" y2="356" stroke="var(--coral)" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="424.3" y="36" text-anchor="start" font-size="15" fill="var(--ink, currentColor)">minimum effect: 2 points</text>
+<line x1="331.9" x2="549.5" y1="130.7" y2="130.7" stroke="var(--teal)" stroke-width="6" stroke-linecap="round"/>
+<circle cx="440.7" cy="130.7" r="9" fill="var(--teal)"/>
+<text x="331.9" y="112.7" text-anchor="start" font-size="15" fill="var(--ink, currentColor)">as assigned, 60,000 holders: +2.17 (1.40 to 2.94)</text>
+<line x1="405.5" x2="624.7" y1="254.6" y2="254.6" stroke="var(--purple)" stroke-width="6" stroke-linecap="round"/>
+<circle cx="515.1" cy="254.6" r="9" fill="var(--purple)"/>
+<text x="405.5" y="236.6" text-anchor="start" font-size="15" fill="var(--ink, currentColor)">from the faulty export: +2.69 (1.92 to 3.47)</text>
+<text x="382.0" y="396" text-anchor="middle" font-size="14" fill="var(--muted)">effect of the reminder on on-time renewal, points</text>
+</svg>
+<!--/FIG:interval-->
+      <div class="caption">The effect as assigned, and what the faulty export would have shown.</div>
+    </div>
+    <ul class="bullets">
+      <li><b>Is there an effect?</b> Yes. Zero is far outside the interval; p is below one in a million.</li>
+      <li><b>Is it at least 2 points?</b> The estimate says just. The interval says: between 1.4 and 2.9.</li>
+      <li>The interval <b>straddles</b> the minimum effect.</li>
+    </ul>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <aside class="notes"><p>DS-201 called these statistical and practical significance. A tiny p-value tells the director nothing about the second question, and the second question is the one on her page. Note what the export's interval would have suggested: a result comfortably around 2.7.</p></aside>
+</section>
+
+<section class="slide" id="reading-against-the-minimum" data-lo="LO4" data-label="Four readings">
+  <div class="kicker">The interval against the minimum effect</div>
+  <h2>An interval can sit in four places, and each has its own sentence</h2>
+  <table class="t small">
+    <tr><th>Where the interval lies</th><th>What to say</th></tr>
+    <tr><td>Wholly above the minimum effect</td><td>The gain is at least the minimum, beyond reasonable doubt.</td></tr>
+    <tr><td><b>Above zero, straddling the minimum</b></td><td><b>There is a gain. Whether it reaches the minimum is not settled.</b></td></tr>
+    <tr><td>Above zero, wholly below the minimum</td><td>There is a gain, and it is too small to act on.</td></tr>
+    <tr><td>Containing zero</td><td>The data are consistent with no effect, and with effects up to the upper limit. Say which.</td></tr>
+  </table>
+  <div class="callout warn mt"><b>What goes wrong.</b> All four are reported as "significant" or "not significant", which merges the first three and misdescribes the fourth.</div>
+  <aside class="notes"><p>The reminder test is in the second row. The fourth row matters as much: "not significant" with an interval from minus 0.5 to plus 3 does not mean "no effect"; it means the test could not tell, and the upper limit says how large an effect is still possible.</p></aside>
+</section>
+
+<section class="slide" id="guardrails-with-intervals" data-lo="LO4" data-label="Guardrails">
+  <div class="kicker">Lab 3.2, step 4</div>
+  <h2>Guardrails are read with their intervals too</h2>
+  <table class="t small">
+    <tr><th>Guardrail or metric</th><th>Effect of the reminder</th><th>95% interval</th><th>Threshold</th></tr>
+    <tr><td>Complaint rate</td><td>+0.14 points</td><td>up to +0.30</td><td>+0.50: held</td></tr>
+    <tr><td>On-time renewal, e-mail holders</td><td>+0.20 points</td><td>−1.86 to +2.26</td><td rowspan="4">−3.00: held in every group</td></tr>
+    <tr><td>On-time renewal, text-message holders</td><td>+2.51 points</td><td>+1.68 to +3.33</td></tr>
+    <tr><td>On-time renewal, business holders</td><td>+1.37 points</td><td>+0.11 to +2.63</td></tr>
+    <tr><td>On-time renewal, resident holders</td><td>+2.65 points</td><td>+1.68 to +3.62</td></tr>
+    <tr><td>Counter visits (secondary)</td><td>−1.79 points</td><td>−2.34 to −1.24</td><td>none</td></tr>
+  </table>
+  <div class="callout note mt"><b>"No harm found" is weaker than "harm above the threshold ruled out".</b> Here the upper limit for complaints is below the threshold, so the stronger sentence holds.</div>
+  <aside class="notes"><p>The e-mail row deserves a minute: almost no effect, with a wide interval. No harm, so the guardrail holds. But a quarter of the e-mail holders in the reminder arm never got the reminder, which dilutes that row. It is a reason to ask the platform team for a clean e-mail run, not a finding that e-mail reminders do not work.</p></aside>
+</section>
+
+<section class="slide" id="subgroups-with-care" data-lo="LO4" data-label="Subgroups">
+  <div class="kicker">Lab 3.2, step 5 · exploratory, as the page said</div>
+  <h2>Compare subgroups by the interval of their difference</h2>
+  <div class="cols cols-2">
+    <table class="t">
+      <tr><th>Holders</th><th>Effect</th><th>95% interval</th></tr>
+      <tr><td>Late before (13,163)</td><td>+2.94</td><td>+1.23 to +4.65</td></tr>
+      <tr><td>Not late before (46,837)</td><td>+1.94</td><td>+1.09 to +2.79</td></tr>
+      <tr><td><b>Difference</b></td><td><b>+1.00</b></td><td><b>−0.91 to +2.91</b></td></tr>
+    </table>
+    <ul class="bullets">
+      <li>The smaller subgroup has the wider interval.</li>
+      <li>The difference between the two could be zero, or nearly 3 points.</li>
+      <li>Report it as a hypothesis for the next test, not as a finding of this one.</li>
+    </ul>
+  </div>
+  <div class="callout warn mt"><b>What goes wrong.</b> "It works for holders who were late before." Six subgroups are six more chances of a striking number.</div>
+  <aside class="notes"><p>The rule from DS-201 day 3 applies: "significant in one group and not in the other" is not evidence that the groups differ. The trainer knows something the participants do not: the generator did give late holders a larger true effect. The test cannot show it with this many holders. That is the honest state of knowledge after one test.</p></aside>
+</section>
+
+<section class="slide" id="result-in-two-sentences" data-lo="LO4" data-label="Two sentences">
+  <div class="kicker">Lab 3.2, step 6</div>
+  <h2>The result note leads with two sentences the director can act on</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>The two sentences</h4><p class="small mb0">"The reminder raised on-time renewal by 2.2 points, and the data are consistent with a gain between 1.4 and 2.9 points. The estimate meets the minimum effect of 2 points, though the gain may be somewhat smaller, and no guardrail was crossed, so the evidence supports adopting the reminder."</p></div>
+    <ul class="bullets">
+      <li>Estimate and interval first, in points.</li>
+      <li>Then the reading against the minimum effect and the guardrails.</li>
+      <li>Then what the pre-registered decision rule gives.</li>
+      <li>The checks, the fault in the export and the subgroup follow underneath.</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>The page's rule was: adopt if the reminder raises on-time renewal by at least 2 points and no guardrail is crossed. The estimate clears it narrowly, and an honest note says so. For the trainer only: the generator's true effect as assigned is 2.8 points, so this test's estimate is a slightly unlucky draw, about 1.6 standard errors low, and its interval contains the truth. Say it after the lab: one test is one draw.</p></aside>
+</section>
+
+<section class="slide" id="check-interval-reading" data-lo="LO4">
+  <div class="kicker">Checkpoint</div>
+  <h2>How do you report this result?</h2>
+  <div class="quiz" data-type="single" data-lo="LO4">
+    <p class="lead">A test of a new letter has a minimum effect of 3 points. The result: +1.2 points, 95% interval +0.4 to +2.0, p = 0.003. Which sentence is right?</p>
+    <div class="opts">
+      <div class="opt" data-ok>The letter helps, by less than the 3 points that would justify it</div>
+      <div class="opt" data-why="Reads a small p-value as a large or important effect">The letter is highly effective: the result is significant at 0.003</div>
+      <div class="opt" data-why="Treats 'below the minimum' as 'no effect', although zero is outside the interval">The letter has no effect, since it missed the minimum effect</div>
+      <div class="opt" data-why="Asks for more data when the interval already rules out the minimum effect">The test is inconclusive and should run longer</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The whole interval is above zero and below 3 points: a real gain, too small to act on.</div>
+  </div>
+  <aside class="notes"><p>Answer: A. This is the third row of the four-readings table. Option D is the instructive one: more data would narrow the interval around 1.2, further from 3. The test has answered the question.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-3-2" data-auto="lab" data-lab="3.2">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Steps 1 to 3 without an assistant: the first pass of an analysis step is the participant's own. The lab reads the test as assigned and needs nothing from lab 3.1. Typical errors: the pooled standard error used for the interval; a difference taken control minus reminder; "per cent" written for points. Expected: +2.17 points, 1.40 to 2.94, "straddles". The two sentences of step 6, with the checks of 3.1, are the evidence of the fourth outcome.</p></aside>
 </section>
 
-<!-- Session 3 -->
-
+<!-- ======================= SESSION 3 ======================= -->
 <section class="slide section" id="s3" data-auto="section" data-session="3"></section>
 
-<section class="slide" id="s3-idea" data-lo="LO5">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
+<section class="slide" id="aa-tests" data-lo="LO5" data-label="A/A tests">
+  <div class="kicker">The measuring instrument of this session</div>
+  <h2>In an A/A test nothing differs, so every win is false</h2>
   <div class="cols cols-2">
     <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
+      <li>Both arms get the same thing. The true effect is zero by construction.</li>
+      <li>Run 1,000 of them and count the "significant" ones.</li>
+      <li>With one planned analysis of one metric at the right unit: <b>5.5%</b> of 1,000.</li>
+      <li>That is the 5% you agreed to. Anything above it was added by a habit.</li>
     </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+    <div class="card c-teal"><h4>Three habits, three counts</h4><p class="small mb0">Looking every day. Looking at twenty metrics. Counting page views in place of applicants. Each feels harmless, and each can be found in reports written by careful people.</p></div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <aside class="notes"><p>Solution run of lab 3.3: 1,000 simulated A/A tests of 28 days with 1,070 holders per arm per day. Teams also run real A/A tests on their platform before trusting it: if the platform itself declares wins at more than 5%, something in the pipeline is wrong. DS-302 returns to that.</p></aside>
 </section>
 
-<section class="slide" id="s3-steps" data-lo="LO5">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="peeking" data-lo="LO5" data-label="Peeking">
+  <div class="kicker">Lab 3.3, step 2</div>
+  <h2>A p-value wanders, and 28 looks give it 28 chances to cross 0.05</h2>
+  <div class="cols cols-32">
+    <div class="figure">
+<!--FIG:peeking-->
+<svg viewBox="0 0 720 400" role="img" aria-label="The p-value of three A/A tests day by day over 28 days on a logarithmic scale: each path wanders, dips below 0.05 on some days and is above 0.05 again on day 28">
+<rect x="64" y="18" width="636" height="338" fill="none" stroke="var(--line)"/>
+<line x1="64" x2="700" y1="311.8" y2="311.8" stroke="var(--line)" stroke-dasharray="3 4"/>
+<text x="56" y="316.8" text-anchor="end" font-size="14" fill="var(--muted)">0.01</text>
+<line x1="64" x2="700" y1="209.1" y2="209.1" stroke="var(--line)" stroke-dasharray="3 4"/>
+<text x="56" y="214.1" text-anchor="end" font-size="14" fill="var(--muted)">0.05</text>
+<line x1="64" x2="700" y1="120.7" y2="120.7" stroke="var(--line)" stroke-dasharray="3 4"/>
+<text x="56" y="125.7" text-anchor="end" font-size="14" fill="var(--muted)">0.2</text>
+<line x1="64" x2="700" y1="18.0" y2="18.0" stroke="var(--line)" stroke-dasharray="3 4"/>
+<text x="56" y="23.0" text-anchor="end" font-size="14" fill="var(--muted)">1</text>
+<line x1="64.0" x2="64.0" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="64.0" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">day 1</text>
+<line x1="205.3" x2="205.3" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="205.3" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">day 7</text>
+<line x1="370.2" x2="370.2" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="370.2" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">day 14</text>
+<line x1="535.1" x2="535.1" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="535.1" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">day 21</text>
+<line x1="700.0" x2="700.0" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="700.0" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">day 28</text>
+<line x1="64" x2="700" y1="209.1" y2="209.1" stroke="var(--ink, currentColor)" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="692" y="202.1" text-anchor="end" font-size="15" fill="var(--ink, currentColor)">0.05</text>
+<polyline points="64.0,68.8 87.6,162.6 111.1,218.9 134.7,167.5 158.2,178.8 181.8,237.1 205.3,188.1 228.9,198.3 252.4,138.8 276.0,131.6 299.6,85.3 323.1,111.1 346.7,129.2 370.2,115.6 393.8,130.3 417.3,109.4 440.9,76.4 464.4,73.4 488.0,82.4 511.6,127.5 535.1,72.4 558.7,99.2 582.2,83.4 605.8,102.9 629.3,82.4 652.9,65.5 676.4,72.4 700.0,67.6" fill="none" stroke="var(--teal)" stroke-width="2.5"/>
+<polyline points="64.0,88.1 87.6,18.0 111.1,46.0 134.7,56.2 158.2,37.6 181.8,48.1 205.3,97.0 228.9,45.6 252.4,28.6 276.0,58.8 299.6,74.3 323.1,56.5 346.7,67.6 370.2,69.3 393.8,141.1 417.3,149.1 440.9,188.9 464.4,233.0 488.0,219.5 511.6,210.3 535.1,203.3 558.7,170.4 582.2,109.2 605.8,133.9 629.3,141.1 652.9,139.8 676.4,123.6 700.0,131.5" fill="none" stroke="var(--coral)" stroke-width="2.5"/>
+<polyline points="64.0,121.7 87.6,207.3 111.1,324.4 134.7,179.5 158.2,106.6 181.8,80.6 205.3,60.6 228.9,90.1 252.4,70.2 276.0,53.4 299.6,61.8 323.1,53.6 346.7,63.4 370.2,92.0 393.8,85.5 417.3,86.9 440.9,81.2 464.4,76.1 488.0,98.1 511.6,77.6 535.1,44.2 558.7,46.2 582.2,57.2 605.8,45.5 629.3,41.7 652.9,20.3 676.4,22.5 700.0,18.4" fill="none" stroke="var(--purple)" stroke-width="2.5"/>
+<text x="382.0" y="396" text-anchor="middle" font-size="14" fill="var(--muted)">test day (no true effect in any of the three tests)</text>
+</svg>
+<!--/FIG:peeking-->
+      <div class="caption">Three A/A tests that dipped below 0.05 and came back.</div>
+    </div>
+    <ul class="bullets">
+      <li>Rule: stop on the first day the p-value is below 0.05.</li>
+      <li><b>27.8%</b> of 1,000 A/A tests declare a win.</li>
+      <li>Half of those false wins are declared by day 5.</li>
+    </ul>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <aside class="notes"><p>Looking is harmless. Acting on the look is the problem: stopping, extending or switching because of what was seen. The early days are the most dangerous: little data, large swings. Source for the mechanism and its remedies: Johari, Pekelis and Walsh, Always Valid Inference.</p></aside>
+</section>
+
+<section class="slide" id="one-planned-look" data-lo="LO5" data-label="The correct procedure">
+  <div class="kicker">The correct procedure, in this course</div>
+  <h2>One analysis at the planned end restores the 5%</h2>
+  <div class="cols cols-3">
+    <div class="stat"><div class="big">27.8%</div><div class="lbl">false wins: 28 daily looks, stop at the first p below 0.05</div></div>
+    <div class="stat"><div class="big">14.5%</div><div class="lbl">false wins: four weekly looks</div></div>
+    <div class="stat"><div class="big">5.5%</div><div class="lbl">false wins: one look, on day 28</div></div>
+  </div>
+  <ul class="bullets mt">
+    <li>A test stopped early on a false win also reports a large "effect": only large swings cross the line with little data.</li>
+    <li>Planned interim looks are possible with methods that spend the 5% across the looks. They are the subject of DS-302.</li>
+  </ul>
+  <aside class="notes"><p>The weekly figure is the stretch of lab 3.3. The safety look of the reminder test on day 14 read the guardrails only and could stop the test for harm, never for success; that asymmetry is why it does not inflate false wins of the primary metric.</p></aside>
+</section>
+
+<section class="slide" id="twenty-metrics" data-lo="LO5" data-label="Many metrics">
+  <div class="kicker">Lab 3.3, step 3</div>
+  <h2>With twenty metrics, most tests of nothing show a "significant" one</h2>
+  <div class="cols cols-3">
+    <div class="stat"><div class="big">64.1%</div><div class="lbl">of A/A tests have at least one of twenty metrics below 0.05</div></div>
+    <div class="stat"><div class="big">5.5%</div><div class="lbl">after Holm's correction for twenty</div></div>
+    <div class="stat"><div class="big">5.5%</div><div class="lbl">with one pre-registered primary metric</div></div>
+  </div>
+  <ul class="bullets mt">
+    <li>The chance that none of twenty unrelated metrics crosses is 0.95 to the power 20: 36%.</li>
+    <li>Two honest ways out: one primary metric named in advance, or a correction for the number examined.</li>
+    <li>Subgroups count the same way.</li>
+  </ul>
+  <aside class="notes"><p>DS-201 lab 3.4 met this with thirty districts and taught Holm and Benjamini-Hochberg. Nothing new is taught here; the correction is applied and the family error measured. The pre-registration's answer is the simpler one: a single primary metric carries the decision.</p></aside>
+</section>
+
+<section class="slide" id="wrong-unit-of-analysis" data-lo="LO5" data-label="Wrong unit">
+  <div class="kicker">Lab 3.3, step 4 · the form log, with applicants dealt a fresh coin</div>
+  <h2>Counting page views for applicants turns luck into significance</h2>
+  <div class="cols cols-2">
+    <div class="stat"><div class="big">34.0%</div><div class="lbl">of A/A tests are significant when 53,514 page views are analysed as independent</div></div>
+    <div class="stat"><div class="big">5.8%</div><div class="lbl">when the 5,068 applicants are analysed, as randomised</div></div>
+  </div>
+  <ul class="bullets mt">
+    <li>The page-level test believes it has ten times the information it has, so its standard error is too small.</li>
+    <li>Ordinary luck in which struggling applicants landed where then looks like an effect.</li>
+  </ul>
+  <aside class="notes"><p>This A/A test uses real rows: the form log, with the true arms forgotten and each applicant dealt a new coin 1,000 times. The applicant-level analysis is a Welch t-test on each applicant's own share of page views with an error. Yesterday's branch test showed the same trap at 68.9%: the larger the cluster, the worse.</p></aside>
+</section>
+
+<section class="slide" id="false-win-table" data-lo="LO5" data-label="The table">
+  <div class="kicker">Lab 3.3, step 5</div>
+  <h2>Each habit multiplies the false-win rate; each correct procedure restores it</h2>
+  <table class="t">
+    <tr><th>Trap</th><th>False wins with the trap</th><th>With the correct procedure</th></tr>
+    <tr><td>Peeking: 28 daily looks, stop at the first p below 0.05</td><td>27.8%</td><td>5.5% (one look at the planned end)</td></tr>
+    <tr><td>Many metrics: any of twenty</td><td>64.1%</td><td>5.5% (Holm, or one primary metric)</td></tr>
+    <tr><td>Wrong unit: page views for applicants</td><td>34.0%</td><td>5.8% (analyse applicants)</td></tr>
+  </table>
+  <div class="callout warn mt"><b>They combine.</b> A report that peeked at many metrics per page view is close to a machine for producing wins. None of the three needs a wrong formula.</div>
+  <aside class="notes"><p>This table is the evidence of the fifth outcome. Each rate is a count over 1,000 A/A tests, with an error of about 1.4 points near 5% and about 3 points near 50%. Ask the room which of the three they have seen at work.</p></aside>
+</section>
+
+<section class="slide" id="novelty-and-attrition" data-lo="LO5 LO6" data-label="Two more traps">
+  <div class="kicker">Two traps that no A/A test shows</div>
+  <h2>Novelty fades and attrition unbalances, even when the analysis is right</h2>
+  <div class="cols cols-2">
+    <div class="card c-purple"><h4>Novelty</h4><p class="small mb0">A first-week reaction to anything new, which can fade. A test of eight days measures the reaction at its peak. Look for the effect by week, and distrust short tests of visible changes.</p></div>
+    <div class="card c-coral"><h4>Attrition</h4><p class="small mb0">Units that drop out of one arm after assignment: a reminder that never arrived, a form that crashed on some devices. The remaining arms differ in who is left. Look at the sample ratio and at who is missing.</p></div>
+  </div>
+  <div class="callout note mt"><b>Both change the true comparison,</b> not the false-win rate. They are found by reading the design and the checks, which is the next session.</div>
+  <aside class="notes"><p>The catalogue of flaws used in lab 3.4 has ten entries; these two are among the seven seeded in the write-up, as "short run" and "ratio mismatch". Measuring novelty decay properly is in DS-302.</p></aside>
+</section>
+
+<section class="slide" id="check-which-trap" data-lo="LO5">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which habit produced this win?</h2>
+  <div class="quiz" data-type="single" data-lo="LO5">
+    <p class="lead">A team planned a 4-week test of a new queue screen in 30 branches with one primary metric. They analysed it once, at the end, and report: "average wait fell, p = 0.01, n = 41,000 visits". Which trap should you check first?</p>
+    <div class="opts">
+      <div class="opt" data-why="The team looked once, at the planned end">Peeking</div>
+      <div class="opt" data-why="One primary metric was named in advance and reported">Many metrics</div>
+      <div class="opt" data-ok>Wrong unit of analysis</div>
+      <div class="opt" data-why="Four weeks is a full cycle; novelty is possible but is not what the reported n points to">Novelty</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Branches were randomised and visits were counted. The test has 30 units, and "n = 41,000" is the sign that they were not the ones analysed.</div>
+  </div>
+  <aside class="notes"><p>Answer: C. A reported n that is the number of rows, when the design randomised something larger, is the quickest tell in any write-up. Ask what the analysis should have been: one average per branch, 15 against 15.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-3-3" data-auto="lab" data-lab="3.3">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>The tutor instruction may hint; it never writes the simulation. Steps 1 to 3 simulate their own data and step 4 reads the form log; nothing from another lab is needed. Each step runs 1,000 A/A tests in a few seconds. Expected: 5.5%, 27.8%, 64.1% with 5.5% after Holm, 34.0% against 5.8%. The table of step 5 is the evidence of the fifth outcome.</p></aside>
 </section>
 
-<!-- Session 4 -->
-
+<!-- ======================= SESSION 4 ======================= -->
 <section class="slide section" id="s4" data-auto="section" data-session="4"></section>
 
-<section class="slide" id="s4-idea" data-lo="LO6">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+<section class="slide" id="review-order" data-lo="LO6" data-label="The review order">
+  <div class="kicker">Reading someone else's result</div>
+  <h2>Review in a fixed order: design, checks, analysis, claim</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>1 · Design</b>what did the page promise: unit, primary metric, size, stop rule?</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>2 · Checks</b>did the arms survive: ratio, balance, missing units?</div>
+    <div class="arrow">→</div>
+    <div class="step c-purple"><b>3 · Analysis</b>was the promised analysis run, at the unit that was randomised, once?</div>
+    <div class="arrow">→</div>
+    <div class="step c-coral"><b>4 · Claim</b>does the recommendation follow, for the units and the period tested?</div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <div class="callout tip mt"><b>Read the result last.</b> A reviewer who starts with the headline spends the rest of the page defending or attacking it.</div>
+  <aside class="notes"><p>The order is the checklist of Day 1 read backwards; it is printed at the foot of checklist.md. It is also the order of today's sessions. Reviewing is the sixth outcome and a fifth of the capstone mark.</p></aside>
 </section>
 
-<section class="slide" id="s4-steps" data-lo="LO6">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="the-write-up" data-lo="LO6" data-label="The write-up">
+  <div class="kicker">Lab 3.4 · the form redesign test</div>
+  <h2>"The redesigned form works. Roll it out to every form."</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>What was planned</h4><p class="small mb0">Primary metric: the share of applicants who complete the application. Minimum effect: 3 points. Unit: the applicant. A run of 28 days with one analysis at the end.</p></div>
+    <div class="card c-coral"><h4>What the write-up reports</h4><p class="small mb0">"We watched the dashboard every morning. On day 8 the difference in validation errors was clearly significant, so we stopped." Errors per page view fell from 13.0% to 12.0%, "highly significant" with 53,514 page views. Completion 58.5% against 59.3%, p = 0.54. "We examined 14 metrics." "The redesigned form logged fewer applicants. We put this down to chance."</p></div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <aside class="notes"><p>The author is Hattan Al-Sayed, a colleague, writing in good faith to Rehab Al-Tayyar. Give the room three minutes to read the full text in the lab before discussing. Ask how many flaws they can name from this slide alone; most rooms find four.</p></aside>
+</section>
+
+<section class="slide" id="seven-flaws" data-lo="LO6" data-label="Seven flaws">
+  <div class="kicker">Lab 3.4, step 1</div>
+  <h2>Seven flaws, each with a place in the text</h2>
+  <table class="t small">
+    <tr><th>Flaw</th><th>Where in the write-up</th></tr>
+    <tr><td>Metric switch</td><td>The headline is errors per page view; the page promised completion</td></tr>
+    <tr><td>Wrong unit</td><td>A z-test on page views; applicants were randomised</td></tr>
+    <tr><td>Peeking</td><td>Watched every morning, stopped on a significant day</td></tr>
+    <tr><td>Ratio mismatch and attrition</td><td>2,738 against 2,330 applicants, "put down to chance"</td></tr>
+    <tr><td>Many comparisons</td><td>14 metrics, and the strongest subgroup</td></tr>
+    <tr><td>Short run</td><td>8 days of a planned 28: one weekend, no month-end</td></tr>
+    <tr><td>Overclaim</td><td>"Proven"; all forms; 9,000 more applications a year</td></tr>
+  </table>
+  <div class="callout note mt"><b>And three it does not have:</b> a control arm exists, a seeded coin assigned, both arms were measured alike. A review that cries wolf loses its reader.</div>
+  <aside class="notes"><p>The lab's catalogue lists ten kinds of flaw, seven present and three absent; the mark asks for at least six of seven with at most one false alarm. The absent three matter: a reviewer who lists everything in the catalogue has not read the write-up.</p></aside>
+</section>
+
+<section class="slide" id="recompute-two-claims" data-lo="LO6" data-label="Recompute">
+  <div class="kicker">Lab 3.4, step 2</div>
+  <h2>A review that only reads is an opinion: recompute</h2>
+  <div class="cols cols-2">
+    <div class="card c-cyan"><h4>"We put this down to chance"</h4><p class="small mb0">2,738 against 2,330 applicants: ratio check p = 0.00000001. By device: 379 applicants on old mobile browsers in the current arm, <b>none</b> in the redesigned arm.</p></div>
+    <div class="card c-purple"><h4>"Highly significant with 53,514 page views"</h4><p class="small mb0">Per page view: 13.0% against 12.0%, p = 0.0002. Per applicant, as randomised: 13.0% against 12.3%, <b>p = 0.25</b>.</p></div>
+  </div>
+  <div class="callout tip mt"><b>Two lines of code each.</b> The log was available to the author too.</div>
+  <aside class="notes"><p>Solution run of lab 3.4. The second recomputation is session 3's third trap on a real result. The first is session 1's check. When the data behind a write-up are not available, the memo says which recomputations it asks for.</p></aside>
+</section>
+
+<section class="slide" id="flaw-consequence-decision" data-lo="LO6" data-label="The memo">
+  <div class="kicker">Lab 3.4, step 3</div>
+  <h2>The memo goes from each flaw to its consequence to a decision</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>1 · Flaw and consequence</h4><p class="small mb0">Not "the unit is wrong" but "counted per applicant, the difference in errors is not significant".</p></div>
+    <div class="card c-cyan"><h4>2 · What the evidence supports</h4><p class="small mb0">"The test does not support a roll-out. It shows no reliable difference in completion, and a redesign that fails on old mobile browsers."</p></div>
+    <div class="card c-coral"><h4>3 · The next step</h4><p class="small mb0">"Fix the browser fault. Run the full 28 days as pre-registered, one analysis, completion as primary, applicants as the unit, ratio check first."</p></div>
+  </div>
+  <div class="callout warn mt"><b>What goes wrong.</b> A memo that ends at "the analysis is flawed" leaves the director with a decision and nothing to make it with.</div>
+  <aside class="notes"><p>The evidence of the sixth outcome is a memo per write-up naming each flaw, its consequence and the decision the evidence does support, defended live. This is the class memo; the capstone has a second one on the chosen case's write-up.</p></aside>
+</section>
+
+<section class="slide" id="finding-nobody-wanted" data-lo="LO6" data-label="What the test did find">
+  <div class="kicker">Lab 3.4, steps 2 and stretch</div>
+  <h2>The test did find something, and the write-up put it down to chance</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>The redesigned form does not work on old mobile browsers. 379 applicants would have been turned away each eight days after a roll-out.</li>
+      <li>On devices logged in both arms, completion is 61.0% on the current form and 59.3% on the redesign: the "right direction" disappears.</li>
+      <li>That second comparison is a repair made after the fact. It shows how fragile the claim is; it does not prove the reverse.</li>
+    </ul>
+    <div class="card c-purple"><h4>A reviewer's best contribution</h4><p class="small mb0">Not the list of errors. The thing the data were saying that the author did not want to hear.</p></div>
+  </div>
+  <aside class="notes"><p>The 379 is the count in the current arm over eight days; about as many were assigned to the redesign and lost. This is the humanity principle in practice: an average that looks fine while one group of citizens cannot use the service at all. Say who would have been affected: people with older phones.</p></aside>
+</section>
+
+<section class="slide" id="check-supported-decision" data-lo="LO6">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which decision does the evidence support?</h2>
+  <div class="quiz" data-type="single" data-lo="LO6">
+    <p class="lead">A write-up reports a randomised test of a new appointment text, analysed as pre-registered: missed appointments fell by 1.9 points (0.4 to 3.4), against a minimum effect of 1.5. It then recommends the text "for all clinics, and for vaccination reminders too". The test ran in the city's eight clinics. What do you write?</p>
+    <div class="opts">
+      <div class="opt" data-why="Throws out a sound result because the recommendation overreaches">Reject the write-up: the claim goes beyond the evidence</div>
+      <div class="opt" data-ok>Adopt the text for appointments in the eight clinics; test vaccination reminders separately</div>
+      <div class="opt" data-why="Accepts an extension to a different message and purpose that nobody tested">Accept the recommendation as written: the test was sound</div>
+      <div class="opt" data-why="Asks for more data although the estimate meets the minimum and the analysis was as planned">Ask for a longer test before deciding anything</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The test supports what it tested: this text, for appointments, in these clinics. The rest is a new hypothesis.</div>
+  </div>
+  <aside class="notes"><p>Answer: B. A review is not a search for reasons to say no. Here the design and analysis are sound and one sentence of the recommendation overreaches; the memo keeps the result and trims the claim. Note that the interval straddles the minimum, as in the reminder test.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-3-4" data-auto="lab" data-lab="3.4">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Step 1 without an assistant: finding the flaws is the skill. Both files are supplied; nothing from earlier labs is needed. In step 3 walk round and read the "supported decision" of each participant: it should be something Rehab can do on Monday. Step 4 fixes the capstone case; steer the room so that all three cases are taken. Case C is the hardest design, case A has a breached guardrail to find, case B has a result that survives its own bad write-up.</p></aside>
 </section>
 
-<section class="slide" id="wrap-up">
-  <div class="kicker">Day 3 · wrap-up</div>
+<section class="slide" id="wrap-up" data-label="Wrap-up">
+  <div class="kicker">Day 3</div>
   <h2>Three things to keep</h2>
   <div class="cols cols-3">
-    <div class="card c-teal"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
-    <div class="card c-coral"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
-    <div class="card c-purple"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
+    <div class="card c-teal"><h4>Checks before results</h4><p class="small mb0">A ratio of 49.05% hid 1,014 missing holders and half a point of bias. Analyse everyone as assigned.</p></div>
+    <div class="card c-cyan"><h4>Intervals over verdicts</h4><p class="small mb0">+2.17 points, 1.40 to 2.94, against a minimum of 2. Say what is settled and what is not.</p></div>
+    <div class="card c-purple"><h4>Wins are cheap</h4><p class="small mb0">Peeking 27.8%, twenty metrics 64.1%, page views 34.0%. One look, one metric, the right unit: about 5%.</p></div>
   </div>
+  <aside class="notes"><p>The exit check is supervised and done without an assistant; say when it takes place. Then the capstone briefing on the next slide.</p></aside>
 </section>
 
 <section class="slide dark" id="next" data-label="Next">
-  <div class="kicker">Next</div>
-  <h2>Capstone: Capstone project presentations</h2>
-  <p class="lead">REPLACE: what participants prepare before then; unfinished labs can be finished at home</p>
-  <aside class="notes">REPLACE: accounts, installs or reading participants need before the next unit</aside>
+  <div class="kicker">Before the capstone day</div>
+  <h1>One case, the whole course</h1>
+  <p class="lead">Your pack: a pre-registration, a sample-size notebook with a power curve, an analysis notebook, a result note and a review memo, in a public repository.</p>
+  <ul class="bullets">
+    <li>Start with the pre-registration, and commit it before you open the experiment log.</li>
+    <li>You may use an assistant for the work. You defend it without one.</li>
+    <li>Rehearse the question you will be asked: "the minimum effect is now half; what is the size?"</li>
+  </ul>
+  <aside class="notes"><p>Point to the capstone folder: its README lists what the repository must contain and the rubric. The commit history is part of the evidence, which is why the pre-registration is committed first. Remind the room of the follow-up task after the course: the checklist applied to one experiment at work.</p></aside>
 </section>

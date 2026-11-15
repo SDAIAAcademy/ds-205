@@ -156,17 +156,22 @@ U.keep("d3_2", "complaints", [g_diff, g_hi])
 print(f"complaint rate: {g_diff * 100:+.2f} points, at most {g_hi * 100:+.2f} at the upper end of the interval; threshold +0.50: {'held' if g_hi < 0.005 else 'check'}")
 U.check(g_hi < 0.005, "the complaint guardrail holds even at the upper end of its interval")
 
-groups = []
-for col in ("channel", "holder_type"):
-    for level, g in test.groupby(col):
-        gd, _, glo, ghi = diff_interval(*arm_counts(g, "renewed_on_time"))
-        groups.append([f"{col} = {level}", f"{len(g):,}", f"{gd * 100:+.2f}", f"{glo * 100:+.2f} to {ghi * 100:+.2f}"])
+try:
+    groups = []
+    for col in ("channel", "holder_type"):
+        for level, g in test.groupby(col):
+            gd, _, glo, ghi = diff_interval(*arm_counts(g, "renewed_on_time"))
+            groups.append([f"{col} = {level}", f"{len(g):,}", f"{gd * 100:+.2f}", f"{glo * 100:+.2f} to {ghi * 100:+.2f}"])
+    s_diff, _, s_lo, s_hi = diff_interval(*arm_counts(test, "counter_visit"))
+except NotImplementedError:
+    groups = U.reference("d3_2", "groups")
+    s_diff, s_lo, s_hi = U.reference("d3_2", "counter")
+U.keep("d3_2", "groups", groups)
 U.table(["group", "holders", "effect, points", "95% interval"], groups)
 worst = min(float(r[2]) for r in groups)
 U.keep("d3_2", "worst_group", worst)
 U.check(worst > -3.0, "no group falls more than 3 points below control: the group guardrail holds")
 
-s_diff, _, s_lo, s_hi = diff_interval(*arm_counts(test, "counter_visit"))
 U.keep("d3_2", "counter", [s_diff, s_lo, s_hi])
 print(f"secondary metric, counter visits: {s_diff * 100:+.2f} points ({s_lo * 100:+.2f} to {s_hi * 100:+.2f})")
 
