@@ -1,158 +1,481 @@
 <section class="slide title" id="title" data-auto="title">
-  <aside class="notes">REPLACE: welcome; introduce yourself; one question to the room that calibrates the pace; the rhythm of the day</aside>
+  <aside class="notes"><p>Welcome. Introduce yourself in two sentences, then ask the room: "Who has been shown a chart at work and told that something works?" Take two examples and keep them: you will come back to them in session 1. The rhythm of each day: four sessions, each about 25 minutes of teaching, one checkpoint and a 25-minute lab. Breaks are yours to call. The entry quiz was supervised and done without an assistant; say when its results come back.</p></aside>
 </section>
 
-<section class="slide" id="agenda" data-auto="agenda"></section>
+<section class="slide" id="agenda" data-auto="agenda">
+  <aside class="notes"><p>Today no test is run. A question becomes a design: session 1 decides whether an experiment is needed at all, session 2 fixes what is measured, session 3 whom the coin is tossed for, session 4 writes it on one page and has someone else read it. Day 2 sizes the test, Day 3 reads its result.</p></aside>
+</section>
 
-<!-- Session 1 -->
-
+<!-- ======================= SESSION 1 ======================= -->
 <section class="slide section" id="s1" data-auto="section" data-session="1"></section>
 
-<section class="slide" id="s1-idea" data-lo="LO1">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
+<section class="slide" id="works-is-a-causal-claim" data-lo="LO1" data-label="Works">
+  <div class="kicker">The word on every report</div>
+  <h2>"It works" is a claim about what would have happened without it</h2>
   <div class="cols cols-2">
     <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
+      <li>Sahar Al-Wuhaibi directs Mashraq Municipal Permits Office. Six studies on her desk end with "works".</li>
+      <li>"Works" means: holders did better <b>than they would have done</b> without the change.</li>
+      <li>Nobody can observe one holder with and without a reminder, so every study compares two groups.</li>
+      <li>The question is how the groups came to differ.</li>
     </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+    <div class="card c-teal"><h4>The case of this course</h4><p class="small mb0">A fictional city permits office. Three changes wait for a decision: a renewal reminder, a redesigned online form, a new routine at the counters of 24 branches. You are Juri Al-Asmari, junior analyst. All data are synthetic.</p></div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <aside class="notes"><p>Return to the two examples the room gave at the start and ask of each: compared with what? Do not introduce notation. The phrase to plant is "compared with what would have happened otherwise".</p></aside>
 </section>
 
-<section class="slide" id="s1-steps" data-lo="LO1">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="groups-that-chose" data-lo="LO1" data-label="Groups that chose">
+  <div class="kicker">Lab 1.1, step 4</div>
+  <h2>Groups that chose differ in more than the thing they chose</h2>
+  <div class="cols cols-3">
+    <div class="stat"><div class="big">+3.0</div><div class="lbl">points: the true effect of the app on on-time renewal, set by us in a simulated world</div></div>
+    <div class="stat"><div class="big">+17.0</div><div class="lbl">points: the gap between app users and the others when holders choose</div></div>
+    <div class="stat"><div class="big">+2.5</div><div class="lbl">points: the gap when a coin decides who gets the app</div></div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <ul class="bullets mt">
+    <li>Organised holders install the app more often and renew on time more often, app or no app.</li>
+    <li>The volunteer gap measures mostly that hidden trait. Statisticians call it <b>confounding</b>.</li>
+  </ul>
+  <aside class="notes"><p>Numbers from the solution run of lab 1.1: 20,000 simulated holders, 40% organised, an organised holder installs the app with probability 0.7 against 0.2. Every number in the volunteer data is measured correctly; the comparison simply answers another question. Ask the room to name the hidden trait in their own two examples.</p></aside>
+</section>
+
+<section class="slide" id="what-a-coin-buys" data-lo="LO1" data-label="What a coin buys">
+  <div class="kicker">Random assignment</div>
+  <h2>A coin makes the two groups alike in everything, seen and unseen</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>1 · One pool</b>every holder due a notice in the window</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>2 · A seeded coin</b>per holder, not per clerk, branch or weekday</div>
+    <div class="arrow">→</div>
+    <div class="step c-purple"><b>3 · Two arms</b>the same mix of organised and disorganised, old and new, apart from chance</div>
+    <div class="arrow">→</div>
+    <div class="step c-coral"><b>4 · One difference</b>the change itself; what remains is sampling error, which has a size</div>
+  </div>
+  <div class="callout tip mt"><b>The coin does not know who is organised.</b> That is the whole point: it cannot favour a trait nobody measured.</div>
+  <aside class="notes"><p>Two things participants confuse: random sampling (who is in the study) and random assignment (who gets what). DS-201 was about the first. This course is about the second. A seeded coin can be audited: the same seed gives the same arms.</p></aside>
+</section>
+
+<section class="slide" id="bias-is-not-noise" data-lo="LO1" data-label="Bias and noise">
+  <div class="kicker">Lab 1.1, step 4, repeated 200 times</div>
+  <h2>More data cure noise. They do not cure bias</h2>
+  <table class="t">
+    <tr><th>Comparison</th><th>Mean gap over 200 repetitions</th><th>Smallest</th><th>Largest</th><th>True effect</th></tr>
+    <tr><td>Holders choose</td><td>+18.1 points</td><td>+16.0</td><td>+20.2</td><td rowspan="2">+3.0</td></tr>
+    <tr><td>A coin decides</td><td>+3.0 points</td><td>+1.0</td><td>+4.8</td></tr>
+  </table>
+  <div class="cols cols-2 mt">
+    <div class="card c-coral"><h4>Bias</h4><p class="small mb0">All 200 volunteer comparisons agree with each other, and all are wrong by about 15 points. A larger survey would be wrong more precisely.</p></div>
+    <div class="card c-teal"><h4>Noise</h4><p class="small mb0">The coin comparisons scatter around the truth. Day 2 chooses a sample size that makes the scatter small enough.</p></div>
+  </div>
+  <aside class="notes"><p>Solution run of lab 1.1, 200 repetitions of 20,000 holders each. The trap to name: "the result was the same in three surveys, so it must be right". Agreement between studies that share a bias is not evidence.</p></aside>
+</section>
+
+<section class="slide" id="three-designs" data-lo="LO1" data-label="Three designs">
+  <div class="kicker">The vocabulary of the first outcome</div>
+  <h2>Three designs support three different claims</h2>
+  <table class="t small">
+    <tr><th>Design</th><th>How the groups came to differ</th><th>Claim it supports</th><th>Example at Mashraq</th></tr>
+    <tr><td><b>Randomised experiment</b></td><td>Chance alone</td><td>The change caused the difference, for the units in the test</td><td>A seeded coin per holder; a slot lottery</td></tr>
+    <tr><td><b>Quasi-experiment</b></td><td>A rule or a date nobody chose for themselves</td><td>Caused, <em>if</em> a stated assumption holds</td><td>A fee that starts at 10 square metres; booking switched on in six branches</td></tr>
+    <tr><td><b>Observational comparison</b></td><td>People or managers chose</td><td>The groups differ; the study cannot say why</td><td>App users against the others; volunteer branches</td></tr>
+  </table>
+  <div class="callout note mt"><b>The assignment makes the design, not the intention.</b> A lottery run for fairness is still an experiment.</div>
+  <aside class="notes"><p>This table is the key of lab 1.1 in general form. The course is about the first row. Rows two and three are taught so that participants can recognise them and say what they do not show; they are not taught as methods here.</p></aside>
+</section>
+
+<section class="slide" id="quasi-rests-on-an-assumption" data-lo="LO1" data-label="The assumption">
+  <div class="kicker">Reading a quasi-experiment</div>
+  <h2>A quasi-experiment is as strong as the assumption you can defend</h2>
+  <div class="cols cols-2">
+    <div class="card c-cyan"><h4>The fee line at 10 square metres</h4><p class="small mb0">Stalls of 9.9 and 10.0 square metres are alike, so the gap in renewal is the fee. <b>If</b> nothing else changes at the line, and <b>if</b> holders cannot pick their side of it.</p></div>
+    <div class="card c-purple"><h4>Online booking in six branches</h4><p class="small mb0">Compare the change in missed appointments there with the change elsewhere. <b>If</b> both groups would have moved in parallel without it.</p></div>
+  </div>
+  <div class="callout warn mt"><b>What goes wrong.</b> The assumption is left unsaid and the result is reported as if a coin had been tossed. Ask for the sentence that starts with "if".</div>
+  <aside class="notes"><p>Do not name the methods unless asked (regression discontinuity, difference in differences). The outcome is recognition: this is not a coin, here is what the claim rests on. In lab 1.1 participants say the assumption aloud to a neighbour.</p></aside>
+</section>
+
+<section class="slide" id="when-not-to-randomise" data-lo="LO1 LO2" data-label="When not to">
+  <div class="kicker">Before you propose a test</div>
+  <h2>Some questions should not be answered with an experiment</h2>
+  <ul class="bullets">
+    <li><b>The benefit is already known.</b> Withholding something proven from half of the citizens is not acceptable.</li>
+    <li><b>No decision depends on it.</b> If the office will adopt the change whatever the result, do not test it.</li>
+    <li><b>There are too few units.</b> Three regions cannot be randomised into anything a test can read.</li>
+    <li><b>The harm cannot be undone.</b> A test needs a guardrail that can stop it in time.</li>
+  </ul>
+  <div class="callout tip mt"><b>At Mashraq every design answers four questions.</b> Who is in each arm? Why is withholding acceptable? Which data are used? Which guardrail stops the test if a group is harmed?</div>
+  <aside class="notes"><p>These four questions come back in sessions 2 and 4 and are items C11 and C12 of the reviewer's checklist. The reminder passes the first test easily: the control arm keeps the service it has today and nobody knows yet whether the reminder helps.</p></aside>
+</section>
+
+<section class="slide" id="check-which-design" data-lo="LO1">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which study lets the office say "caused"?</h2>
+  <div class="quiz" data-type="single" data-lo="LO1">
+    <p class="lead">Mansour Al-Khelaiwi wants to know whether evening opening shortens waits. Four studies are possible. Which one supports "evening opening caused shorter waits" without a further assumption?</p>
+    <div class="opts">
+      <div class="opt" data-why="Managers who ask for evening opening differ from the others, and so do their branches: the groups chose">Compare the branches whose managers asked for evening opening with the rest</div>
+      <div class="opt" data-ok>Draw 12 of the 24 branches by a recorded lottery for evening opening and compare with the other 12</div>
+      <div class="opt" data-why="Anything else that changed in the same months is mixed into the difference: there is no group without the change">Open all branches in the evening from June and compare waits before and after</div>
+      <div class="opt" data-why="Visitors who come in the evening differ from daytime visitors: they chose their slot">Compare the waits of evening visitors with those of daytime visitors</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Only the lottery lets chance decide which branches change. The other three compare groups that chose or periods that differ.</div>
+  </div>
+  <aside class="notes"><p>Answer: B. If the room picks C, ask what else changes between May and July: school holidays, the summer heat, a fee deadline. Note in passing that the lottery is drawn over branches, not visitors: session 3 explains why, and Day 2 what it costs.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-1-1" data-auto="lab" data-lab="1.1">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Steps 1 to 3 without an assistant and at first without the neighbour: the sheet is the evidence of the first outcome, at least five of six. The usual errors: S6 marked observational because "it was not a study", and S4 marked randomised because there is a comparison group. In step 4 the tutor instruction may hint. Expected output: volunteers about 17 points, coin about 2.5, truth 3.</p></aside>
 </section>
 
-<!-- Session 2 -->
-
+<!-- ======================= SESSION 2 ======================= -->
 <section class="slide section" id="s2" data-auto="section" data-session="2"></section>
 
-<section class="slide" id="s2-idea" data-lo="LO2">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+<section class="slide" id="decision-first" data-lo="LO2" data-label="Decision first">
+  <div class="kicker">Where a design starts</div>
+  <h2>Start from the decision the result will change</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>1 · Decision</b>who decides, and what they do for each result</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>2 · Hypothesis</b>the change, the metric, the direction</div>
+    <div class="arrow">→</div>
+    <div class="step c-purple"><b>3 · Metrics</b>one primary, guardrails, a minimum effect</div>
+    <div class="arrow">→</div>
+    <div class="step c-coral"><b>4 · Stop rule</b>when the test ends and what may end it sooner</div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <div class="callout note mt"><b>Sahar's question.</b> "Would a reminder seven days before a permit expires get more holders to renew on time?" Today a holder gets one notice, 30 days before expiry, and nothing after it.</div>
+  <aside class="notes"><p>Ask the room to turn the question into a decision before showing the next slides. A good answer has a number in it. "If the reminder helps we adopt it" is not yet a rule: helps by how much?</p></aside>
 </section>
 
-<section class="slide" id="s2-steps" data-lo="LO2">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="hypothesis-and-estimand" data-lo="LO2" data-label="The estimand">
+  <div class="kicker">One number in a named population</div>
+  <h2>The estimand says exactly which number the test estimates</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li><b>Hypothesis:</b> holders who get the reminder renew on time more often than holders who get only the standard notice.</li>
+      <li><b>Estimand:</b> the difference in the share renewing on time, reminder minus control, among holders sent a notice in the test window.</li>
+      <li>It names the metric, the two arms, the direction of the subtraction and the population.</li>
+    </ul>
+    <div class="card c-teal"><h4>What it leaves out on purpose</h4><p class="small mb0">Other permit offices. Other seasons. Holders who got no notice in the window. The result will be about the holders in the test; everything else is an argument you make afterwards, in words.</p></div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <aside class="notes"><p>DS-201 used the word estimand for a number in a population. Here it is a difference between two arms. Writing it down prevents the later switch from "share renewing on time" to "days until renewal" or "renewals per notice".</p></aside>
+</section>
+
+<section class="slide" id="one-primary-metric" data-lo="LO2" data-label="Three kinds of metric">
+  <div class="kicker">Three jobs</div>
+  <h2>One metric carries the decision; the others explain or protect</h2>
+  <table class="t">
+    <tr><th>Kind</th><th>Its job</th><th>In the reminder test</th></tr>
+    <tr><td><b>Primary</b></td><td>Decides. Exactly one, defined with its time window.</td><td>On-time renewal: renewed on or before the expiry date. Baseline 61.6%.</td></tr>
+    <tr><td><b>Secondary</b></td><td>Explains the result. Reported whatever it shows.</td><td>Counter visits within 30 days of the notice.</td></tr>
+    <tr><td><b>Guardrail</b></td><td>Must not get worse. Has a threshold and an action.</td><td>Complaint rate; on-time renewal in each group of holders.</td></tr>
+  </table>
+  <div class="callout warn mt"><b>What goes wrong.</b> Two "primary" metrics, and the report leads with whichever improved. Two metrics are two chances of a false win.</div>
+  <aside class="notes"><p>Baseline from lab 1.2: 241,275 on-time renewals of 391,802 notices in 182 days, 61.6%. It is all renewals over all notices, not the mean of the daily rates. Day 3 measures what twenty metrics do to the false-win rate; today the rule is enough.</p></aside>
+</section>
+
+<section class="slide" id="minimum-effect-from-costs" data-lo="LO2 LO3" data-label="Minimum effect">
+  <div class="kicker">Lab 1.2, step 3</div>
+  <h2>The minimum effect is the smallest gain that changes the decision</h2>
+  <div class="cols cols-3">
+    <div class="stat"><div class="big">0.40</div><div class="lbl">riyals per holder: the reminder and the replies and complaints it brings</div></div>
+    <div class="stat"><div class="big">20</div><div class="lbl">riyals: staff time to process one late renewal and its fee</div></div>
+    <div class="stat"><div class="big">2 points</div><div class="lbl">break-even: 0.40 / 20. Below it the reminder costs more than it saves</div></div>
+  </div>
+  <ul class="bullets mt">
+    <li>It comes from costs and from what the director would act on, never from what the data can detect.</li>
+    <li>Say <b>points</b>: from 61.6% to 63.6%. "2 per cent" could also mean 2% of 61.6%, which is 1.2 points.</li>
+  </ul>
+  <aside class="notes"><p>The cost table is invented for the case. The method is the point: a number with a reason, written before the test. Tomorrow this number decides the sample size, and halving it multiplies the size by four.</p></aside>
+</section>
+
+<section class="slide" id="guardrails-with-thresholds" data-lo="LO2" data-label="Guardrails">
+  <div class="kicker">What must not get worse</div>
+  <h2>A guardrail has a metric, a threshold and an action</h2>
+  <div class="cols cols-2">
+    <div class="card c-coral"><h4>Complaint rate</h4><p class="small mb0"><b>Threshold:</b> the reminder arm exceeds control by more than 0.5 points.<br><b>Action:</b> stop the test and review the wording.</p></div>
+    <div class="card c-purple"><h4>On-time renewal in each group</h4><p class="small mb0"><b>Groups:</b> channel (text message, e-mail) and holder type.<br><b>Threshold:</b> a group falls more than 3 points below control.<br><b>Action:</b> stop the reminder for that group and tell the data protection officer.</p></div>
+  </div>
+  <div class="callout tip mt"><b>An average can hide a harmed group.</b> The second guardrail is how the design applies fairness: it names the groups before anyone looks.</div>
+  <aside class="notes"><p>The course's responsible-use line: every design states which guardrail stops the test if a group is harmed. The SDAIA Principles of AI Ethics are the reference the course cites for fairness and for humanity; this slide does not quote them. "We will keep an eye on complaints" is the version to reject: no threshold, no action.</p></aside>
+</section>
+
+<section class="slide" id="stop-rule-before-start" data-lo="LO2" data-label="The stop rule">
+  <div class="kicker">Written before the first notice goes out</div>
+  <h2>The stop rule fixes the end and says what may end the test sooner</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>The test runs 28 days and ends on the planned date.</li>
+      <li>One analysis of the primary metric, at the end.</li>
+      <li>One safety look on day 14 reads the guardrails only.</li>
+      <li>No early stop for a good result.</li>
+    </ul>
+    <div class="card c-teal"><h4>Who is in each arm</h4><p class="small mb0"><b>Control:</b> the standard notice, as today. <b>Reminder:</b> the same notice plus one message seven days before expiry. Nobody loses a service; the reminder is untested.</p></div>
+  </div>
+  <div class="callout warn mt"><b>What goes wrong.</b> "We stop when the result is significant." Day 3 counts how often that rule declares a win when nothing differs.</div>
+  <aside class="notes"><p>A stop rule has an asymmetry that surprises people: harm may stop a test early, success may not. Stopping for harm protects holders. Stopping for success protects nobody and inflates false wins. Methods that allow planned early looks exist and belong to the next course, DS-302.</p></aside>
+</section>
+
+<section class="slide" id="check-primary-metric" data-lo="LO2">
+  <div class="kicker">Checkpoint</div>
+  <h2>Which metric should carry the decision?</h2>
+  <div class="quiz" data-type="single" data-lo="LO2">
+    <p class="lead">Rehab Al-Tayyar's team redesigned the online application form so that more applicants finish it. Which is the primary metric of the test?</p>
+    <div class="opts">
+      <div class="opt" data-why="Measures activity on the page, not whether the applicant got what they came for: a confusing page also holds people longer">Mean time spent on each page of the form</div>
+      <div class="opt" data-why="An intermediate step: fewer error messages help only if more applications are finished">Validation errors per page view</div>
+      <div class="opt" data-why="Leaves the choice until the data are in, which is a second and third chance of a win">Whichever of completion, errors and time improves most</div>
+      <div class="opt" data-ok>The share of applicants who complete the application</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The decision is about finished applications. Errors and time explain a result; they do not decide it.</div>
+  </div>
+  <aside class="notes"><p>Answer: D. Remember this question: on Day 3 the write-up of exactly this test leads with validation errors per page view, and participants have to say what is wrong with that.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-1-2" data-auto="lab" data-lab="1.2">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>No assistant in this lab: the texts are the participant's own. Typical problems: a decision without the word "if" or without a number; two metrics in the primary field; a guardrail whose threshold is a word. The checklist of step 5 is mechanical. Ask pairs to read each other's stop rule aloud. The lab reads only the history file.</p></aside>
 </section>
 
-<!-- Session 3 -->
-
+<!-- ======================= SESSION 3 ======================= -->
 <section class="slide section" id="s3" data-auto="section" data-session="3"></section>
 
-<section class="slide" id="s3-idea" data-lo="LO2">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
+<section class="slide" id="unit-is-the-coin" data-lo="LO2" data-label="The unit">
+  <div class="kicker">Two units that must agree</div>
+  <h2>The unit of randomisation is whoever the coin is tossed for</h2>
   <div class="cols cols-2">
     <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
+      <li><b>Unit of randomisation:</b> the thing that lands in an arm as a whole: a holder, an applicant, a branch.</li>
+      <li><b>Unit of analysis:</b> the thing you count when you compute the result.</li>
+      <li>They should be the same. When the analysis counts something smaller, the test looks larger than it is.</li>
     </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+    <div class="card c-coral"><h4>The log tempts you</h4><p class="small mb0">Logs have one row per notice, per page view, per visit. Rows are what systems record. They are rarely what a person experiences as "getting the new version".</p></div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <aside class="notes"><p>DS-201 lab 2.3 resampled households or districts and saw the interval change. This is the same idea moved to before the test: choose the unit first, then count how many of them you have.</p></aside>
 </section>
 
-<section class="slide" id="s3-steps" data-lo="LO2">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="notices-of-one-holder" data-lo="LO2" data-label="Notices and holders">
+  <div class="kicker">Lab 1.3, step 1 · 20,000 past notices</div>
+  <h2>One holder in five has several permits, and their notices move together</h2>
+  <div class="cols cols-3">
+    <div class="stat"><div class="big">20.0%</div><div class="lbl">of holders have several notices</div></div>
+    <div class="stat"><div class="big">38.5%</div><div class="lbl">of all notices go to those holders</div></div>
+    <div class="stat"><div class="big">70.7%</div><div class="lbl">of pairs share one outcome; 52.9% would if two notices of a holder were unrelated</div></div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <ul class="bullets mt">
+    <li>A coin per notice would send both versions to 60.3% of these holders. Once reminded, a holder is reminded for every permit.</li>
+    <li>The unit is the <b>holder</b>. The test enrols each holder once, at the first notice in the window.</li>
+  </ul>
+  <aside class="notes"><p>Solution run of lab 1.3: 15,395 holders behind 20,000 notices. The second bullet is contamination: the control notice of a reminded holder is no longer a control, which pulls the two arms together and hides a real effect. 60.3% is the stretch result.</p></aside>
+</section>
+
+<section class="slide" id="pages-of-one-applicant" data-lo="LO2 LO5" data-label="Pages and applicants">
+  <div class="kicker">Lab 1.3, step 2 · the form log</div>
+  <h2>53,514 page views come from 5,068 applicants</h2>
+  <div class="cols cols-2">
+    <table class="t">
+      <tr><th>Per applicant</th><th>Page views</th></tr>
+      <tr><td>Median</td><td>8</td></tr>
+      <tr><td>Maximum</td><td>70</td></tr>
+      <tr><td>Share of all rows from the busiest tenth</td><td>28.8%</td></tr>
+    </table>
+    <ul class="bullets">
+      <li>Among applicants with 10 or more page views, a quarter never trigger a validation error and a quarter trigger one on at least 20% of their views.</li>
+      <li>A page view tells you mostly about its applicant.</li>
+      <li>The unit is the <b>applicant</b>: one form from the first page to the last.</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>Solution run of lab 1.3. Keep the number 53,514 in the room's memory: on Day 3 a write-up claims significance "with 53,514 page views", and lab 3.3 measures how often that analysis finds a win when nothing differs.</p></aside>
+</section>
+
+<section class="slide" id="simple-stratified-cluster" data-lo="LO2" data-label="Three ways to assign">
+  <div class="kicker">How the coin is tossed</div>
+  <h2>Simple, stratified and cluster assignment answer different needs</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>Simple</h4><p class="small mb0">One coin per unit. Right when units are many and independent: 60,000 holders.</p></div>
+    <div class="card c-cyan"><h4>Stratified</h4><p class="small mb0">Sort units into groups that matter (channel, baseline level), then toss within each group. The arms match on that trait by construction. Worth it when units are few.</p></div>
+    <div class="card c-purple"><h4>Cluster</h4><p class="small mb0">Toss for a whole group: a branch and everyone who visits it. Needed when people in a group affect each other. It costs power: Day 2 measures how much.</p></div>
+  </div>
+  <div class="callout note mt"><b>Whichever you choose, the coin is seeded and recorded.</b> Alternating days, odd and even keys chosen by hand, or "the first half of the list" are not coins.</div>
+  <aside class="notes"><p>Stratified is also called blocked; pairing is its smallest form. Lab 2.3 pairs branches by baseline rate and regains much of the power that cluster assignment loses. A hash of the unit key with a seed is the usual way to toss a coin that gives the same answer every time the unit appears.</p></aside>
+</section>
+
+<section class="slide" id="interference-between-units" data-lo="LO2" data-label="Interference">
+  <div class="kicker">When units touch each other</div>
+  <h2>If one unit's treatment reaches another, the unit is too small</h2>
+  <div class="cols cols-2">
+    <div class="card c-coral"><h4>Inside a branch</h4><p class="small mb0">The counter change is a triage desk at the entrance. Visitors share one queue and one team. Sending every second visitor to the desk changes the wait of the others too. The visitor cannot be the unit.</p></div>
+    <div class="card c-purple"><h4>Between branches</h4><p class="small mb0">B03 and B04 share counter staff, as do B11 and B12, B19 and B20. A clerk carries the new routine next door, and staff moved to the desk are missing there. Each pair is one unit.</p></div>
+  </div>
+  <div class="callout tip mt"><b>24 branches, 21 staff pools.</b> The unit of the counter test is the staff pool.</div>
+  <aside class="notes"><p>Interference means that a unit's outcome depends on what other units received. Two effects follow: control units are no longer untreated, and the comparison no longer estimates what would happen if everyone got the change. Marketplaces and shared resources make this much harder; DS-302 has two sessions on it.</p></aside>
+</section>
+
+<section class="slide" id="rows-are-not-units" data-lo="LO2 LO3" data-label="Rows and units">
+  <div class="kicker">Lab 1.3, step 5</div>
+  <h2>The size of a test is its number of units, not its number of rows</h2>
+  <table class="t">
+    <tr><th>Test</th><th>Rows in the log</th><th>Unit</th><th>Units</th><th>Rows per unit</th></tr>
+    <tr><td>Reminder</td><td>20,000 notices</td><td>Holder</td><td>15,395</td><td>1.3</td></tr>
+    <tr><td>Form</td><td>53,514 page views</td><td>Applicant</td><td>5,068</td><td>10.6</td></tr>
+    <tr><td>Counter</td><td>10,888 visits</td><td>Staff pool</td><td>21</td><td>518.5</td></tr>
+  </table>
+  <div class="callout warn mt"><b>What goes wrong.</b> "We have over ten thousand visits, so the test is well powered." It has 21 coin tosses.</div>
+  <aside class="notes"><p>Solution run of lab 1.3; the reminder row is last year's sample of notices, the form row is the test log, the counter row is four baseline weeks. Leave the last line hanging: session 3 tomorrow simulates the counter test and counts what 24 branches can detect.</p></aside>
+</section>
+
+<section class="slide" id="check-unit" data-lo="LO2">
+  <div class="kicker">Checkpoint</div>
+  <h2>Whom do you toss the coin for?</h2>
+  <div class="quiz" data-type="single" data-lo="LO2">
+    <p class="lead">The office wants to test a shorter text on the ticket that the queue machine prints. All visitors of a branch wait in one hall and watch one display. What is the unit of randomisation?</p>
+    <div class="opts">
+      <div class="opt" data-ok>The branch, or the staff pool where branches share staff</div>
+      <div class="opt" data-why="Visitors in one hall see each other's tickets and share one queue: a visitor's treatment reaches the next visitor">The visitor: each ticket printed gets a coin</div>
+      <div class="opt" data-why="A day in one branch follows the day before: staff and repeat visitors carry the change across days, and days are few">The day: the short text on alternate days in every branch</div>
+      <div class="opt" data-why="The ticket is the row in the log, not a unit: one visitor may take several tickets">The ticket: it is what the machine logs</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Whatever shares a hall, a queue and a team must land in one arm together. The price is paid in the number of units.</div>
+  </div>
+  <aside class="notes"><p>Answer: A. Option C deserves a minute: alternating days is a real design, called a switchback, and has its own analysis. It is not a coin per day unless the order is randomised, and it belongs to DS-302. For this course: the branch.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-1-3" data-auto="lab" data-lab="1.3">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>The tutor instruction may hint on the dataframe code (groupby and size). The choices in step 4 are the participant's. Watch for "branch" as the unit of the counter test: correct in spirit, and the check asks for the staff pool, which turns 24 into 21. Each file is supplied; nothing from labs 1.1 or 1.2 is used.</p></aside>
 </section>
 
-<!-- Session 4 -->
-
+<!-- ======================= SESSION 4 ======================= -->
 <section class="slide section" id="s4" data-auto="section" data-session="4"></section>
 
-<section class="slide" id="s4-idea" data-lo="LO2">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
+<section class="slide" id="why-write-it-down" data-lo="LO2" data-label="Why pre-register">
+  <div class="kicker">The reason for the page</div>
+  <h2>A pre-registration removes the choices you would make after seeing the data</h2>
   <div class="cols cols-2">
     <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
+      <li>Which metric leads the report? Which holders are excluded? When does the test stop? Which subgroup is shown?</li>
+      <li>Each choice is reasonable. Made after the data are in, each one leans towards the result you hoped for.</li>
+      <li>Nobody has to cheat. An honest analyst who chooses late still finds too many wins.</li>
     </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+    <div class="card c-teal"><h4>What the page is</h4><p class="small mb0">One page, dated, written before the first unit is assigned, that fixes the decision, the unit, the metrics, the size, the stop rule and the analysis. It can be amended, with a date and a reason, before the test starts. Not after.</p></div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <aside class="notes"><p>The idea is often called the garden of forking paths: many defensible analyses, one of which will look good. Pre-registration is used in clinical trials, in social science and by public-sector experiment teams. Sources: Center for Open Science, Preregistration; Haynes and others (2012), Test, Learn, Adapt.</p></aside>
 </section>
 
-<section class="slide" id="s4-steps" data-lo="LO2">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="one-page-twelve-items" data-lo="LO2" data-label="The page">
+  <div class="kicker">The reviewer's checklist</div>
+  <h2>One page, twelve items</h2>
+  <div class="cols cols-2">
+    <ul class="bullets small">
+      <li><b>C1 Decision:</b> the action for each result</li>
+      <li><b>C2 Hypothesis:</b> change, metric, direction</li>
+      <li><b>C3 Unit:</b> nobody in both arms</li>
+      <li><b>C4 Primary metric:</b> exactly one, with its window</li>
+      <li><b>C5 Minimum effect:</b> a number with its reason</li>
+      <li><b>C6 Guardrails:</b> metric, threshold, action</li>
+    </ul>
+    <ul class="bullets small">
+      <li><b>C7 Stop rule:</b> a fixed end, no early stop for success</li>
+      <li><b>C8 Size and duration:</b> from the minimum effect; whole weeks and the month-end</li>
+      <li><b>C9 Analysis plan:</b> test, interval, unit, as assigned</li>
+      <li><b>C10 Checks:</b> sample ratio and balance, before the result</li>
+      <li><b>C11 Arms and fairness:</b> who, why withholding is acceptable, the group guardrail</li>
+      <li><b>C12 Data:</b> fields, pseudonymised keys, aggregate reporting</li>
+    </ul>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <aside class="notes"><p>The same list is the file checklist.md in the labs folder, the follow-up task and the first criterion of the capstone rubric. Sessions 2 and 3 wrote C1 to C7 and C11. This session adds C8 to C10 and C12. C8 is provisional today: Day 2 computes it.</p></aside>
+</section>
+
+<section class="slide" id="analysis-plan" data-lo="LO2 LO4" data-label="Analysis plan">
+  <div class="kicker">C9</div>
+  <h2>The analysis plan is one paragraph that leaves you no choice later</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>The paragraph</h4><p class="small mb0">"A two-proportion z-test and a 95% interval for the difference in on-time renewal, with holders as the unit, analysed as assigned whether or not the reminder was delivered. Subgroups by channel and by prior lateness are exploratory and are reported as such."</p></div>
+    <ul class="bullets">
+      <li><b>The test and the interval</b> are named, so they cannot be picked afterwards.</li>
+      <li><b>The unit of analysis</b> is the unit of randomisation.</li>
+      <li><b>As assigned:</b> every holder counts in the arm the coin chose.</li>
+      <li><b>Subgroups</b> are named now and labelled exploratory.</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>"As assigned" is often called intention to treat. Explain it by its failure: if holders whom the reminder did not reach are dropped, they are dropped from one arm only, and those holders are not a random handful. Day 3, session 1, shows exactly this in the platform's export.</p></aside>
+</section>
+
+<section class="slide" id="planned-checks" data-lo="LO2 LO4" data-label="Planned checks">
+  <div class="kicker">C10</div>
+  <h2>Two checks are promised before anyone reads the result</h2>
+  <div class="cols cols-2">
+    <div class="card c-cyan"><h4>Sample ratio</h4><p class="small mb0">A fair coin over 60,000 holders gives about 30,000 in each arm. The page states the test and the line: a chi-square test against 50/50, failed below p = 0.001.</p></div>
+    <div class="card c-purple"><h4>Balance</h4><p class="small mb0">The arms should look alike on traits fixed before the test: channel, holder type, prior lateness, tenure. The page names the traits.</p></div>
+  </div>
+  <div class="callout tip mt"><b>Why promise them in advance?</b> A check that runs only when the result disappoints is not a check. It is a search for an excuse.</div>
+  <aside class="notes"><p>Day 3 opens with these two checks on the real export, and one of them fails. Today participants only write the promise. The line of 0.001 for the ratio check is a common convention among experiment teams: stricter than 0.05 because the check runs on every test and a false alarm is costly. Source: Fabijan and others (2019).</p></aside>
+</section>
+
+<section class="slide" id="data-paragraph" data-lo="LO2" data-label="The data paragraph">
+  <div class="kicker">C12 · the logs describe people</div>
+  <h2>The page says which data are used and how holders stay unidentifiable</h2>
+  <table class="t small">
+    <tr><th>Question</th><th>On the reminder test's page</th></tr>
+    <tr><td>Which fields?</td><td>Notice key, send date, permit type, holder type, channel, prior lateness, tenure, arm, outcomes. Nothing else.</td></tr>
+    <tr><td>Can the analyst identify a holder?</td><td>No. Keys are pseudonymised; no name, phone number or address leaves the messaging platform.</td></tr>
+    <tr><td>How are results reported?</td><td>In aggregate, never by holder; small groups are not shown.</td></tr>
+    <tr><td>When is the extract deleted?</td><td>When the report is signed.</td></tr>
+  </table>
+  <div class="callout note mt"><b>Who signs.</b> Abdullah Al-Hogail, the data protection officer. The logs were collected to send notices; analysing them for a test is a further use, and he decides whether the page covers it.</div>
+  <aside class="notes"><p>The course's references for this paragraph are the Personal Data Protection Law with its Implementing Regulation and the General Rules for Secondary Use of Data, all published by SDAIA and listed in the course sources. The slide describes how the fictional office works; it does not restate the texts. Tell participants to read both before writing such a paragraph at work, and to ask their own data protection officer.</p></aside>
+</section>
+
+<section class="slide" id="checklist-needs-a-reader" data-lo="LO2 LO6" data-label="A reader">
+  <div class="kicker">Lab 1.4, step 5</div>
+  <h2>A script can check that a unit is written, not that it is the right one</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>The neighbour's page states a unit: the renewal notice. The mechanical check gives it a tick.</li>
+      <li>A reader fails it: a holder with three permits sits in both arms.</li>
+      <li>Its "primary metric" is two metrics with the choice left open. The script sees a name and a definition.</li>
+      <li>By the key, the page fails 8 of the 12 items.</li>
+    </ul>
+    <div class="card c-coral"><h4>The rule for reviews</h4><p class="small mb0">The checklist is a list of questions for a person. Read the page, answer each question in your own words, and sign only what you could defend to the director.</p></div>
+  </div>
+  <aside class="notes"><p>Solution run of lab 1.4: the mechanical check and the key differ on C3 and C4. This slide is the first step towards the sixth outcome, reviewing someone else's work, which is the whole of Day 3 session 4 and a fifth of the capstone.</p></aside>
+</section>
+
+<section class="slide" id="check-after-data" data-lo="LO2">
+  <div class="kicker">Checkpoint</div>
+  <h2>The test is running. What may still change?</h2>
+  <div class="quiz" data-type="single" data-lo="LO2">
+    <p class="lead">On day 10 of the reminder test the team has three ideas. Which one is compatible with the pre-registration?</p>
+    <div class="opts">
+      <div class="opt" data-why="Chooses the metric after seeing interim data: the new headline is selected because it looks better">Make counter visits the primary metric, because they are moving more clearly</div>
+      <div class="opt" data-why="Stops for a good result, which the stop rule forbids and which inflates false wins">End the test today, because the difference is already significant</div>
+      <div class="opt" data-ok>Add days until renewal as an exploratory metric, labelled as added on day 10</div>
+      <div class="opt" data-why="Removes holders from one arm only, after assignment: the arms stop being comparable">Drop holders whose reminder bounced from the reminder arm</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> You may add, with a date and a label. You may not change what decides, when it stops or who counts.</div>
+  </div>
+  <aside class="notes"><p>Answer: C. The page is a floor, not a ceiling: exploration is welcome when it is labelled and does not replace the primary analysis. Each wrong option returns on Day 3 as a seeded flaw in a write-up.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-1-4" data-auto="lab" data-lab="1.4">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>No assistant. The lab starts from a supplied first half, so a participant who did not finish lab 1.2 loses nothing. Step 5 reviews a supplied page; when the room has time, pairs then swap their own pages and review them with the same twelve questions. The provisional size, 9,200 per arm, is checked tomorrow morning. Evidence of the second outcome: the completed page.</p></aside>
 </section>
 
-<section class="slide" id="wrap-up">
-  <div class="kicker">Day 1 · wrap-up</div>
+<section class="slide" id="wrap-up" data-label="Wrap-up">
+  <div class="kicker">Day 1</div>
   <h2>Three things to keep</h2>
   <div class="cols cols-3">
-    <div class="card c-teal"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
-    <div class="card c-coral"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
-    <div class="card c-purple"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
+    <div class="card c-teal"><h4>The coin makes the claim</h4><p class="small mb0">Only random assignment removes what you did not measure. A volunteer comparison was wrong by 15 points in every one of 200 repetitions.</p></div>
+    <div class="card c-cyan"><h4>The unit is who lands in an arm</h4><p class="small mb0">Holders, applicants, staff pools. 10,888 visits are 21 units.</p></div>
+    <div class="card c-purple"><h4>Decide before you look</h4><p class="small mb0">One primary metric, a minimum effect with a reason, guardrails with thresholds, a fixed end, an analysis plan. On one page, read by someone else.</p></div>
   </div>
+  <aside class="notes"><p>Ask each participant for the one item of their page they are least sure of. Most will say the sample size. That is tomorrow.</p></aside>
 </section>
 
 <section class="slide dark" id="next" data-label="Next">
-  <div class="kicker">Next</div>
-  <h2>Day 2: Size and run</h2>
-  <p class="lead">REPLACE: what participants prepare before then; unfinished labs can be finished at home</p>
-  <aside class="notes">REPLACE: accounts, installs or reading participants need before the next unit</aside>
+  <div class="kicker">Before Day 2</div>
+  <h1>Is 9,200 per arm right?</h1>
+  <p class="lead">Your page says 9,200 holders per arm and 28 days. Tomorrow you compute the first number, check it by simulation, and find out why the second is three times longer than the first requires.</p>
+  <ul class="bullets">
+    <li>Keep your completed pre-registration at hand.</li>
+    <li>Recall from DS-201: the standard error of a proportion, and what a p-value is.</li>
+  </ul>
+  <aside class="notes"><p>Nothing to install tonight. Participants who could not run the notebooks today should run the setup check again before the morning.</p></aside>
 </section>

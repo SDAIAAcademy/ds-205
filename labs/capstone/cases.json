@@ -1,0 +1,29 @@
+[
+ {
+  "id": "A",
+  "title": "A reminder message for the annual stall inspection",
+  "question": "Market-stall holders must book a hygiene inspection each year. Would a notice that states the deadline and the fine get more holders to book within 14 days, without raising complaints?",
+  "owner": "The inspections team of Mashraq Municipal Permits Office",
+  "minimum_effect": "3 points of booking within 14 days",
+  "design_challenge": "Some holders have two stalls and receive two notices. A complaint guardrail matters: the new wording is sterner.",
+  "files": ["data/a_history.csv", "data/a_experiment.csv", "a_writeup.md"]
+ },
+ {
+  "id": "B",
+  "title": "A redesigned form for building-works permits",
+  "question": "Would the redesigned application form raise the share of applicants who complete the application?",
+  "owner": "The digital services team",
+  "minimum_effect": "3 points of completion",
+  "design_challenge": "The log has one row per page view, and contractors produce about twice as many page views as owners.",
+  "files": ["data/b_history.csv", "data/b_experiment.csv", "b_writeup.md"]
+ },
+ {
+  "id": "C",
+  "title": "A training programme for counter staff",
+  "question": "Would two days of training for counter staff raise the share of visits resolved at the first visit?",
+  "owner": "The branch services team, for its 20 service centres",
+  "minimum_effect": "4 points of first-visit resolution",
+  "design_challenge": "Staff are trained centre by centre, two centres share staff, and the first wave was not chosen by chance. The pack designs the test that should be run for the second wave.",
+  "files": ["data/c_centres.csv", "data/c_visits.csv", "c_writeup.md"]
+ }
+]

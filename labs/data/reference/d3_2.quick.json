@@ -1,0 +1,47 @@
+{
+ "bootstrap": [
+  0.013720100786459914,
+  0.02948752220623857
+ ],
+ "complaints": [
+  0.001433364644101447,
+  0.002966890358097184
+ ],
+ "counter": [
+  -0.017874184579024704,
+  -0.02337129265861391,
+  -0.0123770764994355
+ ],
+ "counts": [
+  18772,
+  30054,
+  19353,
+  29946
+ ],
+ "gap": [
+  0.009990323416665337,
+  -0.009083971524920145,
+  0.02906461835825082
+ ],
+ "interval": [
+  0.021654236826394002,
+  0.003928827581609292,
+  0.01395387626497219,
+  0.029354597387815814
+ ],
+ "reading": "straddles",
+ "sentences": "The reminder raised on-time renewal by 2.2 points, and the data are consistent with a gain between 1.4 and 2.9 points. The estimate meets the minimum effect of 2 points, though the gain may be somewhat smaller, and no guardrail was crossed, so the evidence supports adopting the reminder.",
+ "subgroups": {
+  "0": [
+   0.01943300747230181,
+   0.010931607277009125,
+   0.027934407667594495
+  ],
+  "1": [
+   0.029423330888967147,
+   0.012348351467659748,
+   0.04649831031027454
+  ]
+ },
+ "worst_group": 0.2
+}

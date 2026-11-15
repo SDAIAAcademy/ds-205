@@ -3,166 +3,469 @@
   "version": 1,
   "questions": [
     {
-      "id": "q-example-1",
+      "id": "q-design-01",
       "type": "single",
-      "prompt": "REPLACE: a practice question on LO1, as a short scenario",
+      "prompt": "A city library offers a new late-return text alert. Members opt in at the desk. After three months, members with the alert return 12 points more books on time than members without it. What kind of study is this?",
       "options": [
-        "REPLACE: a wrong option that a common misconception makes tempting",
-        "REPLACE: the right answer",
-        "REPLACE: a wrong option that a common misconception makes tempting",
-        "REPLACE: a wrong option that a common misconception makes tempting"
+        "A randomised experiment, because two groups are compared",
+        "A quasi-experiment, because the alert started on a fixed date",
+        "An observational comparison, because members chose the alert",
+        "A lottery, because not every member received the alert"
       ],
       "correct": [
-        1
+        2
       ],
-      "explanation": "REPLACE: why the right answer is right, in one sentence",
       "misconceptions": [
-        "REPLACE: the misconception behind this option",
+        "Takes any two-group comparison for an experiment: what matters is how the groups were formed",
+        "Sees a date and assumes a rule created the groups: here members chose",
         "",
-        "REPLACE: the misconception behind this option",
-        "REPLACE: the misconception behind this option"
+        "Confuses partial coverage with assignment by chance"
       ],
+      "explanation": "Members decided for themselves whether to opt in, so the two groups may differ in many ways besides the alert. That is an observational comparison.",
       "lo": [
         "LO1"
       ],
       "day": "day1",
       "session": 1,
-      "level": "apply",
+      "slide": "three-designs",
+      "level": "understand",
       "pool": "practice",
-      "weight": 1
+      "weight": 1,
+      "timer": 75
     },
     {
-      "id": "q-example-2",
-      "type": "tf",
-      "prompt": "REPLACE: a statement on LO2 that is true",
+      "id": "q-design-02",
+      "type": "single",
+      "prompt": "A transport office finds that drivers who use its mobile app renew their licences on time 20 points more often than drivers who do not. A simulation shows that conscientious drivers both install the app more and renew on time more. What does the 20-point gap mostly measure?",
       "options": [
-        "True",
-        "False"
+        "The difference between conscientious drivers and the others",
+        "The effect of the app on every driver who installs it",
+        "The sampling error of a survey of drivers",
+        "The effect of on-time renewal on app use"
       ],
       "correct": [
         0
       ],
-      "explanation": "REPLACE: why the right answer is right, in one sentence",
       "misconceptions": [
         "",
-        "REPLACE: the misconception behind this option"
+        "Reads a gap between groups that chose as the effect of the thing they chose",
+        "Mistakes a stable bias for noise: a larger survey would show the same gap",
+        "Reverses the direction without removing the hidden trait that drives both"
       ],
+      "explanation": "A trait that drives both app use and renewal is mixed into the comparison. The gap is mostly that trait, not the app.",
+      "lo": [
+        "LO1"
+      ],
+      "day": "day1",
+      "session": 1,
+      "slide": "groups-that-chose",
+      "level": "analyze",
+      "pool": "practice",
+      "weight": 1,
+      "timer": 75
+    },
+    {
+      "id": "q-design-03",
+      "type": "single",
+      "prompt": "Three separate surveys of clinic patients all find that patients who booked online miss fewer appointments, by 9, 10 and 11 points. A manager says the agreement proves that online booking reduces missed appointments. What is the best reply?",
+      "options": [
+        "Three surveys are too few; ten would settle it",
+        "The surveys share one weakness: patients chose how to book",
+        "The surveys disagree by 2 points, so none can be trusted",
+        "The effect is real, since chance cannot produce it three times"
+      ],
+      "correct": [
+        1
+      ],
+      "misconceptions": [
+        "Treats bias as noise that more studies average away",
+        "",
+        "Reads ordinary sampling variation as a contradiction",
+        "Rules out chance and forgets that a shared bias repeats just as reliably"
+      ],
+      "explanation": "Agreement between studies that share the same bias shows that the bias is stable, not that the claim is true. All three compare patients who chose.",
+      "lo": [
+        "LO1"
+      ],
+      "day": "day1",
+      "session": 1,
+      "slide": "bias-is-not-noise",
+      "level": "understand",
+      "pool": "practice",
+      "weight": 1,
+      "timer": 75
+    },
+    {
+      "id": "q-design-04",
+      "type": "single",
+      "prompt": "A municipality waives a parking fee for cars registered before 2015. An analyst compares permit renewals of cars registered in late 2014 with cars registered in early 2015. On which assumption does a causal reading rest?",
+      "options": [
+        "That the two groups have the same number of cars",
+        "That owners chose their registration year at random",
+        "That renewals were measured in the same month for all cars",
+        "That nothing else changes at the 2015 line besides the fee"
+      ],
+      "correct": [
+        3
+      ],
+      "misconceptions": [
+        "Looks for equal group sizes, which matter for precision and not for the causal claim",
+        "Asks for randomisation, which a rule at a cut-off does not need or provide",
+        "Names a measurement detail in place of the assumption the design rests on",
+        ""
+      ],
+      "explanation": "A comparison just either side of a cut-off supports a causal claim if units near the line are alike and nothing else switches at the line.",
+      "lo": [
+        "LO1"
+      ],
+      "day": "day1",
+      "session": 1,
+      "slide": "quasi-rests-on-an-assumption",
+      "level": "analyze",
+      "pool": "practice",
+      "weight": 1,
+      "timer": 75
+    },
+    {
+      "id": "q-design-05",
+      "type": "single",
+      "prompt": "A housing office has 300 places on a home-repair scheme and 1,400 eligible applicants. Places are allocated by a recorded random draw. One year later, energy bills of the two groups are compared. Which claim does the comparison support?",
+      "options": [
+        "The scheme lowered bills for applicants like these",
+        "The scheme lowers bills for every household in the city",
+        "Households on the scheme have lower bills; the reason is unknown",
+        "The scheme lowers bills only if bills were moving in parallel before"
+      ],
+      "correct": [
+        0
+      ],
+      "misconceptions": [
+        "",
+        "Extends the result beyond the units that were in the draw",
+        "Treats a lottery as an observational comparison because nobody planned a study",
+        "Borrows the assumption of a before-and-after comparison that a random draw does not need"
+      ],
+      "explanation": "A recorded random draw is random assignment. It supports a causal claim for the applicants who were in the draw.",
+      "lo": [
+        "LO1"
+      ],
+      "day": "day1",
+      "session": 1,
+      "slide": "three-designs",
+      "level": "apply",
+      "pool": "practice",
+      "weight": 1,
+      "timer": 75
+    },
+    {
+      "id": "q-design-06",
+      "type": "single",
+      "prompt": "A health centre knows from strong earlier trials that a reminder call reduces missed vaccinations. A manager proposes a new test in which half of the parents get no call, to measure the effect locally. What is the main objection?",
+      "options": [
+        "The test would need too many parents to reach significance",
+        "The local effect cannot differ from the earlier trials",
+        "Half of the parents would be denied a benefit already shown to work",
+        "Parents cannot be randomised without written consent in every case"
+      ],
+      "correct": [
+        2
+      ],
+      "misconceptions": [
+        "Raises a size question when the problem is whether the test should be run at all",
+        "Assumes that results transfer exactly, which is a separate and weaker point",
+        "",
+        "States a blanket rule the scenario does not give"
+      ],
+      "explanation": "Withholding is acceptable when nobody knows whether the change helps. Here the benefit is established, so a no-call arm denies a known benefit.",
+      "lo": [
+        "LO1"
+      ],
+      "day": "day1",
+      "session": 1,
+      "slide": "when-not-to-randomise",
+      "level": "evaluate",
+      "pool": "practice",
+      "weight": 1,
+      "timer": 75
+    },
+    {
+      "id": "q-prereg-01",
+      "type": "single",
+      "prompt": "Four teams wrote the decision line of a pre-registration for a new queue ticket. Which line gives the director a rule she can apply on the last day?",
+      "options": [
+        "We will learn whether the new ticket improves the visitor experience",
+        "If waits fall by at least 2 minutes and complaints do not rise, we adopt it",
+        "If the result is significant we adopt the ticket in all branches",
+        "We adopt the ticket unless the test shows that it is harmful"
+      ],
+      "correct": [
+        1
+      ],
+      "misconceptions": [
+        "States curiosity, not a decision: no action follows from any result",
+        "",
+        "Ties the decision to significance, which says nothing about whether the gain is large enough",
+        "Decides in advance: the test can only confirm what was going to happen anyway"
+      ],
+      "explanation": "A decision line names the action for each result and contains the number that separates them.",
       "lo": [
         "LO2"
       ],
       "day": "day1",
-      "session": 1,
-      "level": "understand",
+      "session": 2,
+      "slide": "decision-first",
+      "level": "evaluate",
       "pool": "practice",
-      "weight": 1
+      "weight": 1,
+      "timer": 75
     },
     {
-      "id": "q-example-3",
-      "type": "single",
-      "prompt": "REPLACE: a practice question on LO3, as a short scenario",
-      "options": [
-        "REPLACE: a wrong option that a common misconception makes tempting",
-        "REPLACE: the right answer",
-        "REPLACE: a wrong option that a common misconception makes tempting",
-        "REPLACE: a wrong option that a common misconception makes tempting"
-      ],
-      "correct": [
-        1
-      ],
-      "explanation": "REPLACE: why the right answer is right, in one sentence",
-      "misconceptions": [
-        "REPLACE: the misconception behind this option",
-        "",
-        "REPLACE: the misconception behind this option",
-        "REPLACE: the misconception behind this option"
-      ],
+      "id": "q-prereg-02",
+      "type": "numeric",
+      "prompt": "A text reminder costs 0.30 riyals per resident. Each missed bulky-waste collection costs the city 15 riyals. By how many points must the reminder reduce missed collections to pay for itself?",
+      "answer": 2,
+      "tolerance": 0,
+      "unit": "points",
+      "explanation": "Break-even is the cost per resident over the cost of one miss: 0.30 / 15 = 0.02, which is 2 points.",
       "lo": [
-        "LO3"
+        "LO2"
       ],
       "day": "day1",
-      "session": 1,
+      "session": 2,
+      "slide": "minimum-effect-from-costs",
       "level": "apply",
       "pool": "practice",
-      "weight": 1
+      "weight": 1,
+      "timer": 75
     },
     {
-      "id": "q-example-4",
-      "type": "tf",
-      "prompt": "REPLACE: a statement on LO4 that is true",
+      "id": "q-prereg-03",
+      "type": "single",
+      "prompt": "On-time payment is 40%. A report says a new letter raised it 'by 5%'. A colleague reads this as 45%, another as 42%. Which wording removes the doubt?",
       "options": [
-        "True",
-        "False"
+        "It raised on-time payment by 5 per cent of payers",
+        "It raised on-time payment significantly, by 5%",
+        "It raised on-time payment by roughly a twentieth",
+        "It raised on-time payment by 5 points, from 40% to 45%"
+      ],
+      "correct": [
+        3
+      ],
+      "misconceptions": [
+        "Keeps the ambiguous word and adds a second ambiguity",
+        "Adds a statistical word that does not say which 5% is meant",
+        "Chooses the relative reading without saying so",
+        ""
+      ],
+      "explanation": "'Points' names the difference between two percentages, and giving both rates leaves no room for the relative reading.",
+      "lo": [
+        "LO2"
+      ],
+      "day": "day1",
+      "session": 2,
+      "slide": "minimum-effect-from-costs",
+      "level": "understand",
+      "pool": "practice",
+      "weight": 1,
+      "timer": 75
+    },
+    {
+      "id": "q-prereg-04",
+      "type": "single",
+      "prompt": "A tax office tests a firmer payment letter. Which of these is a complete guardrail?",
+      "options": [
+        "We will monitor complaints closely throughout the test",
+        "Complaints must not rise; if they do, we will discuss it",
+        "If the complaint rate exceeds control by 1 point, pause and review the letter",
+        "Complaints are a secondary metric and will be reported"
+      ],
+      "correct": [
+        2
+      ],
+      "misconceptions": [
+        "Names a metric without a threshold or an action",
+        "Has no number, so 'rise' will be argued about afterwards",
+        "",
+        "Confuses a metric that explains with one that can stop the test"
+      ],
+      "explanation": "A guardrail has a metric, a threshold and the action taken when the threshold is crossed.",
+      "lo": [
+        "LO2"
+      ],
+      "day": "day1",
+      "session": 2,
+      "slide": "guardrails-with-thresholds",
+      "level": "evaluate",
+      "pool": "practice",
+      "weight": 1,
+      "timer": 75
+    },
+    {
+      "id": "q-prereg-05",
+      "type": "single",
+      "prompt": "A utility tests two versions of its bill. Its system tosses a coin for every bill printed. One customer in four has several meters and gets several bills. What goes wrong?",
+      "options": [
+        "Customers with several meters see both versions, so the arms contaminate each other",
+        "The arms will have unequal numbers of bills",
+        "Bills cannot be analysed because they are not people",
+        "The test will need four times as many bills"
       ],
       "correct": [
         0
       ],
-      "explanation": "REPLACE: why the right answer is right, in one sentence",
       "misconceptions": [
         "",
-        "REPLACE: the misconception behind this option"
+        "Expects a coin per bill to unbalance the counts, which it does not",
+        "Rejects the row as a unit for the wrong reason",
+        "Invents a size penalty where the problem is who receives which version"
       ],
+      "explanation": "A person who receives both versions is in both arms. The unit must be the customer, so that every bill of a customer lands in one arm.",
       "lo": [
-        "LO4"
+        "LO2"
       ],
       "day": "day1",
-      "session": 1,
-      "level": "understand",
+      "session": 3,
+      "slide": "notices-of-one-holder",
+      "level": "analyze",
       "pool": "practice",
-      "weight": 1
+      "weight": 1,
+      "timer": 75
     },
     {
-      "id": "q-example-5",
+      "id": "q-prereg-06",
       "type": "single",
-      "prompt": "REPLACE: a practice question on LO5, as a short scenario",
+      "prompt": "A school district wants to test a new homework platform. Pupils in a class work together and share one teacher. Three pairs of small schools share their teaching staff. What should be randomised?",
       "options": [
-        "REPLACE: a wrong option that a common misconception makes tempting",
-        "REPLACE: the right answer",
-        "REPLACE: a wrong option that a common misconception makes tempting",
-        "REPLACE: a wrong option that a common misconception makes tempting"
+        "Pupils, since there are far more of them",
+        "Classes, since pupils in a class share a teacher",
+        "Schools, treating each pair that shares staff as one unit",
+        "Homework tasks, since the platform logs each task"
+      ],
+      "correct": [
+        2
+      ],
+      "misconceptions": [
+        "Picks the unit with the most rows and ignores that classmates affect each other",
+        "Stops one level too low: teachers shared between schools carry the platform across",
+        "",
+        "Takes the row of the log for the unit"
+      ],
+      "explanation": "Whatever shares staff must land in one arm together. Schools are the unit, and schools that share teachers count as one.",
+      "lo": [
+        "LO2"
+      ],
+      "day": "day1",
+      "session": 3,
+      "slide": "interference-between-units",
+      "level": "apply",
+      "pool": "practice",
+      "weight": 1,
+      "timer": 75
+    },
+    {
+      "id": "q-prereg-07",
+      "type": "numeric",
+      "prompt": "A test of a new counter routine logs 14,400 visits in 30 branches. Four pairs of branches share staff and each pair is treated as one unit. How many units does the test have?",
+      "answer": 26,
+      "tolerance": 0,
+      "unit": "units",
+      "explanation": "Four pairs become four units in place of eight branches: 30 − 4 = 26. The 14,400 visits are rows, not units.",
+      "lo": [
+        "LO2"
+      ],
+      "day": "day1",
+      "session": 3,
+      "slide": "rows-are-not-units",
+      "level": "apply",
+      "pool": "practice",
+      "weight": 1,
+      "timer": 75
+    },
+    {
+      "id": "q-prereg-08",
+      "type": "single",
+      "prompt": "A pre-registration says holders will be 'analysed as assigned'. During the test, 4% of the reminder arm never receive the reminder because of a system fault. How are these holders treated in the analysis?",
+      "options": [
+        "They are moved to the control arm, since they got no reminder",
+        "They are removed, since they did not receive the treatment",
+        "They are analysed separately as a third arm",
+        "They stay in the reminder arm, where the coin put them"
+      ],
+      "correct": [
+        3
+      ],
+      "misconceptions": [
+        "Regroups by what happened, which breaks the comparability the coin created",
+        "Drops units from one arm only, and those units are not a random handful",
+        "Creates a group that chance did not assign",
+        ""
+      ],
+      "explanation": "Analysis as assigned keeps every unit in the arm that chance chose. It estimates the effect of deciding to send reminders, failures included.",
+      "lo": [
+        "LO2"
+      ],
+      "day": "day1",
+      "session": 4,
+      "slide": "analysis-plan",
+      "level": "understand",
+      "pool": "practice",
+      "weight": 1,
+      "timer": 75
+    },
+    {
+      "id": "q-prereg-09",
+      "type": "single",
+      "prompt": "A team pre-registered completion as the primary metric of a form test. Halfway through, an analyst proposes to add time on page as a further metric. What is the sound way to do it?",
+      "options": [
+        "Replace completion with time on page if it shows a clearer result",
+        "Add it with a date and report it as exploratory",
+        "Add it and treat both as primary",
+        "Refuse: nothing may be added after the start"
       ],
       "correct": [
         1
       ],
-      "explanation": "REPLACE: why the right answer is right, in one sentence",
       "misconceptions": [
-        "REPLACE: the misconception behind this option",
+        "Lets the data choose the metric that decides",
         "",
-        "REPLACE: the misconception behind this option",
-        "REPLACE: the misconception behind this option"
+        "Doubles the chances of a win after seeing interim data",
+        "Reads the page as a ceiling when it is a floor"
       ],
+      "explanation": "Additions after the start are allowed when dated and labelled exploratory. What decides, when the test stops and who counts may not change.",
       "lo": [
-        "LO5"
+        "LO2"
       ],
       "day": "day1",
-      "session": 1,
-      "level": "apply",
+      "session": 4,
+      "slide": "why-write-it-down",
+      "level": "evaluate",
       "pool": "practice",
-      "weight": 1
+      "weight": 1,
+      "timer": 75
     },
     {
-      "id": "q-example-6",
-      "type": "tf",
-      "prompt": "REPLACE: a statement on LO6 that is true",
+      "id": "q-prereg-10",
+      "type": "order",
+      "prompt": "Put these steps of designing a test in the order in which they should be settled.",
       "options": [
-        "True",
-        "False"
+        "Write the decision the result will change",
+        "Choose one primary metric and its minimum effect",
+        "Choose the unit of randomisation",
+        "Compute the sample size and the duration",
+        "Have someone else review the page",
+        "Assign the first unit"
       ],
-      "correct": [
-        0
-      ],
-      "explanation": "REPLACE: why the right answer is right, in one sentence",
-      "misconceptions": [
-        "",
-        "REPLACE: the misconception behind this option"
-      ],
+      "explanation": "The decision comes first because everything else serves it; the metric and minimum effect come before the size because the size depends on them; the review comes before the first unit is assigned, never after.",
       "lo": [
-        "LO6"
+        "LO2"
       ],
       "day": "day1",
-      "session": 1,
-      "level": "understand",
+      "session": 4,
+      "slide": "one-page-twelve-items",
+      "level": "apply",
       "pool": "practice",
-      "weight": 1
+      "weight": 1,
+      "timer": 75
     }
   ]
 }
