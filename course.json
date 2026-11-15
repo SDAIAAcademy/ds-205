@@ -619,7 +619,7 @@
       "kind": "capstone",
       "title": "Capstone: the design and analysis pack and its defence",
       "deck": "slides/capstone.html",
-      "subtitle": "Each participant defends one design choice of a pack on an unseen case in eight minutes, then answers four minutes of questions"
+      "subtitle": "Each participant defends one design choice of a pack on one of three synthetic cases in eight minutes, then answers four minutes of questions"
     }
   ],
   "capstone": {
