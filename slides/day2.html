@@ -1,158 +1,644 @@
 <section class="slide title" id="title" data-auto="title">
-  <aside class="notes">REPLACE: welcome; introduce yourself; one question to the room that calibrates the pace; the rhythm of the day</aside>
+  <aside class="notes"><p>Yesterday ended with a page that says 9,200 holders per arm and 28 days. Ask the room where they think 9,200 came from and why the test should run three times longer than that needs. Collect two or three guesses; do not correct them yet. Today answers both.</p></aside>
 </section>
 
-<section class="slide" id="agenda" data-auto="agenda"></section>
+<section class="slide" id="agenda" data-auto="agenda">
+  <aside class="notes"><p>Session 1 computes the size by formula. Session 2 checks it by simulation, the habit of DS-201 applied to a test that has not run yet. Session 3 takes the counter test, where the formula no longer applies and only simulation can answer. Session 4 turns a size into dates.</p></aside>
+</section>
 
-<!-- Session 1 -->
+<section class="slide" id="review-day1" data-lo="LO2" data-label="Review">
+  <div class="kicker">Review of Day 1</div>
+  <h2>Which page is ready to sign?</h2>
+  <div class="quiz" data-type="single" data-lo="LO2">
+    <p class="lead">Four pre-registrations for the reminder test differ in one line each. Which line is acceptable?</p>
+    <div class="opts">
+      <div class="opt" data-why="Leaves the choice of metric until the data are in: two chances of a win">Primary metric: on-time renewal or counter visits, whichever is clearer</div>
+      <div class="opt" data-why="A holder with several permits can land in both arms">Unit: the renewal notice, since that is what the platform sends</div>
+      <div class="opt" data-ok>Stop rule: 28 days, one analysis at the end, a safety look at the guardrails on day 14</div>
+      <div class="opt" data-why="No threshold and no action: nothing can stop the test">Guardrail: we will keep an eye on complaints</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> A fixed end, one analysis of the primary metric, and an early look that reads only the guardrails.</div>
+  </div>
+  <aside class="notes"><p>Answer: C. Two minutes. The three wrong lines are items C4, C3 and C6 of the neighbour's page in lab 1.4. If the room hesitates on B, redo the slide on notices and holders: 38.5% of notices belong to holders with several permits.</p></aside>
+</section>
 
+<!-- ======================= SESSION 1 ======================= -->
 <section class="slide section" id="s1" data-auto="section" data-session="1"></section>
 
-<section class="slide" id="s1-idea" data-lo="LO3">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
-  </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+<section class="slide" id="two-ways-to-be-wrong" data-lo="LO3" data-label="Two errors">
+  <div class="kicker">Before any data</div>
+  <h2>A test can be wrong in two ways, and you choose both rates in advance</h2>
+  <table class="t">
+    <tr><th></th><th>The test says "effect"</th><th>The test says "no clear effect"</th></tr>
+    <tr><td><b>The reminder does nothing</b></td><td><em>False win.</em> You accept 5% of these: the level, α.</td><td>Correct.</td></tr>
+    <tr><td><b>The reminder adds 2 points</b></td><td>Correct. The chance of landing here is the <b>power</b>: 80% by convention.</td><td><em>Missed effect.</em> 20% of the time at 80% power.</td></tr>
+  </table>
+  <div class="callout note mt"><b>Both rates are prices.</b> A false win costs the office a reminder that does not pay. A missed effect costs it a reminder that would have.</div>
+  <aside class="notes"><p>DS-201 taught the p-value and the 5% level. Power is the new idea today. The conventions, 5% and 80%, are conventions: a team that fears a missed effect more can ask for 90%, and the lab's stretch prices that at a third more holders.</p></aside>
 </section>
 
-<section class="slide" id="s1-steps" data-lo="LO3">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="power-is-about-many-tests" data-lo="LO3" data-label="Power">
+  <div class="kicker">Lab 2.2, step 1</div>
+  <h2>The same true effect gives a different estimate in every test</h2>
+  <div class="cols cols-2">
+    <table class="t">
+      <tr><th>Simulated test</th><th>Estimate</th><th>p-value</th></tr>
+      <tr><td>1</td><td>+1.87 points</td><td>0.0086</td></tr>
+      <tr><td>2</td><td>+3.60 points</td><td>below 0.0001</td></tr>
+      <tr><td>3</td><td>+1.75 points</td><td>0.0144</td></tr>
+      <tr><td>4</td><td>+1.90 points</td><td>0.0077</td></tr>
+      <tr><td>5</td><td>+0.83 points</td><td>0.2466</td></tr>
+    </table>
+    <ul class="bullets">
+      <li>Five tests in one simulated world. The truth is +2 points in all five.</li>
+      <li>Four find it. The fifth misses: an unlucky draw, not a wrong analysis.</li>
+      <li><b>Power</b> is the share of such tests that find the effect.</li>
+      <li>It belongs to a design and an effect size, never to one result.</li>
+    </ul>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <aside class="notes"><p>Solution run of lab 2.2 with 9,187 holders per arm. Stress the last bullet: nobody can say "this test had 80% power" about a finished test as if it described the result. Power is decided before, for a stated effect.</p></aside>
+</section>
+
+<section class="slide" id="what-drives-the-size" data-lo="LO3" data-label="The formula">
+  <div class="kicker">Two proportions, two arms</div>
+  <h2>Three things drive the sample size, and one of them is squared</h2>
+  <div class="cols cols-2">
+    <pre class="code"><code class="language-python">def n_per_arm(p1, delta,
+              alpha=0.05, power=0.80):
+    p2 = p1 + delta
+    za = stats.norm.ppf(1 - alpha / 2)  # 1.96
+    zb = stats.norm.ppf(power)          # 0.84
+    spread = p1 * (1 - p1) + p2 * (1 - p2)
+    return ceil((za + zb) ** 2
+                * spread / delta ** 2)</code></pre>
+    <ul class="bullets">
+      <li><b>The error rates</b> you accept: 1.96 and 0.84.</li>
+      <li><b>The spread</b> of a yes-or-no outcome, largest at 50%.</li>
+      <li><b>The minimum effect</b>, squared, in the denominator.</li>
+      <li>Only the third is open to discussion with the director.</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>Participants write this function themselves in lab 2.1, step 2, without an assistant. Do not derive it. Say what each line is for: how sure you want to be, how noisy the outcome is, how small a difference you must see. The function returns units per arm, and the unit is whatever was randomised.</p></aside>
+</section>
+
+<section class="slide" id="size-for-two-points" data-lo="LO3" data-label="2 points">
+  <div class="kicker">Lab 2.1, steps 1 and 2</div>
+  <h2>Two points on a baseline of 61.58% need 9,187 holders per arm</h2>
+  <div class="cols cols-3">
+    <div class="stat"><div class="big">61.58%</div><div class="lbl">baseline on-time renewal, from 391,802 notices in 182 days</div></div>
+    <div class="stat"><div class="big">9,187</div><div class="lbl">holders per arm for 2 points at 5% and 80%</div></div>
+    <div class="stat"><div class="big">18,374</div><div class="lbl">holders in all: about 9 days of average traffic at 2,153 notices a day</div></div>
+  </div>
+  <div class="callout tip mt"><b>The page said 9,200.</b> It was this calculation, rounded.</div>
+  <aside class="notes"><p>Solution run of lab 2.1. The first question of the morning is answered. The second, why 28 days when 9 are enough, waits for session 4. Ask what "average traffic" hides.</p></aside>
+</section>
+
+<section class="slide" id="halve-the-effect" data-lo="LO3" data-label="Three minimum effects">
+  <div class="kicker">Lab 2.1, steps 3 and 5</div>
+  <h2>Halve the minimum effect and the test needs four times the holders</h2>
+  <table class="t">
+    <tr><th>Minimum effect</th><th>Holders per arm</th><th>Against 2 points</th><th>Days of average traffic</th></tr>
+    <tr><td>4 points</td><td>2,268</td><td>a quarter</td><td>3</td></tr>
+    <tr><td><b>2 points</b></td><td><b>9,187</b></td><td>1</td><td><b>9</b></td></tr>
+    <tr><td>1 point</td><td>36,950</td><td>four times</td><td>35</td></tr>
+  </table>
+  <div class="callout note mt"><b>This table is the conversation with Sahar.</b> "Would you act on 4 points only? Three days. Do you need to see 1 point? Five weeks." She chooses the row; the size follows.</div>
+  <aside class="notes"><p>The square is why small effects are expensive. It is also why the minimum effect must come from costs, as in lab 1.2, and not from what is convenient to detect. A team that picks 4 points because three days are convenient will miss a real 2-point effect most of the time.</p></aside>
+</section>
+
+<section class="slide" id="size-is-an-estimate" data-lo="LO3" data-label="False precision">
+  <div class="kicker">Lab 2.1, step 4 and stretch</div>
+  <h2>A sample size is an estimate, not a number to quote to the last holder</h2>
+  <div class="cols cols-2">
+    <table class="t">
+      <tr><th>For 2 points</th><th>Per arm</th></tr>
+      <tr><td>The formula you wrote</td><td>9,187</td></tr>
+      <tr><td>statsmodels, same inputs</td><td>9,189</td></tr>
+      <tr><td>The formula at 90% power</td><td>12,298</td></tr>
+    </table>
+    <ul class="bullets">
+      <li>Two honest methods differ by two holders: the library transforms the proportions first.</li>
+      <li>The baseline is itself a guess about the test window.</li>
+      <li>Ten more points of power cost a third more holders.</li>
+      <li>Say "about 9,200 per arm".</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>statsmodels' NormalIndPower works on a standardised effect size computed by proportion_effectsize, which uses an arcsine transformation. The difference is 0.02% here. A wrong baseline matters far more: session 2's stretch gives 76.6% power if the baseline is really 50% and 82.2% if it is 70%.</p></aside>
+</section>
+
+<section class="slide" id="check-halving" data-lo="LO3">
+  <div class="kicker">Checkpoint</div>
+  <h2>What does a smaller minimum effect cost?</h2>
+  <div class="quiz" data-type="single" data-lo="LO3">
+    <p class="lead">A test needs 6,000 residents per arm to detect 3 points. The director now says she would act on 1.5 points. About how many residents per arm does the test need?</p>
+    <div class="opts">
+      <div class="opt" data-ok>24,000</div>
+      <div class="opt" data-why="Scales the size in proportion to the effect and not to its square">12,000</div>
+      <div class="opt" data-why="Assumes the size does not depend on the effect once the test is planned">6,000</div>
+      <div class="opt" data-why="Divides where the formula multiplies: a smaller effect is harder to see, not easier">1,500</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> The effect is squared in the denominator. Half the effect, four times the size.</div>
+  </div>
+  <aside class="notes"><p>Answer: A. In the capstone defence the assessor does exactly this to each participant: changes the minimum effect and asks for the new size. Someone who has the square in their head answers before opening the notebook.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-2-1" data-auto="lab" data-lab="2.1">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>Steps 1 to 3 without an assistant: the first pass of a sample-size step is always the participant's own. Typical errors: delta entered as 2 in place of 0.02; forgetting that the result is per arm; rounding down. The check compares with a reference function. The lab reads only the history file and needs nothing from Day 1.</p></aside>
 </section>
 
-<!-- Session 2 -->
-
+<!-- ======================= SESSION 2 ======================= -->
 <section class="slide section" id="s2" data-auto="section" data-session="2"></section>
 
-<section class="slide" id="s2-idea" data-lo="LO3">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
-    </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+<section class="slide" id="simulate-the-plan" data-lo="LO3" data-label="The idea">
+  <div class="kicker">The DS-201 habit, before the test</div>
+  <h2>To check a design, run it a thousand times in a world you built</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>1 · Build a world</b>baseline 61.58%; the reminder truly adds 2 points</div>
+    <div class="arrow">→</div>
+    <div class="step c-cyan"><b>2 · Run the plan</b>9,187 holders per arm, the pre-registered test</div>
+    <div class="arrow">→</div>
+    <div class="step c-purple"><b>3 · Repeat</b>1,000 times, with a seed</div>
+    <div class="arrow">→</div>
+    <div class="step c-coral"><b>4 · Count</b>the share of tests that say "significant"</div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <div class="callout tip mt"><b>That share is the power.</b> If the formula is right, it should be about 80%.</div>
+  <aside class="notes"><p>In DS-201 participants counted how often an interval contained a known truth. This is the same move: a claim about a method is checked by using the method many times where the truth is known. The difference is that the test has not happened yet. You are rehearsing it.</p></aside>
 </section>
 
-<section class="slide" id="s2-steps" data-lo="LO3">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="one-simulated-test" data-lo="LO3" data-label="The code">
+  <div class="kicker">Lab 2.2, steps 1 and 2</div>
+  <h2>One simulated test is two binomial draws and the planned analysis</h2>
+  <div class="cols cols-2">
+    <pre class="code"><code class="language-python">def power_sim(gen, n, p1, delta, reps):
+    x_c = gen.binomial(n, p1, size=reps)
+    x_r = gen.binomial(n, p1 + delta,
+                       size=reps)
+    _, _, p = U.z_test(x_c, n, x_r, n)
+    return (p &lt; 0.05).mean()
+
+power_sim(U.rng(22), 9187,
+          0.6158, 0.02, 1000)   # 0.806</code></pre>
+    <ul class="bullets">
+      <li>Each draw is the number of on-time renewals among n holders in one arm.</li>
+      <li>The analysis is the one on the pre-registration, not a shortcut.</li>
+      <li><code>size=reps</code> runs all the tests at once.</li>
+      <li>The seed makes your 0.806 your neighbour's 0.806.</li>
+    </ul>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <aside class="notes"><p>The second bullet is the reason to simulate: you test the analysis you will really run. If the plan were a t-test on branch means, that is what would go inside the function, and session 3 does exactly that.</p></aside>
+</section>
+
+<section class="slide" id="simulated-power" data-lo="LO3" data-label="80.6%">
+  <div class="kicker">Lab 2.2, steps 2 and 3</div>
+  <h2>The simulation agrees with the formula, within its own counting error</h2>
+  <div class="cols cols-3">
+    <div class="stat"><div class="big">80%</div><div class="lbl">power promised by the formula at 9,187 per arm</div></div>
+    <div class="stat"><div class="big">80.6%</div><div class="lbl">of 1,000 simulated tests were significant</div></div>
+    <div class="stat"><div class="big">±2.5</div><div class="lbl">points: two standard errors of a share counted over 1,000 tests</div></div>
+  </div>
+  <ul class="bullets mt">
+    <li>A simulated share is an estimate too. Quote it with its error.</li>
+    <li>10,000 simulated tests would narrow the error to ±0.8 points.</li>
+  </ul>
+  <aside class="notes"><p>Solution run of lab 2.2. The counting error is the standard error of a proportion from DS-201, applied to the simulation itself: the square root of 0.806 times 0.194 over 1,000, doubled. "Checked by simulation" means the two numbers agree within this margin.</p></aside>
+</section>
+
+<section class="slide" id="power-curve" data-lo="LO3" data-label="The power curve">
+  <div class="kicker">Lab 2.2, step 4</div>
+  <h2>The power curve is steep at first and flat at the end</h2>
+  <div class="cols cols-32">
+    <div class="figure">
+<!--FIG:power_curve-->
+<svg viewBox="0 0 720 400" role="img" aria-label="Power to detect 2 points against holders per arm: the formula's curve rises steeply to 80 percent at 9,187 per arm and flattens towards 100 percent at 30,000; seven simulated points lie on it">
+<rect x="64" y="18" width="636" height="338" fill="none" stroke="var(--line)"/>
+<line x1="64" x2="700" y1="356.0" y2="356.0" stroke="var(--line)" stroke-dasharray="3 4"/>
+<text x="56" y="361.0" text-anchor="end" font-size="14" fill="var(--muted)">0%</text>
+<line x1="64" x2="700" y1="289.7" y2="289.7" stroke="var(--line)" stroke-dasharray="3 4"/>
+<text x="56" y="294.7" text-anchor="end" font-size="14" fill="var(--muted)">20%</text>
+<line x1="64" x2="700" y1="223.5" y2="223.5" stroke="var(--line)" stroke-dasharray="3 4"/>
+<text x="56" y="228.5" text-anchor="end" font-size="14" fill="var(--muted)">40%</text>
+<line x1="64" x2="700" y1="157.2" y2="157.2" stroke="var(--line)" stroke-dasharray="3 4"/>
+<text x="56" y="162.2" text-anchor="end" font-size="14" fill="var(--muted)">60%</text>
+<line x1="64" x2="700" y1="90.9" y2="90.9" stroke="var(--line)" stroke-dasharray="3 4"/>
+<text x="56" y="95.9" text-anchor="end" font-size="14" fill="var(--muted)">80%</text>
+<line x1="64" x2="700" y1="24.6" y2="24.6" stroke="var(--line)" stroke-dasharray="3 4"/>
+<text x="56" y="29.6" text-anchor="end" font-size="14" fill="var(--muted)">100%</text>
+<line x1="64.0" x2="64.0" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="64.0" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">0</text>
+<line x1="166.6" x2="166.6" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="166.6" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">5,000</text>
+<line x1="269.2" x2="269.2" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="269.2" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">10,000</text>
+<line x1="371.7" x2="371.7" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="371.7" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">15,000</text>
+<line x1="474.3" x2="474.3" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="474.3" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">20,000</text>
+<line x1="576.9" x2="576.9" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="576.9" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">25,000</text>
+<line x1="679.5" x2="679.5" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="679.5" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">30,000</text>
+<line x1="64" x2="700" y1="90.9" y2="90.9" stroke="var(--ink, currentColor)" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="692" y="83.9" text-anchor="end" font-size="15" fill="var(--ink, currentColor)">80% power</text>
+<line x1="252.5" x2="252.5" y1="18" y2="356" stroke="var(--ink, currentColor)" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="259.5" y="330" text-anchor="start" font-size="15" fill="var(--ink, currentColor)">9,187 per arm</text>
+<polyline points="68.1,335.8 73.4,325.8 78.7,316.4 84.0,307.1 89.3,297.8 94.7,288.7 100.0,279.5 105.3,270.4 110.6,261.5 115.9,252.6 121.2,243.8 126.5,235.2 131.8,226.8 137.1,218.5 142.4,210.4 147.8,202.5 153.1,194.8 158.4,187.3 163.7,180.1 169.0,173.0 174.3,166.2 179.6,159.6 184.9,153.3 190.2,147.1 195.5,141.2 200.9,135.5 206.2,130.0 211.5,124.7 216.8,119.7 222.1,114.9 227.4,110.2 232.7,105.8 238.0,101.5 243.3,97.5 248.6,93.6 254.0,89.9 259.3,86.4 264.6,83.0 269.9,79.8 275.2,76.7 280.5,73.8 285.8,71.1 291.1,68.5 296.4,66.0 301.7,63.6 307.1,61.4 312.4,59.3 317.7,57.3 323.0,55.4 328.3,53.6 333.6,51.8 338.9,50.2 344.2,48.7 349.5,47.3 354.8,45.9 360.2,44.6 365.5,43.4 370.8,42.3 376.1,41.2 381.4,40.2 386.7,39.2 392.0,38.3 397.3,37.5 402.6,36.7 407.9,35.9 413.3,35.2 418.6,34.5 423.9,33.9 429.2,33.3 434.5,32.8 439.8,32.2 445.1,31.7 450.4,31.3 455.7,30.9 461.0,30.5 466.4,30.1 471.7,29.7 477.0,29.4 482.3,29.1 487.6,28.8 492.9,28.5 498.2,28.3 503.5,28.0 508.8,27.8 514.1,27.6 519.5,27.4 524.8,27.2 530.1,27.0 535.4,26.9 540.7,26.7 546.0,26.6 551.3,26.4 556.6,26.3 561.9,26.2 567.2,26.1 572.6,26.0 577.9,25.9 583.2,25.8 588.5,25.7 593.8,25.7 599.1,25.6 604.4,25.5 609.7,25.5 615.0,25.4 620.3,25.3 625.7,25.3 631.0,25.2 636.3,25.2 641.6,25.2 646.9,25.1 652.2,25.1 657.5,25.1 662.8,25.0 668.1,25.0 673.4,25.0 678.8,24.9 684.1,24.9 689.4,24.9 694.7,24.9 700.0,24.9" fill="none" stroke="var(--teal)" stroke-width="3"/>
+<circle cx="105.0" cy="277.8" r="6" fill="var(--coral)"/>
+<circle cx="146.1" cy="200.9" r="6" fill="var(--coral)"/>
+<circle cx="187.1" cy="155.5" r="6" fill="var(--coral)"/>
+<circle cx="252.5" cy="95.2" r="6" fill="var(--coral)"/>
+<circle cx="310.2" cy="63.1" r="6" fill="var(--coral)"/>
+<circle cx="392.3" cy="40.5" r="6" fill="var(--coral)"/>
+<circle cx="679.5" cy="24.6" r="6" fill="var(--coral)"/>
+<text x="484.6" y="150.5" text-anchor="start" font-size="15" fill="var(--ink, currentColor)">line: formula</text>
+<text x="484.6" y="177.1" text-anchor="start" font-size="15" fill="var(--ink, currentColor)">dots: 1,000 simulated tests each</text>
+<text x="382.0" y="396" text-anchor="middle" font-size="14" fill="var(--muted)">holders per arm</text>
+</svg>
+<!--/FIG:power_curve-->
+      <div class="caption">Power to detect 2 points on a baseline of 61.58%.</div>
+    </div>
+    <ul class="bullets">
+      <li>2,000 per arm: 23.6% simulated. A real effect is missed three times in four.</li>
+      <li>9,187 per arm: 78.7% on the curve's run, 80% by formula.</li>
+      <li>30,000 per arm: every simulated test found it.</li>
+      <li>The first 9,000 buy 80 points of power. The next 21,000 buy 20.</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>Solution run of lab 2.2: 23.6%, 46.8%, 60.5%, 78.7%, 88.4%, 95.2% and 100.0% at 2,000, 4,000, 6,000, 9,187, 12,000, 16,000 and 30,000 per arm. The curve is the evidence the third outcome asks for. A 28-day test will have about 30,000 per arm: it sits on the flat part, where the question is no longer whether there is a 2-point effect but how large the effect is. Such a test detects 1.11 points with 80% power.</p></aside>
+</section>
+
+<section class="slide" id="false-positives-by-count" data-lo="LO3 LO5" data-label="No effect">
+  <div class="kicker">Lab 2.2, step 5</div>
+  <h2>In a world with no effect, one test in twenty still wins</h2>
+  <div class="cols cols-2">
+    <div class="stat"><div class="big">5.3%</div><div class="lbl">of 1,000 simulated tests were significant when the reminder did nothing</div></div>
+    <ul class="bullets">
+      <li>That is the 5% you agreed to when you chose the level.</li>
+      <li>It holds for <b>one</b> planned analysis of <b>one</b> metric at <b>one</b> moment.</li>
+      <li>Tomorrow you break each of the three conditions and count again.</li>
+    </ul>
+  </div>
+  <div class="callout warn mt"><b>What goes wrong.</b> "Significant" is read as "true". At a 5% level, an office that tests twenty useless ideas adopts one of them.</div>
+  <aside class="notes"><p>Solution run of lab 2.2 with seed 27; the counting error near 5% over 1,000 tests is ±1.4 points. A test with no true effect is called an A/A test: both arms get the same thing. Day 3, session 3, runs a thousand of them under three bad habits.</p></aside>
+</section>
+
+<section class="slide" id="when-the-formula-ends" data-lo="LO3" data-label="Why simulate">
+  <div class="kicker">What simulation is for</div>
+  <h2>The formula covers one design; a simulation covers the one you have</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>The formula assumes</h4><p class="small mb0">Independent units. Two proportions. Equal arms. One look. The baseline you guessed.</p></div>
+    <div class="card c-coral"><h4>Real designs break it</h4><p class="small mb0">Visitors inside branches. A baseline that turns out to be 50%: power 76.6%, not 80%. An effect that differs by weekday. An analysis on branch means.</p></div>
+  </div>
+  <div class="callout tip mt"><b>The rule.</b> Use the formula for a first number and for the conversation about the minimum effect. Use a simulation of the planned analysis for the number you put on the page.</div>
+  <aside class="notes"><p>The 76.6% is the stretch of lab 2.2: same size, true baseline 50%, where a yes-or-no outcome is noisiest. At a 70% baseline the same test has 82.2%. Sources for further reading on sample size in practice: Zhou, Lu and Shallah (2023).</p></aside>
+</section>
+
+<section class="slide" id="check-simulated-power" data-lo="LO3">
+  <div class="kicker">Checkpoint</div>
+  <h2>What does a simulated power of 81% tell you?</h2>
+  <div class="quiz" data-type="single" data-lo="LO3">
+    <p class="lead">You simulate a planned test 1,000 times with a true effect of 2 points. 81% of the simulated tests are significant. Which statement is correct?</p>
+    <div class="opts">
+      <div class="opt" data-why="Reads power as the chance that the hypothesis is true, which no test provides">There is an 81% chance that the reminder works</div>
+      <div class="opt" data-why="Turns a property of the design into a statement about one finished test">If the real test is significant, the effect is real with probability 81%</div>
+      <div class="opt" data-why="Confuses power with the size of the effect">The reminder will raise on-time renewal by 81% of 2 points</div>
+      <div class="opt" data-ok>If the effect is really 2 points, a test of this design finds it about 81 times in 100</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Power is a statement about the design under an assumed effect: how often it finds what is there.</div>
+  </div>
+  <aside class="notes"><p>Answer: D. The two tempting options turn a property of the design into a property of the hypothesis. If the room splits, ask what the 81% would be if the true effect were zero: about 5%.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-2-2" data-auto="lab" data-lab="2.2">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>The tutor instruction may hint, one step at a time; it never writes the simulation. The baseline and the planned size are given in the first cell, so a participant who did not finish lab 2.1 starts here without loss. Watch for a loop of 1,000 calls to the one-test function: correct, only slower than one vectorised draw. Expected: 80.6% at the planned size, 5.3% with no effect. The curve of step 4 is the evidence of the third outcome.</p></aside>
 </section>
 
-<!-- Session 3 -->
-
+<!-- ======================= SESSION 3 ======================= -->
 <section class="slide section" id="s3" data-auto="section" data-session="3"></section>
 
-<section class="slide" id="s3-idea" data-lo="LO3">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
+<section class="slide" id="visitors-of-one-branch" data-lo="LO3" data-label="Alike within">
+  <div class="kicker">The counter test</div>
+  <h2>Visitors of one branch resemble each other</h2>
   <div class="cols cols-2">
     <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
+      <li>Mansour's test: a triage desk at the entrance. Outcome: served within 15 minutes. Minimum effect: 5 points.</li>
+      <li>Visitors share a queue, so <b>branches</b> are randomised: 12 with the desk, 12 without.</li>
+      <li>Four baseline weeks: 10,888 visits, 62.2% served within 15 minutes.</li>
+      <li>By branch the rate runs from 43.7% to 80.3%.</li>
     </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
+    <div class="card c-purple"><h4>Intraclass correlation</h4><p class="small mb0">The share of the outcome's variance that lies <b>between</b> branches. Here 0.033: three per cent of the variation is about which branch you walked into.</p></div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <aside class="notes"><p>Solution run of labs 1.3 and 2.3. The intraclass correlation is usually written ICC. Day 1 settled why the visitor cannot be the unit: interference. Today's question is what that choice costs.</p></aside>
 </section>
 
-<section class="slide" id="s3-steps" data-lo="LO3">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="design-effect" data-lo="LO3" data-label="Design effect">
+  <div class="kicker">Lab 2.3, step 1</div>
+  <h2>A small correlation times a large branch is a large penalty</h2>
+  <div class="cols cols-3">
+    <div class="stat"><div class="big">0.033</div><div class="lbl">intraclass correlation of being served within 15 minutes</div></div>
+    <div class="stat"><div class="big">454</div><div class="lbl">visits per branch in four weeks, on average</div></div>
+    <div class="stat"><div class="big">15.8</div><div class="lbl">design effect: 1 + (454 − 1) × 0.033</div></div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <ul class="bullets mt">
+    <li>The <b>design effect</b> is how many times larger the variance of the estimate is when branches are randomised in place of visitors.</li>
+    <li>10,888 visits in 24 branches carry the information of about 691 independent visits.</li>
+  </ul>
+  <aside class="notes"><p>The formula 1 plus (m minus 1) times the intraclass correlation assumes equal cluster sizes; Mashraq's branches run from 202 to 1,011 visits, so treat 15.8 as an approximation and trust the simulation of the next slides. The intuition holds: a correlation that looks negligible is multiplied by the cluster size.</p></aside>
+</section>
+
+<section class="slide" id="power-lost" data-lo="LO3" data-label="The power lost">
+  <div class="kicker">Lab 2.3, steps 2 and 3 · 1,000 simulated tests each</div>
+  <h2>Randomising branches costs 77 points of power</h2>
+  <div class="cols cols-2">
+    <div class="stat"><div class="big">100%</div><div class="lbl">power for 5 points if 10,888 visitors could be randomised one by one</div></div>
+    <div class="stat"><div class="big">22.8%</div><div class="lbl">power when 12 branches get the desk and 12 do not, analysed by branch</div></div>
+  </div>
+  <div class="callout warn mt"><b>The same visits, the same effect, the same four weeks.</b> The test has 24 units, and branches differ from each other by far more than 5 points.</div>
+  <aside class="notes"><p>Solution run of lab 2.3. The analysis is a Welch t-test on 12 branch rates against 12, the unit that was randomised; its false-positive rate with no effect was 4.5%. A test that misses a real 5-point effect three times in four should not be run as designed. Let the room propose repairs before the next two slides.</p></aside>
+</section>
+
+<section class="slide" id="visit-level-analysis" data-lo="LO3 LO5" data-label="The tempting repair">
+  <div class="kicker">Lab 2.3, step 4</div>
+  <h2>Analysing visits from a branch-randomised test manufactures wins</h2>
+  <div class="cols cols-2">
+    <div class="stat"><div class="big">68.9%</div><div class="lbl">of tests were "significant" when the desk did nothing and visits were analysed as if each had its own coin</div></div>
+    <ul class="bullets">
+      <li>The tempting repair: "we have 10,888 visits, use them all".</li>
+      <li>The visit-level test reads the luck of which branches landed in which arm as an effect of the desk.</li>
+      <li>It is not a more powerful analysis. It is a wrong one.</li>
+    </ul>
+  </div>
+  <div class="callout tip mt"><b>Analyse what you randomised.</b> One rate per branch, 24 numbers.</div>
+  <aside class="notes"><p>Solution run of lab 2.3: branches randomised, no true effect, a two-proportion z-test on pooled visits. This is the first of tomorrow's three traps, met a day early. Methods that analyse individual rows while respecting clusters exist (cluster-robust standard errors, mixed models); with 24 clusters the branch-level t-test is the plain and safe choice.</p></aside>
+</section>
+
+<section class="slide" id="pairing-recovers-power" data-lo="LO3" data-label="Pairing">
+  <div class="kicker">Lab 2.3, step 5</div>
+  <h2>Pairing like branches recovers much of the lost power</h2>
+  <table class="t small">
+    <tr><th>Design</th><th>Analysis</th><th>Power for 5 points</th><th>False wins, no effect</th></tr>
+    <tr><td>Visitors randomised (not possible here)</td><td>Visits</td><td>100%</td><td>about 5%</td></tr>
+    <tr><td>12 and 12 branches</td><td>Branch rates, t-test</td><td>22.8%</td><td>4.5%</td></tr>
+    <tr><td>12 and 12 branches</td><td>Visits, z-test</td><td>meaningless</td><td>68.9%</td></tr>
+    <tr><td><b>12 pairs of like branches</b></td><td>Pair differences, paired t-test</td><td><b>62.2%</b></td><td>5.8%</td></tr>
+  </table>
+  <ul class="bullets mt">
+    <li>Sort branches by baseline rate, pair neighbours, toss a coin inside each pair.</li>
+    <li>The stable differences between branches cancel inside the pairs.</li>
+  </ul>
+  <aside class="notes"><p>Pairing is stratified assignment in its smallest form. It cost nothing but baseline data the office already had. In the simulation each repetition draws its own baseline period to form the pairs, so the pairs are made from a noisy baseline, as in real life. 62.2% is still short of 80%: the next slide lists what else can be done.</p></aside>
+</section>
+
+<section class="slide" id="what-buys-power-in-clusters" data-lo="LO3" data-label="What helps">
+  <div class="kicker">When power is still short</div>
+  <h2>More branches help; more visits per branch hardly do</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li><b>More units:</b> the strongest lever, and here there are no more branches.</li>
+      <li><b>A longer test:</b> helps a little; the difference between branches stays.</li>
+      <li><b>Pairing or a baseline:</b> removes the stable part of that difference.</li>
+      <li><b>A larger minimum effect:</b> an honest answer if the desk is only worth having for a large gain.</li>
+    </ul>
+    <div class="card c-coral"><h4>And fewer units than you think</h4><p class="small mb0">Three pairs of branches share staff, so the test has 21 units, not 24. Randomised 10 against 11 without pairing, its power is 20.6%.</p></div>
+  </div>
+  <div class="callout note mt"><b>Not on the list:</b> a cleverer analysis of the same coin tosses.</div>
+  <aside class="notes"><p>The 20.6% is the stretch of lab 2.3. Designs that reuse each unit over time, such as switchbacks, and regression adjustment with pre-period data are the next course's subject: DS-302, days 2 and 3. For this course the honest conclusion for Mansour is: pair the branches, and expect to detect 5 points about six times in ten.</p></aside>
+</section>
+
+<section class="slide" id="check-clusters" data-lo="LO3">
+  <div class="kicker">Checkpoint</div>
+  <h2>How large is this test?</h2>
+  <div class="quiz" data-type="single" data-lo="LO3">
+    <p class="lead">A ministry tests a new enrolment procedure in 16 schools, 8 with it and 8 without. Each school enrols about 600 pupils. The outcome is whether a pupil's file is complete on the first day. What decides the power of the test most?</p>
+    <div class="opts">
+      <div class="opt" data-why="Counts rows: pupils in one school share its staff and its habits, so they are not 9,600 independent observations">The 9,600 pupils</div>
+      <div class="opt" data-ok>The 16 schools and how much schools differ from each other</div>
+      <div class="opt" data-why="Within-school sample size shrinks only the small sampling part of each school's rate">The 600 pupils in each school</div>
+      <div class="opt" data-why="The level of the test sets the false-win rate, not how much information 16 schools carry">The 5% significance level</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Schools were randomised, so the test has 16 units. Differences between schools are the noise it must overcome.</div>
+  </div>
+  <aside class="notes"><p>Answer: B. Follow up: what would you do first to raise the power? Pair the schools on last year's first-day completeness. Then: more schools, if there are any.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-2-3" data-auto="lab" data-lab="2.3">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>The tutor instruction may hint; it never writes the simulation. The lab loads the baseline visits and needs nothing from earlier labs. Each step simulates 1,000 tests, a few seconds each. The usual error in step 3 is to give all 24 branches the effect. Expected: ICC 0.033, design effect 15.8; power 100%, 22.8% and 62.2%; false wins 68.9% for the visit-level analysis. This lab also serves the fifth outcome: it measures a false-win rate at the wrong unit.</p></aside>
 </section>
 
-<!-- Session 4 -->
-
+<!-- ======================= SESSION 4 ======================= -->
 <section class="slide section" id="s4" data-auto="section" data-session="4"></section>
 
-<section class="slide" id="s4-idea" data-lo="LO3">
-  <div class="kicker">REPLACE: the question this slide answers</div>
-  <h2>REPLACE: one idea, stated as a sentence</h2>
-  <div class="cols cols-2">
+<section class="slide" id="two-cycles" data-lo="LO3" data-label="Two cycles">
+  <div class="kicker">Lab 2.4, step 1 · eight weeks of the history</div>
+  <h2>The office's traffic has a weekly cycle and a month-end peak</h2>
+  <div class="cols cols-32">
+    <div class="figure">
+<!--FIG:traffic-->
+<svg viewBox="0 0 720 400" role="img" aria-label="Notices sent per day over the first eight weeks of the history: five working days near 2,300, Friday and Saturday near 1,100 and 1,400, and the last days of March about one and a half times higher">
+<rect x="64" y="18" width="636" height="338" fill="none" stroke="var(--line)"/>
+<line x1="64" x2="700" y1="356.0" y2="356.0" stroke="var(--line)" stroke-dasharray="3 4"/>
+<text x="56" y="361.0" text-anchor="end" font-size="14" fill="var(--muted)">0</text>
+<line x1="64" x2="700" y1="271.5" y2="271.5" stroke="var(--line)" stroke-dasharray="3 4"/>
+<text x="56" y="276.5" text-anchor="end" font-size="14" fill="var(--muted)">1,000</text>
+<line x1="64" x2="700" y1="187.0" y2="187.0" stroke="var(--line)" stroke-dasharray="3 4"/>
+<text x="56" y="192.0" text-anchor="end" font-size="14" fill="var(--muted)">2,000</text>
+<line x1="64" x2="700" y1="102.5" y2="102.5" stroke="var(--line)" stroke-dasharray="3 4"/>
+<text x="56" y="107.5" text-anchor="end" font-size="14" fill="var(--muted)">3,000</text>
+<line x1="64" x2="700" y1="18.0" y2="18.0" stroke="var(--line)" stroke-dasharray="3 4"/>
+<text x="56" y="23.0" text-anchor="end" font-size="14" fill="var(--muted)">4,000</text>
+<line x1="69.7" x2="69.7" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="69.7" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">week 1</text>
+<line x1="149.2" x2="149.2" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="149.2" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">week 2</text>
+<line x1="228.7" x2="228.7" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="228.7" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">week 3</text>
+<line x1="308.2" x2="308.2" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="308.2" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">week 4</text>
+<line x1="387.7" x2="387.7" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="387.7" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">week 5</text>
+<line x1="467.2" x2="467.2" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="467.2" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">week 6</text>
+<line x1="546.7" x2="546.7" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="546.7" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">week 7</text>
+<line x1="626.2" x2="626.2" y1="356" y2="361" stroke="var(--muted)"/>
+<text x="626.2" y="378" text-anchor="middle" font-size="14" fill="var(--muted)">week 8</text>
+<rect x="65.1" y="164.0" width="9.1" height="192.0" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="76.5" y="155.7" width="9.1" height="200.3" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="87.8" y="161.1" width="9.1" height="194.9" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="99.2" y="167.8" width="9.1" height="188.2" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="110.6" y="179.3" width="9.1" height="176.7" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="121.9" y="268.1" width="9.1" height="87.9" fill="var(--cyan)" fill-opacity="0.85"/>
+<rect x="133.3" y="240.6" width="9.1" height="115.4" fill="var(--cyan)" fill-opacity="0.85"/>
+<rect x="144.6" y="158.0" width="9.1" height="198.0" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="156.0" y="159.4" width="9.1" height="196.6" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="167.4" y="166.5" width="9.1" height="189.5" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="178.7" y="167.1" width="9.1" height="188.9" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="190.1" y="174.7" width="9.1" height="181.3" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="201.4" y="261.3" width="9.1" height="94.7" fill="var(--cyan)" fill-opacity="0.85"/>
+<rect x="212.8" y="237.9" width="9.1" height="118.1" fill="var(--cyan)" fill-opacity="0.85"/>
+<rect x="224.1" y="161.7" width="9.1" height="194.3" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="235.5" y="161.1" width="9.1" height="194.9" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="246.9" y="155.7" width="9.1" height="200.3" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="258.2" y="169.8" width="9.1" height="186.2" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="269.6" y="184.5" width="9.1" height="171.5" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="280.9" y="261.2" width="9.1" height="94.8" fill="var(--cyan)" fill-opacity="0.85"/>
+<rect x="292.3" y="232.5" width="9.1" height="123.5" fill="var(--cyan)" fill-opacity="0.85"/>
+<rect x="303.6" y="158.3" width="9.1" height="197.7" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="315.0" y="156.2" width="9.1" height="199.8" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="326.4" y="163.8" width="9.1" height="192.2" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="337.7" y="165.5" width="9.1" height="190.5" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="349.1" y="78.2" width="9.1" height="277.8" fill="var(--coral)" fill-opacity="0.85"/>
+<rect x="360.4" y="215.8" width="9.1" height="140.2" fill="var(--coral)" fill-opacity="0.85"/>
+<rect x="371.8" y="177.5" width="9.1" height="178.5" fill="var(--coral)" fill-opacity="0.85"/>
+<rect x="383.1" y="52.0" width="9.1" height="304.0" fill="var(--coral)" fill-opacity="0.85"/>
+<rect x="394.5" y="62.4" width="9.1" height="293.6" fill="var(--coral)" fill-opacity="0.85"/>
+<rect x="405.8" y="63.5" width="9.1" height="292.5" fill="var(--coral)" fill-opacity="0.85"/>
+<rect x="417.2" y="173.7" width="9.1" height="182.3" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="428.6" y="173.9" width="9.1" height="182.1" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="439.9" y="260.1" width="9.1" height="95.9" fill="var(--cyan)" fill-opacity="0.85"/>
+<rect x="451.3" y="239.3" width="9.1" height="116.7" fill="var(--cyan)" fill-opacity="0.85"/>
+<rect x="462.6" y="164.4" width="9.1" height="191.6" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="474.0" y="157.6" width="9.1" height="198.4" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="485.3" y="162.5" width="9.1" height="193.5" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="496.7" y="168.7" width="9.1" height="187.3" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="508.1" y="171.9" width="9.1" height="184.1" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="519.4" y="260.5" width="9.1" height="95.5" fill="var(--cyan)" fill-opacity="0.85"/>
+<rect x="530.8" y="239.3" width="9.1" height="116.7" fill="var(--cyan)" fill-opacity="0.85"/>
+<rect x="542.1" y="163.7" width="9.1" height="192.3" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="553.5" y="157.1" width="9.1" height="198.9" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="564.8" y="160.3" width="9.1" height="195.7" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="576.2" y="164.9" width="9.1" height="191.1" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="587.6" y="174.2" width="9.1" height="181.8" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="598.9" y="266.4" width="9.1" height="89.6" fill="var(--cyan)" fill-opacity="0.85"/>
+<rect x="610.3" y="236.3" width="9.1" height="119.7" fill="var(--cyan)" fill-opacity="0.85"/>
+<rect x="621.6" y="168.9" width="9.1" height="187.1" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="633.0" y="158.5" width="9.1" height="197.5" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="644.4" y="153.5" width="9.1" height="202.5" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="655.7" y="165.5" width="9.1" height="190.5" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="667.1" y="175.1" width="9.1" height="180.9" fill="var(--teal)" fill-opacity="0.85"/>
+<rect x="678.4" y="257.1" width="9.1" height="98.9" fill="var(--cyan)" fill-opacity="0.85"/>
+<rect x="689.8" y="237.4" width="9.1" height="118.6" fill="var(--cyan)" fill-opacity="0.85"/>
+<text x="76.0" y="40.0" text-anchor="start" font-size="14" fill="var(--ink, currentColor)">teal: working days · light blue: Friday and Saturday · coral: the 26th and later</text>
+<text x="382.0" y="396" text-anchor="middle" font-size="14" fill="var(--muted)">day of the history, from Sunday 1 March</text>
+</svg>
+<!--/FIG:traffic-->
+      <div class="caption">Notices sent per day, Sunday 1 March to Saturday 25 April of the synthetic history.</div>
+    </div>
     <ul class="bullets">
-      <li>REPLACE: at most six bullets, each a complete thought</li>
-      <li>REPLACE: bold the key phrase; numbers come from the lab run, not from memory</li>
+      <li>Sunday to Thursday: about 2,300 notices a day.</li>
+      <li>Friday and Saturday, the weekend: about 1,100 and 1,400.</li>
+      <li>From the 26th: about one and a half times a normal day, because most permits fall due at the month-end.</li>
     </ul>
-    <div class="card c-teal"><h4>In the case study</h4><p class="small mb0">REPLACE: tie the idea to the case study and its data</p></div>
   </div>
-  <div class="callout warn mt"><b>What goes wrong.</b> REPLACE: the failure participants will hit, and how to recognise it</div>
-  <aside class="notes">REPLACE: what to say, the demo to run, the question to ask the room, the common failure and its fix</aside>
+  <aside class="notes"><p>An "average day" of 2,153 notices does not exist. The synthetic calendar has no public holidays; on a real one, mark the holidays in the window before fixing dates, and remember that holidays set by the Hijri calendar move through the Gregorian year.</p></aside>
 </section>
 
-<section class="slide" id="s4-steps" data-lo="LO3">
-  <div class="kicker">Step by step</div>
-  <h2>REPLACE: a process, shown one step per key press</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: name</b>REPLACE: what happens first</div>
-    <div class="arrow frag" data-frag="b">→</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: name</b>REPLACE: the next piece</div>
-    <div class="arrow frag" data-frag="c">→</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: name</b>REPLACE: the result</div>
+<section class="slide" id="cycles-move-the-rate" data-lo="LO3" data-label="The rate moves too">
+  <div class="kicker">Lab 2.4, step 1</div>
+  <h2>The cycles move the baseline rate, not only the traffic</h2>
+  <table class="t">
+    <tr><th>Notices sent on</th><th>Mean notices a day</th><th>Renewed on time</th></tr>
+    <tr><td>Sunday to Thursday</td><td>2,360 to 2,534</td><td>62.1% to 62.6%</td></tr>
+    <tr><td>Friday</td><td>1,203</td><td>58.3%</td></tr>
+    <tr><td>Saturday</td><td>1,505</td><td>58.4%</td></tr>
+    <tr><td>The 26th and later</td><td>2,974</td><td>57.6%</td></tr>
+    <tr><td>Before the 26th</td><td>1,978</td><td>62.9%</td></tr>
+  </table>
+  <div class="callout note mt"><b>Different days, different holders.</b> If the baseline differs by 5 points between day types, the effect of a reminder may differ too.</div>
+  <aside class="notes"><p>Solution run of lab 2.4 on the 182 days of history. The weekday means include month-end days, which is why they are higher than the 2,300 of the previous slide. The last line is the reason the duration matters: a test estimates the effect for the mix of days it covers.</p></aside>
+</section>
+
+<section class="slide" id="size-reached-on-day-nine" data-lo="LO3" data-label="Day 9">
+  <div class="kicker">Lab 2.4, step 2</div>
+  <h2>The planned size is reached on day 9, a Monday</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>The test starts on Sunday 6 September. A forecast gives each day its expected traffic.</li>
+      <li>18,374 holders are reached on test day 9.</li>
+      <li>Stopping there, the test has seen two Sundays, two Mondays, one Friday and no month-end.</li>
+    </ul>
+    <div class="card c-coral"><h4>What a 9-day test would estimate</h4><p class="small mb0">The effect of the reminder for holders notified in early September, with Sundays and Mondays counted twice. Nobody asked that question.</p></div>
   </div>
-  <div class="callout tip mt frag"><b>Takeaway.</b> REPLACE: the one sentence to remember</div>
-  <aside class="notes">Press once per step and say what each step adds before the next one appears. REPLACE: the example to walk through</aside>
+  <aside class="notes"><p>The forecast is the mean of each weekday on days before the 26th, times the month-end factor from the 26th. It is deliberately simple; the point is the calendar, not the forecast.</p></aside>
+</section>
+
+<section class="slide" id="whole-cycles" data-lo="LO3" data-label="Whole cycles">
+  <div class="kicker">Lab 2.4, step 3</div>
+  <h2>Run whole weeks, and cover the month-end</h2>
+  <div class="cols cols-3">
+    <div class="stat"><div class="big">28 days</div><div class="lbl">four whole weeks from 6 September; the five month-end days fall inside</div></div>
+    <div class="stat"><div class="big">60,694</div><div class="lbl">holders expected, about 30,000 per arm</div></div>
+    <div class="stat"><div class="big">1.11</div><div class="lbl">points: the effect such a test detects with 80% power</div></div>
+  </div>
+  <ul class="bullets mt">
+    <li>The calendar set the duration; the formula set only its minimum.</li>
+    <li>The extra holders are not wasted: they narrow the interval around the estimate.</li>
+  </ul>
+  <aside class="notes"><p>The rule on the checklist, C8: the size comes from the minimum effect, and the run covers whole weeks and the month-end. The morning's second question is answered: 28 days because of the calendar. The 1.11 points comes from lab 2.2.</p></aside>
+</section>
+
+<section class="slide" id="short-test-different-question" data-lo="LO3" data-label="What short tests estimate">
+  <div class="kicker">Lab 2.4, step 4 · a planning assumption</div>
+  <h2>A short test answers a different question</h2>
+  <table class="t">
+    <tr><th>Test</th><th>Holders</th><th>Month-end days</th><th>Expected estimate</th><th>95% margin</th></tr>
+    <tr><td>9 days from 6 September</td><td>18,484</td><td>0</td><td>1.86 points</td><td>±1.40</td></tr>
+    <tr><td>14 days from 6 September</td><td>27,682</td><td>0</td><td>1.82 points</td><td>±1.15</td></tr>
+    <tr><td><b>28 days from 6 September</b></td><td><b>60,694</b></td><td><b>5</b></td><td><b>2.35 points</b></td><td><b>±0.77</b></td></tr>
+    <tr><td>9 days from 24 September</td><td>22,430</td><td>5</td><td>3.23 points</td><td>±1.27</td></tr>
+  </table>
+  <div class="callout warn mt"><b>If</b> the reminder adds 2 points on an ordinary day, 4 at the month-end and 1 on a weekend. Two short tests of the same reminder would report 1.9 and 3.2, and both would be called "the effect".</div>
+  <aside class="notes"><p>The pattern is an assumption made for planning, clearly labelled as one in the lab. Nobody knows it before the test. The lesson does not depend on the numbers: when an effect differs by day type, a window that covers part of a cycle estimates the effect for that part. The office will send reminders all year, so the decision needs the whole cycle.</p></aside>
+</section>
+
+<section class="slide" id="outcome-window-and-novelty" data-lo="LO3" data-label="Two more clocks">
+  <div class="kicker">After the last notice</div>
+  <h2>Two more clocks run: the outcome window and the fading of novelty</h2>
+  <div class="cols cols-2">
+    <div class="card c-cyan"><h4>The outcome window</h4><p class="small mb0">A notice goes out 30 days before expiry. On-time renewal is known only at the expiry date. The last holders complete the metric 30 days after day 28. A result read earlier misses the holders who renew late in their window.</p></div>
+    <div class="card c-purple"><h4>Novelty</h4><p class="small mb0">People react to anything new, and the reaction can fade. A short test catches the reaction at its peak. A longer test averages over it and can show the effect week by week.</p></div>
+  </div>
+  <div class="callout tip mt"><b>On the page:</b> the duration, the date on which the primary metric is complete, and a plan to report the effect by week.</div>
+  <aside class="notes"><p>Novelty is listed among the common traps of this course and comes back tomorrow as a seeded flaw: a form test stopped on day 8. Attrition, units that drop out of one arm, is the other trap in that family and opens Day 3. Measuring novelty decay properly is part of DS-302.</p></aside>
+</section>
+
+<section class="slide" id="check-stop-date" data-lo="LO3">
+  <div class="kicker">Checkpoint</div>
+  <h2>How long should this test run?</h2>
+  <div class="quiz" data-type="single" data-lo="LO3">
+    <p class="lead">A test of a new payment page starts on a Sunday. The planned size is reached on day 11. Traffic is low at weekends and salaries arrive on the 27th, after which payments surge. Day 11 is the 16th of the month. What duration do you choose?</p>
+    <div class="opts">
+      <div class="opt" data-why="Stops when the size is reached and ignores that the window holds unequal numbers of each weekday">11 days</div>
+      <div class="opt" data-why="Covers whole weeks and still misses the days after the 27th, when behaviour differs">14 days</div>
+      <div class="opt" data-ok>28 days</div>
+      <div class="opt" data-why="Runs until the result is clear, which is peeking by another name">As long as it takes to reach significance</div>
+    </div>
+    <div class="callout tip why"><b>Why.</b> Whole weeks, and the salary surge inside the window. From the 6th, 28 days reach past the 27th.</div>
+  </div>
+  <aside class="notes"><p>Answer: C. Day 11 is the 16th, so day 1 was the 6th and day 22 is the 27th. Fourteen days end on the 19th. Twenty-eight days end on the 2nd or 3rd of the next month and include the surge. If someone proposes 21 days: whole weeks, and it stops on the 26th, the day before the surge.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-2-4" data-auto="lab" data-lab="2.4">
-  <aside class="notes">REPLACE: what to watch for while participants work, the typical problems, and the fallback for anyone who did not finish an earlier lab</aside>
+  <aside class="notes"><p>The tutor instruction may hint on the dataframe code. The planned size is given, so nothing from labs 2.1 to 2.3 is needed. Step 4 rests on a planning assumption about how the effect differs by day type; say aloud that it is an assumption. Expected: size reached on day 9, duration 28 days, expected estimates 1.86, 1.82 and 2.35 points. The duration and its reason complete the evidence of the third outcome.</p></aside>
 </section>
 
-<section class="slide" id="wrap-up">
-  <div class="kicker">Day 2 · wrap-up</div>
+<section class="slide" id="wrap-up" data-label="Wrap-up">
+  <div class="kicker">Day 2</div>
   <h2>Three things to keep</h2>
   <div class="cols cols-3">
-    <div class="card c-teal"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
-    <div class="card c-coral"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
-    <div class="card c-purple"><h4>Remember</h4><p class="small mb0">REPLACE: one idea participants keep</p></div>
+    <div class="card c-teal"><h4>The effect is squared</h4><p class="small mb0">2 points need 9,187 per arm; 1 point needs 36,950. The minimum effect is the director's choice, made from costs.</p></div>
+    <div class="card c-cyan"><h4>Simulate the plan</h4><p class="small mb0">1,000 runs of the planned analysis gave 80.6% power and 5.3% false wins. When the design leaves the formula, only the simulation is left.</p></div>
+    <div class="card c-purple"><h4>Units and calendars</h4><p class="small mb0">24 branches gave 22.8% power; pairing gave 62.2%. Nine days reach the size; 28 cover the weeks and the month-end.</p></div>
   </div>
+  <aside class="notes"><p>Ask each participant to correct their own pre-registration: about 9,200 per arm as the minimum, 28 days as the duration, and the date on which the metric is complete.</p></aside>
 </section>
 
 <section class="slide dark" id="next" data-label="Next">
-  <div class="kicker">Next</div>
-  <h2>Day 3: Read the result</h2>
-  <p class="lead">REPLACE: what participants prepare before then; unfinished labs can be finished at home</p>
-  <aside class="notes">REPLACE: accounts, installs or reading participants need before the next unit</aside>
+  <div class="kicker">Before Day 3</div>
+  <h1>The test has run</h1>
+  <p class="lead">Tomorrow the 28 days are over. The platform has exported its log, a colleague is about to compute the effect, and something in the export is wrong.</p>
+  <ul class="bullets">
+    <li>Reread the checks you promised on your page: the sample ratio and the balance.</li>
+    <li>Recall from DS-201: the interval for a difference, and Holm's correction.</li>
+  </ul>
+  <aside class="notes"><p>Nothing to prepare beyond that. The capstone case is chosen at the end of tomorrow; participants who want a head start can read the three case descriptions in the capstone folder tonight.</p></aside>
 </section>

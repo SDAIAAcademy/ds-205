@@ -466,6 +466,373 @@
       "pool": "practice",
       "weight": 1,
       "timer": 75
+    },
+    {
+      "id": "q-size-01",
+      "type": "single",
+      "prompt": "A city tests a new recycling leaflet at a 5% significance level with 80% power for a 3-point effect. In truth the leaflet raises recycling by exactly 3 points. How often will a test of this design fail to show a significant result?",
+      "options": [
+        "About 5 times in 100",
+        "About 20 times in 100",
+        "About 80 times in 100",
+        "Never, because the effect is real"
+      ],
+      "correct": [
+        1
+      ],
+      "misconceptions": [
+        "Uses the significance level, which describes the case where there is no effect",
+        "",
+        "Takes the power for the chance of missing the effect",
+        "Assumes that a real effect always shows, as if samples did not vary"
+      ],
+      "explanation": "Power of 80% means that a real effect of the stated size is found 80 times in 100 and missed 20 times.",
+      "lo": [
+        "LO3"
+      ],
+      "day": "day2",
+      "session": 1,
+      "slide": "two-ways-to-be-wrong",
+      "level": "understand",
+      "pool": "practice",
+      "weight": 1,
+      "timer": 75
+    },
+    {
+      "id": "q-size-02",
+      "type": "numeric",
+      "prompt": "A test needs 5,000 customers per arm to detect an effect of 4 points. The manager decides that 2 points would already justify the change. How many customers per arm does the test need now, to the nearest thousand?",
+      "answer": 20000,
+      "tolerance": 500,
+      "unit": "customers per arm",
+      "explanation": "The effect is squared in the denominator of the sample-size formula. Half the effect needs four times the size: 4 × 5,000 = 20,000.",
+      "lo": [
+        "LO3"
+      ],
+      "day": "day2",
+      "session": 1,
+      "slide": "halve-the-effect",
+      "level": "apply",
+      "pool": "practice",
+      "weight": 1,
+      "timer": 75
+    },
+    {
+      "id": "q-size-03",
+      "type": "single",
+      "prompt": "Two offices plan the same test with the same minimum effect of 2 points. Office A has a baseline of 50%, office B a baseline of 90%. Which office needs more people per arm, and why?",
+      "options": [
+        "Office B, because a high baseline leaves less room to improve",
+        "Both need the same, because the minimum effect is the same",
+        "Office B, because 2 points is a smaller share of 90%",
+        "Office A, because a yes-or-no outcome is noisiest near 50%"
+      ],
+      "correct": [
+        3
+      ],
+      "misconceptions": [
+        "Reasons about ceilings and not about the variance of the outcome",
+        "Forgets that the spread of a yes-or-no outcome depends on its rate",
+        "Thinks in relative terms when the test is planned in points",
+        ""
+      ],
+      "explanation": "The variance p(1 − p) is 0.25 at 50% and 0.09 at 90%. More noise needs more people for the same difference in points.",
+      "lo": [
+        "LO3"
+      ],
+      "day": "day2",
+      "session": 1,
+      "slide": "what-drives-the-size",
+      "level": "analyze",
+      "pool": "practice",
+      "weight": 1,
+      "timer": 75
+    },
+    {
+      "id": "q-size-04",
+      "type": "numeric",
+      "prompt": "A test needs 7,200 applicants per arm, and both arms fill from the same stream. The service receives 900 applicants a day on average. How many days of average traffic fill the test?",
+      "answer": 16,
+      "tolerance": 0,
+      "unit": "days",
+      "explanation": "Both arms together need 14,400 applicants. At 900 a day that is 16 days.",
+      "lo": [
+        "LO3"
+      ],
+      "day": "day2",
+      "session": 1,
+      "slide": "size-for-two-points",
+      "level": "apply",
+      "pool": "practice",
+      "weight": 1,
+      "timer": 75
+    },
+    {
+      "id": "q-size-05",
+      "type": "single",
+      "prompt": "An analyst simulates a planned test 400 times and finds a power of 77%. The formula gave 80%. Two standard errors of a share near 0.8 counted over 400 runs are about 4 points. What should she conclude?",
+      "options": [
+        "The formula is wrong and the test needs more people",
+        "The simulation is wrong, since it disagrees with the formula",
+        "The two agree within the simulation's own error",
+        "The power is exactly 77%, since a simulation uses real draws"
+      ],
+      "correct": [
+        2
+      ],
+      "misconceptions": [
+        "Reads a difference inside the counting error as a real disagreement",
+        "Treats the formula as the truth and the simulation as its imitation",
+        "",
+        "Forgets that a count over 400 runs is itself an estimate"
+      ],
+      "explanation": "77% and 80% differ by 3 points, less than the counting error of 4. To tighten the comparison she can run more simulated tests.",
+      "lo": [
+        "LO3"
+      ],
+      "day": "day2",
+      "session": 2,
+      "slide": "simulated-power",
+      "level": "analyze",
+      "pool": "practice",
+      "weight": 1,
+      "timer": 75
+    },
+    {
+      "id": "q-size-06",
+      "type": "single",
+      "prompt": "A team will analyse its test with a t-test on the mean rating per clinic. To check the power by simulation, what must the simulated analysis be?",
+      "options": [
+        "The same t-test on clinic means, run on simulated clinics",
+        "A z-test on all patients, because it has more rows",
+        "Whichever test gives the highest simulated power",
+        "No test: the simulated effect is compared with the true effect"
+      ],
+      "correct": [
+        0
+      ],
+      "misconceptions": [
+        "",
+        "Simulates a different analysis from the one that will be run",
+        "Chooses the analysis by its result, which is what a plan is meant to prevent",
+        "Checks the estimate's accuracy and not how often the planned test detects the effect"
+      ],
+      "explanation": "A power simulation rehearses the analysis that will really be run, at the unit that will really be analysed.",
+      "lo": [
+        "LO3"
+      ],
+      "day": "day2",
+      "session": 2,
+      "slide": "simulate-the-plan",
+      "level": "evaluate",
+      "pool": "practice",
+      "weight": 1,
+      "timer": 75
+    },
+    {
+      "id": "q-size-07",
+      "type": "numeric",
+      "prompt": "In a test that randomises health centres, the intraclass correlation of the outcome is 0.02 and each centre contributes 201 patients. What is the design effect?",
+      "answer": 5,
+      "tolerance": 0.05,
+      "unit": "",
+      "explanation": "Design effect = 1 + (m − 1) × ICC = 1 + 200 × 0.02 = 5. The variance of the estimate is five times that of a patient-randomised test of the same size.",
+      "lo": [
+        "LO3"
+      ],
+      "day": "day2",
+      "session": 3,
+      "slide": "design-effect",
+      "level": "apply",
+      "pool": "practice",
+      "weight": 1,
+      "timer": 75
+    },
+    {
+      "id": "q-size-08",
+      "type": "single",
+      "prompt": "A test randomises 20 post offices, 10 per arm, and its simulated power is 35%. The team can afford one of four changes. Which one raises the power most?",
+      "options": [
+        "Doubling the number of customers surveyed in each office",
+        "Analysing customers one by one in place of office averages",
+        "Raising the significance level's precision to four decimals",
+        "Adding 20 more post offices to the test"
+      ],
+      "correct": [
+        3
+      ],
+      "misconceptions": [
+        "Shrinks only the sampling part of each office's rate; the difference between offices stays",
+        "Inflates false wins and does not add information",
+        "Changes how a number is printed, not what the data can show",
+        ""
+      ],
+      "explanation": "In a cluster-randomised test the number of clusters is the main lever. More customers per office hardly help once each office's rate is measured well.",
+      "lo": [
+        "LO3"
+      ],
+      "day": "day2",
+      "session": 3,
+      "slide": "what-buys-power-in-clusters",
+      "level": "evaluate",
+      "pool": "practice",
+      "weight": 1,
+      "timer": 75
+    },
+    {
+      "id": "q-size-09",
+      "type": "single",
+      "prompt": "A test randomised 24 branches and found no difference in branch averages (p = 0.40). A second analyst reanalyses the 11,000 visits as independent observations and reports p = 0.001. Which analysis should the office trust?",
+      "options": [
+        "The visit-level one, because 11,000 observations beat 24",
+        "The branch-level one, because branches were randomised",
+        "Neither, because two analyses of one test must agree",
+        "The visit-level one, because its p-value is smaller"
+      ],
+      "correct": [
+        1
+      ],
+      "misconceptions": [
+        "Counts rows as units: visits in one branch are not independent",
+        "",
+        "Expects agreement between a valid and an invalid analysis",
+        "Chooses the analysis by its result"
+      ],
+      "explanation": "The unit of analysis must be the unit of randomisation. The visit-level test treats luck in which branches landed where as an effect; in simulation it declares a win most of the time when nothing differs.",
+      "lo": [
+        "LO5"
+      ],
+      "day": "day2",
+      "session": 3,
+      "slide": "visit-level-analysis",
+      "level": "analyze",
+      "pool": "practice",
+      "weight": 1,
+      "timer": 75
+    },
+    {
+      "id": "q-size-10",
+      "type": "single",
+      "prompt": "Before randomising 18 libraries, a team sorts them by last year's lending rate, pairs neighbours in the list and tosses a coin inside each pair. Why does this raise the power of the test?",
+      "options": [
+        "It doubles the number of libraries in the analysis",
+        "It guarantees that the treated libraries perform better",
+        "It removes stable differences between libraries from the comparison",
+        "It lets the team choose which library of a pair is treated"
+      ],
+      "correct": [
+        2
+      ],
+      "misconceptions": [
+        "Thinks pairing adds units; it adds none",
+        "Mistakes a design that removes noise for one that creates an effect",
+        "",
+        "Forgets the coin: a chosen assignment would bring bias back"
+      ],
+      "explanation": "Libraries in a pair started at the same level, so the comparison inside pairs is free of the stable differences between libraries, which are most of the noise.",
+      "lo": [
+        "LO3"
+      ],
+      "day": "day2",
+      "session": 3,
+      "slide": "pairing-recovers-power",
+      "level": "understand",
+      "pool": "practice",
+      "weight": 1,
+      "timer": 75
+    },
+    {
+      "id": "q-size-11",
+      "type": "single",
+      "prompt": "A test of a booking page starts on a Sunday. Weekend traffic is half of weekday traffic, and bookings surge in the last four days of each month. The planned sample size is reached on day 10, which is the 12th of the month. Which duration should the team choose?",
+      "options": [
+        "10 days, since the size is reached",
+        "14 days, two whole weeks",
+        "21 days, three whole weeks",
+        "28 days, four whole weeks"
+      ],
+      "correct": [
+        3
+      ],
+      "misconceptions": [
+        "Stops at the size and leaves some weekdays counted twice and others once",
+        "Covers whole weeks and misses the month-end surge",
+        "Ends on the 23rd, before the surge starts",
+        ""
+      ],
+      "explanation": "The run should cover whole weeks and the month-end. From the 3rd, 28 days reach the 30th and include the surge; 21 days end on the 23rd.",
+      "lo": [
+        "LO3"
+      ],
+      "day": "day2",
+      "session": 4,
+      "slide": "whole-cycles",
+      "level": "apply",
+      "pool": "practice",
+      "weight": 1,
+      "timer": 75
+    },
+    {
+      "id": "q-size-12",
+      "type": "single",
+      "prompt": "Two teams test the same reminder for 8 days each. Team A, in the first half of the month, estimates +1.8 points. Team B, at the month-end, estimates +3.3 points. Both tests are sound. What is the most likely reason for the gap?",
+      "options": [
+        "One team made an error in its analysis",
+        "Each test estimates the effect for the days it covered",
+        "Team B had more people and so a larger effect",
+        "The reminder got better between the two tests"
+      ],
+      "correct": [
+        1
+      ],
+      "misconceptions": [
+        "Assumes that two correct tests must give the same number",
+        "",
+        "Confuses the precision of an estimate with its size",
+        "Invents a change in the treatment to explain a difference in the window"
+      ],
+      "explanation": "If a reminder helps more in the month-end rush, a test that covers only part of the monthly cycle estimates the effect for that part.",
+      "lo": [
+        "LO3"
+      ],
+      "day": "day2",
+      "session": 4,
+      "slide": "short-test-different-question",
+      "level": "analyze",
+      "pool": "practice",
+      "weight": 1,
+      "timer": 75
+    },
+    {
+      "id": "q-size-13",
+      "type": "single",
+      "prompt": "A test sends notices for 28 days. The primary metric is renewal by the expiry date, which is 30 days after each notice. An analyst wants to report the result on day 29. What is wrong with that?",
+      "options": [
+        "Nothing: all notices have been sent",
+        "The sample ratio cannot be checked until day 58",
+        "The test should have stopped at day 9 instead",
+        "Holders notified late have not yet reached their expiry date"
+      ],
+      "correct": [
+        3
+      ],
+      "misconceptions": [
+        "Takes the end of sending for the end of the outcome",
+        "Ties a check on assignment to the outcome window, which it does not need",
+        "Returns to the sample size and ignores the question asked",
+        ""
+      ],
+      "explanation": "The metric is complete for a holder only at the expiry date. The last holders reach it 30 days after the last notice.",
+      "lo": [
+        "LO3"
+      ],
+      "day": "day2",
+      "session": 4,
+      "slide": "outcome-window-and-novelty",
+      "level": "understand",
+      "pool": "practice",
+      "weight": 1,
+      "timer": 75
     }
   ]
 }

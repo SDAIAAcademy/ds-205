@@ -172,13 +172,17 @@ U.check(abs(gaps[1] - TRUE_EFFECT) < 0.02, "the coin comparison lands near the t
 
 # %%
 REPS = U.pick(200, 40)
-gen = U.rng(13)
-vol = np.array([volunteer_gap(gen) for _ in range(REPS)])
-coin = np.array([coin_gap(gen) for _ in range(REPS)])
-print(f"{REPS} repetitions. Volunteers: mean gap {vol.mean():+.1%}, from {vol.min():+.1%} to {vol.max():+.1%}")
-print(f"{REPS} repetitions. Coin:       mean gap {coin.mean():+.1%}, from {coin.min():+.1%} to {coin.max():+.1%}")
-U.keep("d1_1", "rep_means", [float(vol.mean()), float(coin.mean())])
-U.check(abs(coin.mean() - TRUE_EFFECT) < 0.005, "over many repetitions the coin comparison is centred on the truth: it is unbiased")
+try:
+    gen = U.rng(13)
+    vol = np.array([volunteer_gap(gen) for _ in range(REPS)])
+    coin = np.array([coin_gap(gen) for _ in range(REPS)])
+    rep = [float(v) * 100 for v in (vol.mean(), vol.min(), vol.max(), coin.mean(), coin.min(), coin.max())]
+except NotImplementedError:
+    rep = U.reference("d1_1", "rep")
+U.keep("d1_1", "rep", rep)
+print(f"{REPS} repetitions. Volunteers: mean gap {rep[0]:+.1f} points, from {rep[1]:+.1f} to {rep[2]:+.1f}")
+print(f"{REPS} repetitions. Coin:       mean gap {rep[3]:+.1f} points, from {rep[4]:+.1f} to {rep[5]:+.1f}")
+U.check(abs(rep[3] - TRUE_EFFECT * 100) < 0.5, "over many repetitions the coin comparison is centred on the truth: it is unbiased")
 
 # %% [markdown]
 # **Look at.** More data do not rescue the volunteer comparison: its repetitions agree with each other, and all of them are wrong by the same amount. That is bias. The coin comparison wobbles around the truth. That is sampling error, and Day 2 sizes it.
