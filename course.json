@@ -1,0 +1,362 @@
+{
+  "$schema": "https://sdaiaacademy.github.io/engine/schemas/course.schema.json",
+  "engine": "1",
+  "id": "ds-205",
+  "code": "DS-205",
+  "version": "2027.1.0",
+  "lang": "en",
+  "title": {
+    "en": "Designing and Reading Experiments",
+    "ar": "تصميم التجارب وقراءة نتائجها"
+  },
+  "tagline": "REPLACE: one line under the title: what participants can do after the course",
+  "description": "Participants design randomised experiments for a fictional municipal permits office and read the results without fooling themselves. They turn a decision question into a pre-registration with a hypothesis, primary and guardrail metrics, a stop rule and a unit of randomisation, compute sample size by formula and by simulation, analyse a synthetic experiment log, check that randomisation worked, and measure how peeking, many metrics and a mismatched unit inflate false wins. Variance reduction and sequential tests are left to DS-302.",
+  "track": "data-science",
+  "level": 200,
+  "badge": {
+    "name": "Data Science",
+    "level": "Assistant"
+  },
+  "audience": "Practitioners. Graduates and early-career analysts who have completed the FN courses or passed the placement test, and analysts moving into data science.",
+  "prerequisites": [
+    "DS-201 Statistical Inference by Simulation",
+    "Computes a proportion, a difference in means and a confidence interval",
+    "Writes a simulation loop in Python or R"
+  ],
+  "site": {
+    "url": "https://sdaiaacademy.github.io/ds-205/",
+    "repo": "SDAIAAcademy/ds-205"
+  },
+  "outcomes": [
+    {
+      "id": "LO1",
+      "text": "Distinguish a randomised experiment, a quasi-experiment and an observational comparison, and explain the causal claim each supports, given six study descriptions from public services",
+      "level": "Awareness",
+      "evidence": "a classification with the supported claim, at least five of six correct"
+    },
+    {
+      "id": "LO2",
+      "text": "Draft a pre-registration stating the decision, hypothesis, unit of randomisation, primary and guardrail metrics, stop rule and analysis plan, given the office's question about renewal reminders",
+      "level": "Applied",
+      "evidence": "a one-page pre-registration that passes a reviewer's checklist"
+    },
+    {
+      "id": "LO3",
+      "text": "Compute the sample size and run time needed to detect a minimum effect of interest and check it by simulation, given baseline renewal rates, daily traffic and the office's minimum effect",
+      "level": "Applied",
+      "evidence": "a notebook with the formula result, a simulated power curve and the chosen duration"
+    },
+    {
+      "id": "LO4",
+      "text": "Analyse a completed two-arm experiment with a difference in proportions, a confidence interval and a sample ratio mismatch test, given a synthetic log of 60,000 renewal notices",
+      "level": "Applied",
+      "evidence": "a result note with estimate, interval, checks and a recommendation"
+    },
+    {
+      "id": "LO5",
+      "text": "Measure by simulation the false-positive rate caused by peeking, many metrics and analysis at the wrong unit, given simulated A/A tests with no true effect",
+      "level": "Applied",
+      "evidence": "a table of false-win rates for each trap, with and without the correct procedure"
+    },
+    {
+      "id": "LO6",
+      "text": "Review a reported experiment and decide whether it supports the decision it claims to support, given write-ups with seeded flaws, one in class and one in the capstone",
+      "level": "Performance",
+      "evidence": "a review memo per write-up naming each flaw, its consequence and the decision the evidence does support, defended live"
+    }
+  ],
+  "case_study": {
+    "name": "REPLACE: the name of the fictional organisation every lab works on",
+    "summary": "REPLACE: two sentences on the case study and its synthetic data"
+  },
+  "format": "intensive",
+  "format_note": "Intensive: 3 teaching days of four sessions and a capstone day, with guided pre-work and a tracked follow-up task",
+  "hours": {
+    "instruction": 5,
+    "lab": 5,
+    "guided_self_study": 5,
+    "assessment": 1,
+    "capstone": 5
+  },
+  "unit": "day",
+  "days": [
+    {
+      "id": "day1",
+      "kind": "day",
+      "title": "Design",
+      "deck": "slides/day1.html",
+      "sessions": [
+        {
+          "title": "Which claims need an experiment",
+          "outcomes": [
+            "REPLACE: what a participant can do after this session"
+          ],
+          "lo": [
+            "LO1"
+          ],
+          "lab": {
+            "id": "1.1",
+            "title": "Classify six studies by design and the causal claim each supports",
+            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "minutes": 25,
+            "href": "D1_1_classify_six_studies.ipynb"
+          }
+        },
+        {
+          "title": "Decision, hypothesis and metrics",
+          "outcomes": [
+            "REPLACE: what a participant can do after this session"
+          ],
+          "lo": [
+            "LO2"
+          ],
+          "lab": {
+            "id": "1.2",
+            "title": "Write decision, hypothesis, metrics, guardrails and a stop rule",
+            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "minutes": 25,
+            "href": "D1_2_write_decision_hypothesis.ipynb"
+          }
+        },
+        {
+          "title": "Choosing the unit of randomisation",
+          "outcomes": [
+            "REPLACE: what a participant can do after this session"
+          ],
+          "lo": [
+            "LO2"
+          ],
+          "lab": {
+            "id": "1.3",
+            "title": "Choose units for three tests, one in branches sharing staff",
+            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "minutes": 25,
+            "href": "D1_3_choose_units_three.ipynb"
+          }
+        },
+        {
+          "title": "Pre-registration",
+          "outcomes": [
+            "REPLACE: what a participant can do after this session"
+          ],
+          "lo": [
+            "LO2"
+          ],
+          "lab": {
+            "id": "1.4",
+            "title": "Complete a pre-registration; review a neighbour's against the checklist",
+            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "minutes": 25,
+            "href": "D1_4_complete_pre_registration.ipynb"
+          }
+        }
+      ]
+    },
+    {
+      "id": "day2",
+      "kind": "day",
+      "title": "Size and run",
+      "deck": "slides/day2.html",
+      "sessions": [
+        {
+          "title": "Power and the minimum effect",
+          "outcomes": [
+            "REPLACE: what a participant can do after this session"
+          ],
+          "lo": [
+            "LO3"
+          ],
+          "lab": {
+            "id": "2.1",
+            "title": "Compute sample sizes for three minimum effects",
+            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "minutes": 25,
+            "href": "D2_1_compute_sample_sizes.ipynb"
+          }
+        },
+        {
+          "title": "Power by simulation",
+          "outcomes": [
+            "REPLACE: what a participant can do after this session"
+          ],
+          "lo": [
+            "LO3"
+          ],
+          "lab": {
+            "id": "2.2",
+            "title": "Simulate the analysis 1,000 times; compare power with the formula",
+            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "minutes": 25,
+            "href": "D2_2_simulate_analysis_1.ipynb"
+          }
+        },
+        {
+          "title": "Cluster randomisation",
+          "outcomes": [
+            "REPLACE: what a participant can do after this session"
+          ],
+          "lo": [
+            "LO3"
+          ],
+          "lab": {
+            "id": "2.3",
+            "title": "Simulate randomisation across 24 branches; measure the power lost",
+            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "minutes": 25,
+            "href": "D2_3_simulate_randomisation_across.ipynb"
+          }
+        },
+        {
+          "title": "Run time and seasonality",
+          "outcomes": [
+            "REPLACE: what a participant can do after this session"
+          ],
+          "lo": [
+            "LO3"
+          ],
+          "lab": {
+            "id": "2.4",
+            "title": "Choose a duration covering weekly cycles and the month-end peak",
+            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "minutes": 25,
+            "href": "D2_4_choose_duration_covering.ipynb"
+          }
+        }
+      ]
+    },
+    {
+      "id": "day3",
+      "kind": "day",
+      "title": "Read the result",
+      "deck": "slides/day3.html",
+      "sessions": [
+        {
+          "title": "Did randomisation work",
+          "outcomes": [
+            "REPLACE: what a participant can do after this session"
+          ],
+          "lo": [
+            "LO4"
+          ],
+          "lab": {
+            "id": "3.1",
+            "title": "Check balance and sample ratio on a log with a planted fault",
+            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "minutes": 25,
+            "href": "D3_1_check_balance_sample.ipynb"
+          }
+        },
+        {
+          "title": "Estimate, interval and effect",
+          "outcomes": [
+            "REPLACE: what a participant can do after this session"
+          ],
+          "lo": [
+            "LO4"
+          ],
+          "lab": {
+            "id": "3.2",
+            "title": "Analyse the reminder test; state the result in two sentences",
+            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "minutes": 25,
+            "href": "D3_2_analyse_reminder_test.ipynb"
+          }
+        },
+        {
+          "title": "False wins by simulation",
+          "outcomes": [
+            "REPLACE: what a participant can do after this session"
+          ],
+          "lo": [
+            "LO5"
+          ],
+          "lab": {
+            "id": "3.3",
+            "title": "Run 1,000 A/A tests with peeking, twenty metrics and wrong units",
+            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "minutes": 25,
+            "href": "D3_3_run_1_000.ipynb"
+          }
+        },
+        {
+          "title": "Reviewing a reported result",
+          "outcomes": [
+            "REPLACE: what a participant can do after this session"
+          ],
+          "lo": [
+            "LO6"
+          ],
+          "lab": {
+            "id": "3.4",
+            "title": "Find seeded flaws in a write-up, draft the memo, choose the capstone",
+            "summary": "REPLACE: one line on what participants build and take away; then list the steps of the lab in course.json, their minutes adding up to 25",
+            "minutes": 25,
+            "href": "D3_4_find_seeded_flaws.ipynb"
+          }
+        }
+      ]
+    },
+    {
+      "id": "capstone",
+      "kind": "capstone",
+      "title": "Capstone project presentations",
+      "deck": "slides/capstone.html",
+      "subtitle": "REPLACE: the catalog gives 8 minutes for each presentation and nothing about questions; decide whether the questions are inside those minutes, set capstone.talk_minutes and capstone.qa_minutes in course.json and the timers of the now-presenting slide, and remove this line"
+    }
+  ],
+  "capstone": {
+    "summary": "A design and analysis pack for one of three synthetic cases (reminder message, form redesign, training programme): pre-registration, sample-size and analysis notebooks, result note and a review memo on a flawed write-up, in a public repository; eight-minute defence",
+    "submission": "REPLACE: what participants submit and how: a public repository link, or a shared folder for a course without code",
+    "talk_minutes": 8,
+    "rubric": [
+      {
+        "criterion": "Design and pre-registration",
+        "weight": 25
+      },
+      {
+        "criterion": "Power and sample size",
+        "weight": 25
+      },
+      {
+        "criterion": "Analysis and checks",
+        "weight": 20
+      },
+      {
+        "criterion": "Review memo",
+        "weight": 20
+      },
+      {
+        "criterion": "Writing and reproducibility",
+        "weight": 10
+      }
+    ]
+  },
+  "labs": {
+    "kind": "notebooks",
+    "base": "labs/"
+  },
+  "tools": [
+    {
+      "slot": "Analysis environment and notebooks",
+      "examples": [
+        "Python with uv and JupyterLab or marimo",
+        "R with Quarto"
+      ]
+    },
+    {
+      "slot": "Statistics and power calculation",
+      "examples": [
+        "SciPy and statsmodels",
+        "R with the pwr package"
+      ]
+    },
+    {
+      "slot": "Dataframes and analytical SQL engine",
+      "examples": [
+        "DuckDB",
+        "Polars",
+        "pandas"
+      ]
+    }
+  ]
+}
