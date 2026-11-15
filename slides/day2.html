@@ -123,7 +123,7 @@
       <li>Say "about 9,200 per arm".</li>
     </ul>
   </div>
-  <aside class="notes"><p>statsmodels' NormalIndPower works on a standardised effect size computed by proportion_effectsize, which uses an arcsine transformation. The difference is 0.02% here. A wrong baseline matters far more: session 2's stretch gives 76.6% power if the baseline is really 50% and 82.2% if it is 70%.</p></aside>
+  <aside class="notes"><p>statsmodels' NormalIndPower works on a standardised effect size computed by proportion_effectsize, which uses an arcsine transformation. The difference is 0.02% here. A wrong baseline matters far more: session 2's stretch gives 78.6% power if the baseline is really 50% and 84.1% if it is 70%.</p></aside>
 </section>
 
 <section class="slide" id="check-halving" data-lo="LO3">
@@ -286,10 +286,10 @@ power_sim(U.rng(22), 9187,
   <h2>The formula covers one design; a simulation covers the one you have</h2>
   <div class="cols cols-2">
     <div class="card c-teal"><h4>The formula assumes</h4><p class="small mb0">Independent units. Two proportions. Equal arms. One look. The baseline you guessed.</p></div>
-    <div class="card c-coral"><h4>Real designs break it</h4><p class="small mb0">Visitors inside branches. A baseline that turns out to be 50%: power 76.6%, not 80%. An effect that differs by weekday. An analysis on branch means.</p></div>
+    <div class="card c-coral"><h4>Real designs break it</h4><p class="small mb0">Visitors inside branches. A baseline that turns out to be 50%: power 78.6%, not 80%. An effect that differs by weekday. An analysis on branch means.</p></div>
   </div>
   <div class="callout tip mt"><b>The rule.</b> Use the formula for a first number and for the conversation about the minimum effect. Use a simulation of the planned analysis for the number you put on the page.</div>
-  <aside class="notes"><p>The 76.6% is the stretch of lab 2.2: same size, true baseline 50%, where a yes-or-no outcome is noisiest. At a 70% baseline the same test has 82.2%. Sources for further reading on sample size in practice: Zhou, Lu and Shallah (2023).</p></aside>
+  <aside class="notes"><p>The 78.6% is the stretch of lab 2.2: same size, true baseline 50%, where a yes-or-no outcome is noisiest. At a 70% baseline the same test has 84.1%. Sources for further reading on sample size in practice: Zhou, Lu and Shallah (2023).</p></aside>
 </section>
 
 <section class="slide" id="check-simulated-power" data-lo="LO3">
