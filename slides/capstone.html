@@ -1,19 +1,20 @@
 <section class="slide title" id="title" data-auto="title">
-  <aside class="notes">Today is theirs: keep your own talking to the opening and the closing. Confirm the running order and the demo setup (screen sharing, accounts, a recorded backup) first.</aside>
+  <aside class="notes"><p>Today is theirs: keep your own talking to the opening and the closing. Confirm the running order and that every repository link opens before the first defence. The answer key in the solutions folder holds the reference numbers of the three cases and the flaws seeded in each write-up.</p></aside>
 </section>
 
 <section class="slide" id="agenda" data-label="Agenda">
   <div class="kicker">Capstone</div>
-  <h2>How the presentations run</h2>
+  <h2>How the defences run</h2>
   <div class="agenda">
-    <div class="item now"><div><b>Expectations and final prep</b><small>the rubric, a last rehearsal, then the first presentations</small></div></div>
-    <div class="item"><div><b>Presentations</b><small>each one timed, with questions after it</small></div></div>
-    <div class="item"><div><b>Review and closing</b><small>peer feedback, the trainer's review, what next</small></div></div>
+    <div class="item now"><div><b>Expectations and final prep</b><small>the rubric, a last rerun of the notebooks, then the first defences</small></div></div>
+    <div class="item"><div><b>Defences</b><small>eight minutes on one design choice, then four minutes of questions</small></div></div>
+    <div class="item"><div><b>Review and closing</b><small>peer feedback, the trainer's review, the follow-up task</small></div></div>
   </div>
+  <aside class="notes"><p>Three cases are in the room: the stall inspection reminder, the building-works form and the counter staff training. Order the defences so that the same case is not heard three times in a row.</p></aside>
 </section>
 
 <section class="slide" id="rubric" data-label="The rubric">
-  <div class="kicker">How presentations are scored</div>
+  <div class="kicker">How the pack and its defence are scored</div>
   <h2>The rubric</h2>
   <div class="bars">
     <div class="row"><span>Design and pre-registration</span><div class="bar c-teal" style="--w:100%"></div><span class="val">25%</span></div>
@@ -22,77 +23,95 @@
     <div class="row"><span>Review memo</span><div class="bar c-purple" style="--w:80%"></div><span class="val">20%</span></div>
     <div class="row"><span>Writing and reproducibility</span><div class="bar c-amber" style="--w:40%"></div><span class="val">10%</span></div>
   </div>
-  <div class="callout tip mt"><b>Show results from at least two measured runs.</b> A claim without a number is a plan, not a result.</div>
-  <aside class="notes">Walk through each criterion with one example of what full marks look like.</aside>
+  <div class="callout tip mt"><b>Every number in the notes comes out of a seeded rerun.</b> The pre-registration is committed before the experiment log is opened.</div>
+  <aside class="notes"><p>Walk through each criterion with one example of full marks, from the rubric in the capstone folder. Design: a decision with a number in it and the right unit with its reason. Power: a simulation that reproduces the formula within its counting error. Analysis: ratio check and balance first. Review: each flaw with what it does to the reported number.</p></aside>
 </section>
 
 <section class="slide" id="format" data-label="Format">
   <div class="kicker">Format</div>
-  <h2>8 minutes for each presentation</h2>
+  <h2>8 minutes for the defence, then 4 minutes of questions</h2>
   <div class="cols cols-3">
-    <div class="card c-teal"><h4>1 · The problem</h4><p class="small mb0">Who, what, why now. One slide.</p></div>
-    <div class="card c-cyan"><h4>2 · What you built</h4><p class="small mb0">Design, decisions, trade-offs. Then the live demo.</p></div>
-    <div class="card c-coral"><h4>3 · What you measured</h4><p class="small mb0">Baseline, improvement, failures found, what comes next.</p></div>
+    <div class="card c-teal"><h4>1 · The decision</h4><p class="small mb0">The case, the decision in one sentence with its number, and the unit you randomise with the reason.</p></div>
+    <div class="card c-cyan"><h4>2 · One design choice</h4><p class="small mb0">The size and the duration: formula, simulated power curve, whole cycles. Rerun it live with the seed.</p></div>
+    <div class="card c-coral"><h4>3 · The reading</h4><p class="small mb0">Checks first, then the estimate with its interval against the minimum effect, and what the write-up got wrong.</p></div>
   </div>
-  <div class="callout note mt"><b>Peer feedback.</b> After each talk, everyone writes one strength, one question and one suggestion.</div>
+  <div class="callout note mt"><b>In the questions,</b> the assessor changes the minimum effect or the unit. You say what happens to the size and the duration, then recompute and show it.</div>
+  <aside class="notes"><p>The prediction comes before the recomputation and is scored on its reasoning: half the effect, four times the size; a cluster unit, the design effect. No assistant during the defence or the questions. Peer feedback after each defence: one strength, one question, one suggestion.</p></aside>
+</section>
+
+<section class="slide" id="three-cases" data-label="The three cases">
+  <div class="kicker">The cases</div>
+  <h2>Three cases, one pack each</h2>
+  <table class="t small">
+    <tr><th></th><th>Case</th><th>Minimum effect</th><th>What makes it hard</th></tr>
+    <tr><td>A</td><td>A reminder message for the annual stall inspection</td><td>3 points of booking within 14 days</td><td>A guardrail that needs its interval</td></tr>
+    <tr><td>B</td><td>A redesigned form for building-works permits</td><td>3 points of completion</td><td>A sound result inside a poor write-up</td></tr>
+    <tr><td>C</td><td>A training programme for counter staff in 20 service centres</td><td>4 points of first-visit resolution</td><td>Clusters, and a first wave that was not randomised</td></tr>
+  </table>
+  <div class="callout note mt"><b>All data are synthetic and seeded.</b> Each case has a history file, a completed experiment log and a write-up to review.</div>
+  <aside class="notes"><p>For the assessor: the answer key lists the reference sample sizes, estimates and seeded flaws of each case. In case C the pre-registration and the size are for the second wave; the analysis says what the first wave can and cannot show.</p></aside>
 </section>
 
 <section class="slide order" id="running-order" data-label="Running order">
   <div class="kicker">Running order</div>
   <h2>Who presents when</h2>
   <table class="t small">
-    <tr><th>#</th><th>Presenter</th><th>Project</th></tr>
-    <tr><td>1</td><td><input placeholder="name"></td><td><input placeholder="Project"></td></tr>
-    <tr><td>2</td><td><input placeholder="name"></td><td><input placeholder="Project"></td></tr>
-    <tr><td>3</td><td><input placeholder="name"></td><td><input placeholder="Project"></td></tr>
-    <tr><td>4</td><td><input placeholder="name"></td><td><input placeholder="Project"></td></tr>
-    <tr><td>5</td><td><input placeholder="name"></td><td><input placeholder="Project"></td></tr>
-    <tr><td>6</td><td><input placeholder="name"></td><td><input placeholder="Project"></td></tr>
-    <tr><td>7</td><td><input placeholder="name"></td><td><input placeholder="Project"></td></tr>
-    <tr><td>8</td><td><input placeholder="name"></td><td><input placeholder="Project"></td></tr>
+    <tr><th>#</th><th>Presenter</th><th>Case and design choice</th></tr>
+    <tr><td>1</td><td><input placeholder="name"></td><td><input placeholder="Case"></td></tr>
+    <tr><td>2</td><td><input placeholder="name"></td><td><input placeholder="Case"></td></tr>
+    <tr><td>3</td><td><input placeholder="name"></td><td><input placeholder="Case"></td></tr>
+    <tr><td>4</td><td><input placeholder="name"></td><td><input placeholder="Case"></td></tr>
+    <tr><td>5</td><td><input placeholder="name"></td><td><input placeholder="Case"></td></tr>
+    <tr><td>6</td><td><input placeholder="name"></td><td><input placeholder="Case"></td></tr>
+    <tr><td>7</td><td><input placeholder="name"></td><td><input placeholder="Case"></td></tr>
+    <tr><td>8</td><td><input placeholder="name"></td><td><input placeholder="Case"></td></tr>
   </table>
-  <aside class="notes">Type the names in at the start; the fields can be edited live and are not saved, so keep the list in your notes too.</aside>
+  <aside class="notes"><p>Type the names in at the start; the fields can be edited live and are not saved, so keep the list in your notes too. With more than eight participants, run a second panel in parallel or reuse this slide for the second half.</p></aside>
 </section>
 
-<section class="slide dark" id="final-prep" data-label="Before the first presentation">
-  <div class="kicker">Before the first presentation</div>
+<section class="slide dark" id="final-prep" data-label="Before the first defence">
+  <div class="kicker">Before the first defence</div>
   <h1>Final prep · 20 minutes</h1>
   <div class="timer" data-minutes="20"></div>
-  <p class="lead">Rehearse once, record a backup, try the demo on this screen.</p>
-  <aside class="notes">Press T to start the timer. Breaks are not slides: press B when the room needs one.</aside>
+  <p class="lead">Rerun both notebooks from the raw files, check that the numbers match your notes, and choose the design choice you will defend.</p>
+  <aside class="notes"><p>Press T to start the timer. Breaks are not slides: press B when the room needs one. A notebook that gives different numbers on the rerun is the most common loss of marks; a fixed seed prevents it.</p></aside>
 </section>
 
 <section class="slide dark presenting" id="now-presenting" data-label="Now presenting">
   <div class="kicker center">Now presenting</div>
-  <div class="center"><input placeholder="Presenter · project"></div>
+  <div class="center"><input placeholder="Presenter · case"></div>
   <div class="timers mt">
-    <div><h3>Talk and demo</h3><div class="timer" data-minutes="8"></div></div>
+    <div><h3>Defence</h3><div class="timer" data-minutes="8"></div></div>
+    <div><h3>Questions</h3><div class="timer" data-minutes="4"></div></div>
   </div>
-  <aside class="notes">Type the presenter's name and press T to start the timer. Reuse this slide for every presenter.</aside>
+  <aside class="notes"><p>Type the presenter's name and start the first timer. Reuse this slide for every presenter. In the questions, change one thing: "the director would act on 2 points, not 3", or "randomise centres, not visitors". Ask for the prediction first and the recomputation second.</p></aside>
 </section>
 
 <section class="slide" id="review" data-label="Trainer review">
   <div class="kicker">Trainer review</div>
-  <h2>What the presentations showed</h2>
+  <h2>What the defences showed</h2>
   <div class="cols cols-3">
-    <div class="card c-teal"><h4>Strongest patterns</h4><p class="small mb0">What several projects got right.</p></div>
-    <div class="card c-coral"><h4>Common gaps</h4><p class="small mb0">What most projects would fix next.</p></div>
+    <div class="card c-teal"><h4>Strongest patterns</h4><p class="small mb0">What several packs got right.</p></div>
+    <div class="card c-coral"><h4>Common gaps</h4><p class="small mb0">What most packs would fix next.</p></div>
     <div class="card c-purple"><h4>One surprise</h4><p class="small mb0">Something nobody expected.</p></div>
   </div>
-  <aside class="notes">Fill these in from your scoring notes during the last break. Name projects for strengths; keep gaps anonymous.</aside>
+  <aside class="notes"><p>Fill these in from your scoring notes during the last break. Name packs for strengths; keep gaps anonymous. Gaps seen most often in this kind of work: a duration that stops at the sample size, an interval reported without the minimum effect beside it, and a memo that ends at the list of flaws.</p></aside>
 </section>
 
 <section class="slide" id="what-next" data-label="After the course">
   <div class="kicker">After the course</div>
   <h2>Keep going</h2>
   <ul class="bullets">
-    <li><b>Your project stays yours:</b> keep it reproducible and add the next improvement you named today</li>
-    <li><b>Next Academy course:</b> REPLACE: the course that follows this one</li>
+    <li><b>Your pack stays yours:</b> keep it reproducible. It is a template for the next test at work.</li>
+    <li><b>The follow-up task:</b> apply the twelve-item checklist to one experiment or pilot in your own organisation, and send the one-page review.</li>
+    <li><b>Next Academy course:</b> DS-302 Online Experiments and A/B Testing, which adds variance reduction, sequential tests and designs for units that interfere.</li>
   </ul>
+  <aside class="notes"><p>The follow-up task is described in the follow-up folder of the labs. It uses no personal data from the workplace: the review is of the design and the reported numbers.</p></aside>
 </section>
 
 <section class="slide dark" id="thanks" data-label="Thank you">
   <div class="kicker">SDAIA Academy</div>
   <h1>Thank you</h1>
   <p class="lead">Designing and Reading Experiments</p>
+  <aside class="notes"><p>Close with the date by which the follow-up task is due and where certificates will be issued.</p></aside>
 </section>
