@@ -22,7 +22,7 @@
     "DS-201 Statistical Inference by Simulation",
     "Computes a proportion, a difference in means and a confidence interval",
     "Writes a simulation loop in Python or R",
-    "Pre-work: about two hours on proportions, intervals and simulation, labs/P0_prework_proportions_simulation.ipynb, before the supervised entry quiz",
+    "Pre-work: about two hours on proportions, intervals and simulation, in the pre-work notebook of the labs folder (its name starts with P0), before the supervised entry quiz",
     "Setup: a laptop with uv, or Google Colab. Nothing calls or downloads a model. Run 00_setup_check before Day 1; see labs/README.md."
   ],
   "site": {
@@ -619,7 +619,7 @@
       "kind": "capstone",
       "title": "Capstone: the design and analysis pack and its defence",
       "deck": "slides/capstone.html",
-      "subtitle": "Each participant defends one design choice of a pack on an unseen case in eight minutes, then answers questions for four"
+      "subtitle": "Each participant defends one design choice of a pack on an unseen case in eight minutes, then answers four minutes of questions"
     }
   ],
   "capstone": {
