@@ -574,7 +574,7 @@
       "options": [
         "Not shown: the interval still reaches beyond the 1.5-point margin",
         "Shown: a p-value of 0.67 means the e-mail and posted notices perform the same",
-        "Shown: the estimated loss of 0.4 points lies inside the 1.5-point margin",
+        "Not shown: the estimate is below zero, so e-mail is shown to be worse",
         "Shown, once the margin is widened to 2.5 points after the result"
       ],
       "correct": [
@@ -583,7 +583,7 @@
       "misconceptions": [
         "",
         "Reads a large p-value for no difference as proof that the two notices are the same",
-        "Compares the estimate with the margin, not the lower end of the interval",
+        "Reads an estimate below zero as a proven loss, though the interval includes zero",
         "Moves the margin after seeing the data, so any result can pass"
       ],
       "explanation": "Not worse is shown only when the lower end of the 95% interval lies above minus the margin. Here the lower end is −2.2 points, beyond −1.5, so a loss larger than the office accepts is still possible. The p-value tests no difference, which is not the question, and a margin moved after the result proves nothing.",

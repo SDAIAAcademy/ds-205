@@ -6,4 +6,4 @@
 - Added: a second stretch in lab 2.1, sizing a test that shows a cheaper notice is not worse by more than 1 point and checking its power by simulation; its figures in the answer key.
 - Added: one practice question on reading a not-worse result against its margin (`q-not-worse-01`).
 - Added: `labs/_tools/noninferiority.py`, which computes the figures of the new slides and question.
-- Tightened: `size-is-an-estimate` (day 2).
+- Tightened: `power-is-about-many-tests` and `size-is-an-estimate` (day 2).

@@ -197,7 +197,7 @@ except NotImplementedError:
 # %% [markdown]
 # ## ✱ Stretch · A cheaper notice, not worse by more than 1 point
 #
-# The messaging platform offers a shorter renewal notice at a lower price per message. Sahar would adopt it if on-time renewal falls by **less than 1 point**; she signs that margin before the test starts. The test must now show "not worse": the lower end of the 95% interval of (new minus current) must lie above −1 point, a one-sided test at 2.5%.
+# This is a non-inferiority test. The messaging platform offers a shorter renewal notice at a lower price per message. Sahar would adopt it if on-time renewal falls by **less than 1 point**; she signs that margin before the test starts. The test must now show "not worse": the lower end of the 95% interval of (new minus current) must lie above −1 point, a one-sided test at 2.5%.
 #
 # Per arm, with true rates p_cur and p_new = p_cur + d (d is the true difference you plan for):
 #

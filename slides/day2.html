@@ -50,8 +50,7 @@
       <tr><td>5</td><td>+0.83 points</td><td>0.2466</td></tr>
     </table>
     <ul class="bullets">
-      <li>Five tests in one simulated world. The truth is +2 points in all five.</li>
-      <li>Four find it. The fifth misses: an unlucky draw, not a wrong analysis.</li>
+      <li>The truth is +2 points in all five. Four find it; the fifth is an unlucky draw.</li>
       <li><b>Power</b> is the share of such tests that find the effect.</li>
       <li>It belongs to a design and an effect size, never to one result.</li>
     </ul>
@@ -129,7 +128,7 @@
   <div class="kicker">When the new version is cheaper</div>
   <h2>A cheaper change must show it is not worse by more than a margin fixed in advance</h2>
   <table class="t">
-    <tr><th></th><th>Is it better?</th><th>Is it not worse?</th></tr>
+    <tr><th></th><th>Is it better?</th><th>Is it not worse? (non-inferiority)</th></tr>
     <tr><td><b>What the test must rule out</b></td><td>No difference</td><td>A loss of the margin or more</td></tr>
     <tr><td><b>Set before the data</b></td><td>The minimum effect</td><td>The margin: the largest loss the saving pays for</td></tr>
     <tr><td><b>A win says</b></td><td>The interval lies above 0</td><td>The interval lies above minus the margin</td></tr>
@@ -160,7 +159,7 @@
     <div class="stat"><div class="big">13,507</div><div class="lbl">per arm if the new version is truly 0.5 points worse: the denominator shrinks to 1.5 points squared</div></div>
     <div class="stat"><div class="big">80.8%</div><div class="lbl">of 4,000 simulated tests at 7,551 showed "not worse" when equal; 2.5% did when truly 2 points worse</div></div>
   </div>
-  <div class="callout tip mt"><b>The formula of lab 2.1, two changes.</b> z for 2.5% one-sided, and (margin + true difference)² in place of δ². The 2.5% is the false-win rate: calling a 2-point loss "not worse".</div>
+  <div class="callout tip mt"><b>The formula of lab 2.1, two changes.</b> (margin + true difference)² in place of δ², and the spread at the rates you plan for. One-sided 2.5% keeps z at 1.96; it is the false-win rate of calling a 2-point loss "not worse".</div>
   <aside class="notes"><p>From labs/_tools/noninferiority.py. The simulation is session 2's habit applied in advance: each simulated test computes the interval and asks whether its lower end clears minus the margin. Counting error ±1.2 and ±0.5 points. A narrow margin is as expensive as a small minimum effect; assuming the new version is a little worse is more expensive still. Lab 2.1 has a second stretch on this.</p></aside>
 </section>
 
