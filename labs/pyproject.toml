@@ -1,6 +1,6 @@
 [project]
 name = "ds-205-labs"
-version = "2027.1.0"
+version = "2027.2.0"
 description = "Lab notebooks for the SDAIA Academy course DS-205 Designing and Reading Experiments"
 requires-python = ">=3.11,<3.14"
 dependencies = [

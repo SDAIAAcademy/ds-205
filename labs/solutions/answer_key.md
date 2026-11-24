@@ -33,7 +33,7 @@ fit). The write-up's story needs such a draw; say so if a participant asks how l
 
 **1.4** Reference page: `prereg_reference.json`. Review key: pass C1, C2, C10, C12; fail the other eight.
 
-**2.1** Baseline 61.58%, 2,153 notices a day. Per arm: 36,950 (1 point), 9,187 (2 points), 2,268 (4 points). statsmodels: 36,952, 9,189, 2,271. Days: 35, 9, 3. Stretch: 12,298 at 90% power.
+**2.1** Baseline 61.58%, 2,153 notices a day. Per arm: 36,950 (1 point), 9,187 (2 points), 2,268 (4 points). statsmodels: 36,952, 9,189, 2,271. Days: 35, 9, 3. Stretch: 12,298 at 90% power. Second stretch, the cheaper notice with a 1-point margin (one-sided 2.5%, 80% power): 37,140 per arm if the notices are truly equal, 66,105 if the new one is truly 0.25 points worse (1.78 times); 1,000 simulated tests at 37,140 show "not worse" in 79.7%.
 
 **2.2** Simulated power at 9,187: 80.6% (±2.5). Curve: 23.6%, 46.8%, 60.5%, 78.7%, 88.4%, 95.2%, 100.0% at 2,000 to 30,000 per arm. Detectable with 30,000 per arm: 1.11 points. False-positive rate: 5.3%. Stretch: 78.6% at a 50% baseline, 84.1% at 70%.
 

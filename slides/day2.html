@@ -117,13 +117,51 @@
       <tr><td>The formula at 90% power</td><td>12,298</td></tr>
     </table>
     <ul class="bullets">
-      <li>Two honest methods differ by two holders: the library transforms the proportions first.</li>
-      <li>The baseline is itself a guess about the test window.</li>
+      <li>Two honest methods differ by two holders; the baseline is itself a guess.</li>
       <li>Ten more points of power cost a third more holders.</li>
       <li>Say "about 9,200 per arm".</li>
     </ul>
   </div>
-  <aside class="notes"><p>statsmodels' NormalIndPower works on a standardised effect size computed by proportion_effectsize, which uses an arcsine transformation. The difference is 0.02% here. A wrong baseline matters far more: session 2's stretch gives 78.6% power if the baseline is really 50% and 84.1% if it is 70%.</p></aside>
+  <aside class="notes"><p>statsmodels' NormalIndPower uses an arcsine transformation of the proportions; the difference is 0.02% here. A wrong baseline matters far more: session 2's stretch gives 78.6% power at a true baseline of 50% and 84.1% at 70%. Keep this slide short: the next three need the time.</p></aside>
+</section>
+
+<section class="slide" id="not-worse-question" data-lo="LO3" data-label="Not worse">
+  <div class="kicker">When the new version is cheaper</div>
+  <h2>A cheaper change must show it is not worse by more than a margin fixed in advance</h2>
+  <table class="t">
+    <tr><th></th><th>Is it better?</th><th>Is it not worse?</th></tr>
+    <tr><td><b>What the test must rule out</b></td><td>No difference</td><td>A loss of the margin or more</td></tr>
+    <tr><td><b>Set before the data</b></td><td>The minimum effect</td><td>The margin: the largest loss the saving pays for</td></tr>
+    <tr><td><b>A win says</b></td><td>The interval lies above 0</td><td>The interval lies above minus the margin</td></tr>
+  </table>
+  <div class="callout note mt"><b>Outdoor seating permits.</b> The office would stop posting a paper copy of the renewal notice to holders who already get it by text. 74% renew on time today. The pre-registration fixes the margin at 2 points, with the cost table that justifies it.</div>
+  <aside class="notes"><p>This is a parallel case, not the reminder test. The margin comes from costs, like the minimum effect in lab 1.2: what the paper copies cost against what 2 points of late renewals cost the office. It is signed before the test starts. A margin chosen after the result can always be drawn just below the interval, so it proves nothing. Reading "the interval lies above minus the margin" with a two-sided 95% interval is a one-sided test at 2.5%, the usual convention.</p></aside>
+</section>
+
+<section class="slide" id="not-worse-four-results" data-lo="LO3" data-label="Reading not worse">
+  <div class="kicker">Read the lower end of the interval</div>
+  <h2>Four finished tests, one margin of 2 points: only the interval decides</h2>
+  <table class="t">
+    <tr><th>Test</th><th>New minus old, points (95% interval)</th><th>p, no difference</th><th>Verdict</th></tr>
+    <tr><td>A</td><td>−0.3 (−1.7 to +1.1)</td><td>0.67</td><td>Not worse</td></tr>
+    <tr><td>B</td><td>−1.2 (−2.6 to +0.2)</td><td>0.09</td><td><b>Not shown</b></td></tr>
+    <tr><td>C</td><td>−3.6 (−5.0 to −2.2)</td><td>&lt; 0.001</td><td>Worse</td></tr>
+    <tr><td>D</td><td>+1.6 (+0.2 to +3.0)</td><td>0.02</td><td>Not worse, better</td></tr>
+  </table>
+  <div class="callout warn mt"><b>B is the trap.</b> "No significant difference" is not "not worse": a loss of 2.6 points is still inside its interval.</div>
+  <aside class="notes"><p>Computed by labs/_tools/noninferiority.py: 7,551 holders per arm, 74.00% on time in the old arm. Cover the last column and ask the room for each verdict before showing it. C is worse by more than the margin: its whole interval lies below −2. The p-value tests "no difference", which is not the question here; A and B both have large p-values and opposite verdicts. The estimate alone does not decide either: B's estimate, −1.2, is inside the margin.</p></aside>
+</section>
+
+<section class="slide" id="not-worse-size" data-lo="LO3" data-label="Sizing not worse">
+  <div class="kicker">The power to show it</div>
+  <h2>Size a not-worse test with the margin where the minimum effect was</h2>
+  <div class="cols cols-3">
+    <div class="stat"><div class="big">7,551</div><div class="lbl">per arm to show "not worse by 2 points" if the two versions are truly equal: one-sided 2.5%, 80% power</div></div>
+    <div class="stat"><div class="big">13,507</div><div class="lbl">per arm if the new version is truly 0.5 points worse: the denominator shrinks to 1.5 points squared</div></div>
+    <div class="stat"><div class="big">80.8%</div><div class="lbl">of 4,000 simulated tests at 7,551 showed "not worse" when equal; 2.5% did when truly 2 points worse</div></div>
+  </div>
+  <div class="callout tip mt"><b>The formula of lab 2.1, two changes.</b> z for 2.5% one-sided, and (margin + true difference)² in place of δ². The 2.5% is the false-win rate: calling a 2-point loss "not worse".</div>
+  <aside class="notes"><p>From labs/_tools/noninferiority.py. The simulation is session 2's habit applied in advance: each simulated test computes the interval and asks whether its lower end clears minus the margin. Counting error ±1.2 and ±0.5 points. A narrow margin is as expensive as a small minimum effect; assuming the new version is a little worse is more expensive still. Lab 2.1 has a second stretch on this.</p></aside>
 </section>
 
 <section class="slide" id="check-halving" data-lo="LO3">

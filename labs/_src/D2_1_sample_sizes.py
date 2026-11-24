@@ -16,6 +16,7 @@
 # - [ ] 4 · Check against a library (4')
 # - [ ] 5 · Turn sizes into days of traffic (5')
 # - [ ] ✱ Stretch · Repeat for 90% power and say what the extra ten points cost
+# - [ ] ✱ Stretch · A cheaper notice: size a test that shows it is not worse by more than 1 point
 
 # %%
 import os, sys, subprocess
@@ -190,6 +191,47 @@ def stretch():
 
 try:
     U.keep("d2_1", "n90", stretch())
+except NotImplementedError:
+    print("✱ stretch not done")
+
+# %% [markdown]
+# ## ✱ Stretch · A cheaper notice, not worse by more than 1 point
+#
+# The messaging platform offers a shorter renewal notice at a lower price per message. Sahar would adopt it if on-time renewal falls by **less than 1 point**; she signs that margin before the test starts. The test must now show "not worse": the lower end of the 95% interval of (new minus current) must lie above −1 point, a one-sided test at 2.5%.
+#
+# Per arm, with true rates p_cur and p_new = p_cur + d (d is the true difference you plan for):
+#
+# n = (z₁₋₀.₀₂₅ + z₁₋β)² × (p_cur(1 − p_cur) + p_new(1 − p_new)) / (margin + d)²
+#
+# ✏️ **Exercise** · Write `n_not_worse(p_cur, margin, d=0.0)` with 80% power. Compute it for a margin of 1 point when the two notices are truly equal (d = 0) and when the new one is truly 0.25 points worse. Then simulate tests at the first size with d = 0 and count how often the lower end clears −1 point.
+
+# %%
+def stretch_not_worse(reps):
+    # BEGIN SOLUTION
+    def n_not_worse(p_cur, margin, d=0.0):
+        p_new = p_cur + d
+        z = stats.norm.ppf(0.975) + stats.norm.ppf(0.80)
+        return int(np.ceil(z ** 2 * (p_cur * (1 - p_cur) + p_new * (1 - p_new)) / (margin + d) ** 2))
+
+    n_eq = n_not_worse(P1, 0.01)
+    n_worse = n_not_worse(P1, 0.01, d=-0.0025)
+    gen = U.rng(211)
+    x_cur = gen.binomial(n_eq, P1, size=reps)
+    x_new = gen.binomial(n_eq, P1, size=reps)
+    diff, se, _ = U.z_test(x_cur, n_eq, x_new, n_eq)
+    shown = float(((diff - 1.96 * se) > -0.01).mean())
+    print(f"equal notices: {n_eq:,} per arm; new notice 0.25 points worse: {n_worse:,} per arm ({n_worse / n_eq:.2f} times)")
+    print(f"simulated, {reps:,} tests at {n_eq:,} per arm: 'not worse' shown in {shown:.1%}")
+    # The margin plays the part of the minimum effect: 1 point needs about as many holders as detecting a 1-point gain.
+    # Planning for a slightly worse notice shrinks the denominator from 1 to 0.75 points squared: 1.78 times the holders.
+    return {"n_equal": n_eq, "n_worse": n_worse, "shown": shown}
+    # END SOLUTION
+
+
+try:
+    reps_ni = U.pick(1000, 200)
+    ni = U.keep("d2_1", "not_worse", stretch_not_worse(reps_ni))
+    U.check(abs(ni["shown"] - 0.80) < 3 * np.sqrt(0.16 / reps_ni), "the simulated share agrees with the planned 80% within its counting error")
 except NotImplementedError:
     print("✱ stretch not done")
 

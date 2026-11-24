@@ -3,7 +3,7 @@
   "engine": "1",
   "id": "ds-205",
   "code": "DS-205",
-  "version": "2027.1.0",
+  "version": "2027.2.0",
   "lang": "en",
   "title": {
     "en": "Designing and Reading Experiments",
@@ -270,7 +270,8 @@
           "outcomes": [
             "Explain power and the two errors a test can make",
             "Compute the sample size per arm for a minimum effect by formula",
-            "Show how the minimum effect drives the size and the days of traffic needed"
+            "Show how the minimum effect drives the size and the days of traffic needed",
+            "Fix a not-worse margin in advance, size the test that can show it and read its interval against the margin"
           ],
           "lo": [
             "LO3"

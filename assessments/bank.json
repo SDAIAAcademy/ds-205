@@ -568,6 +568,37 @@
       "timer": 75
     },
     {
+      "id": "q-not-worse-01",
+      "type": "single",
+      "prompt": "Building works permits: the office tests an e-mail renewal notice in place of a posted one. The pre-registration fixed a not-worse margin of 1.5 points. With 5,000 holders per arm, on-time renewal is 0.4 points lower with e-mail, 95% interval −2.2 to +1.4 points, p = 0.67 for no difference. The write-up concludes that e-mail is not worse. What should a reviewer say?",
+      "options": [
+        "Not shown: the interval still reaches beyond the 1.5-point margin",
+        "Shown: a p-value of 0.67 means the e-mail and posted notices perform the same",
+        "Shown: the estimated loss of 0.4 points lies inside the 1.5-point margin",
+        "Shown, once the margin is widened to 2.5 points after the result"
+      ],
+      "correct": [
+        0
+      ],
+      "misconceptions": [
+        "",
+        "Reads a large p-value for no difference as proof that the two notices are the same",
+        "Compares the estimate with the margin, not the lower end of the interval",
+        "Moves the margin after seeing the data, so any result can pass"
+      ],
+      "explanation": "Not worse is shown only when the lower end of the 95% interval lies above minus the margin. Here the lower end is −2.2 points, beyond −1.5, so a loss larger than the office accepts is still possible. The p-value tests no difference, which is not the question, and a margin moved after the result proves nothing.",
+      "lo": [
+        "LO3"
+      ],
+      "day": "day2",
+      "session": 1,
+      "slide": "not-worse-four-results",
+      "level": "evaluate",
+      "pool": "practice",
+      "weight": 1,
+      "timer": 90
+    },
+    {
       "id": "q-size-05",
       "type": "single",
       "prompt": "An analyst simulates a planned test 400 times and finds a power of 77%. The formula gave 80%. Two standard errors of a share near 0.8 counted over 400 runs are about 4 points. What should she conclude?",
