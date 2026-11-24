@@ -2,9 +2,9 @@
   "v": 1,
   "engine": "1.0.0",
   "build": {
-    "at": "2026-11-15T13:13:52Z",
-    "version": "2027.1.0",
-    "commit": "f9d5985"
+    "at": "2026-11-24T17:18:45Z",
+    "version": "2027.2.0",
+    "commit": "070537a"
   },
   "lang": "en",
   "dir": "ltr",
@@ -411,7 +411,7 @@
       "n": 4,
       "session": 1,
       "title": "Power and the minimum effect",
-      "text": "Session 1 Power and the minimum effect Explain power and the two errors a test can make Compute the sample size per arm for a minimum effect by formula Show how the minimum effect drives the size and the days of traffic needed 01",
+      "text": "Session 1 Power and the minimum effect Explain power and the two errors a test can make Compute the sample size per arm for a minimum effect by formula Show how the minimum effect drives the size and the days of traffic needed Fix a not-worse margin in advance, size the test that can show it and read its interval against the margin 01",
       "href": "../slides/day2.html#s1"
     },
     {
@@ -429,7 +429,7 @@
       "n": 6,
       "session": 1,
       "title": "The same true effect gives a different estimate in every test",
-      "text": "Lab 2.2, step 1 The same true effect gives a different estimate in every test Simulated test Estimate p-value 1 +1.87 points 0.0086 2 +3.60 points below 0.0001 3 +1.75 points 0.0144 4 +1.90 points 0.0077 5 +0.83 points 0.2466 Five tests in one simulated world. The truth is +2 points in all five. Four find it. The fifth misses: an unlucky draw, not a wrong analysis. Power is the share of such tests that find the effect. It belongs to a design and an effect size, never to one result.",
+      "text": "Lab 2.2, step 1 The same true effect gives a different estimate in every test Simulated test Estimate p-value 1 +1.87 points 0.0086 2 +3.60 points below 0.0001 3 +1.75 points 0.0144 4 +1.90 points 0.0077 5 +0.83 points 0.2466 The truth is +2 points in all five. Four find it; the fifth is an unlucky draw. Power is the share of such tests that find the effect. It belongs to a design and an effect size, never to one result.",
       "href": "../slides/day2.html#power-is-about-many-tests"
     },
     {
@@ -465,13 +465,40 @@
       "n": 10,
       "session": 1,
       "title": "A sample size is an estimate, not a number to quote to the last holder",
-      "text": "Lab 2.1, step 4 and stretch A sample size is an estimate, not a number to quote to the last holder For 2 points Per arm The formula you wrote 9,187 statsmodels, same inputs 9,189 The formula at 90% power 12,298 Two honest methods differ by two holders: the library transforms the proportions first. The baseline is itself a guess about the test window. Ten more points of power cost a third more holders. Say \"about 9,200 per arm\".",
+      "text": "Lab 2.1, step 4 and stretch A sample size is an estimate, not a number to quote to the last holder For 2 points Per arm The formula you wrote 9,187 statsmodels, same inputs 9,189 The formula at 90% power 12,298 Two honest methods differ by two holders; the baseline is itself a guess. Ten more points of power cost a third more holders. Say \"about 9,200 per arm\".",
       "href": "../slides/day2.html#size-is-an-estimate"
     },
     {
       "deck": "day2",
-      "id": "check-halving",
+      "id": "not-worse-question",
       "n": 11,
+      "session": 1,
+      "title": "A cheaper change must show it is not worse by more than a margin fixed in advance",
+      "text": "When the new version is cheaper A cheaper change must show it is not worse by more than a margin fixed in advance Is it better? Is it not worse? (non-inferiority) What the test must rule out No difference A loss of the margin or more Set before the data The minimum effect The margin: the largest loss the saving pays for A win says The interval lies above 0 The interval lies above minus the margin Outdoor seating permits. The office would stop posting a paper copy of the renewal notice to holders who already get it by text. 74% renew on time today. The pre-registration fixes the margin at 2 points, with the cost table that justifies it.",
+      "href": "../slides/day2.html#not-worse-question"
+    },
+    {
+      "deck": "day2",
+      "id": "not-worse-four-results",
+      "n": 12,
+      "session": 1,
+      "title": "Four finished tests, one margin of 2 points: only the interval decides",
+      "text": "Read the lower end of the interval Four finished tests, one margin of 2 points: only the interval decides Test New minus old, points (95% interval) p, no difference Verdict A −0.3 (−1.7 to +1.1) 0.67 Not worse B −1.2 (−2.6 to +0.2) 0.09 Not shown C −3.6 (−5.0 to −2.2) < 0.001 Worse D +1.6 (+0.2 to +3.0) 0.02 Not worse, better B is the trap. \"No significant difference\" is not \"not worse\": a loss of 2.6 points is still inside its interval.",
+      "href": "../slides/day2.html#not-worse-four-results"
+    },
+    {
+      "deck": "day2",
+      "id": "not-worse-size",
+      "n": 13,
+      "session": 1,
+      "title": "Size a not-worse test with the margin where the minimum effect was",
+      "text": "The power to show it Size a not-worse test with the margin where the minimum effect was 7,551 per arm to show \"not worse by 2 points\" if the two versions are truly equal: one-sided 2.5%, 80% power 13,507 per arm if the new version is truly 0.5 points worse: the denominator shrinks to 1.5 points squared 80.8% of 4,000 simulated tests at 7,551 showed \"not worse\" when equal; 2.5% did when truly 2 points worse The formula of lab 2.1, two changes. (margin + true difference)² in place of δ², and the spread at the rates you plan for. One-sided 2.5% keeps z at 1.96; it is the false-win rate of calling a 2-point loss \"not worse\".",
+      "href": "../slides/day2.html#not-worse-size"
+    },
+    {
+      "deck": "day2",
+      "id": "check-halving",
+      "n": 14,
       "session": 1,
       "title": "What does a smaller minimum effect cost?",
       "text": "Checkpoint What does a smaller minimum effect cost? A test needs 6,000 residents per arm to detect 3 points. The director now says she would act on 1.5 points. About how many residents per arm does the test need? 24,000 12,000 6,000 1,500",
@@ -480,7 +507,7 @@
     {
       "deck": "day2",
       "id": "lab-2-1",
-      "n": 12,
+      "n": 15,
       "session": 1,
       "title": "Sample sizes for three minimum effects",
       "text": "Lab 2.1 · 25 min Sample sizes for three minimum effects Compute the sample size of the reminder test for minimum effects of 1, 2 and 4 points by formula, check it against a library and turn each size into days of traffic. D2_1_sample_sizes.ipynb Baseline rate and daily traffic from the history 4 min The formula by hand for 2 points 7 min Three minimum effects: 1, 2 and 4 points 5 min Check against a library 4 min Turn sizes into days of traffic 5 min ✱ Stretch: Repeat for 90% power and say what the extra ten points cost",
@@ -489,7 +516,7 @@
     {
       "deck": "day2",
       "id": "s2",
-      "n": 13,
+      "n": 16,
       "session": 2,
       "title": "Power by simulation",
       "text": "Session 2 Power by simulation Simulate a planned two-arm test and its analysis with a seed Estimate power by simulation and state its counting error Draw a power curve and read the sample size from it 02",
@@ -498,7 +525,7 @@
     {
       "deck": "day2",
       "id": "simulate-the-plan",
-      "n": 14,
+      "n": 17,
       "session": 2,
       "title": "To check a design, run it a thousand times in a world you built",
       "text": "The DS-201 habit, before the test To check a design, run it a thousand times in a world you built 1 · Build a world baseline 61.58%; the reminder truly adds 2 points → 2 · Run the plan 9,187 holders per arm, the pre-registered test → 3 · Repeat 1,000 times, with a seed → 4 · Count the share of tests that say \"significant\" That share is the power. If the formula is right, it should be about 80%.",
@@ -507,7 +534,7 @@
     {
       "deck": "day2",
       "id": "one-simulated-test",
-      "n": 15,
+      "n": 18,
       "session": 2,
       "title": "One simulated test is two binomial draws and the planned analysis",
       "text": "Lab 2.2, steps 1 and 2 One simulated test is two binomial draws and the planned analysis def power_sim(gen, n, p1, delta, reps): x_c = gen.binomial(n, p1, size=reps) x_r = gen.binomial(n, p1 + delta, size=reps) _, _, p = U.z_test(x_c, n, x_r, n) return (p < 0.05).mean() power_sim(U.rng(22), 9187, 0.6158, 0.02, 1000) # 0.806 Each draw is the number of on-time renewals among n holders in one arm. The analysis is the one on the pre-registration, not a shortcut. size=reps runs all the tests at once. The seed makes your 0.806 your neighbour's 0.806.",
@@ -516,7 +543,7 @@
     {
       "deck": "day2",
       "id": "simulated-power",
-      "n": 16,
+      "n": 19,
       "session": 2,
       "title": "The simulation agrees with the formula, within its own counting error",
       "text": "Lab 2.2, steps 2 and 3 The simulation agrees with the formula, within its own counting error 80% power promised by the formula at 9,187 per arm 80.6% of 1,000 simulated tests were significant ±2.5 points: two standard errors of a share counted over 1,000 tests A simulated share is an estimate too. Quote it with its error. 10,000 simulated tests would narrow the error to ±0.8 points.",
@@ -525,7 +552,7 @@
     {
       "deck": "day2",
       "id": "power-curve",
-      "n": 17,
+      "n": 20,
       "session": 2,
       "title": "The power curve is steep at first and flat at the end",
       "text": "Lab 2.2, step 4 The power curve is steep at first and flat at the end 0% 20% 40% 60% 80% 100% 0 5,000 10,000 15,000 20,000 25,000 30,000 80% power 9,187 per arm line: formula dots: 1,000 simulated tests each holders per arm Power to detect 2 points on a baseline of 61.58%. 2,000 per arm: 23.6% simulated. A real effect is missed three times in four. 9,187 per arm: 78.7% on the curve's run, 80% by formula. 30,000 per arm: every simulated test found it. The first 9,000 buy 80 points of power. The next 21,000 buy 20.",
@@ -534,7 +561,7 @@
     {
       "deck": "day2",
       "id": "false-positives-by-count",
-      "n": 18,
+      "n": 21,
       "session": 2,
       "title": "In a world with no effect, one test in twenty still wins",
       "text": "Lab 2.2, step 5 In a world with no effect, one test in twenty still wins 5.3% of 1,000 simulated tests were significant when the reminder did nothing That is the 5% you agreed to when you chose the level. It holds for one planned analysis of one metric at one moment. Tomorrow you break each of the three conditions and count again. What goes wrong. \"Significant\" is read as \"true\". At a 5% level, an office that tests twenty useless ideas adopts one of them.",
@@ -543,16 +570,16 @@
     {
       "deck": "day2",
       "id": "when-the-formula-ends",
-      "n": 19,
+      "n": 22,
       "session": 2,
       "title": "The formula covers one design; a simulation covers the one you have",
-      "text": "What simulation is for The formula covers one design; a simulation covers the one you have The formula assumes Independent units. Two proportions. Equal arms. One look. The baseline you guessed. Real designs break it Visitors inside branches. A baseline that turns out to be 50%: power 76.6%, not 80%. An effect that differs by weekday. An analysis on branch means. The rule. Use the formula for a first number and for the conversation about the minimum effect. Use a simulation of the planned analysis for the number you put on the page.",
+      "text": "What simulation is for The formula covers one design; a simulation covers the one you have The formula assumes Independent units. Two proportions. Equal arms. One look. The baseline you guessed. Real designs break it Visitors inside branches. A baseline that turns out to be 50%: power 78.6%, not 80%. An effect that differs by weekday. An analysis on branch means. The rule. Use the formula for a first number and for the conversation about the minimum effect. Use a simulation of the planned analysis for the number you put on the page.",
       "href": "../slides/day2.html#when-the-formula-ends"
     },
     {
       "deck": "day2",
       "id": "check-simulated-power",
-      "n": 20,
+      "n": 23,
       "session": 2,
       "title": "What does a simulated power of 81% tell you?",
       "text": "Checkpoint What does a simulated power of 81% tell you? You simulate a planned test 1,000 times with a true effect of 2 points. 81% of the simulated tests are significant. Which statement is correct? There is an 81% chance that the reminder works If the real test is significant, the effect is real with probability 81% The reminder will raise on-time renewal by 81% of 2 points If the effect is really 2 points, a test of this design finds it about 81 times in 100",
@@ -561,7 +588,7 @@
     {
       "deck": "day2",
       "id": "lab-2-2",
-      "n": 21,
+      "n": 24,
       "session": 2,
       "title": "Power by simulation",
       "text": "Lab 2.2 · 25 min Power by simulation Simulate the reminder test and its analysis 1,000 times at the planned size, compare the simulated power with the formula, draw a power curve and count false positives when nothing differs. D2_2_power_simulation.ipynb Simulate one test and analyse it 5 min 1,000 tests at the planned size 6 min The counting error of the simulation 3 min A power curve over sample sizes 7 min No effect: the false-positive rate 4 min ✱ Stretch: Keep the planned size and let the true baseline be 50% or 70%: what happens to power?",
@@ -570,7 +597,7 @@
     {
       "deck": "day2",
       "id": "s3",
-      "n": 22,
+      "n": 25,
       "session": 3,
       "title": "Cluster randomisation",
       "text": "Session 3 Cluster randomisation Estimate the intraclass correlation and the design effect from baseline data Measure by simulation the power lost when branches are randomised in place of visitors Analyse a cluster-randomised test at the cluster level and improve it by pairing 03",
@@ -579,7 +606,7 @@
     {
       "deck": "day2",
       "id": "visitors-of-one-branch",
-      "n": 23,
+      "n": 26,
       "session": 3,
       "title": "Visitors of one branch resemble each other",
       "text": "The counter test Visitors of one branch resemble each other Mansour's test: a triage desk at the entrance. Outcome: served within 15 minutes. Minimum effect: 5 points. Visitors share a queue, so branches are randomised: 12 with the desk, 12 without. Four baseline weeks: 10,888 visits, 62.2% served within 15 minutes. By branch the rate runs from 43.7% to 80.3%. Intraclass correlation The share of the outcome's variance that lies between branches. Here 0.033: three per cent of the variation is about which branch you walked into.",
@@ -588,7 +615,7 @@
     {
       "deck": "day2",
       "id": "design-effect",
-      "n": 24,
+      "n": 27,
       "session": 3,
       "title": "A small correlation times a large branch is a large penalty",
       "text": "Lab 2.3, step 1 A small correlation times a large branch is a large penalty 0.033 intraclass correlation of the 15-minute outcome 454 visits per branch in four weeks, on average 15.8 design effect: 1 + (454 − 1) × 0.0326 The design effect is how many times larger the variance of the estimate is when branches are randomised in place of visitors. 10,888 visits in 24 branches carry the information of about 691 independent visits.",
@@ -597,7 +624,7 @@
     {
       "deck": "day2",
       "id": "power-lost",
-      "n": 25,
+      "n": 28,
       "session": 3,
       "title": "Randomising branches costs 77 points of power",
       "text": "Lab 2.3, steps 2 and 3 · 1,000 simulated tests each Randomising branches costs 77 points of power 100% power for 5 points if 10,888 visitors could be randomised one by one 22.8% power when 12 branches get the desk and 12 do not, analysed by branch The same visits, the same effect, the same four weeks. The test has 24 units, and branches differ from each other by far more than 5 points.",
@@ -606,7 +633,7 @@
     {
       "deck": "day2",
       "id": "visit-level-analysis",
-      "n": 26,
+      "n": 29,
       "session": 3,
       "title": "Analysing visits from a branch-randomised test manufactures wins",
       "text": "Lab 2.3, step 4 Analysing visits from a branch-randomised test manufactures wins 68.9% of tests were \"significant\" when the desk did nothing and visits were analysed as if each had its own coin The tempting repair: \"we have 10,888 visits, use them all\". The visit-level test reads the luck of which branches landed in which arm as an effect of the desk. It is not a more powerful analysis. It is a wrong one. Analyse what you randomised. One rate per branch, 24 numbers.",
@@ -615,7 +642,7 @@
     {
       "deck": "day2",
       "id": "pairing-recovers-power",
-      "n": 27,
+      "n": 30,
       "session": 3,
       "title": "Pairing like branches recovers much of the lost power",
       "text": "Lab 2.3, step 5 Pairing like branches recovers much of the lost power Design Analysis Power for 5 points False wins, no effect Visitors randomised (not possible here) Visits 100% about 5% 12 and 12 branches Branch rates, t-test 22.8% 4.5% 12 and 12 branches Visits, z-test meaningless 68.9% 12 pairs of like branches Pair differences, paired t-test 62.2% 5.8% Sort branches by baseline rate, pair neighbours, toss a coin inside each pair. The stable differences between branches cancel inside the pairs.",
@@ -624,7 +651,7 @@
     {
       "deck": "day2",
       "id": "what-buys-power-in-clusters",
-      "n": 28,
+      "n": 31,
       "session": 3,
       "title": "More branches help; more visits per branch hardly do",
       "text": "When power is still short More branches help; more visits per branch hardly do More units: the strongest lever, and here there are no more branches. A longer test: helps a little; the difference between branches stays. Pairing or a baseline: removes the stable part of that difference. A larger minimum effect: an honest answer if the desk is only worth having for a large gain. And fewer units than you think Three pairs of branches share staff, so the test has 21 units, not 24. Randomised 10 against 11 without pairing, its power is 20.6%. Not on the list: a cleverer analysis of the same coin tosses.",
@@ -633,7 +660,7 @@
     {
       "deck": "day2",
       "id": "check-clusters",
-      "n": 29,
+      "n": 32,
       "session": 3,
       "title": "How large is this test?",
       "text": "Checkpoint How large is this test? A ministry tests a new enrolment procedure in 16 schools, 8 with it and 8 without. Each school enrols about 600 pupils. The outcome is whether a pupil's file is complete on the first day. What decides the power of the test most? The 9,600 pupils The 16 schools and how much schools differ from each other The 600 pupils in each school The 5% significance level",
@@ -642,7 +669,7 @@
     {
       "deck": "day2",
       "id": "lab-2-3",
-      "n": 30,
+      "n": 33,
       "session": 3,
       "title": "24 branches, 12 and 12",
       "text": "Lab 2.3 · 25 min 24 branches, 12 and 12 Simulate the counter-service test with visitors randomised and with 24 branches randomised, measure the power lost, see what a visitor-level analysis does and recover power by pairing branches. D2_3_branch_clusters.ipynb Intraclass correlation and design effect from baseline visits 5 min Visitors randomised: power 5 min Branches randomised, analysed by branch: power 7 min The visitor-level analysis under no effect 4 min Pair branches by baseline and measure power again 4 min ✱ Stretch: Treat each pair of branches that share staff as one unit and measure the power of 21 units",
@@ -651,7 +678,7 @@
     {
       "deck": "day2",
       "id": "s4",
-      "n": 31,
+      "n": 34,
       "session": 4,
       "title": "Run time and seasonality",
       "text": "Session 4 Run time and seasonality Describe the weekly cycle and the month-end peak in traffic and in the baseline rate Turn a sample size into a duration of whole weeks that covers the month-end Explain what a test estimates when it covers only part of a cycle 04",
@@ -660,7 +687,7 @@
     {
       "deck": "day2",
       "id": "two-cycles",
-      "n": 32,
+      "n": 35,
       "session": 4,
       "title": "The office's traffic has a weekly cycle and a month-end peak",
       "text": "Lab 2.4, step 1 · eight weeks of the history The office's traffic has a weekly cycle and a month-end peak 0 1,000 2,000 3,000 4,000 week 1 week 2 week 3 week 4 week 5 week 6 week 7 week 8 teal: working days · light blue: Friday and Saturday · coral: the 26th and later day of the history, from Sunday 1 March Notices sent per day, Sunday 1 March to Saturday 25 April of the synthetic history. Sunday to Thursday: about 2,300 notices a day. Friday and Saturday, the weekend: about 1,100 and 1,400. From the 26th: about one and a half times a normal day, because most permits fall due at the month-end.",
@@ -669,7 +696,7 @@
     {
       "deck": "day2",
       "id": "cycles-move-the-rate",
-      "n": 33,
+      "n": 36,
       "session": 4,
       "title": "The cycles move the baseline rate, not only the traffic",
       "text": "Lab 2.4, step 1 The cycles move the baseline rate, not only the traffic Notices sent on Mean notices a day Renewed on time Sunday to Thursday 2,360 to 2,534 62.1% to 62.6% Friday 1,203 58.3% Saturday 1,505 58.4% The 26th and later 2,974 57.6% Before the 26th 1,978 62.9% Different days, different holders. If the baseline differs by 5 points between day types, the effect of a reminder may differ too.",
@@ -678,7 +705,7 @@
     {
       "deck": "day2",
       "id": "size-reached-on-day-nine",
-      "n": 34,
+      "n": 37,
       "session": 4,
       "title": "The planned size is reached on day 9, a Monday",
       "text": "Lab 2.4, step 2 The planned size is reached on day 9, a Monday The test starts on Sunday 6 September. A forecast gives each day its expected traffic. 18,374 holders are reached on test day 9. Stopping there, the test has seen two Sundays, two Mondays, one Friday and no month-end. What a 9-day test would estimate The effect of the reminder for holders notified in early September, with Sundays and Mondays counted twice. Nobody asked that question.",
@@ -687,7 +714,7 @@
     {
       "deck": "day2",
       "id": "whole-cycles",
-      "n": 35,
+      "n": 38,
       "session": 4,
       "title": "Run whole weeks, and cover the month-end",
       "text": "Lab 2.4, step 3 Run whole weeks, and cover the month-end 28 days four whole weeks from 6 September; the five month-end days fall inside 60,694 holders expected, about 30,000 per arm 1.11 points: the effect such a test detects with 80% power The calendar set the duration; the formula set only its minimum. The extra holders are not wasted: they narrow the interval around the estimate.",
@@ -696,7 +723,7 @@
     {
       "deck": "day2",
       "id": "short-test-different-question",
-      "n": 36,
+      "n": 39,
       "session": 4,
       "title": "A short test answers a different question",
       "text": "Lab 2.4, step 4 · a planning assumption A short test answers a different question Test Holders Month-end days Expected estimate 95% margin 9 days from 6 September 18,484 0 1.86 points ±1.40 14 days from 6 September 27,682 0 1.82 points ±1.15 28 days from 6 September 60,694 5 2.35 points ±0.77 9 days from 24 September 22,430 5 3.23 points ±1.27 If the reminder adds 2 points on an ordinary day, 4 at the month-end and 1 on a weekend. Two short tests of the same reminder would report 1.9 and 3.2, and both would be called \"the effect\".",
@@ -705,7 +732,7 @@
     {
       "deck": "day2",
       "id": "outcome-window-and-novelty",
-      "n": 37,
+      "n": 40,
       "session": 4,
       "title": "Two more clocks run: the outcome window and the fading of novelty",
       "text": "After the last notice Two more clocks run: the outcome window and the fading of novelty The outcome window A notice goes out 30 days before expiry. On-time renewal is known only at the expiry date. The last holders complete the metric 30 days after day 28. A result read earlier misses the holders who renew late in their window. Novelty People react to anything new, and the reaction can fade. A short test catches the reaction at its peak. A longer test averages over it and can show the effect week by week. On the page: the duration, the date on which the primary metric is complete, and a plan to report the effect by week.",
@@ -714,7 +741,7 @@
     {
       "deck": "day2",
       "id": "check-stop-date",
-      "n": 38,
+      "n": 41,
       "session": 4,
       "title": "How long should this test run?",
       "text": "Checkpoint How long should this test run? A test of a new payment page starts on a Sunday. The planned size is reached on day 11. Traffic is low at weekends and salaries arrive on the 27th, after which payments surge. Day 11 is the 16th of the month. What duration do you choose? 11 days 14 days 28 days As long as it takes to reach significance",
@@ -723,7 +750,7 @@
     {
       "deck": "day2",
       "id": "lab-2-4",
-      "n": 39,
+      "n": 42,
       "session": 4,
       "title": "Choose the run time",
       "text": "Lab 2.4 · 25 min Choose the run time Read the weekly cycle and the month-end peak in 26 weeks of traffic, turn the planned size into days, and choose a duration of whole weeks that covers the month-end. D2_4_run_time.ipynb Traffic and renewal rate by weekday and at month-end 6 min Days needed for the planned size 4 min Whole weeks that cover the month-end 4 min What tests of 9, 14 and 28 days would estimate 7 min Record the duration and its reason 4 min ✱ Stretch: Start the 9-day test on the 24th of the month and compare its estimate",
@@ -732,7 +759,7 @@
     {
       "deck": "day2",
       "id": "wrap-up",
-      "n": 40,
+      "n": 43,
       "session": 4,
       "title": "Three things to keep",
       "text": "Day 2 Three things to keep The effect is squared 2 points need 9,187 per arm; 1 point needs 36,950. The minimum effect is the director's choice, made from costs. Simulate the plan 1,000 runs of the planned analysis gave 80.6% power and 5.3% false wins. When the design leaves the formula, only the simulation is left. Units and calendars 24 branches gave 22.8% power; pairing gave 62.2%. Nine days reach the size; 28 cover the weeks and the month-end.",
@@ -741,7 +768,7 @@
     {
       "deck": "day2",
       "id": "next",
-      "n": 41,
+      "n": 44,
       "session": 4,
       "title": "The test has run",
       "text": "Before Day 3 The test has run Tomorrow the 28 days are over. The platform has exported its log, a colleague is about to compute the effect, and something in the export is wrong. Reread the checks you promised on your page: the sample ratio and the balance. Recall from DS-201: the interval for a difference, and Holm's correction.",

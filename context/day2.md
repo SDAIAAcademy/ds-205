@@ -1,7 +1,7 @@
 ---
 course: "Designing and Reading Experiments"
 code: "DS-205"
-version: "2027.1.0"
+version: "2027.2.0"
 deck: "day2"
 day: 2
 language: "en"
@@ -52,6 +52,7 @@ Data Science Track · 3 teaching days + capstone day · 4 sessions · 4 labs · 
 - Explain power and the two errors a test can make
 - Compute the sample size per arm for a minimum effect by formula
 - Show how the minimum effect drives the size and the days of traffic needed
+- Fix a not-worse margin in advance, size the test that can show it and read its interval against the margin
 
 #### [day2#two-ways-to-be-wrong] A test can be wrong in two ways, and you choose both rates in advance
 
@@ -76,8 +77,7 @@ Data Science Track · 3 teaching days + capstone day · 4 sessions · 4 labs · 
 | 4 | +1.90 points | 0.0077 |
 | 5 | +0.83 points | 0.2466 |
 
-- Five tests in one simulated world. The truth is +2 points in all five.
-- Four find it. The fifth misses: an unlucky draw, not a wrong analysis.
+- The truth is +2 points in all five. Four find it; the fifth is an unlucky draw.
 - **Power** is the share of such tests that find the effect.
 - It belongs to a design and an effect size, never to one result.
 
@@ -133,10 +133,44 @@ def n_per_arm(p1, delta,
 | statsmodels, same inputs | 9,189 |
 | The formula at 90% power | 12,298 |
 
-- Two honest methods differ by two holders: the library transforms the proportions first.
-- The baseline is itself a guess about the test window.
+- Two honest methods differ by two holders; the baseline is itself a guess.
 - Ten more points of power cost a third more holders.
 - Say "about 9,200 per arm".
+
+#### [day2#not-worse-question] A cheaper change must show it is not worse by more than a margin fixed in advance
+
+*When the new version is cheaper*
+
+|  | Is it better? | Is it not worse? (non-inferiority) |
+| --- | --- | --- |
+| **What the test must rule out** | No difference | A loss of the margin or more |
+| **Set before the data** | The minimum effect | The margin: the largest loss the saving pays for |
+| **A win says** | The interval lies above 0 | The interval lies above minus the margin |
+
+> **Outdoor seating permits.** The office would stop posting a paper copy of the renewal notice to holders who already get it by text. 74% renew on time today. The pre-registration fixes the margin at 2 points, with the cost table that justifies it.
+
+#### [day2#not-worse-four-results] Four finished tests, one margin of 2 points: only the interval decides
+
+*Read the lower end of the interval*
+
+| Test | New minus old, points (95% interval) | p, no difference | Verdict |
+| --- | --- | --- | --- |
+| A | −0.3 (−1.7 to +1.1) | 0.67 | Not worse |
+| B | −1.2 (−2.6 to +0.2) | 0.09 | **Not shown** |
+| C | −3.6 (−5.0 to −2.2) | < 0.001 | Worse |
+| D | +1.6 (+0.2 to +3.0) | 0.02 | Not worse, better |
+
+> **B is the trap.** "No significant difference" is not "not worse": a loss of 2.6 points is still inside its interval.
+
+#### [day2#not-worse-size] Size a not-worse test with the margin where the minimum effect was
+
+*The power to show it*
+
+- **7,551** per arm to show "not worse by 2 points" if the two versions are truly equal: one-sided 2.5%, 80% power
+- **13,507** per arm if the new version is truly 0.5 points worse: the denominator shrinks to 1.5 points squared
+- **80.8%** of 4,000 simulated tests at 7,551 showed "not worse" when equal; 2.5% did when truly 2 points worse
+
+> **The formula of lab 2.1, two changes.** (margin + true difference)² in place of δ², and the spread at the rates you plan for. One-sided 2.5% keeps z at 1.96; it is the false-win rate of calling a 2-point loss "not worse".
 
 #### [day2#check-halving] What does a smaller minimum effect cost?
 
@@ -245,7 +279,7 @@ Figure: Power to detect 2 points on a baseline of 61.58%.
 *What simulation is for*
 
 - **The formula assumes.** Independent units. Two proportions. Equal arms. One look. The baseline you guessed.
-- **Real designs break it.** Visitors inside branches. A baseline that turns out to be 50%: power 76.6%, not 80%. An effect that differs by weekday. An analysis on branch means.
+- **Real designs break it.** Visitors inside branches. A baseline that turns out to be 50%: power 78.6%, not 80%. An effect that differs by weekday. An analysis on branch means.
 
 > **The rule.** Use the formula for a first number and for the conversation about the minimum effect. Use a simulation of the planned analysis for the number you put on the page.
 

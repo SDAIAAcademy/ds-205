@@ -2,9 +2,9 @@
   "v": 1,
   "engine": "1.0.0",
   "build": {
-    "at": "2026-11-15T13:13:52Z",
-    "version": "2027.1.0",
-    "commit": "f9d5985"
+    "at": "2026-11-24T17:18:45Z",
+    "version": "2027.2.0",
+    "commit": "070537a"
   },
   "lang": "en",
   "dir": "ltr",
@@ -15,7 +15,7 @@
   "course": {
     "id": "ds-205",
     "code": "DS-205",
-    "version": "2027.1.0",
+    "version": "2027.2.0",
     "title": "Designing and Reading Experiments",
     "tagline": "Design a randomised experiment a public office can act on, size it, check it and read its result without fooling yourself",
     "description": "Participants design randomised experiments for a fictional municipal permits office and read the results without fooling themselves. They turn a decision question into a pre-registration with a hypothesis, primary and guardrail metrics, a stop rule and a unit of randomisation, compute sample size by formula and by simulation, analyse a synthetic experiment log, check that randomisation worked, and measure how peeking, many metrics and a mismatched unit inflate false wins. Variance reduction and sequential tests are left to DS-302.",
@@ -308,7 +308,8 @@
             "outcomes": [
               "Explain power and the two errors a test can make",
               "Compute the sample size per arm for a minimum effect by formula",
-              "Show how the minimum effect drives the size and the days of traffic needed"
+              "Show how the minimum effect drives the size and the days of traffic needed",
+              "Fix a not-worse margin in advance, size the test that can show it and read its interval against the margin"
             ],
             "lo": [
               "LO3"

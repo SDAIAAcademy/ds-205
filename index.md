@@ -1,7 +1,7 @@
 ---
 course: "Designing and Reading Experiments"
 code: "DS-205"
-version: "2027.1.0"
+version: "2027.2.0"
 language: "en"
 view: "trainee"
 source: "https://sdaiaacademy.github.io/ds-205/index.html"
@@ -60,6 +60,7 @@ Slides: https://sdaiaacademy.github.io/ds-205/slides/day2.md
   - Explain power and the two errors a test can make
   - Compute the sample size per arm for a minimum effect by formula
   - Show how the minimum effect drives the size and the days of traffic needed
+  - Fix a not-worse margin in advance, size the test that can show it and read its interval against the margin
   - [Lab 2.1: Sample sizes for three minimum effects (25 min)](https://sdaiaacademy.github.io/ds-205/labs/D2_1_sample_sizes.ipynb)
 - **Session 2: Power by simulation**
   - Simulate a planned two-arm test and its analysis with a seed
@@ -177,4 +178,4 @@ A design and analysis pack for one of three synthetic cases (reminder message, f
 
 SDAIA Academy · Data Science Track · Designing and Reading Experiments
 
-Course version 2027.1.0 · engine 1.0.0 · built 2026-11-15 · commit f9d5985
+Course version 2027.2.0 · engine 1.0.0 · built 2026-11-24 · commit 070537a
